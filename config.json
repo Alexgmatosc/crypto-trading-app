@@ -1,0 +1,40 @@
+{
+  "symbols": ["BTC/USDT", "ETH/USDT"],
+  "timeframe": "15m",
+  "initialBalance": 10000,
+  "leverage": 1,
+  "riskPerTrade": 0.015,
+  "maxConcurrentPositions": 2,
+  "maxDailyDrawdown": 0.04,
+  "fees": {
+    "maker": 0.0002,
+    "taker": 0.0005,
+    "slippage": 0.0004
+  },
+  "regime": {
+    "adxPeriod": 14,
+    "trendingThreshold": 25,
+    "rangingThreshold": 20
+  },
+  "trendStrategy": {
+    "emaBaseline": 200,
+    "donchianLookback": 20,
+    "volumeMultiplier": 1.2,
+    "atrPeriod": 14,
+    "slAtrMultiplier": 1.5
+  },
+  "meanReversionStrategy": {
+    "bbPeriod": 20,
+    "bbStdDev": 2.0,
+    "rsiPeriod": 14,
+    "rsiOversold": 30,
+    "rsiOverbought": 70,
+    "slAtrMultiplier": 1.2
+  },
+  "tradeManagement": {
+    "partialTakeProfitR": 1.5,
+    "partialClosePct": 0.5,
+    "trailingActivationR": 2.0,
+    "trailingAtrMultiplier": 1.5
+  }
+}

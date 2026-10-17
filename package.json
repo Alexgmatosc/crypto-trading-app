@@ -1,0 +1,39 @@
+{
+  "name": "crypto-quant-engine",
+  "version": "2.0.0",
+  "description": "Adaptive Multi-Regime Crypto Quant Engine for BTC/USDT & ETH/USDT Perpetual Futures (15m)",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "dev": "tsx watch src/index.ts",
+    "backtest": "tsx src/backtest.ts",
+    "report": "tsx src/report.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "db:push": "drizzle-kit push"
+  },
+  "dependencies": {
+    "better-sqlite3": "^9.6.0",
+    "ccxt": "^4.4.0",
+    "dotenv": "^16.4.5",
+    "drizzle-orm": "^0.30.10",
+    "pino": "^9.4.0",
+    "pino-pretty": "^11.2.2",
+    "technicalindicators": "^3.1.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.11",
+    "@types/node": "^20.14.10",
+    "drizzle-kit": "^0.21.4",
+    "tsx": "^4.19.1",
+    "typescript": "^5.5.4",
+    "vitest": "^2.1.1"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "better-sqlite3",
+      "esbuild"
+    ]
+  }
+}
