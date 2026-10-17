@@ -10,6 +10,7 @@
     "report": "tsx src/report.ts",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
+    "export:logs": "tsx src/export_logs.ts",
     "db:push": "drizzle-kit push"
   },
   "dependencies": {
