@@ -1,5 +1,5 @@
 {
-  "symbols": ["BTC/USDT", "ETH/USDT"],
+  "symbols": ["BTC/USDT", "ETH/USDT", "SOL/USDT"],
   "timeframe": "15m",
   "initialBalance": 10000,
   "leverage": 1,
