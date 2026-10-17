@@ -86,12 +86,6 @@ export class QuantDaemon {
         const lastCandle = recentCandles[recentCandles.length - 1];
         this.markPrices[symbol] = lastCandle.close;
         this.lastProcessedCandleTs[symbol] = lastCandle.timestamp;
-
-        await this.engine.processCandleClose({
-          symbol,
-          candles: recentCandles,
-          markPrices: this.markPrices,
-        });
       }
     }
 

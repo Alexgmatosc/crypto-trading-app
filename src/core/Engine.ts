@@ -278,15 +278,28 @@ export class Engine {
     }
 
     const orderSide = signal.side === 'LONG' ? 'BUY' : 'SELL';
-    const exec = await this.broker.executeMarketOrder({
-      symbol: signal.symbol,
-      orderSide,
-      positionSide: signal.side,
-      sizeCoins: sizing.sizeCoins,
-      referencePrice: signal.entryPrice,
-      timestamp: signal.timestamp,
-      reduceOnly: false,
-    });
+    let exec: OrderExecutionResult;
+    try {
+      exec = await this.broker.executeMarketOrder({
+        symbol: signal.symbol,
+        orderSide,
+        positionSide: signal.side,
+        sizeCoins: sizing.sizeCoins,
+        referencePrice: signal.entryPrice,
+        timestamp: signal.timestamp,
+        reduceOnly: false,
+      });
+    } catch (err) {
+      logger.warn(
+        {
+          symbol: signal.symbol,
+          side: signal.side,
+          error: (err as Error).message,
+        },
+        'Broker order execution failed (e.g. margin or exchange restriction) — trade skipped safely'
+      );
+      return null;
+    }
 
     if (this.broker instanceof PaperBroker) {
       this.broker.adjustBalance(-exec.feeUsd);
