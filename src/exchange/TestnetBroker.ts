@@ -82,9 +82,13 @@ export class TestnetBroker implements IExecutionBroker {
 
   public async getBalance(): Promise<number> {
     const balance = await this.exchange.fetchBalance();
-    const usdtFree = balance.USDT?.free ?? balance.USDT?.total ?? this.cachedBalanceUsdt;
-    if (typeof usdtFree === 'number' && !Number.isNaN(usdtFree)) {
-      this.cachedBalanceUsdt = usdtFree;
+    const usdtTotal =
+      balance.USDT?.total ??
+      (balance.info?.totalWalletBalance ? Number(balance.info.totalWalletBalance) : undefined) ??
+      balance.USDT?.free ??
+      this.cachedBalanceUsdt;
+    if (typeof usdtTotal === 'number' && !Number.isNaN(usdtTotal)) {
+      this.cachedBalanceUsdt = usdtTotal;
     }
     return this.cachedBalanceUsdt;
   }

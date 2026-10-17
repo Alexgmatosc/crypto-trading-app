@@ -133,6 +133,8 @@ export class QuantDaemon {
     this.isProcessingCandle = true;
 
     try {
+      await this.broker.getBalance();
+
       for (const symbol of strategyConfig.symbols) {
         const candles = await this.feed.fetchRecentCandles(
           symbol,
