@@ -51,6 +51,7 @@ export class QuantDaemon {
       broker: this.broker,
       repo: repository,
       getMarkPrices: () => this.markPrices,
+      getCandlesBySymbol: () => this.candlesBySymbol,
     });
   }
 
