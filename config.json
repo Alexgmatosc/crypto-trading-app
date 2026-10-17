@@ -1,10 +1,10 @@
 {
-  "symbols": ["BTC/USDT", "ETH/USDT", "SOL/USDT"],
+  "symbols": ["BTC/USDT", "ETH/USDT", "SOL/USDT", "DOGE/USDT"],
   "timeframe": "15m",
   "initialBalance": 10000,
   "leverage": 1,
   "riskPerTrade": 0.015,
-  "maxConcurrentPositions": 2,
+  "maxConcurrentPositions": 3,
   "maxDailyDrawdown": 0.04,
   "fees": {
     "maker": 0.0002,

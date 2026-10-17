@@ -1,4 +1,5 @@
 import http from 'node:http';
+import { strategyConfig } from '../config/strategyConfig.js';
 import type { QuantRepository } from '../db/repository.js';
 import type { IExecutionBroker } from '../exchange/IExecutionBroker.js';
 import { generateModeReport } from '../report.js';
@@ -100,6 +101,49 @@ export class DashboardServer {
 
     const equity = balance + unrealizedPnl;
 
+    // Per-symbol breakdown
+    const configuredSymbols = strategyConfig.symbols;
+    const allSymbols = Array.from(
+      new Set([
+        ...configuredSymbols,
+        ...closedTrades.map((t) => t.symbol),
+        ...openTrades.map((t) => t.symbol),
+      ])
+    );
+
+    const symbolBreakdown = allSymbols.map((symbol) => {
+      const symClosed = closedTrades.filter((t) => t.symbol === symbol);
+      const totalTrades = symClosed.length;
+      const winningTrades = symClosed.filter((t) => t.realized_pnl > 0).length;
+      const losingTrades = symClosed.filter((t) => t.realized_pnl <= 0).length;
+      const winRatePct = totalTrades > 0 ? (winningTrades / totalTrades) * 100 : 0;
+
+      let grossProfit = 0;
+      let grossLoss = 0;
+      let netRealizedPnl = 0;
+      for (const t of symClosed) {
+        netRealizedPnl += t.realized_pnl;
+        if (t.realized_pnl > 0) grossProfit += t.realized_pnl;
+        else grossLoss += Math.abs(t.realized_pnl);
+      }
+
+      const profitFactor = grossLoss > 0 ? grossProfit / grossLoss : grossProfit > 0 ? 99.9 : 0;
+      const symOpen = enrichedOpenTrades.filter((t) => t.symbol === symbol);
+      const currentPrice = markPrices[symbol] ?? (symOpen[0]?.currentPrice ?? 0);
+
+      return {
+        symbol,
+        currentPrice,
+        totalTrades,
+        winningTrades,
+        losingTrades,
+        winRatePct,
+        netRealizedPnl,
+        profitFactor: Number.isFinite(profitFactor) ? profitFactor : (grossProfit > 0 ? 99.9 : 0),
+        openCount: symOpen.length,
+      };
+    });
+
     const payload = {
       mode: this.mode,
       balance,
@@ -116,6 +160,7 @@ export class DashboardServer {
       openTrades: enrichedOpenTrades,
       closedTrades: closedTrades.slice(-20).reverse(),
       strategyBreakdown: report.strategyBreakdown,
+      symbolBreakdown,
       snapshots: snapshots.slice(-60).map((s) => ({
         timestamp: s.timestamp,
         equity: s.equity_usdt,
@@ -173,7 +218,7 @@ export class DashboardServer {
           <span id="badge-mode" class="px-2.5 py-0.5 rounded text-xs font-mono uppercase bg-blue-500/20 text-blue-400 border border-blue-500/30">TESTNET_LIVE</span>
         </div>
         <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight mt-2 text-white">Adaptive Multi-Regime Quant Engine</h1>
-        <p class="text-xs md:text-sm text-slate-400 mt-0.5">Operando Futuros Perpetuos (BTC/USDT, ETH/USDT en 15m) con Gestión de Riesgo 1.5R y Trailing Stop</p>
+        <p class="text-xs md:text-sm text-slate-400 mt-0.5">Operando Futuros Perpetuos con Gestión de Riesgo 1.5R y Trailing Stop</p>
       </div>
 
       <div class="text-right flex md:flex-col items-center md:items-end justify-between w-full md:w-auto">
@@ -182,7 +227,7 @@ export class DashboardServer {
       </div>
     </header>
 
-    <!-- Top Metric Cards -->
+    <!-- Top Metric Cards (Resumen General) -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
       <div class="bg-cardbg p-5 rounded-xl border border-slate-700/60 shadow">
         <div class="text-xs font-medium text-slate-400 uppercase tracking-wider">Saldo Total (Balance)</div>
@@ -197,15 +242,46 @@ export class DashboardServer {
       </div>
 
       <div class="bg-cardbg p-5 rounded-xl border border-slate-700/60 shadow">
-        <div class="text-xs font-medium text-slate-400 uppercase tracking-wider">Beneficio Neto Acumulado</div>
+        <div class="text-xs font-medium text-slate-400 uppercase tracking-wider">Beneficio Neto General</div>
         <div id="stat-pnl" class="text-2xl md:text-3xl font-bold mt-2 font-mono text-white">$0.00</div>
         <div id="stat-return" class="text-xs font-semibold mt-1">0.00%</div>
       </div>
 
       <div class="bg-cardbg p-5 rounded-xl border border-slate-700/60 shadow">
-        <div class="text-xs font-medium text-slate-400 uppercase tracking-wider">Tasa de Acierto (Win Rate)</div>
+        <div class="text-xs font-medium text-slate-400 uppercase tracking-wider">Tasa de Acierto Global</div>
         <div id="stat-winrate" class="text-2xl md:text-3xl font-bold mt-2 font-mono text-purple-400">0.0%</div>
         <div id="stat-trades-count" class="text-xs text-slate-400 mt-1">0 Ganadores / 0 Perdedores</div>
+      </div>
+    </div>
+
+    <!-- Desglose por Moneda -->
+    <div class="bg-cardbg p-6 rounded-2xl border border-slate-700/60 shadow-xl">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h2 class="text-lg font-bold text-white">Desglose de Rendimiento por Moneda</h2>
+          <p class="text-xs text-slate-400">Estadísticas individuales, precio de Binance en tiempo real y estado de cada activo</p>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="border-b border-slate-700 text-xs text-slate-400 uppercase">
+              <th class="py-3 px-4">Moneda</th>
+              <th class="py-3 px-4">Precio en Vivo</th>
+              <th class="py-3 px-4">Operaciones</th>
+              <th class="py-3 px-4">Win Rate (%)</th>
+              <th class="py-3 px-4">Profit Factor</th>
+              <th class="py-3 px-4">Estado</th>
+              <th class="py-3 px-4 text-right">Beneficio Neto</th>
+            </tr>
+          </thead>
+          <tbody id="table-symbols-breakdown" class="divide-y divide-slate-800 font-mono text-xs md:text-sm">
+            <tr>
+              <td colspan="7" class="text-center py-6 text-slate-500 font-sans">Cargando datos de monedas...</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
@@ -213,7 +289,7 @@ export class DashboardServer {
     <div class="bg-cardbg p-6 rounded-2xl border border-slate-700/60 shadow-xl">
       <div class="flex justify-between items-center mb-4">
         <div>
-          <h2 class="text-lg font-bold text-white">Curva de Rendimiento (Equity Curve)</h2>
+          <h2 class="text-lg font-bold text-white">Curva de Rendimiento General (Equity Curve)</h2>
           <p class="text-xs text-slate-400">Evolución del balance y capital en el tiempo</p>
         </div>
       </div>
@@ -289,6 +365,13 @@ export class DashboardServer {
   <script>
     let equityChartInstance = null;
 
+    function formatPrice(val) {
+      if (!val || val <= 0) return '-';
+      if (val < 1) return '$' + val.toFixed(4);
+      if (val < 10) return '$' + val.toFixed(3);
+      return '$' + val.toFixed(2);
+    }
+
     function initChart() {
       const ctx = document.getElementById('equityChart').getContext('2d');
       equityChartInstance = new Chart(ctx, {
@@ -341,6 +424,28 @@ export class DashboardServer {
         document.getElementById('stat-winrate').innerText = data.winRatePct.toFixed(1) + '%';
         document.getElementById('stat-trades-count').innerText = data.winningTrades + 'W / ' + data.losingTrades + 'L (Total: ' + data.totalTrades + ')';
 
+        // Per-Symbol breakdown table
+        const symTbody = document.getElementById('table-symbols-breakdown');
+        if (data.symbolBreakdown && data.symbolBreakdown.length > 0) {
+          symTbody.innerHTML = data.symbolBreakdown.map(s => {
+            const pnlClass = s.netRealizedPnl >= 0 ? 'text-emerald-400 font-bold' : 'text-rose-400 font-bold';
+            const pfDisplay = s.profitFactor >= 99 ? 'INF' : s.profitFactor.toFixed(2);
+            const statusBadge = s.openCount > 0
+              ? '<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-500/20 text-amber-400 border border-amber-500/30"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 mr-1.5 live-pulse"></span> Abierta (' + s.openCount + ')</span>'
+              : '<span class="inline-flex items-center px-2 py-0.5 rounded text-xs bg-slate-800 text-slate-400 border border-slate-700">Vigilando</span>';
+
+            return '<tr class="hover:bg-slate-800/40 transition">' +
+              '<td class="py-3 px-4 font-bold text-white flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-blue-400"></span>' + s.symbol + '</td>' +
+              '<td class="py-3 px-4 font-semibold text-white">' + formatPrice(s.currentPrice) + '</td>' +
+              '<td class="py-3 px-4 text-slate-300">' + s.totalTrades + ' (' + s.winningTrades + 'W / ' + s.losingTrades + 'L)</td>' +
+              '<td class="py-3 px-4 text-purple-400 font-semibold">' + s.winRatePct.toFixed(1) + '%</td>' +
+              '<td class="py-3 px-4 text-slate-300">' + pfDisplay + '</td>' +
+              '<td class="py-3 px-4 font-sans">' + statusBadge + '</td>' +
+              '<td class="py-3 px-4 text-right ' + pnlClass + '">' + (s.netRealizedPnl >= 0 ? '+' : '') + '$' + s.netRealizedPnl.toFixed(2) + '</td>' +
+            '</tr>';
+          }).join('');
+        }
+
         // Open positions table
         document.getElementById('badge-open-count').innerText = data.openTrades.length;
         const openTbody = document.getElementById('table-open-positions');
@@ -355,9 +460,9 @@ export class DashboardServer {
               '<td class="py-3 px-4 font-bold text-white">' + t.symbol + '</td>' +
               '<td class="py-3 px-4 text-slate-300 font-sans">' + t.strategy + '</td>' +
               '<td class="py-3 px-4"><span class="px-2 py-0.5 rounded text-xs font-bold ' + sideClass + '">' + t.side + '</span></td>' +
-              '<td class="py-3 px-4">$' + t.entry_price.toFixed(2) + '</td>' +
-              '<td class="py-3 px-4 font-semibold text-white">$' + (t.currentPrice ? t.currentPrice.toFixed(2) : '-') + '</td>' +
-              '<td class="py-3 px-4 text-amber-400">$' + t.current_sl.toFixed(2) + '</td>' +
+              '<td class="py-3 px-4">' + formatPrice(t.entry_price) + '</td>' +
+              '<td class="py-3 px-4 font-semibold text-white">' + formatPrice(t.currentPrice) + '</td>' +
+              '<td class="py-3 px-4 text-amber-400">' + formatPrice(t.current_sl) + '</td>' +
               '<td class="py-3 px-4">' + tp1Badge + '</td>' +
               '<td class="py-3 px-4 text-right font-bold ' + pnlClass + '">' + (t.unrealizedPnl >= 0 ? '+' : '') + '$' + t.unrealizedPnl.toFixed(2) + '</td>' +
             '</tr>';
@@ -377,8 +482,8 @@ export class DashboardServer {
               '<td class="py-3 px-4 font-bold text-white">' + t.symbol + '</td>' +
               '<td class="py-3 px-4 text-slate-300 font-sans">' + t.strategy + '</td>' +
               '<td class="py-3 px-4"><span class="px-2 py-0.5 rounded text-xs ' + sideClass + '">' + t.side + '</span></td>' +
-              '<td class="py-3 px-4">$' + t.entry_price.toFixed(2) + '</td>' +
-              '<td class="py-3 px-4">$' + (t.exit_price ? t.exit_price.toFixed(2) : '-') + '</td>' +
+              '<td class="py-3 px-4">' + formatPrice(t.entry_price) + '</td>' +
+              '<td class="py-3 px-4">' + formatPrice(t.exit_price) + '</td>' +
               '<td class="py-3 px-4 text-slate-300 font-sans text-xs">' + (t.exit_reason || '-') + '</td>' +
               '<td class="py-3 px-4 text-xs text-slate-400 font-sans">' + closedDate + '</td>' +
               '<td class="py-3 px-4 text-right ' + pnlClass + '">' + (t.realized_pnl >= 0 ? '+' : '') + '$' + t.realized_pnl.toFixed(2) + '</td>' +
