@@ -481,5 +481,26 @@
     "exit_reason": "KILL_SWITCH",
     "opened_at": 1792272977828,
     "closed_at": 1792273147449
+  },
+  {
+    "id": "41eaf154-ce2b-4620-9c87-bc1f4b5edf05",
+    "mode": "TESTNET_LIVE",
+    "symbol": "ETH/USDT",
+    "strategy": "TREND_BREAKOUT",
+    "regime_at_entry": "TRENDING",
+    "side": "SHORT",
+    "entry_price": 2380,
+    "exit_price": null,
+    "initial_size": 1.974,
+    "remaining_size": 1.974,
+    "initial_sl": 2393.79456831676,
+    "current_sl": 2393.79456831676,
+    "tp1_hit": 0,
+    "realized_pnl": -2.34906,
+    "fees_paid": 2.34906,
+    "status": "OPEN",
+    "exit_reason": null,
+    "opened_at": 1792273528334,
+    "closed_at": null
   }
 ]

@@ -1,0 +1,3221 @@
+
+> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
+[2026-10-17 11:48:10.914] [32mINFO[39m: [36mWeb Dashboard running[39m
+    port: 3000
+    url: "http://localhost:3000"
+[2026-10-17 11:48:10.914] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
+    mode: "TESTNET_LIVE"
+    exchange: "binanceusdm"
+    symbols: [
+      "BTC/USDT",
+      "ETH/USDT"
+    ]
+    timeframe: "15m"
+[2026-10-17 11:48:10.914] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
+    exchange: "binanceusdm"
+[2026-10-17 11:48:12.532] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
+    exchange: "binanceusdm"
+    balanceUsdt: 5000
+[2026-10-17 11:48:14.116] [32mINFO[39m: [36mDaemon active: synchronized with 15m candle closes and 10s SL monitoring[39m
+    balanceUsdt: 5000
+    openPositions: 0
+[2026-10-17 11:49:06.529] [32mINFO[39m: [36mReceived shutdown signal, stopping daemon...[39m
+    signal: "SIGINT"
+[2026-10-17 11:49:06.530] [32mINFO[39m: [36mQuantDaemon stopped cleanly[39m
+
+> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
+[2026-10-17 11:49:09.421] [32mINFO[39m: [36mWeb Dashboard running[39m
+    port: 3000
+    url: "http://localhost:3000"
+[2026-10-17 11:49:09.421] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
+    mode: "TESTNET_LIVE"
+    exchange: "binanceusdm"
+    symbols: [
+      "BTC/USDT",
+      "ETH/USDT"
+    ]
+    timeframe: "15m"
+[2026-10-17 11:49:09.421] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
+    exchange: "binanceusdm"
+[2026-10-17 11:49:10.932] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
+    exchange: "binanceusdm"
+    balanceUsdt: 5000
+[2026-10-17 11:49:11.817] [32mINFO[39m: [36mDaemon active: synchronized with 15m candle closes and 10s SL monitoring[39m
+    balanceUsdt: 5000
+    openPositions: 0
+[2026-10-17 11:49:18.231] [32mINFO[39m: [36mReceived shutdown signal, stopping daemon...[39m
+    signal: "SIGINT"
+[2026-10-17 11:49:18.232] [32mINFO[39m: [36mQuantDaemon stopped cleanly[39m
+
+> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
+[2026-10-17 11:49:20.915] [32mINFO[39m: [36mWeb Dashboard running[39m
+    port: 3000
+    url: "http://localhost:3000"
+[2026-10-17 11:49:20.916] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
+    mode: "TESTNET_LIVE"
+    exchange: "binanceusdm"
+    symbols: [
+      "BTC/USDT",
+      "ETH/USDT"
+    ]
+    timeframe: "15m"
+[2026-10-17 11:49:20.916] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
+    exchange: "binanceusdm"
+[2026-10-17 11:49:22.109] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
+    exchange: "binanceusdm"
+    balanceUsdt: 5000
+[2026-10-17 11:49:23.410] [32mINFO[39m: [36mDaemon active: synchronized with 15m candle closes and 10s SL monitoring[39m
+    balanceUsdt: 5000
+    openPositions: 0
+[2026-10-17 12:25:54.562] [32mINFO[39m: [36mReceived shutdown signal, stopping daemon...[39m
+    signal: "SIGINT"
+[2026-10-17 12:25:54.563] [32mINFO[39m: [36mQuantDaemon stopped cleanly[39m
+
+> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
+[2026-10-17 12:25:57.273] [32mINFO[39m: [36mWeb Dashboard running[39m
+    port: 3000
+    url: "http://localhost:3000"
+[2026-10-17 12:25:57.274] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
+    mode: "TESTNET_LIVE"
+    exchange: "binanceusdm"
+    symbols: [
+      "BTC/USDT",
+      "ETH/USDT"
+    ]
+    timeframe: "15m"
+[2026-10-17 12:25:57.274] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
+    exchange: "binanceusdm"
+[2026-10-17 12:25:58.732] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
+    exchange: "binanceusdm"
+    balanceUsdt: 5000
+[2026-10-17 12:25:59.684] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81550.8
+    regime: "NO_TRADE"
+    adx: 16.1
+    bbWidthPct: 0.24
+    reason: "BB_Width (0.24%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-17 12:25:59.996] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2433.23
+    regime: "TRENDING"
+    adx: 28.23
+    bbWidthPct: 0.4
+    reason: "ADX (28.23) > 25 -> Strong directional trend"
+[2026-10-17 12:25:59.998] [32mINFO[39m: [36mDaemon active: synchronized with 15m candle closes and 10s SL monitoring[39m
+    balanceUsdt: 5000
+    openPositions: 0
+[2026-10-17 12:30:31.537] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81615.4
+    regime: "NO_TRADE"
+    adx: 16.19
+    bbWidthPct: 0.24
+    reason: "BB_Width (0.24%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-17 12:30:31.851] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2435.75
+    regime: "TRENDING"
+    adx: 28.66
+    bbWidthPct: 0.37
+    reason: "ADX (28.66) > 25 -> Strong directional trend"
+[2026-10-17 12:46:39.356] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81610.1
+    regime: "NO_TRADE"
+    adx: 16.54
+    bbWidthPct: 0.23
+    reason: "BB_Width (0.23%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-17 12:46:39.694] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2438.35
+    regime: "TRENDING"
+    adx: 29.64
+    bbWidthPct: 0.36
+    reason: "ADX (29.64) > 25 -> Strong directional trend"
+[2026-10-17 13:01:32.229] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81614.2
+    regime: "NO_TRADE"
+    adx: 16.88
+    bbWidthPct: 0.21
+    reason: "BB_Width (0.21%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-17 13:01:32.549] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2438.57
+    regime: "TRENDING"
+    adx: 30.84
+    bbWidthPct: 0.34
+    reason: "ADX (30.84) > 25 -> Strong directional trend"
+[2026-10-17 13:16:32.466] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81612.7
+    regime: "NO_TRADE"
+    adx: 17.52
+    bbWidthPct: 0.2
+    reason: "BB_Width (0.20%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-17 13:16:32.780] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2438.28
+    regime: "TRENDING"
+    adx: 31.86
+    bbWidthPct: 0.36
+    reason: "ADX (31.86) > 25 -> Strong directional trend"
+[2026-10-17 13:31:32.250] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81526
+    regime: "NO_TRADE"
+    adx: 16.71
+    bbWidthPct: 0.23
+    reason: "BB_Width (0.23%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-17 13:31:32.558] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2434.02
+    regime: "TRENDING"
+    adx: 31.13
+    bbWidthPct: 0.34
+    reason: "ADX (31.13) > 25 -> Strong directional trend"
+[2026-10-17 13:46:32.309] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81555.3
+    regime: "NO_TRADE"
+    adx: 15.66
+    bbWidthPct: 0.23
+    reason: "BB_Width (0.23%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-17 13:46:32.854] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2434.2
+    regime: "TRENDING"
+    adx: 30.34
+    bbWidthPct: 0.32
+    reason: "ADX (30.34) > 25 -> Strong directional trend"
+[2026-10-17 14:01:34.188] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81538
+    regime: "NO_TRADE"
+    adx: 14.99
+    bbWidthPct: 0.25
+    reason: "BB_Width (0.25%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-17 14:01:34.501] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2433.32
+    regime: "TRENDING"
+    adx: 29.24
+    bbWidthPct: 0.31
+    reason: "ADX (29.24) > 25 -> Strong directional trend"
+[2026-10-17 14:16:32.322] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81520.1
+    regime: "NO_TRADE"
+    adx: 14.14
+    bbWidthPct: 0.27
+    reason: "BB_Width (0.27%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-17 14:16:32.636] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2431.01
+    regime: "TRENDING"
+    adx: 27.46
+    bbWidthPct: 0.32
+    reason: "ADX (27.46) > 25 -> Strong directional trend"
+[2026-10-17 14:31:32.464] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81513.4
+    regime: "NO_TRADE"
+    adx: 13.34
+    bbWidthPct: 0.29
+    reason: "BB_Width (0.29%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-17 14:31:32.777] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2430.19
+    regime: "TRENDING"
+    adx: 26.57
+    bbWidthPct: 0.35
+    reason: "ADX (26.57) > 25 -> Strong directional trend"
+[2026-10-17 14:46:32.466] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81491.9
+    regime: "NO_TRADE"
+    adx: 12.96
+    bbWidthPct: 0.31
+    reason: "BB_Width (0.31%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-17 14:46:32.778] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2427.94
+    regime: "TRENDING"
+    adx: 25.62
+    bbWidthPct: 0.42
+    reason: "ADX (25.62) > 25 -> Strong directional trend"
+[2026-10-17 15:01:32.379] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81485.6
+    regime: "NO_TRADE"
+    adx: 13.15
+    bbWidthPct: 0.32
+    reason: "BB_Width (0.32%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-17 15:01:32.693] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2425.93
+    regime: "TRENDING"
+    adx: 25.65
+    bbWidthPct: 0.51
+    reason: "ADX (25.65) > 25 -> Strong directional trend"
+[2026-10-17 15:16:32.392] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81469.9
+    regime: "NO_TRADE"
+    adx: 12.3
+    bbWidthPct: 0.33
+    reason: "BB_Width (0.33%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-17 15:16:32.706] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2422.37
+    regime: "TRENDING"
+    adx: 26.13
+    bbWidthPct: 0.65
+    reason: "ADX (26.13) > 25 -> Strong directional trend"
+[2026-10-17 15:16:33.301] [32mINFO[39m: [36mOpened new position[39m
+    tradeId: "db9dc168-cd64-4438-9367-300ab6916588"
+    mode: "TESTNET_LIVE"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    regime: "TRENDING"
+    side: "SHORT"
+    entryPrice: 2422.37
+    size: 1.96
+    initialSl: 2428.5
+    riskUsd: 12.03
+[2026-10-17 15:31:32.349] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81501.9
+    regime: "NO_TRADE"
+    adx: 11.52
+    bbWidthPct: 0.32
+    reason: "BB_Width (0.32%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-17 15:31:32.664] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2426.08
+    regime: "TRENDING"
+    adx: 26.62
+    bbWidthPct: 0.7
+    reason: "ADX (26.62) > 25 -> Strong directional trend"
+[2026-10-17 15:46:14.336] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81449.9
+    regime: "NO_TRADE"
+    adx: 10.8
+    bbWidthPct: 0.33
+    reason: "BB_Width (0.33%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-17 15:46:14.737] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2422.43
+    regime: "TRENDING"
+    adx: 27.07
+    bbWidthPct: 0.79
+    reason: "ADX (27.07) > 25 -> Strong directional trend"
+[2026-10-17 16:00:24.679] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81460.5
+    regime: "NO_TRADE"
+    adx: 10.14
+    bbWidthPct: 0.32
+    reason: "BB_Width (0.32%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-17 16:00:25.021] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2422.66
+    regime: "TRENDING"
+    adx: 27.49
+    bbWidthPct: 0.85
+    reason: "ADX (27.49) > 25 -> Strong directional trend"
+[2026-10-17 16:15:20.706] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81453.1
+    regime: "NO_TRADE"
+    adx: 9.51
+    bbWidthPct: 0.3
+    reason: "BB_Width (0.30%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-17 16:15:21.047] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2422.37
+    regime: "TRENDING"
+    adx: 28.04
+    bbWidthPct: 0.91
+    reason: "ADX (28.04) > 25 -> Strong directional trend"
+[2026-10-17 16:30:02.803] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81525
+    regime: "NO_TRADE"
+    adx: 9.87
+    bbWidthPct: 0.28
+    reason: "BB_Width (0.28%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-17 16:30:03.139] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2425.02
+    regime: "TRENDING"
+    adx: 29.16
+    bbWidthPct: 0.93
+    reason: "ADX (29.16) > 25 -> Strong directional trend"
+[2026-10-17 16:45:02.796] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81539.9
+    regime: "NO_TRADE"
+    adx: 10.79
+    bbWidthPct: 0.26
+    reason: "BB_Width (0.26%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-17 16:45:03.137] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2426.01
+    regime: "TRENDING"
+    adx: 29.56
+    bbWidthPct: 0.94
+    reason: "ADX (29.56) > 25 -> Strong directional trend"
+[2026-10-17 17:00:02.803] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81548.6
+    regime: "NO_TRADE"
+    adx: 11.66
+    bbWidthPct: 0.26
+    reason: "BB_Width (0.26%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-17 17:00:03.142] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2426.76
+    regime: "TRENDING"
+    adx: 29.75
+    bbWidthPct: 0.92
+    reason: "ADX (29.75) > 25 -> Strong directional trend"
+[2026-10-17 17:15:02.784] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81560.7
+    regime: "NO_TRADE"
+    adx: 12.05
+    bbWidthPct: 0.26
+    reason: "BB_Width (0.26%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-17 17:15:03.122] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2423.74
+    regime: "TRENDING"
+    adx: 30.81
+    bbWidthPct: 0.93
+    reason: "ADX (30.81) > 25 -> Strong directional trend"
+[2026-10-17 17:28:32.550] [32mINFO[39m: [36mExecuted 1.5R 50% Scale-Out and moved SL to Break-Even + Costs[39m
+    tradeId: "db9dc168-cd64-4438-9367-300ab6916588"
+    symbol: "ETH/USDT"
+    side: "SHORT"
+    closedSize: 0.98
+    remainingSize: 0.98
+    fillPrice: 2412.69
+    netPnlDelta: 8.3
+    newBreakEvenSl: 2418.74
+[2026-10-17 17:30:02.794] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81468
+    regime: "NO_TRADE"
+    adx: 11.72
+    bbWidthPct: 0.25
+    reason: "BB_Width (0.25%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-17 17:30:03.625] [32mINFO[39m: [36mClosed position completely[39m
+    tradeId: "db9dc168-cd64-4438-9367-300ab6916588"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    side: "SHORT"
+    exitReason: "TRAILING_STOP"
+    entryPrice: 2422.37
+    exitPrice: 2418.74
+    totalRealizedPnl: 8.31
+[2026-10-17 17:30:03.626] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2415
+    regime: "TRENDING"
+    adx: 32.99
+    bbWidthPct: 1.03
+    reason: "ADX (32.99) > 25 -> Strong directional trend"
+[2026-10-17 17:30:04.341] [32mINFO[39m: [36mOpened new position[39m
+    tradeId: "38b5721b-f847-40d6-80a6-7ccde14b70b9"
+    mode: "TESTNET_LIVE"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    regime: "TRENDING"
+    side: "SHORT"
+    entryPrice: 2415
+    size: 1.971
+    initialSl: 2422.5
+    riskUsd: 14.79
+[2026-10-17 17:45:07.443] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81431.3
+    regime: "NO_TRADE"
+    adx: 11.73
+    bbWidthPct: 0.24
+    reason: "BB_Width (0.24%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-17 17:45:08.009] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2413.12
+    regime: "TRENDING"
+    adx: 35.11
+    bbWidthPct: 1.09
+    reason: "ADX (35.11) > 25 -> Strong directional trend"
+[2026-10-17 18:00:17.281] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81315.7
+    regime: "NO_TRADE"
+    adx: 13.75
+    bbWidthPct: 0.3
+    reason: "BB_Width (0.30%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-17 18:00:17.616] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2409.2
+    regime: "TRENDING"
+    adx: 37.5
+    bbWidthPct: 1.17
+    reason: "ADX (37.50) > 25 -> Strong directional trend"
+[2026-10-17 18:15:19.773] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81347.8
+    regime: "NO_TRADE"
+    adx: 15.62
+    bbWidthPct: 0.31
+    reason: "BB_Width (0.31%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-17 18:15:20.110] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2410.74
+    regime: "TRENDING"
+    adx: 39.38
+    bbWidthPct: 1.18
+    reason: "ADX (39.38) > 25 -> Strong directional trend"
+[2026-10-17 18:30:20.700] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81285.1
+    regime: "NO_TRADE"
+    adx: 17.93
+    bbWidthPct: 0.37
+    reason: "BB_Width (0.37%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-17 18:30:21.037] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2407.57
+    regime: "TRENDING"
+    adx: 41.48
+    bbWidthPct: 1.26
+    reason: "ADX (41.48) > 25 -> Strong directional trend"
+[2026-10-17 18:37:18.925] [32mINFO[39m: [36mExecuted 1.5R 50% Scale-Out and moved SL to Break-Even + Costs[39m
+    tradeId: "38b5721b-f847-40d6-80a6-7ccde14b70b9"
+    symbol: "ETH/USDT"
+    side: "SHORT"
+    closedSize: 0.985
+    remainingSize: 0.986
+    fillPrice: 2403.31
+    netPnlDelta: 10.33
+    newBreakEvenSl: 2411.38
+[2026-10-17 18:45:23.980] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81274.9
+    regime: "NO_TRADE"
+    adx: 20.47
+    bbWidthPct: 0.42
+    reason: "ADX (20.47) in dead zone [20, 25]"
+[2026-10-17 18:45:24.311] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2406.15
+    regime: "TRENDING"
+    adx: 43.57
+    bbWidthPct: 1.31
+    reason: "ADX (43.57) > 25 -> Strong directional trend"
+[2026-10-17 19:00:27.376] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81226.7
+    regime: "NO_TRADE"
+    adx: 23.02
+    bbWidthPct: 0.47
+    reason: "ADX (23.02) in dead zone [20, 25]"
+[2026-10-17 19:00:28.174] [32mINFO[39m: [36mClosed position completely[39m
+    tradeId: "38b5721b-f847-40d6-80a6-7ccde14b70b9"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    side: "SHORT"
+    exitReason: "TRAILING_STOP"
+    entryPrice: 2415
+    exitPrice: 2407.52
+    totalRealizedPnl: 14.14
+[2026-10-17 19:00:28.175] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2402.96
+    regime: "TRENDING"
+    adx: 45.81
+    bbWidthPct: 1.39
+    reason: "ADX (45.81) > 25 -> Strong directional trend"
+[2026-10-17 19:15:28.677] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81255
+    regime: "TRENDING"
+    adx: 25.45
+    bbWidthPct: 0.51
+    reason: "ADX (25.45) > 25 -> Strong directional trend"
+[2026-10-17 19:15:29.018] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2404.98
+    regime: "TRENDING"
+    adx: 47.89
+    bbWidthPct: 1.42
+    reason: "ADX (47.89) > 25 -> Strong directional trend"
+[2026-10-17 19:30:30.541] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81234.9
+    regime: "TRENDING"
+    adx: 27.7
+    bbWidthPct: 0.54
+    reason: "ADX (27.70) > 25 -> Strong directional trend"
+[2026-10-17 19:30:30.876] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2404.95
+    regime: "TRENDING"
+    adx: 49.52
+    bbWidthPct: 1.43
+    reason: "ADX (49.52) > 25 -> Strong directional trend"
+[2026-10-17 19:45:31.665] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81249.5
+    regime: "TRENDING"
+    adx: 29.32
+    bbWidthPct: 0.56
+    reason: "ADX (29.32) > 25 -> Strong directional trend"
+[2026-10-17 19:45:31.978] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2405.6
+    regime: "TRENDING"
+    adx: 50.21
+    bbWidthPct: 1.43
+    reason: "ADX (50.21) > 25 -> Strong directional trend"
+[2026-10-17 20:00:32.750] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81340.4
+    regime: "TRENDING"
+    adx: 29.44
+    bbWidthPct: 0.56
+    reason: "ADX (29.44) > 25 -> Strong directional trend"
+[2026-10-17 20:00:33.081] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2410.55
+    regime: "TRENDING"
+    adx: 49.9
+    bbWidthPct: 1.39
+    reason: "ADX (49.90) > 25 -> Strong directional trend"
+[2026-10-17 20:15:35.444] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81474.6
+    regime: "TRENDING"
+    adx: 27.86
+    bbWidthPct: 0.56
+    reason: "ADX (27.86) > 25 -> Strong directional trend"
+[2026-10-17 20:15:35.773] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2416.28
+    regime: "TRENDING"
+    adx: 47.91
+    bbWidthPct: 1.37
+    reason: "ADX (47.91) > 25 -> Strong directional trend"
+[2026-10-17 20:30:36.737] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81518.9
+    regime: "TRENDING"
+    adx: 26.65
+    bbWidthPct: 0.56
+    reason: "ADX (26.65) > 25 -> Strong directional trend"
+[2026-10-17 20:30:37.050] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2418.2
+    regime: "TRENDING"
+    adx: 45.5
+    bbWidthPct: 1.31
+    reason: "ADX (45.50) > 25 -> Strong directional trend"
+[2026-10-17 20:45:30.382] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81509.5
+    regime: "TRENDING"
+    adx: 25.53
+    bbWidthPct: 0.57
+    reason: "ADX (25.53) > 25 -> Strong directional trend"
+[2026-10-17 20:45:30.710] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2417.39
+    regime: "TRENDING"
+    adx: 43.23
+    bbWidthPct: 1.28
+    reason: "ADX (43.23) > 25 -> Strong directional trend"
+[2026-10-17 20:58:06.991] [32mINFO[39m: [36mReceived shutdown signal, stopping daemon...[39m
+    signal: "SIGINT"
+[2026-10-17 20:58:06.992] [32mINFO[39m: [36mQuantDaemon stopped cleanly[39m
+
+> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
+[2026-10-17 20:58:09.903] [32mINFO[39m: [36mWeb Dashboard running[39m
+    port: 3000
+    url: "http://localhost:3000"
+[2026-10-17 20:58:09.903] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
+    mode: "TESTNET_LIVE"
+    exchange: "binanceusdm"
+    symbols: [
+      "BTC/USDT",
+      "ETH/USDT",
+      "SOL/USDT"
+    ]
+    timeframe: "15m"
+[2026-10-17 20:58:09.904] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
+    exchange: "binanceusdm"
+[2026-10-17 20:58:11.641] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
+    exchange: "binanceusdm"
+    balanceUsdt: 5028.17210371
+[2026-10-17 20:58:12.642] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81509.5
+    regime: "TRENDING"
+    adx: 25.53
+    bbWidthPct: 0.57
+    reason: "ADX (25.53) > 25 -> Strong directional trend"
+[2026-10-17 20:58:12.971] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2417.39
+    regime: "TRENDING"
+    adx: 43.23
+    bbWidthPct: 1.28
+    reason: "ADX (43.23) > 25 -> Strong directional trend"
+[2026-10-17 20:58:13.302] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 103.9
+    regime: "TRENDING"
+    adx: 34.9
+    bbWidthPct: 1.42
+    reason: "ADX (34.90) > 25 -> Strong directional trend"
+[2026-10-17 20:58:13.303] [32mINFO[39m: [36mDaemon active: synchronized with 15m candle closes and 10s SL monitoring[39m
+    balanceUsdt: 5028.17210371
+    openPositions: 0
+[2026-10-17 21:00:08.480] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81465.1
+    regime: "NO_TRADE"
+    adx: 23.8
+    bbWidthPct: 0.57
+    reason: "ADX (23.80) in dead zone [20, 25]"
+[2026-10-17 21:00:08.812] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2414.87
+    regime: "TRENDING"
+    adx: 41.4
+    bbWidthPct: 1.24
+    reason: "ADX (41.40) > 25 -> Strong directional trend"
+[2026-10-17 21:00:09.140] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 103.83
+    regime: "TRENDING"
+    adx: 32.86
+    bbWidthPct: 1.42
+    reason: "ADX (32.86) > 25 -> Strong directional trend"
+[2026-10-17 21:03:06.377] [32mINFO[39m: [36mReceived shutdown signal, stopping daemon...[39m
+    signal: "SIGINT"
+[2026-10-17 21:03:06.378] [32mINFO[39m: [36mQuantDaemon stopped cleanly[39m
+
+> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
+[2026-10-17 21:03:09.343] [32mINFO[39m: [36mWeb Dashboard running[39m
+    port: 3000
+    url: "http://localhost:3000"
+[2026-10-17 21:03:09.343] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
+    mode: "TESTNET_LIVE"
+    exchange: "binanceusdm"
+    symbols: [
+      "BTC/USDT",
+      "ETH/USDT",
+      "SOL/USDT",
+      "DOGE/USDT"
+    ]
+    timeframe: "15m"
+[2026-10-17 21:03:09.343] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
+    exchange: "binanceusdm"
+[2026-10-17 21:03:11.362] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
+    exchange: "binanceusdm"
+    balanceUsdt: 5028.17210371
+[2026-10-17 21:03:11.954] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81465.1
+    regime: "NO_TRADE"
+    adx: 23.8
+    bbWidthPct: 0.57
+    reason: "ADX (23.80) in dead zone [20, 25]"
+[2026-10-17 21:03:12.280] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2414.87
+    regime: "TRENDING"
+    adx: 41.4
+    bbWidthPct: 1.24
+    reason: "ADX (41.40) > 25 -> Strong directional trend"
+[2026-10-17 21:03:12.607] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 103.83
+    regime: "TRENDING"
+    adx: 32.86
+    bbWidthPct: 1.42
+    reason: "ADX (32.86) > 25 -> Strong directional trend"
+[2026-10-17 21:03:12.936] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 32.47
+    bbWidthPct: 1.63
+    reason: "ADX (32.47) > 25 -> Strong directional trend"
+[2026-10-17 21:03:12.937] [32mINFO[39m: [36mDaemon active: synchronized with 15m candle closes and 10s SL monitoring[39m
+    balanceUsdt: 5028.17210371
+    openPositions: 0
+[2026-10-17 21:14:16.095] [32mINFO[39m: [36mReceived shutdown signal, stopping daemon...[39m
+    signal: "SIGINT"
+[2026-10-17 21:14:16.095] [32mINFO[39m: [36mQuantDaemon stopped cleanly[39m
+
+> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
+[2026-10-17 21:14:19.064] [32mINFO[39m: [36mWeb Dashboard running[39m
+    port: 3000
+    url: "http://localhost:3000"
+[2026-10-17 21:14:19.064] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
+    mode: "TESTNET_LIVE"
+    exchange: "binanceusdm"
+    symbols: [
+      "BTC/USDT",
+      "ETH/USDT",
+      "SOL/USDT",
+      "DOGE/USDT"
+    ]
+    timeframe: "15m"
+[2026-10-17 21:14:19.064] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
+    exchange: "binanceusdm"
+[2026-10-17 21:14:20.873] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
+    exchange: "binanceusdm"
+    balanceUsdt: 5028.17210371
+[2026-10-17 21:14:21.476] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81465.1
+    regime: "NO_TRADE"
+    adx: 23.8
+    bbWidthPct: 0.57
+    reason: "ADX (23.80) in dead zone [20, 25]"
+[2026-10-17 21:14:21.788] [31mERROR[39m: [36mError serving dashboard request[39m
+    err: {
+      "type": "TypeError",
+      "message": "Cannot read properties of undefined (reading 'maxConcurrentPositions')",
+      "stack":
+          TypeError: Cannot read properties of undefined (reading 'maxConcurrentPositions')
+              at DashboardServer.handleApiStatus (/home/alexgmatosc/Dev/crypto-trading-app/src/ui/dashboard.ts:191:51)
+              at Server.<anonymous> (/home/alexgmatosc/Dev/crypto-trading-app/src/ui/dashboard.ts:46:18)
+              at Server.emit (node:events:514:28)
+              at parserOnIncoming (node:_http_server:1143:12)
+              at HTTPParser.parserOnHeadersComplete (node:_http_common:119:17)
+    }
+[2026-10-17 21:14:21.797] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2414.87
+    regime: "TRENDING"
+    adx: 41.4
+    bbWidthPct: 1.24
+    reason: "ADX (41.40) > 25 -> Strong directional trend"
+[2026-10-17 21:14:21.820] [31mERROR[39m: [36mError serving dashboard request[39m
+    err: {
+      "type": "TypeError",
+      "message": "Cannot read properties of undefined (reading 'maxConcurrentPositions')",
+      "stack":
+          TypeError: Cannot read properties of undefined (reading 'maxConcurrentPositions')
+              at DashboardServer.handleApiStatus (/home/alexgmatosc/Dev/crypto-trading-app/src/ui/dashboard.ts:191:51)
+              at Server.<anonymous> (/home/alexgmatosc/Dev/crypto-trading-app/src/ui/dashboard.ts:46:18)
+              at Server.emit (node:events:514:28)
+              at parserOnIncoming (node:_http_server:1143:12)
+              at HTTPParser.parserOnHeadersComplete (node:_http_common:119:17)
+    }
+[2026-10-17 21:14:22.113] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 103.83
+    regime: "TRENDING"
+    adx: 32.86
+    bbWidthPct: 1.42
+    reason: "ADX (32.86) > 25 -> Strong directional trend"
+[2026-10-17 21:14:22.435] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 32.47
+    bbWidthPct: 1.63
+    reason: "ADX (32.47) > 25 -> Strong directional trend"
+[2026-10-17 21:14:22.436] [32mINFO[39m: [36mDaemon active: synchronized with 15m candle closes and 10s SL monitoring[39m
+    balanceUsdt: 5028.17210371
+    openPositions: 0
+[2026-10-17 21:14:26.055] [31mERROR[39m: [36mError serving dashboard request[39m
+    err: {
+      "type": "TypeError",
+      "message": "Cannot read properties of undefined (reading 'maxConcurrentPositions')",
+      "stack":
+          TypeError: Cannot read properties of undefined (reading 'maxConcurrentPositions')
+              at DashboardServer.handleApiStatus (/home/alexgmatosc/Dev/crypto-trading-app/src/ui/dashboard.ts:191:51)
+              at Server.<anonymous> (/home/alexgmatosc/Dev/crypto-trading-app/src/ui/dashboard.ts:46:18)
+              at Server.emit (node:events:514:28)
+              at parserOnIncoming (node:_http_server:1143:12)
+              at HTTPParser.parserOnHeadersComplete (node:_http_common:119:17)
+    }
+[2026-10-17 21:14:30.772] [31mERROR[39m: [36mError serving dashboard request[39m
+    err: {
+      "type": "TypeError",
+      "message": "Cannot read properties of undefined (reading 'maxConcurrentPositions')",
+      "stack":
+          TypeError: Cannot read properties of undefined (reading 'maxConcurrentPositions')
+              at DashboardServer.handleApiStatus (/home/alexgmatosc/Dev/crypto-trading-app/src/ui/dashboard.ts:191:51)
+              at Server.<anonymous> (/home/alexgmatosc/Dev/crypto-trading-app/src/ui/dashboard.ts:46:18)
+              at Server.emit (node:events:514:28)
+              at parserOnIncoming (node:_http_server:1143:12)
+              at HTTPParser.parserOnHeadersComplete (node:_http_common:119:17)
+    }
+[2026-10-17 21:14:35.577] [31mERROR[39m: [36mError serving dashboard request[39m
+    err: {
+      "type": "TypeError",
+      "message": "Cannot read properties of undefined (reading 'maxConcurrentPositions')",
+      "stack":
+          TypeError: Cannot read properties of undefined (reading 'maxConcurrentPositions')
+              at DashboardServer.handleApiStatus (/home/alexgmatosc/Dev/crypto-trading-app/src/ui/dashboard.ts:191:51)
+              at Server.<anonymous> (/home/alexgmatosc/Dev/crypto-trading-app/src/ui/dashboard.ts:46:18)
+              at Server.emit (node:events:514:28)
+              at parserOnIncoming (node:_http_server:1143:12)
+              at HTTPParser.parserOnHeadersComplete (node:_http_common:119:17)
+    }
+[2026-10-17 21:14:42.079] [31mERROR[39m: [36mError serving dashboard request[39m
+    err: {
+      "type": "TypeError",
+      "message": "Cannot read properties of undefined (reading 'maxConcurrentPositions')",
+      "stack":
+          TypeError: Cannot read properties of undefined (reading 'maxConcurrentPositions')
+              at DashboardServer.handleApiStatus (/home/alexgmatosc/Dev/crypto-trading-app/src/ui/dashboard.ts:191:51)
+              at Server.<anonymous> (/home/alexgmatosc/Dev/crypto-trading-app/src/ui/dashboard.ts:46:18)
+              at Server.emit (node:events:514:28)
+              at parserOnIncoming (node:_http_server:1143:12)
+              at HTTPParser.parserOnHeadersComplete (node:_http_common:119:17)
+    }
+[2026-10-17 21:14:46.942] [31mERROR[39m: [36mError serving dashboard request[39m
+    err: {
+      "type": "TypeError",
+      "message": "Cannot read properties of undefined (reading 'maxConcurrentPositions')",
+      "stack":
+          TypeError: Cannot read properties of undefined (reading 'maxConcurrentPositions')
+              at DashboardServer.handleApiStatus (/home/alexgmatosc/Dev/crypto-trading-app/src/ui/dashboard.ts:191:51)
+              at Server.<anonymous> (/home/alexgmatosc/Dev/crypto-trading-app/src/ui/dashboard.ts:46:18)
+              at Server.emit (node:events:514:28)
+              at parserOnIncoming (node:_http_server:1143:12)
+              at HTTPParser.parserOnHeadersComplete (node:_http_common:119:17)
+    }
+[2026-10-17 21:14:51.617] [31mERROR[39m: [36mError serving dashboard request[39m
+    err: {
+      "type": "TypeError",
+      "message": "Cannot read properties of undefined (reading 'maxConcurrentPositions')",
+      "stack":
+          TypeError: Cannot read properties of undefined (reading 'maxConcurrentPositions')
+              at DashboardServer.handleApiStatus (/home/alexgmatosc/Dev/crypto-trading-app/src/ui/dashboard.ts:191:51)
+              at Server.<anonymous> (/home/alexgmatosc/Dev/crypto-trading-app/src/ui/dashboard.ts:46:18)
+              at Server.emit (node:events:514:28)
+              at parserOnIncoming (node:_http_server:1143:12)
+              at HTTPParser.parserOnHeadersComplete (node:_http_common:119:17)
+    }
+[2026-10-17 21:14:56.285] [31mERROR[39m: [36mError serving dashboard request[39m
+    err: {
+      "type": "TypeError",
+      "message": "Cannot read properties of undefined (reading 'maxConcurrentPositions')",
+      "stack":
+          TypeError: Cannot read properties of undefined (reading 'maxConcurrentPositions')
+              at DashboardServer.handleApiStatus (/home/alexgmatosc/Dev/crypto-trading-app/src/ui/dashboard.ts:191:51)
+              at Server.<anonymous> (/home/alexgmatosc/Dev/crypto-trading-app/src/ui/dashboard.ts:46:18)
+              at Server.emit (node:events:514:28)
+              at parserOnIncoming (node:_http_server:1143:12)
+              at HTTPParser.parserOnHeadersComplete (node:_http_common:119:17)
+    }
+[2026-10-17 21:15:04.445] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81494.5
+    regime: "NO_TRADE"
+    adx: 22.46
+    bbWidthPct: 0.58
+    reason: "ADX (22.46) in dead zone [20, 25]"
+[2026-10-17 21:15:04.894] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2415.03
+    regime: "TRENDING"
+    adx: 40.12
+    bbWidthPct: 1.2
+    reason: "ADX (40.12) > 25 -> Strong directional trend"
+[2026-10-17 21:15:05.219] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 103.89
+    regime: "TRENDING"
+    adx: 31.49
+    bbWidthPct: 1.41
+    reason: "ADX (31.49) > 25 -> Strong directional trend"
+[2026-10-17 21:15:05.542] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 30.29
+    bbWidthPct: 1.63
+    reason: "ADX (30.29) > 25 -> Strong directional trend"
+[2026-10-17 21:15:11.870] [31mERROR[39m: [36mError serving dashboard request[39m
+    err: {
+      "type": "TypeError",
+      "message": "Cannot read properties of undefined (reading 'maxConcurrentPositions')",
+      "stack":
+          TypeError: Cannot read properties of undefined (reading 'maxConcurrentPositions')
+              at DashboardServer.handleApiStatus (/home/alexgmatosc/Dev/crypto-trading-app/src/ui/dashboard.ts:191:51)
+              at Server.<anonymous> (/home/alexgmatosc/Dev/crypto-trading-app/src/ui/dashboard.ts:46:18)
+              at Server.emit (node:events:514:28)
+              at parserOnIncoming (node:_http_server:1143:12)
+              at HTTPParser.parserOnHeadersComplete (node:_http_common:119:17)
+    }
+[2026-10-17 21:15:15.336] [31mERROR[39m: [36mError serving dashboard request[39m
+    err: {
+      "type": "TypeError",
+      "message": "Cannot read properties of undefined (reading 'maxConcurrentPositions')",
+      "stack":
+          TypeError: Cannot read properties of undefined (reading 'maxConcurrentPositions')
+              at DashboardServer.handleApiStatus (/home/alexgmatosc/Dev/crypto-trading-app/src/ui/dashboard.ts:191:51)
+              at Server.<anonymous> (/home/alexgmatosc/Dev/crypto-trading-app/src/ui/dashboard.ts:46:18)
+              at Server.emit (node:events:514:28)
+              at parserOnIncoming (node:_http_server:1143:12)
+              at HTTPParser.parserOnHeadersComplete (node:_http_common:119:17)
+    }
+[2026-10-17 21:15:20.113] [31mERROR[39m: [36mError serving dashboard request[39m
+    err: {
+      "type": "TypeError",
+      "message": "Cannot read properties of undefined (reading 'maxConcurrentPositions')",
+      "stack":
+          TypeError: Cannot read properties of undefined (reading 'maxConcurrentPositions')
+              at DashboardServer.handleApiStatus (/home/alexgmatosc/Dev/crypto-trading-app/src/ui/dashboard.ts:191:51)
+              at Server.<anonymous> (/home/alexgmatosc/Dev/crypto-trading-app/src/ui/dashboard.ts:46:18)
+              at Server.emit (node:events:514:28)
+              at parserOnIncoming (node:_http_server:1143:12)
+              at HTTPParser.parserOnHeadersComplete (node:_http_common:119:17)
+    }
+[2026-10-17 21:15:24.874] [31mERROR[39m: [36mError serving dashboard request[39m
+    err: {
+      "type": "TypeError",
+      "message": "Cannot read properties of undefined (reading 'maxConcurrentPositions')",
+      "stack":
+          TypeError: Cannot read properties of undefined (reading 'maxConcurrentPositions')
+              at DashboardServer.handleApiStatus (/home/alexgmatosc/Dev/crypto-trading-app/src/ui/dashboard.ts:191:51)
+              at Server.<anonymous> (/home/alexgmatosc/Dev/crypto-trading-app/src/ui/dashboard.ts:46:18)
+              at Server.emit (node:events:514:28)
+              at parserOnIncoming (node:_http_server:1143:12)
+              at HTTPParser.parserOnHeadersComplete (node:_http_common:119:17)
+    }
+[2026-10-17 21:15:29.629] [31mERROR[39m: [36mError serving dashboard request[39m
+    err: {
+      "type": "TypeError",
+      "message": "Cannot read properties of undefined (reading 'maxConcurrentPositions')",
+      "stack":
+          TypeError: Cannot read properties of undefined (reading 'maxConcurrentPositions')
+              at DashboardServer.handleApiStatus (/home/alexgmatosc/Dev/crypto-trading-app/src/ui/dashboard.ts:191:51)
+              at Server.<anonymous> (/home/alexgmatosc/Dev/crypto-trading-app/src/ui/dashboard.ts:46:18)
+              at Server.emit (node:events:514:28)
+              at parserOnIncoming (node:_http_server:1143:12)
+              at HTTPParser.parserOnHeadersComplete (node:_http_common:119:17)
+    }
+[2026-10-17 21:15:34.361] [31mERROR[39m: [36mError serving dashboard request[39m
+    err: {
+      "type": "TypeError",
+      "message": "Cannot read properties of undefined (reading 'maxConcurrentPositions')",
+      "stack":
+          TypeError: Cannot read properties of undefined (reading 'maxConcurrentPositions')
+              at DashboardServer.handleApiStatus (/home/alexgmatosc/Dev/crypto-trading-app/src/ui/dashboard.ts:191:51)
+              at Server.<anonymous> (/home/alexgmatosc/Dev/crypto-trading-app/src/ui/dashboard.ts:46:18)
+              at Server.emit (node:events:514:28)
+              at parserOnIncoming (node:_http_server:1143:12)
+              at HTTPParser.parserOnHeadersComplete (node:_http_common:119:17)
+    }
+[2026-10-17 21:15:39.060] [32mINFO[39m: [36mReceived shutdown signal, stopping daemon...[39m
+    signal: "SIGINT"
+[2026-10-17 21:15:39.060] [32mINFO[39m: [36mQuantDaemon stopped cleanly[39m
+
+> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
+[2026-10-17 21:15:41.735] [32mINFO[39m: [36mWeb Dashboard running[39m
+    port: 3000
+    url: "http://localhost:3000"
+[2026-10-17 21:15:41.736] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
+    mode: "TESTNET_LIVE"
+    exchange: "binanceusdm"
+    symbols: [
+      "BTC/USDT",
+      "ETH/USDT",
+      "SOL/USDT",
+      "DOGE/USDT"
+    ]
+    timeframe: "15m"
+[2026-10-17 21:15:41.736] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
+    exchange: "binanceusdm"
+[2026-10-17 21:15:43.517] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
+    exchange: "binanceusdm"
+    balanceUsdt: 5028.17210371
+[2026-10-17 21:15:44.112] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81494.5
+    regime: "NO_TRADE"
+    adx: 22.46
+    bbWidthPct: 0.58
+    reason: "ADX (22.46) in dead zone [20, 25]"
+[2026-10-17 21:15:44.437] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2415.03
+    regime: "TRENDING"
+    adx: 40.12
+    bbWidthPct: 1.2
+    reason: "ADX (40.12) > 25 -> Strong directional trend"
+[2026-10-17 21:15:44.763] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 103.89
+    regime: "TRENDING"
+    adx: 31.49
+    bbWidthPct: 1.41
+    reason: "ADX (31.49) > 25 -> Strong directional trend"
+[2026-10-17 21:15:45.089] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 30.29
+    bbWidthPct: 1.63
+    reason: "ADX (30.29) > 25 -> Strong directional trend"
+[2026-10-17 21:15:45.090] [32mINFO[39m: [36mDaemon active: synchronized with 15m candle closes and 10s SL monitoring[39m
+    balanceUsdt: 5028.17210371
+    openPositions: 0
+[2026-10-17 21:17:38.441] [32mINFO[39m: [36mReceived shutdown signal, stopping daemon...[39m
+    signal: "SIGINT"
+[2026-10-17 21:17:38.441] [32mINFO[39m: [36mQuantDaemon stopped cleanly[39m
+
+> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
+[2026-10-17 21:17:41.117] [32mINFO[39m: [36mWeb Dashboard running[39m
+    port: 3000
+    url: "http://localhost:3000"
+[2026-10-17 21:17:41.117] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
+    mode: "TESTNET_LIVE"
+    exchange: "binanceusdm"
+    symbols: [
+      "BTC/USDT",
+      "ETH/USDT",
+      "SOL/USDT",
+      "DOGE/USDT"
+    ]
+    timeframe: "15m"
+[2026-10-17 21:17:41.117] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
+    exchange: "binanceusdm"
+[2026-10-17 21:17:42.870] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
+    exchange: "binanceusdm"
+    balanceUsdt: 5028.17210371
+[2026-10-17 21:17:43.454] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81494.5
+    regime: "NO_TRADE"
+    adx: 22.46
+    bbWidthPct: 0.58
+    reason: "ADX (22.46) in dead zone [20, 25]"
+[2026-10-17 21:17:43.782] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2415.03
+    regime: "TRENDING"
+    adx: 40.12
+    bbWidthPct: 1.2
+    reason: "ADX (40.12) > 25 -> Strong directional trend"
+[2026-10-17 21:17:44.144] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 103.89
+    regime: "TRENDING"
+    adx: 31.49
+    bbWidthPct: 1.41
+    reason: "ADX (31.49) > 25 -> Strong directional trend"
+[2026-10-17 21:17:44.500] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 30.29
+    bbWidthPct: 1.63
+    reason: "ADX (30.29) > 25 -> Strong directional trend"
+[2026-10-17 21:17:44.502] [32mINFO[39m: [36mDaemon active: synchronized with 15m candle closes and 10s SL monitoring[39m
+    balanceUsdt: 5028.17210371
+    openPositions: 0
+[2026-10-17 21:30:40.072] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81462.1
+    regime: "NO_TRADE"
+    adx: 21.22
+    bbWidthPct: 0.57
+    reason: "ADX (21.22) in dead zone [20, 25]"
+[2026-10-17 21:30:40.396] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2413.3
+    regime: "TRENDING"
+    adx: 38.93
+    bbWidthPct: 1.13
+    reason: "ADX (38.93) > 25 -> Strong directional trend"
+[2026-10-17 21:30:40.721] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 103.81
+    regime: "TRENDING"
+    adx: 30.01
+    bbWidthPct: 1.32
+    reason: "ADX (30.01) > 25 -> Strong directional trend"
+[2026-10-17 21:30:41.065] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 28.28
+    bbWidthPct: 1.56
+    reason: "ADX (28.28) > 25 -> Strong directional trend"
+[2026-10-17 21:45:47.890] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81588.8
+    regime: "NO_TRADE"
+    adx: 20.78
+    bbWidthPct: 0.58
+    reason: "ADX (20.78) in dead zone [20, 25]"
+[2026-10-17 21:45:48.215] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2418.46
+    regime: "TRENDING"
+    adx: 36.72
+    bbWidthPct: 1.04
+    reason: "ADX (36.72) > 25 -> Strong directional trend"
+[2026-10-17 21:45:48.544] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 104.05
+    regime: "TRENDING"
+    adx: 27.9
+    bbWidthPct: 1.28
+    reason: "ADX (27.90) > 25 -> Strong directional trend"
+[2026-10-17 21:45:48.871] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 27.36
+    bbWidthPct: 1.55
+    reason: "ADX (27.36) > 25 -> Strong directional trend"
+[2026-10-17 22:00:48.704] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81575
+    regime: "NO_TRADE"
+    adx: 20.41
+    bbWidthPct: 0.59
+    reason: "ADX (20.41) in dead zone [20, 25]"
+[2026-10-17 22:00:49.033] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2417.87
+    regime: "TRENDING"
+    adx: 34.61
+    bbWidthPct: 0.92
+    reason: "ADX (34.61) > 25 -> Strong directional trend"
+[2026-10-17 22:00:49.376] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 104.04
+    regime: "TRENDING"
+    adx: 25.97
+    bbWidthPct: 1.21
+    reason: "ADX (25.97) > 25 -> Strong directional trend"
+[2026-10-17 22:00:49.714] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 26.59
+    bbWidthPct: 1.58
+    reason: "ADX (26.59) > 25 -> Strong directional trend"
+[2026-10-17 22:15:53.283] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81587.4
+    regime: "NO_TRADE"
+    adx: 19.61
+    bbWidthPct: 0.6
+    reason: "BB_Width (0.60%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-17 22:15:53.622] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2419.26
+    regime: "TRENDING"
+    adx: 32.68
+    bbWidthPct: 0.85
+    reason: "ADX (32.68) > 25 -> Strong directional trend"
+[2026-10-17 22:15:53.962] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 104.07
+    regime: "NO_TRADE"
+    adx: 24.35
+    bbWidthPct: 1.19
+    reason: "ADX (24.35) in dead zone [20, 25]"
+[2026-10-17 22:15:54.303] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 26.25
+    bbWidthPct: 1.68
+    reason: "ADX (26.25) > 25 -> Strong directional trend"
+[2026-10-17 22:30:51.430] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81591.8
+    regime: "NO_TRADE"
+    adx: 18.86
+    bbWidthPct: 0.63
+    reason: "BB_Width (0.63%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-17 22:30:51.757] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2418.93
+    regime: "TRENDING"
+    adx: 30.89
+    bbWidthPct: 0.88
+    reason: "ADX (30.89) > 25 -> Strong directional trend"
+[2026-10-17 22:30:52.082] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 104.09
+    regime: "NO_TRADE"
+    adx: 22.84
+    bbWidthPct: 1.23
+    reason: "ADX (22.84) in dead zone [20, 25]"
+[2026-10-17 22:30:52.417] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 25.93
+    bbWidthPct: 1.79
+    reason: "ADX (25.93) > 25 -> Strong directional trend"
+[2026-10-17 22:45:52.221] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81602.3
+    regime: "NO_TRADE"
+    adx: 18.4
+    bbWidthPct: 0.66
+    reason: "BB_Width (0.66%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-17 22:45:52.552] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2419.5
+    regime: "TRENDING"
+    adx: 29.04
+    bbWidthPct: 0.92
+    reason: "ADX (29.04) > 25 -> Strong directional trend"
+[2026-10-17 22:45:52.877] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 104.16
+    regime: "NO_TRADE"
+    adx: 21.47
+    bbWidthPct: 1.28
+    reason: "ADX (21.47) in dead zone [20, 25]"
+[2026-10-17 22:45:53.206] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 25.64
+    bbWidthPct: 1.9
+    reason: "ADX (25.64) > 25 -> Strong directional trend"
+[2026-10-17 23:00:55.542] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81612.7
+    regime: "NO_TRADE"
+    adx: 17.99
+    bbWidthPct: 0.68
+    reason: "BB_Width (0.68%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-17 23:00:55.855] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2420.69
+    regime: "TRENDING"
+    adx: 27.21
+    bbWidthPct: 0.96
+    reason: "ADX (27.21) > 25 -> Strong directional trend"
+[2026-10-17 23:00:56.166] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 104.14
+    regime: "NO_TRADE"
+    adx: 20.25
+    bbWidthPct: 1.34
+    reason: "ADX (20.25) in dead zone [20, 25]"
+[2026-10-17 23:00:56.481] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 25.72
+    bbWidthPct: 1.97
+    reason: "ADX (25.72) > 25 -> Strong directional trend"
+[2026-10-17 23:15:54.071] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81622.2
+    regime: "NO_TRADE"
+    adx: 18.48
+    bbWidthPct: 0.7
+    reason: "BB_Width (0.70%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-17 23:15:55.030] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2423.36
+    regime: "TRENDING"
+    adx: 26.04
+    bbWidthPct: 1.02
+    reason: "ADX (26.04) > 25 -> Strong directional trend"
+[2026-10-17 23:15:55.983] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 104.14
+    regime: "NO_TRADE"
+    adx: 19.6
+    bbWidthPct: 1.39
+    reason: "BB_Width (1.39%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-17 23:15:56.510] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 26.64
+    bbWidthPct: 2.03
+    reason: "ADX (26.64) > 25 -> Strong directional trend"
+[2026-10-17 23:30:57.470] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81084.7
+    regime: "NO_TRADE"
+    adx: 20.17
+    bbWidthPct: 0.79
+    reason: "ADX (20.17) in dead zone [20, 25]"
+[2026-10-17 23:30:57.796] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2393
+    regime: "TRENDING"
+    adx: 27.81
+    bbWidthPct: 1.25
+    reason: "ADX (27.81) > 25 -> Strong directional trend"
+[2026-10-17 23:30:58.396] [32mINFO[39m: [36mOpened new position[39m
+    tradeId: "5a24aa02-b8be-4923-a147-2b93bbc902f0"
+    mode: "TESTNET_LIVE"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    regime: "TRENDING"
+    side: "SHORT"
+    entryPrice: 2393
+    size: 1.996
+    initialSl: 2402.45
+    riskUsd: 18.85
+[2026-10-17 23:30:58.720] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 102.46
+    regime: "NO_TRADE"
+    adx: 21.98
+    bbWidthPct: 1.74
+    reason: "ADX (21.98) in dead zone [20, 25]"
+[2026-10-17 23:30:59.042] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 27.56
+    bbWidthPct: 2.22
+    reason: "ADX (27.56) > 25 -> Strong directional trend"
+[2026-10-17 23:30:59.830] [32mINFO[39m: [36mOpened new position[39m
+    tradeId: "6807eebb-0eb0-4b60-9875-73f943c3819b"
+    mode: "TESTNET_LIVE"
+    symbol: "DOGE/USDT"
+    strategy: "TREND_BREAKOUT"
+    regime: "TRENDING"
+    side: "SHORT"
+    entryPrice: 0.08
+    size: 2785
+    initialSl: 0.08
+    riskUsd: 1.27
+
+> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
+[2026-10-17 23:34:04.595] [32mINFO[39m: [36mWeb Dashboard running[39m
+    port: 3000
+    url: "http://localhost:3000"
+[2026-10-17 23:34:04.595] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
+    mode: "TESTNET_LIVE"
+    exchange: "binanceusdm"
+    symbols: [
+      "BTC/USDT",
+      "ETH/USDT",
+      "SOL/USDT",
+      "DOGE/USDT"
+    ]
+    timeframe: "15m"
+[2026-10-17 23:34:04.595] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
+    exchange: "binanceusdm"
+[2026-10-17 23:34:06.374] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
+    exchange: "binanceusdm"
+    balanceUsdt: 5049.07190984
+[2026-10-17 23:34:07.175] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81084.7
+    regime: "NO_TRADE"
+    adx: 20.17
+    bbWidthPct: 0.79
+    reason: "ADX (20.17) in dead zone [20, 25]"
+[2026-10-17 23:34:07.765] [32mINFO[39m: [36mClosed position completely[39m
+    tradeId: "5a24aa02-b8be-4923-a147-2b93bbc902f0"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    side: "SHORT"
+    exitReason: "STOP_LOSS"
+    entryPrice: 2393
+    exitPrice: 2402.45
+    totalRealizedPnl: -23.64
+[2026-10-17 23:34:07.766] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2393
+    regime: "TRENDING"
+    adx: 27.81
+    bbWidthPct: 1.25
+    reason: "ADX (27.81) > 25 -> Strong directional trend"
+[2026-10-17 23:34:08.447] [32mINFO[39m: [36mOpened new position[39m
+    tradeId: "dcc0daff-6e51-4fc0-85ac-c3a3625c9e9a"
+    mode: "TESTNET_LIVE"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    regime: "TRENDING"
+    side: "SHORT"
+    entryPrice: 2393
+    size: 2
+    initialSl: 2402.45
+    riskUsd: 18.9
+[2026-10-17 23:34:08.777] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 102.46
+    regime: "NO_TRADE"
+    adx: 21.98
+    bbWidthPct: 1.74
+    reason: "ADX (21.98) in dead zone [20, 25]"
+[2026-10-17 23:34:09.520] [32mINFO[39m: [36mClosed position completely[39m
+    tradeId: "6807eebb-0eb0-4b60-9875-73f943c3819b"
+    symbol: "DOGE/USDT"
+    strategy: "TREND_BREAKOUT"
+    side: "SHORT"
+    exitReason: "STOP_LOSS"
+    entryPrice: 0.08
+    exitPrice: 0.08
+    totalRealizedPnl: -1.49
+[2026-10-17 23:34:09.521] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 27.56
+    bbWidthPct: 2.22
+    reason: "ADX (27.56) > 25 -> Strong directional trend"
+[2026-10-17 23:34:10.213] [31mERROR[39m: [36mFatal error starting QuantDaemon[39m
+    err: {
+      "type": "InsufficientFunds",
+      "message": "binanceusdm {\"code\":-2019,\"msg\":\"Margin is insufficient.\"}",
+      "stack":
+          InsufficientFunds: binanceusdm {"code":-2019,"msg":"Margin is insufficient."}
+              at binanceusdm.throwExactlyMatchedException (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:6337:19)
+              at binanceusdm.handleErrors (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13775:18)
+              at /home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1210:51
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async binanceusdm.fetch (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1102:16)
+              at async binanceusdm.fetch2 (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:5817:34)
+              at async binanceusdm.request (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13820:26)
+              at async binanceusdm.createOrder (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:7152:32)
+              at TestnetBroker.executeMarketOrder (/home/alexgmatosc/Dev/crypto-trading-app/src/exchange/TestnetBroker.ts:123:19)
+              at Engine.openPositionFromSignal (/home/alexgmatosc/Dev/crypto-trading-app/src/core/Engine.ts:281:18)
+      "name": "InsufficientFunds"
+    }
+ ELIFECYCLE  Command failed with exit code 1.
+
+> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
+[2026-10-17 23:34:11.394] [32mINFO[39m: [36mWeb Dashboard running[39m
+    port: 3000
+    url: "http://localhost:3000"
+[2026-10-17 23:34:11.394] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
+    mode: "TESTNET_LIVE"
+    exchange: "binanceusdm"
+    symbols: [
+      "BTC/USDT",
+      "ETH/USDT",
+      "SOL/USDT",
+      "DOGE/USDT"
+    ]
+    timeframe: "15m"
+[2026-10-17 23:34:11.394] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
+    exchange: "binanceusdm"
+[2026-10-17 23:34:13.200] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
+    exchange: "binanceusdm"
+    balanceUsdt: 5041.41274938
+[2026-10-17 23:34:13.820] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81084.7
+    regime: "NO_TRADE"
+    adx: 20.17
+    bbWidthPct: 0.79
+    reason: "ADX (20.17) in dead zone [20, 25]"
+[2026-10-17 23:34:14.422] [32mINFO[39m: [36mClosed position completely[39m
+    tradeId: "dcc0daff-6e51-4fc0-85ac-c3a3625c9e9a"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    side: "SHORT"
+    exitReason: "STOP_LOSS"
+    entryPrice: 2393
+    exitPrice: 2402.45
+    totalRealizedPnl: -23.69
+[2026-10-17 23:34:14.423] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2393
+    regime: "TRENDING"
+    adx: 27.81
+    bbWidthPct: 1.25
+    reason: "ADX (27.81) > 25 -> Strong directional trend"
+[2026-10-17 23:34:15.106] [32mINFO[39m: [36mOpened new position[39m
+    tradeId: "811439d8-316a-4bd4-8c82-187d8bc2892f"
+    mode: "TESTNET_LIVE"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    regime: "TRENDING"
+    side: "SHORT"
+    entryPrice: 2393
+    size: 1.999
+    initialSl: 2402.45
+    riskUsd: 18.88
+[2026-10-17 23:34:15.446] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 102.46
+    regime: "NO_TRADE"
+    adx: 21.98
+    bbWidthPct: 1.74
+    reason: "ADX (21.98) in dead zone [20, 25]"
+[2026-10-17 23:34:15.774] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 27.56
+    bbWidthPct: 2.22
+    reason: "ADX (27.56) > 25 -> Strong directional trend"
+[2026-10-17 23:34:16.471] [31mERROR[39m: [36mFatal error starting QuantDaemon[39m
+    err: {
+      "type": "InsufficientFunds",
+      "message": "binanceusdm {\"code\":-2019,\"msg\":\"Margin is insufficient.\"}",
+      "stack":
+          InsufficientFunds: binanceusdm {"code":-2019,"msg":"Margin is insufficient."}
+              at binanceusdm.throwExactlyMatchedException (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:6337:19)
+              at binanceusdm.handleErrors (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13775:18)
+              at /home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1210:51
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async binanceusdm.fetch (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1102:16)
+              at async binanceusdm.fetch2 (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:5817:34)
+              at async binanceusdm.request (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13820:26)
+              at async binanceusdm.createOrder (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:7152:32)
+              at TestnetBroker.executeMarketOrder (/home/alexgmatosc/Dev/crypto-trading-app/src/exchange/TestnetBroker.ts:123:19)
+              at Engine.openPositionFromSignal (/home/alexgmatosc/Dev/crypto-trading-app/src/core/Engine.ts:281:18)
+      "name": "InsufficientFunds"
+    }
+ ELIFECYCLE  Command failed with exit code 1.
+
+> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
+[2026-10-17 23:34:17.941] [32mINFO[39m: [36mWeb Dashboard running[39m
+    port: 3000
+    url: "http://localhost:3000"
+[2026-10-17 23:34:17.941] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
+    mode: "TESTNET_LIVE"
+    exchange: "binanceusdm"
+    symbols: [
+      "BTC/USDT",
+      "ETH/USDT",
+      "SOL/USDT",
+      "DOGE/USDT"
+    ]
+    timeframe: "15m"
+[2026-10-17 23:34:17.941] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
+    exchange: "binanceusdm"
+[2026-10-17 23:34:19.776] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
+    exchange: "binanceusdm"
+    balanceUsdt: 5034.08116153
+[2026-10-17 23:34:20.390] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81084.7
+    regime: "NO_TRADE"
+    adx: 20.17
+    bbWidthPct: 0.79
+    reason: "ADX (20.17) in dead zone [20, 25]"
+[2026-10-17 23:34:21.002] [32mINFO[39m: [36mClosed position completely[39m
+    tradeId: "811439d8-316a-4bd4-8c82-187d8bc2892f"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    side: "SHORT"
+    exitReason: "STOP_LOSS"
+    entryPrice: 2393
+    exitPrice: 2402.45
+    totalRealizedPnl: -23.67
+[2026-10-17 23:34:21.003] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2393
+    regime: "TRENDING"
+    adx: 27.81
+    bbWidthPct: 1.25
+    reason: "ADX (27.81) > 25 -> Strong directional trend"
+[2026-10-17 23:34:21.732] [32mINFO[39m: [36mOpened new position[39m
+    tradeId: "4b572608-6e0b-4fb8-a88b-17eeb4e2480e"
+    mode: "TESTNET_LIVE"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    regime: "TRENDING"
+    side: "SHORT"
+    entryPrice: 2393
+    size: 1.99
+    initialSl: 2402.45
+    riskUsd: 18.8
+[2026-10-17 23:34:22.062] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 102.46
+    regime: "NO_TRADE"
+    adx: 21.98
+    bbWidthPct: 1.74
+    reason: "ADX (21.98) in dead zone [20, 25]"
+[2026-10-17 23:34:22.394] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 27.56
+    bbWidthPct: 2.22
+    reason: "ADX (27.56) > 25 -> Strong directional trend"
+[2026-10-17 23:34:23.086] [31mERROR[39m: [36mFatal error starting QuantDaemon[39m
+    err: {
+      "type": "InsufficientFunds",
+      "message": "binanceusdm {\"code\":-2019,\"msg\":\"Margin is insufficient.\"}",
+      "stack":
+          InsufficientFunds: binanceusdm {"code":-2019,"msg":"Margin is insufficient."}
+              at binanceusdm.throwExactlyMatchedException (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:6337:19)
+              at binanceusdm.handleErrors (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13775:18)
+              at /home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1210:51
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async binanceusdm.fetch (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1102:16)
+              at async binanceusdm.fetch2 (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:5817:34)
+              at async binanceusdm.request (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13820:26)
+              at async binanceusdm.createOrder (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:7152:32)
+              at TestnetBroker.executeMarketOrder (/home/alexgmatosc/Dev/crypto-trading-app/src/exchange/TestnetBroker.ts:123:19)
+              at Engine.openPositionFromSignal (/home/alexgmatosc/Dev/crypto-trading-app/src/core/Engine.ts:281:18)
+      "name": "InsufficientFunds"
+    }
+ ELIFECYCLE  Command failed with exit code 1.
+
+> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
+[2026-10-17 23:34:24.057] [32mINFO[39m: [36mWeb Dashboard running[39m
+    port: 3000
+    url: "http://localhost:3000"
+[2026-10-17 23:34:24.058] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
+    mode: "TESTNET_LIVE"
+    exchange: "binanceusdm"
+    symbols: [
+      "BTC/USDT",
+      "ETH/USDT",
+      "SOL/USDT",
+      "DOGE/USDT"
+    ]
+    timeframe: "15m"
+[2026-10-17 23:34:24.058] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
+    exchange: "binanceusdm"
+[2026-10-17 23:34:25.820] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
+    exchange: "binanceusdm"
+    balanceUsdt: 5017.12609806
+[2026-10-17 23:34:26.431] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81084.7
+    regime: "NO_TRADE"
+    adx: 20.17
+    bbWidthPct: 0.79
+    reason: "ADX (20.17) in dead zone [20, 25]"
+[2026-10-17 23:34:27.032] [32mINFO[39m: [36mClosed position completely[39m
+    tradeId: "4b572608-6e0b-4fb8-a88b-17eeb4e2480e"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    side: "SHORT"
+    exitReason: "STOP_LOSS"
+    entryPrice: 2393
+    exitPrice: 2402.45
+    totalRealizedPnl: -23.57
+[2026-10-17 23:34:27.033] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2393
+    regime: "TRENDING"
+    adx: 27.81
+    bbWidthPct: 1.25
+    reason: "ADX (27.81) > 25 -> Strong directional trend"
+[2026-10-17 23:34:27.727] [32mINFO[39m: [36mOpened new position[39m
+    tradeId: "85408d5c-5413-41cb-bd30-2e57a9df239a"
+    mode: "TESTNET_LIVE"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    regime: "TRENDING"
+    side: "SHORT"
+    entryPrice: 2393
+    size: 1.991
+    initialSl: 2402.45
+    riskUsd: 18.81
+[2026-10-17 23:34:28.052] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 102.46
+    regime: "NO_TRADE"
+    adx: 21.98
+    bbWidthPct: 1.74
+    reason: "ADX (21.98) in dead zone [20, 25]"
+[2026-10-17 23:34:28.377] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 27.56
+    bbWidthPct: 2.22
+    reason: "ADX (27.56) > 25 -> Strong directional trend"
+[2026-10-17 23:34:29.484] [31mERROR[39m: [36mFatal error starting QuantDaemon[39m
+    err: {
+      "type": "InsufficientFunds",
+      "message": "binanceusdm {\"code\":-2019,\"msg\":\"Margin is insufficient.\"}",
+      "stack":
+          InsufficientFunds: binanceusdm {"code":-2019,"msg":"Margin is insufficient."}
+              at binanceusdm.throwExactlyMatchedException (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:6337:19)
+              at binanceusdm.handleErrors (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13775:18)
+              at /home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1210:51
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async binanceusdm.fetch (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1102:16)
+              at async binanceusdm.fetch2 (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:5817:34)
+              at async binanceusdm.request (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13820:26)
+              at async binanceusdm.createOrder (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:7152:32)
+              at TestnetBroker.executeMarketOrder (/home/alexgmatosc/Dev/crypto-trading-app/src/exchange/TestnetBroker.ts:123:19)
+              at Engine.openPositionFromSignal (/home/alexgmatosc/Dev/crypto-trading-app/src/core/Engine.ts:281:18)
+      "name": "InsufficientFunds"
+    }
+ ELIFECYCLE  Command failed with exit code 1.
+
+> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
+[2026-10-17 23:34:32.716] [32mINFO[39m: [36mWeb Dashboard running[39m
+    port: 3000
+    url: "http://localhost:3000"
+[2026-10-17 23:34:32.716] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
+    mode: "TESTNET_LIVE"
+    exchange: "binanceusdm"
+    symbols: [
+      "BTC/USDT",
+      "ETH/USDT",
+      "SOL/USDT",
+      "DOGE/USDT"
+    ]
+    timeframe: "15m"
+[2026-10-17 23:34:32.716] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
+    exchange: "binanceusdm"
+[2026-10-17 23:34:34.651] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
+    exchange: "binanceusdm"
+    balanceUsdt: 5013.08294599
+[2026-10-17 23:34:35.233] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81084.7
+    regime: "NO_TRADE"
+    adx: 20.17
+    bbWidthPct: 0.79
+    reason: "ADX (20.17) in dead zone [20, 25]"
+[2026-10-17 23:34:35.836] [32mINFO[39m: [36mClosed position completely[39m
+    tradeId: "85408d5c-5413-41cb-bd30-2e57a9df239a"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    side: "SHORT"
+    exitReason: "STOP_LOSS"
+    entryPrice: 2393
+    exitPrice: 2402.45
+    totalRealizedPnl: -23.58
+[2026-10-17 23:34:35.836] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2393
+    regime: "TRENDING"
+    adx: 27.81
+    bbWidthPct: 1.25
+    reason: "ADX (27.81) > 25 -> Strong directional trend"
+[2026-10-17 23:34:36.527] [32mINFO[39m: [36mOpened new position[39m
+    tradeId: "d8e4d443-c000-4205-afe4-fab5edf55605"
+    mode: "TESTNET_LIVE"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    regime: "TRENDING"
+    side: "SHORT"
+    entryPrice: 2393
+    size: 1.99
+    initialSl: 2402.45
+    riskUsd: 18.8
+[2026-10-17 23:34:36.850] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 102.46
+    regime: "NO_TRADE"
+    adx: 21.98
+    bbWidthPct: 1.74
+    reason: "ADX (21.98) in dead zone [20, 25]"
+[2026-10-17 23:34:37.173] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 27.56
+    bbWidthPct: 2.22
+    reason: "ADX (27.56) > 25 -> Strong directional trend"
+[2026-10-17 23:34:37.887] [31mERROR[39m: [36mFatal error starting QuantDaemon[39m
+    err: {
+      "type": "InsufficientFunds",
+      "message": "binanceusdm {\"code\":-2019,\"msg\":\"Margin is insufficient.\"}",
+      "stack":
+          InsufficientFunds: binanceusdm {"code":-2019,"msg":"Margin is insufficient."}
+              at binanceusdm.throwExactlyMatchedException (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:6337:19)
+              at binanceusdm.handleErrors (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13775:18)
+              at /home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1210:51
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async binanceusdm.fetch (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1102:16)
+              at async binanceusdm.fetch2 (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:5817:34)
+              at async binanceusdm.request (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13820:26)
+              at async binanceusdm.createOrder (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:7152:32)
+              at TestnetBroker.executeMarketOrder (/home/alexgmatosc/Dev/crypto-trading-app/src/exchange/TestnetBroker.ts:123:19)
+              at Engine.openPositionFromSignal (/home/alexgmatosc/Dev/crypto-trading-app/src/core/Engine.ts:281:18)
+      "name": "InsufficientFunds"
+    }
+ ELIFECYCLE  Command failed with exit code 1.
+
+> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
+[2026-10-17 23:34:39.329] [32mINFO[39m: [36mWeb Dashboard running[39m
+    port: 3000
+    url: "http://localhost:3000"
+[2026-10-17 23:34:39.330] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
+    mode: "TESTNET_LIVE"
+    exchange: "binanceusdm"
+    symbols: [
+      "BTC/USDT",
+      "ETH/USDT",
+      "SOL/USDT",
+      "DOGE/USDT"
+    ]
+    timeframe: "15m"
+[2026-10-17 23:34:39.330] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
+    exchange: "binanceusdm"
+[2026-10-17 23:34:41.080] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
+    exchange: "binanceusdm"
+    balanceUsdt: 5011.17707644
+[2026-10-17 23:34:41.652] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81084.7
+    regime: "NO_TRADE"
+    adx: 20.17
+    bbWidthPct: 0.79
+    reason: "ADX (20.17) in dead zone [20, 25]"
+[2026-10-17 23:34:42.247] [32mINFO[39m: [36mClosed position completely[39m
+    tradeId: "d8e4d443-c000-4205-afe4-fab5edf55605"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    side: "SHORT"
+    exitReason: "STOP_LOSS"
+    entryPrice: 2393
+    exitPrice: 2402.45
+    totalRealizedPnl: -23.57
+[2026-10-17 23:34:42.248] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2393
+    regime: "TRENDING"
+    adx: 27.81
+    bbWidthPct: 1.25
+    reason: "ADX (27.81) > 25 -> Strong directional trend"
+[2026-10-17 23:34:42.936] [32mINFO[39m: [36mOpened new position[39m
+    tradeId: "1ca8577c-8619-4320-a187-7f7826cd3868"
+    mode: "TESTNET_LIVE"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    regime: "TRENDING"
+    side: "SHORT"
+    entryPrice: 2393
+    size: 1.988
+    initialSl: 2402.45
+    riskUsd: 18.78
+[2026-10-17 23:34:43.254] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 102.46
+    regime: "NO_TRADE"
+    adx: 21.98
+    bbWidthPct: 1.74
+    reason: "ADX (21.98) in dead zone [20, 25]"
+[2026-10-17 23:34:43.570] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 27.56
+    bbWidthPct: 2.22
+    reason: "ADX (27.56) > 25 -> Strong directional trend"
+[2026-10-17 23:34:44.262] [31mERROR[39m: [36mFatal error starting QuantDaemon[39m
+    err: {
+      "type": "InsufficientFunds",
+      "message": "binanceusdm {\"code\":-2019,\"msg\":\"Margin is insufficient.\"}",
+      "stack":
+          InsufficientFunds: binanceusdm {"code":-2019,"msg":"Margin is insufficient."}
+              at binanceusdm.throwExactlyMatchedException (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:6337:19)
+              at binanceusdm.handleErrors (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13775:18)
+              at /home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1210:51
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async binanceusdm.fetch (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1102:16)
+              at async binanceusdm.fetch2 (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:5817:34)
+              at async binanceusdm.request (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13820:26)
+              at async binanceusdm.createOrder (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:7152:32)
+              at TestnetBroker.executeMarketOrder (/home/alexgmatosc/Dev/crypto-trading-app/src/exchange/TestnetBroker.ts:123:19)
+              at Engine.openPositionFromSignal (/home/alexgmatosc/Dev/crypto-trading-app/src/core/Engine.ts:281:18)
+      "name": "InsufficientFunds"
+    }
+ ELIFECYCLE  Command failed with exit code 1.
+
+> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
+[2026-10-17 23:34:45.560] [32mINFO[39m: [36mWeb Dashboard running[39m
+    port: 3000
+    url: "http://localhost:3000"
+[2026-10-17 23:34:45.560] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
+    mode: "TESTNET_LIVE"
+    exchange: "binanceusdm"
+    symbols: [
+      "BTC/USDT",
+      "ETH/USDT",
+      "SOL/USDT",
+      "DOGE/USDT"
+    ]
+    timeframe: "15m"
+[2026-10-17 23:34:45.560] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
+    exchange: "binanceusdm"
+[2026-10-17 23:34:47.291] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
+    exchange: "binanceusdm"
+    balanceUsdt: 5007.20501667
+[2026-10-17 23:34:48.289] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81084.7
+    regime: "NO_TRADE"
+    adx: 20.17
+    bbWidthPct: 0.79
+    reason: "ADX (20.17) in dead zone [20, 25]"
+[2026-10-17 23:34:48.884] [32mINFO[39m: [36mClosed position completely[39m
+    tradeId: "1ca8577c-8619-4320-a187-7f7826cd3868"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    side: "SHORT"
+    exitReason: "STOP_LOSS"
+    entryPrice: 2393
+    exitPrice: 2402.45
+    totalRealizedPnl: -23.54
+[2026-10-17 23:34:48.885] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2393
+    regime: "TRENDING"
+    adx: 27.81
+    bbWidthPct: 1.25
+    reason: "ADX (27.81) > 25 -> Strong directional trend"
+[2026-10-17 23:34:49.575] [32mINFO[39m: [36mOpened new position[39m
+    tradeId: "2cd3df03-4925-4359-8045-34bae8d7d33a"
+    mode: "TESTNET_LIVE"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    regime: "TRENDING"
+    side: "SHORT"
+    entryPrice: 2393
+    size: 1.986
+    initialSl: 2402.45
+    riskUsd: 18.76
+[2026-10-17 23:34:49.902] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 102.46
+    regime: "NO_TRADE"
+    adx: 21.98
+    bbWidthPct: 1.74
+    reason: "ADX (21.98) in dead zone [20, 25]"
+[2026-10-17 23:34:50.227] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 27.56
+    bbWidthPct: 2.22
+    reason: "ADX (27.56) > 25 -> Strong directional trend"
+[2026-10-17 23:34:51.007] [31mERROR[39m: [36mFatal error starting QuantDaemon[39m
+    err: {
+      "type": "InsufficientFunds",
+      "message": "binanceusdm {\"code\":-2019,\"msg\":\"Margin is insufficient.\"}",
+      "stack":
+          InsufficientFunds: binanceusdm {"code":-2019,"msg":"Margin is insufficient."}
+              at binanceusdm.throwExactlyMatchedException (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:6337:19)
+              at binanceusdm.handleErrors (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13775:18)
+              at /home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1210:51
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async binanceusdm.fetch (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1102:16)
+              at async binanceusdm.fetch2 (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:5817:34)
+              at async binanceusdm.request (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13820:26)
+              at async binanceusdm.createOrder (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:7152:32)
+              at TestnetBroker.executeMarketOrder (/home/alexgmatosc/Dev/crypto-trading-app/src/exchange/TestnetBroker.ts:123:19)
+              at Engine.openPositionFromSignal (/home/alexgmatosc/Dev/crypto-trading-app/src/core/Engine.ts:281:18)
+      "name": "InsufficientFunds"
+    }
+ ELIFECYCLE  Command failed with exit code 1.
+
+> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
+[2026-10-17 23:34:52.262] [32mINFO[39m: [36mWeb Dashboard running[39m
+    port: 3000
+    url: "http://localhost:3000"
+[2026-10-17 23:34:52.262] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
+    mode: "TESTNET_LIVE"
+    exchange: "binanceusdm"
+    symbols: [
+      "BTC/USDT",
+      "ETH/USDT",
+      "SOL/USDT",
+      "DOGE/USDT"
+    ]
+    timeframe: "15m"
+[2026-10-17 23:34:52.262] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
+    exchange: "binanceusdm"
+[2026-10-17 23:34:54.009] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
+    exchange: "binanceusdm"
+    balanceUsdt: 4997.82971687
+[2026-10-17 23:34:54.590] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81084.7
+    regime: "NO_TRADE"
+    adx: 20.17
+    bbWidthPct: 0.79
+    reason: "ADX (20.17) in dead zone [20, 25]"
+[2026-10-17 23:34:55.190] [32mINFO[39m: [36mClosed position completely[39m
+    tradeId: "2cd3df03-4925-4359-8045-34bae8d7d33a"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    side: "SHORT"
+    exitReason: "STOP_LOSS"
+    entryPrice: 2393
+    exitPrice: 2402.45
+    totalRealizedPnl: -23.52
+[2026-10-17 23:34:55.191] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2393
+    regime: "TRENDING"
+    adx: 27.81
+    bbWidthPct: 1.25
+    reason: "ADX (27.81) > 25 -> Strong directional trend"
+[2026-10-17 23:34:55.877] [32mINFO[39m: [36mOpened new position[39m
+    tradeId: "31b3c866-17a0-4f5b-82c3-e6c00a83d1ce"
+    mode: "TESTNET_LIVE"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    regime: "TRENDING"
+    side: "SHORT"
+    entryPrice: 2393
+    size: 1.984
+    initialSl: 2402.45
+    riskUsd: 18.75
+[2026-10-17 23:34:56.201] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 102.46
+    regime: "NO_TRADE"
+    adx: 21.98
+    bbWidthPct: 1.74
+    reason: "ADX (21.98) in dead zone [20, 25]"
+[2026-10-17 23:34:56.523] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 27.56
+    bbWidthPct: 2.22
+    reason: "ADX (27.56) > 25 -> Strong directional trend"
+[2026-10-17 23:34:57.220] [31mERROR[39m: [36mFatal error starting QuantDaemon[39m
+    err: {
+      "type": "InsufficientFunds",
+      "message": "binanceusdm {\"code\":-2019,\"msg\":\"Margin is insufficient.\"}",
+      "stack":
+          InsufficientFunds: binanceusdm {"code":-2019,"msg":"Margin is insufficient."}
+              at binanceusdm.throwExactlyMatchedException (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:6337:19)
+              at binanceusdm.handleErrors (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13775:18)
+              at /home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1210:51
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async binanceusdm.fetch (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1102:16)
+              at async binanceusdm.fetch2 (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:5817:34)
+              at async binanceusdm.request (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13820:26)
+              at async binanceusdm.createOrder (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:7152:32)
+              at TestnetBroker.executeMarketOrder (/home/alexgmatosc/Dev/crypto-trading-app/src/exchange/TestnetBroker.ts:123:19)
+              at Engine.openPositionFromSignal (/home/alexgmatosc/Dev/crypto-trading-app/src/core/Engine.ts:281:18)
+      "name": "InsufficientFunds"
+    }
+ ELIFECYCLE  Command failed with exit code 1.
+
+> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
+[2026-10-17 23:34:58.658] [32mINFO[39m: [36mWeb Dashboard running[39m
+    port: 3000
+    url: "http://localhost:3000"
+[2026-10-17 23:34:58.659] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
+    mode: "TESTNET_LIVE"
+    exchange: "binanceusdm"
+    symbols: [
+      "BTC/USDT",
+      "ETH/USDT",
+      "SOL/USDT",
+      "DOGE/USDT"
+    ]
+    timeframe: "15m"
+[2026-10-17 23:34:58.659] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
+    exchange: "binanceusdm"
+[2026-10-17 23:35:00.613] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
+    exchange: "binanceusdm"
+    balanceUsdt: 4992.80079102
+[2026-10-17 23:35:01.604] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81084.7
+    regime: "NO_TRADE"
+    adx: 20.17
+    bbWidthPct: 0.79
+    reason: "ADX (20.17) in dead zone [20, 25]"
+[2026-10-17 23:35:02.263] [32mINFO[39m: [36mClosed position completely[39m
+    tradeId: "31b3c866-17a0-4f5b-82c3-e6c00a83d1ce"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    side: "SHORT"
+    exitReason: "STOP_LOSS"
+    entryPrice: 2393
+    exitPrice: 2402.45
+    totalRealizedPnl: -23.5
+[2026-10-17 23:35:02.264] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2393
+    regime: "TRENDING"
+    adx: 27.81
+    bbWidthPct: 1.25
+    reason: "ADX (27.81) > 25 -> Strong directional trend"
+[2026-10-17 23:35:03.373] [32mINFO[39m: [36mOpened new position[39m
+    tradeId: "0ac29aec-42d9-4885-b783-2c1f03ba97c3"
+    mode: "TESTNET_LIVE"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    regime: "TRENDING"
+    side: "SHORT"
+    entryPrice: 2393
+    size: 1.983
+    initialSl: 2402.45
+    riskUsd: 18.73
+[2026-10-17 23:35:03.708] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 102.46
+    regime: "NO_TRADE"
+    adx: 21.98
+    bbWidthPct: 1.74
+    reason: "ADX (21.98) in dead zone [20, 25]"
+[2026-10-17 23:35:04.032] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 27.56
+    bbWidthPct: 2.22
+    reason: "ADX (27.56) > 25 -> Strong directional trend"
+[2026-10-17 23:35:06.728] [31mERROR[39m: [36mFatal error starting QuantDaemon[39m
+    err: {
+      "type": "InsufficientFunds",
+      "message": "binanceusdm {\"code\":-2019,\"msg\":\"Margin is insufficient.\"}",
+      "stack":
+          InsufficientFunds: binanceusdm {"code":-2019,"msg":"Margin is insufficient."}
+              at binanceusdm.throwExactlyMatchedException (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:6337:19)
+              at binanceusdm.handleErrors (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13775:18)
+              at /home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1210:51
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async binanceusdm.fetch (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1102:16)
+              at async binanceusdm.fetch2 (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:5817:34)
+              at async binanceusdm.request (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13820:26)
+              at async binanceusdm.createOrder (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:7152:32)
+              at TestnetBroker.executeMarketOrder (/home/alexgmatosc/Dev/crypto-trading-app/src/exchange/TestnetBroker.ts:123:19)
+              at Engine.openPositionFromSignal (/home/alexgmatosc/Dev/crypto-trading-app/src/core/Engine.ts:281:18)
+      "name": "InsufficientFunds"
+    }
+ ELIFECYCLE  Command failed with exit code 1.
+
+> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
+[2026-10-17 23:35:08.135] [32mINFO[39m: [36mWeb Dashboard running[39m
+    port: 3000
+    url: "http://localhost:3000"
+[2026-10-17 23:35:08.135] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
+    mode: "TESTNET_LIVE"
+    exchange: "binanceusdm"
+    symbols: [
+      "BTC/USDT",
+      "ETH/USDT",
+      "SOL/USDT",
+      "DOGE/USDT"
+    ]
+    timeframe: "15m"
+[2026-10-17 23:35:08.135] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
+    exchange: "binanceusdm"
+[2026-10-17 23:35:10.129] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
+    exchange: "binanceusdm"
+    balanceUsdt: 4988.01361845
+[2026-10-17 23:35:11.110] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81084.7
+    regime: "NO_TRADE"
+    adx: 20.17
+    bbWidthPct: 0.79
+    reason: "ADX (20.17) in dead zone [20, 25]"
+[2026-10-17 23:35:11.706] [32mINFO[39m: [36mClosed position completely[39m
+    tradeId: "0ac29aec-42d9-4885-b783-2c1f03ba97c3"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    side: "SHORT"
+    exitReason: "STOP_LOSS"
+    entryPrice: 2393
+    exitPrice: 2402.45
+    totalRealizedPnl: -23.48
+[2026-10-17 23:35:11.706] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2393
+    regime: "TRENDING"
+    adx: 27.81
+    bbWidthPct: 1.25
+    reason: "ADX (27.81) > 25 -> Strong directional trend"
+[2026-10-17 23:35:12.903] [32mINFO[39m: [36mOpened new position[39m
+    tradeId: "ed3553fb-aaaa-441a-81ab-e8442168b208"
+    mode: "TESTNET_LIVE"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    regime: "TRENDING"
+    side: "SHORT"
+    entryPrice: 2393
+    size: 1.98
+    initialSl: 2402.45
+    riskUsd: 18.7
+[2026-10-17 23:35:13.239] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 102.46
+    regime: "NO_TRADE"
+    adx: 21.98
+    bbWidthPct: 1.74
+    reason: "ADX (21.98) in dead zone [20, 25]"
+[2026-10-17 23:35:13.563] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 27.56
+    bbWidthPct: 2.22
+    reason: "ADX (27.56) > 25 -> Strong directional trend"
+[2026-10-17 23:35:14.257] [31mERROR[39m: [36mFatal error starting QuantDaemon[39m
+    err: {
+      "type": "InsufficientFunds",
+      "message": "binanceusdm {\"code\":-2019,\"msg\":\"Margin is insufficient.\"}",
+      "stack":
+          InsufficientFunds: binanceusdm {"code":-2019,"msg":"Margin is insufficient."}
+              at binanceusdm.throwExactlyMatchedException (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:6337:19)
+              at binanceusdm.handleErrors (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13775:18)
+              at /home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1210:51
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async binanceusdm.fetch (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1102:16)
+              at async binanceusdm.fetch2 (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:5817:34)
+              at async binanceusdm.request (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13820:26)
+              at async binanceusdm.createOrder (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:7152:32)
+              at TestnetBroker.executeMarketOrder (/home/alexgmatosc/Dev/crypto-trading-app/src/exchange/TestnetBroker.ts:123:19)
+              at Engine.openPositionFromSignal (/home/alexgmatosc/Dev/crypto-trading-app/src/core/Engine.ts:281:18)
+      "name": "InsufficientFunds"
+    }
+ ELIFECYCLE  Command failed with exit code 1.
+
+> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
+[2026-10-17 23:35:15.597] [32mINFO[39m: [36mWeb Dashboard running[39m
+    port: 3000
+    url: "http://localhost:3000"
+[2026-10-17 23:35:15.597] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
+    mode: "TESTNET_LIVE"
+    exchange: "binanceusdm"
+    symbols: [
+      "BTC/USDT",
+      "ETH/USDT",
+      "SOL/USDT",
+      "DOGE/USDT"
+    ]
+    timeframe: "15m"
+[2026-10-17 23:35:15.597] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
+    exchange: "binanceusdm"
+[2026-10-17 23:35:17.483] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
+    exchange: "binanceusdm"
+    balanceUsdt: 4983.11652766
+[2026-10-17 23:35:18.047] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81084.7
+    regime: "NO_TRADE"
+    adx: 20.17
+    bbWidthPct: 0.79
+    reason: "ADX (20.17) in dead zone [20, 25]"
+[2026-10-17 23:35:18.633] [32mINFO[39m: [36mClosed position completely[39m
+    tradeId: "ed3553fb-aaaa-441a-81ab-e8442168b208"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    side: "SHORT"
+    exitReason: "STOP_LOSS"
+    entryPrice: 2393
+    exitPrice: 2402.45
+    totalRealizedPnl: -23.45
+[2026-10-17 23:35:18.634] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2393
+    regime: "TRENDING"
+    adx: 27.81
+    bbWidthPct: 1.25
+    reason: "ADX (27.81) > 25 -> Strong directional trend"
+[2026-10-17 23:35:19.318] [32mINFO[39m: [36mOpened new position[39m
+    tradeId: "b8b85485-ff29-488c-b706-a88dfdacb847"
+    mode: "TESTNET_LIVE"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    regime: "TRENDING"
+    side: "SHORT"
+    entryPrice: 2393
+    size: 1.978
+    initialSl: 2402.45
+    riskUsd: 18.69
+[2026-10-17 23:35:19.639] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 102.46
+    regime: "NO_TRADE"
+    adx: 21.98
+    bbWidthPct: 1.74
+    reason: "ADX (21.98) in dead zone [20, 25]"
+[2026-10-17 23:35:19.959] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 27.56
+    bbWidthPct: 2.22
+    reason: "ADX (27.56) > 25 -> Strong directional trend"
+[2026-10-17 23:35:20.642] [31mERROR[39m: [36mFatal error starting QuantDaemon[39m
+    err: {
+      "type": "InsufficientFunds",
+      "message": "binanceusdm {\"code\":-2019,\"msg\":\"Margin is insufficient.\"}",
+      "stack":
+          InsufficientFunds: binanceusdm {"code":-2019,"msg":"Margin is insufficient."}
+              at binanceusdm.throwExactlyMatchedException (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:6337:19)
+              at binanceusdm.handleErrors (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13775:18)
+              at /home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1210:51
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async binanceusdm.fetch (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1102:16)
+              at async binanceusdm.fetch2 (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:5817:34)
+              at async binanceusdm.request (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13820:26)
+              at async binanceusdm.createOrder (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:7152:32)
+              at TestnetBroker.executeMarketOrder (/home/alexgmatosc/Dev/crypto-trading-app/src/exchange/TestnetBroker.ts:123:19)
+              at Engine.openPositionFromSignal (/home/alexgmatosc/Dev/crypto-trading-app/src/core/Engine.ts:281:18)
+      "name": "InsufficientFunds"
+    }
+ ELIFECYCLE  Command failed with exit code 1.
+
+> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
+[2026-10-17 23:35:21.662] [32mINFO[39m: [36mWeb Dashboard running[39m
+    port: 3000
+    url: "http://localhost:3000"
+[2026-10-17 23:35:21.662] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
+    mode: "TESTNET_LIVE"
+    exchange: "binanceusdm"
+    symbols: [
+      "BTC/USDT",
+      "ETH/USDT",
+      "SOL/USDT",
+      "DOGE/USDT"
+    ]
+    timeframe: "15m"
+[2026-10-17 23:35:21.662] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
+    exchange: "binanceusdm"
+[2026-10-17 23:35:23.581] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
+    exchange: "binanceusdm"
+    balanceUsdt: 4980.66123505
+[2026-10-17 23:35:24.611] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81084.7
+    regime: "NO_TRADE"
+    adx: 20.17
+    bbWidthPct: 0.79
+    reason: "ADX (20.17) in dead zone [20, 25]"
+[2026-10-17 23:35:25.217] [32mINFO[39m: [36mClosed position completely[39m
+    tradeId: "b8b85485-ff29-488c-b706-a88dfdacb847"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    side: "SHORT"
+    exitReason: "STOP_LOSS"
+    entryPrice: 2393
+    exitPrice: 2402.45
+    totalRealizedPnl: -23.43
+[2026-10-17 23:35:25.218] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2393
+    regime: "TRENDING"
+    adx: 27.81
+    bbWidthPct: 1.25
+    reason: "ADX (27.81) > 25 -> Strong directional trend"
+[2026-10-17 23:35:25.911] [32mINFO[39m: [36mOpened new position[39m
+    tradeId: "61a1a7c5-b7c8-4e43-b666-d112893f35c3"
+    mode: "TESTNET_LIVE"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    regime: "TRENDING"
+    side: "SHORT"
+    entryPrice: 2393
+    size: 1.976
+    initialSl: 2402.45
+    riskUsd: 18.67
+[2026-10-17 23:35:26.238] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 102.46
+    regime: "NO_TRADE"
+    adx: 21.98
+    bbWidthPct: 1.74
+    reason: "ADX (21.98) in dead zone [20, 25]"
+[2026-10-17 23:35:26.580] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 27.56
+    bbWidthPct: 2.22
+    reason: "ADX (27.56) > 25 -> Strong directional trend"
+[2026-10-17 23:35:27.301] [31mERROR[39m: [36mFatal error starting QuantDaemon[39m
+    err: {
+      "type": "InsufficientFunds",
+      "message": "binanceusdm {\"code\":-2019,\"msg\":\"Margin is insufficient.\"}",
+      "stack":
+          InsufficientFunds: binanceusdm {"code":-2019,"msg":"Margin is insufficient."}
+              at binanceusdm.throwExactlyMatchedException (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:6337:19)
+              at binanceusdm.handleErrors (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13775:18)
+              at /home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1210:51
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async binanceusdm.fetch (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1102:16)
+              at async binanceusdm.fetch2 (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:5817:34)
+              at async binanceusdm.request (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13820:26)
+              at async binanceusdm.createOrder (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:7152:32)
+              at TestnetBroker.executeMarketOrder (/home/alexgmatosc/Dev/crypto-trading-app/src/exchange/TestnetBroker.ts:123:19)
+              at Engine.openPositionFromSignal (/home/alexgmatosc/Dev/crypto-trading-app/src/core/Engine.ts:281:18)
+      "name": "InsufficientFunds"
+    }
+ ELIFECYCLE  Command failed with exit code 1.
+
+> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
+[2026-10-17 23:35:28.584] [32mINFO[39m: [36mWeb Dashboard running[39m
+    port: 3000
+    url: "http://localhost:3000"
+[2026-10-17 23:35:28.584] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
+    mode: "TESTNET_LIVE"
+    exchange: "binanceusdm"
+    symbols: [
+      "BTC/USDT",
+      "ETH/USDT",
+      "SOL/USDT",
+      "DOGE/USDT"
+    ]
+    timeframe: "15m"
+[2026-10-17 23:35:28.584] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
+    exchange: "binanceusdm"
+[2026-10-17 23:35:30.458] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
+    exchange: "binanceusdm"
+    balanceUsdt: 4975.85569429
+[2026-10-17 23:35:31.479] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81084.7
+    regime: "NO_TRADE"
+    adx: 20.17
+    bbWidthPct: 0.79
+    reason: "ADX (20.17) in dead zone [20, 25]"
+[2026-10-17 23:35:32.081] [32mINFO[39m: [36mClosed position completely[39m
+    tradeId: "61a1a7c5-b7c8-4e43-b666-d112893f35c3"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    side: "SHORT"
+    exitReason: "STOP_LOSS"
+    entryPrice: 2393
+    exitPrice: 2402.45
+    totalRealizedPnl: -23.4
+[2026-10-17 23:35:32.082] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2393
+    regime: "TRENDING"
+    adx: 27.81
+    bbWidthPct: 1.25
+    reason: "ADX (27.81) > 25 -> Strong directional trend"
+[2026-10-17 23:35:32.774] [32mINFO[39m: [36mOpened new position[39m
+    tradeId: "a28aa004-ecf3-47ed-8351-5dd54e285233"
+    mode: "TESTNET_LIVE"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    regime: "TRENDING"
+    side: "SHORT"
+    entryPrice: 2393
+    size: 1.974
+    initialSl: 2402.45
+    riskUsd: 18.65
+[2026-10-17 23:35:33.128] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 102.46
+    regime: "NO_TRADE"
+    adx: 21.98
+    bbWidthPct: 1.74
+    reason: "ADX (21.98) in dead zone [20, 25]"
+[2026-10-17 23:35:33.450] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 27.56
+    bbWidthPct: 2.22
+    reason: "ADX (27.56) > 25 -> Strong directional trend"
+[2026-10-17 23:35:34.151] [31mERROR[39m: [36mFatal error starting QuantDaemon[39m
+    err: {
+      "type": "InsufficientFunds",
+      "message": "binanceusdm {\"code\":-2019,\"msg\":\"Margin is insufficient.\"}",
+      "stack":
+          InsufficientFunds: binanceusdm {"code":-2019,"msg":"Margin is insufficient."}
+              at binanceusdm.throwExactlyMatchedException (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:6337:19)
+              at binanceusdm.handleErrors (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13775:18)
+              at /home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1210:51
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async binanceusdm.fetch (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1102:16)
+              at async binanceusdm.fetch2 (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:5817:34)
+              at async binanceusdm.request (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13820:26)
+              at async binanceusdm.createOrder (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:7152:32)
+              at TestnetBroker.executeMarketOrder (/home/alexgmatosc/Dev/crypto-trading-app/src/exchange/TestnetBroker.ts:123:19)
+              at Engine.openPositionFromSignal (/home/alexgmatosc/Dev/crypto-trading-app/src/core/Engine.ts:281:18)
+      "name": "InsufficientFunds"
+    }
+ ELIFECYCLE  Command failed with exit code 1.
+
+> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
+[2026-10-17 23:35:35.182] [32mINFO[39m: [36mWeb Dashboard running[39m
+    port: 3000
+    url: "http://localhost:3000"
+[2026-10-17 23:35:35.182] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
+    mode: "TESTNET_LIVE"
+    exchange: "binanceusdm"
+    symbols: [
+      "BTC/USDT",
+      "ETH/USDT",
+      "SOL/USDT",
+      "DOGE/USDT"
+    ]
+    timeframe: "15m"
+[2026-10-17 23:35:35.182] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
+    exchange: "binanceusdm"
+[2026-10-17 23:35:37.223] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
+    exchange: "binanceusdm"
+    balanceUsdt: 4970.54288913
+[2026-10-17 23:35:38.218] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81084.7
+    regime: "NO_TRADE"
+    adx: 20.17
+    bbWidthPct: 0.79
+    reason: "ADX (20.17) in dead zone [20, 25]"
+[2026-10-17 23:35:40.924] [32mINFO[39m: [36mClosed position completely[39m
+    tradeId: "a28aa004-ecf3-47ed-8351-5dd54e285233"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    side: "SHORT"
+    exitReason: "STOP_LOSS"
+    entryPrice: 2393
+    exitPrice: 2402.45
+    totalRealizedPnl: -23.38
+[2026-10-17 23:35:40.925] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2393
+    regime: "TRENDING"
+    adx: 27.81
+    bbWidthPct: 1.25
+    reason: "ADX (27.81) > 25 -> Strong directional trend"
+[2026-10-17 23:35:41.616] [32mINFO[39m: [36mOpened new position[39m
+    tradeId: "f6c76e11-f8a3-437c-8c8d-34cb4c081a4f"
+    mode: "TESTNET_LIVE"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    regime: "TRENDING"
+    side: "SHORT"
+    entryPrice: 2393
+    size: 1.973
+    initialSl: 2402.45
+    riskUsd: 18.64
+[2026-10-17 23:35:41.941] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 102.46
+    regime: "NO_TRADE"
+    adx: 21.98
+    bbWidthPct: 1.74
+    reason: "ADX (21.98) in dead zone [20, 25]"
+[2026-10-17 23:35:42.262] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 27.56
+    bbWidthPct: 2.22
+    reason: "ADX (27.56) > 25 -> Strong directional trend"
+[2026-10-17 23:35:42.945] [31mERROR[39m: [36mFatal error starting QuantDaemon[39m
+    err: {
+      "type": "InsufficientFunds",
+      "message": "binanceusdm {\"code\":-2019,\"msg\":\"Margin is insufficient.\"}",
+      "stack":
+          InsufficientFunds: binanceusdm {"code":-2019,"msg":"Margin is insufficient."}
+              at binanceusdm.throwExactlyMatchedException (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:6337:19)
+              at binanceusdm.handleErrors (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13775:18)
+              at /home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1210:51
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async binanceusdm.fetch (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1102:16)
+              at async binanceusdm.fetch2 (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:5817:34)
+              at async binanceusdm.request (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13820:26)
+              at async binanceusdm.createOrder (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:7152:32)
+              at TestnetBroker.executeMarketOrder (/home/alexgmatosc/Dev/crypto-trading-app/src/exchange/TestnetBroker.ts:123:19)
+              at Engine.openPositionFromSignal (/home/alexgmatosc/Dev/crypto-trading-app/src/core/Engine.ts:281:18)
+      "name": "InsufficientFunds"
+    }
+ ELIFECYCLE  Command failed with exit code 1.
+
+> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
+[2026-10-17 23:35:44.309] [32mINFO[39m: [36mWeb Dashboard running[39m
+    port: 3000
+    url: "http://localhost:3000"
+[2026-10-17 23:35:44.310] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
+    mode: "TESTNET_LIVE"
+    exchange: "binanceusdm"
+    symbols: [
+      "BTC/USDT",
+      "ETH/USDT",
+      "SOL/USDT",
+      "DOGE/USDT"
+    ]
+    timeframe: "15m"
+[2026-10-17 23:35:44.310] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
+    exchange: "binanceusdm"
+[2026-10-17 23:35:46.042] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
+    exchange: "binanceusdm"
+    balanceUsdt: 4967.71831735
+[2026-10-17 23:35:46.633] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81084.7
+    regime: "NO_TRADE"
+    adx: 20.17
+    bbWidthPct: 0.79
+    reason: "ADX (20.17) in dead zone [20, 25]"
+[2026-10-17 23:35:47.230] [32mINFO[39m: [36mClosed position completely[39m
+    tradeId: "f6c76e11-f8a3-437c-8c8d-34cb4c081a4f"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    side: "SHORT"
+    exitReason: "STOP_LOSS"
+    entryPrice: 2393
+    exitPrice: 2402.45
+    totalRealizedPnl: -23.37
+[2026-10-17 23:35:47.231] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2393
+    regime: "TRENDING"
+    adx: 27.81
+    bbWidthPct: 1.25
+    reason: "ADX (27.81) > 25 -> Strong directional trend"
+[2026-10-17 23:35:47.926] [32mINFO[39m: [36mOpened new position[39m
+    tradeId: "8e182987-5e96-4a2e-821f-a4a84b60c093"
+    mode: "TESTNET_LIVE"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    regime: "TRENDING"
+    side: "SHORT"
+    entryPrice: 2393
+    size: 1.971
+    initialSl: 2402.45
+    riskUsd: 18.62
+[2026-10-17 23:35:48.250] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 102.46
+    regime: "NO_TRADE"
+    adx: 21.98
+    bbWidthPct: 1.74
+    reason: "ADX (21.98) in dead zone [20, 25]"
+[2026-10-17 23:35:48.569] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 27.56
+    bbWidthPct: 2.22
+    reason: "ADX (27.56) > 25 -> Strong directional trend"
+[2026-10-17 23:35:49.262] [31mERROR[39m: [36mFatal error starting QuantDaemon[39m
+    err: {
+      "type": "InsufficientFunds",
+      "message": "binanceusdm {\"code\":-2019,\"msg\":\"Margin is insufficient.\"}",
+      "stack":
+          InsufficientFunds: binanceusdm {"code":-2019,"msg":"Margin is insufficient."}
+              at binanceusdm.throwExactlyMatchedException (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:6337:19)
+              at binanceusdm.handleErrors (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13775:18)
+              at /home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1210:51
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async binanceusdm.fetch (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1102:16)
+              at async binanceusdm.fetch2 (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:5817:34)
+              at async binanceusdm.request (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13820:26)
+              at async binanceusdm.createOrder (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:7152:32)
+              at TestnetBroker.executeMarketOrder (/home/alexgmatosc/Dev/crypto-trading-app/src/exchange/TestnetBroker.ts:123:19)
+              at Engine.openPositionFromSignal (/home/alexgmatosc/Dev/crypto-trading-app/src/core/Engine.ts:281:18)
+      "name": "InsufficientFunds"
+    }
+ ELIFECYCLE  Command failed with exit code 1.
+
+> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
+[2026-10-17 23:35:50.607] [32mINFO[39m: [36mWeb Dashboard running[39m
+    port: 3000
+    url: "http://localhost:3000"
+[2026-10-17 23:35:50.607] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
+    mode: "TESTNET_LIVE"
+    exchange: "binanceusdm"
+    symbols: [
+      "BTC/USDT",
+      "ETH/USDT",
+      "SOL/USDT",
+      "DOGE/USDT"
+    ]
+    timeframe: "15m"
+[2026-10-17 23:35:50.607] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
+    exchange: "binanceusdm"
+[2026-10-17 23:35:52.340] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
+    exchange: "binanceusdm"
+    balanceUsdt: 4963.80961165
+[2026-10-17 23:35:53.311] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81084.7
+    regime: "NO_TRADE"
+    adx: 20.17
+    bbWidthPct: 0.79
+    reason: "ADX (20.17) in dead zone [20, 25]"
+[2026-10-17 23:35:53.897] [32mINFO[39m: [36mClosed position completely[39m
+    tradeId: "8e182987-5e96-4a2e-821f-a4a84b60c093"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    side: "SHORT"
+    exitReason: "STOP_LOSS"
+    entryPrice: 2393
+    exitPrice: 2402.45
+    totalRealizedPnl: -23.34
+[2026-10-17 23:35:53.898] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2393
+    regime: "TRENDING"
+    adx: 27.81
+    bbWidthPct: 1.25
+    reason: "ADX (27.81) > 25 -> Strong directional trend"
+[2026-10-17 23:35:54.580] [32mINFO[39m: [36mOpened new position[39m
+    tradeId: "17250f0e-2f9e-4853-a446-e185dbec6825"
+    mode: "TESTNET_LIVE"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    regime: "TRENDING"
+    side: "SHORT"
+    entryPrice: 2393
+    size: 1.969
+    initialSl: 2402.45
+    riskUsd: 18.6
+[2026-10-17 23:35:54.899] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 102.46
+    regime: "NO_TRADE"
+    adx: 21.98
+    bbWidthPct: 1.74
+    reason: "ADX (21.98) in dead zone [20, 25]"
+[2026-10-17 23:35:55.220] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 27.56
+    bbWidthPct: 2.22
+    reason: "ADX (27.56) > 25 -> Strong directional trend"
+[2026-10-17 23:35:56.069] [31mERROR[39m: [36mFatal error starting QuantDaemon[39m
+    err: {
+      "type": "InsufficientFunds",
+      "message": "binanceusdm {\"code\":-2019,\"msg\":\"Margin is insufficient.\"}",
+      "stack":
+          InsufficientFunds: binanceusdm {"code":-2019,"msg":"Margin is insufficient."}
+              at binanceusdm.throwExactlyMatchedException (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:6337:19)
+              at binanceusdm.handleErrors (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13775:18)
+              at /home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1210:51
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async binanceusdm.fetch (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1102:16)
+              at async binanceusdm.fetch2 (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:5817:34)
+              at async binanceusdm.request (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13820:26)
+              at async binanceusdm.createOrder (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:7152:32)
+              at TestnetBroker.executeMarketOrder (/home/alexgmatosc/Dev/crypto-trading-app/src/exchange/TestnetBroker.ts:123:19)
+              at Engine.openPositionFromSignal (/home/alexgmatosc/Dev/crypto-trading-app/src/core/Engine.ts:281:18)
+      "name": "InsufficientFunds"
+    }
+ ELIFECYCLE  Command failed with exit code 1.
+
+> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
+[2026-10-17 23:35:57.449] [32mINFO[39m: [36mWeb Dashboard running[39m
+    port: 3000
+    url: "http://localhost:3000"
+[2026-10-17 23:35:57.449] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
+    mode: "TESTNET_LIVE"
+    exchange: "binanceusdm"
+    symbols: [
+      "BTC/USDT",
+      "ETH/USDT",
+      "SOL/USDT",
+      "DOGE/USDT"
+    ]
+    timeframe: "15m"
+[2026-10-17 23:35:57.450] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
+    exchange: "binanceusdm"
+[2026-10-17 23:35:59.282] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
+    exchange: "binanceusdm"
+    balanceUsdt: 4958.65496182
+[2026-10-17 23:35:59.856] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81084.7
+    regime: "NO_TRADE"
+    adx: 20.17
+    bbWidthPct: 0.79
+    reason: "ADX (20.17) in dead zone [20, 25]"
+[2026-10-17 23:36:00.451] [32mINFO[39m: [36mClosed position completely[39m
+    tradeId: "17250f0e-2f9e-4853-a446-e185dbec6825"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    side: "SHORT"
+    exitReason: "STOP_LOSS"
+    entryPrice: 2393
+    exitPrice: 2402.45
+    totalRealizedPnl: -23.32
+[2026-10-17 23:36:00.452] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2393
+    regime: "TRENDING"
+    adx: 27.81
+    bbWidthPct: 1.25
+    reason: "ADX (27.81) > 25 -> Strong directional trend"
+[2026-10-17 23:36:01.561] [32mINFO[39m: [36mOpened new position[39m
+    tradeId: "53239696-9874-44d5-98b1-f6c208fc7896"
+    mode: "TESTNET_LIVE"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    regime: "TRENDING"
+    side: "SHORT"
+    entryPrice: 2393
+    size: 1.967
+    initialSl: 2402.45
+    riskUsd: 18.59
+[2026-10-17 23:36:01.887] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 102.46
+    regime: "NO_TRADE"
+    adx: 21.98
+    bbWidthPct: 1.74
+    reason: "ADX (21.98) in dead zone [20, 25]"
+[2026-10-17 23:36:02.212] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 27.56
+    bbWidthPct: 2.22
+    reason: "ADX (27.56) > 25 -> Strong directional trend"
+[2026-10-17 23:36:03.311] [31mERROR[39m: [36mFatal error starting QuantDaemon[39m
+    err: {
+      "type": "InsufficientFunds",
+      "message": "binanceusdm {\"code\":-2019,\"msg\":\"Margin is insufficient.\"}",
+      "stack":
+          InsufficientFunds: binanceusdm {"code":-2019,"msg":"Margin is insufficient."}
+              at binanceusdm.throwExactlyMatchedException (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:6337:19)
+              at binanceusdm.handleErrors (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13775:18)
+              at /home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1210:51
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async binanceusdm.fetch (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1102:16)
+              at async binanceusdm.fetch2 (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:5817:34)
+              at async binanceusdm.request (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13820:26)
+              at async binanceusdm.createOrder (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:7152:32)
+              at TestnetBroker.executeMarketOrder (/home/alexgmatosc/Dev/crypto-trading-app/src/exchange/TestnetBroker.ts:123:19)
+              at Engine.openPositionFromSignal (/home/alexgmatosc/Dev/crypto-trading-app/src/core/Engine.ts:281:18)
+      "name": "InsufficientFunds"
+    }
+ ELIFECYCLE  Command failed with exit code 1.
+
+> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
+[2026-10-17 23:36:05.303] [32mINFO[39m: [36mWeb Dashboard running[39m
+    port: 3000
+    url: "http://localhost:3000"
+[2026-10-17 23:36:05.304] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
+    mode: "TESTNET_LIVE"
+    exchange: "binanceusdm"
+    symbols: [
+      "BTC/USDT",
+      "ETH/USDT",
+      "SOL/USDT",
+      "DOGE/USDT"
+    ]
+    timeframe: "15m"
+[2026-10-17 23:36:05.304] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
+    exchange: "binanceusdm"
+[2026-10-17 23:36:07.054] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
+    exchange: "binanceusdm"
+    balanceUsdt: 4952.76258282
+[2026-10-17 23:36:07.664] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81084.7
+    regime: "NO_TRADE"
+    adx: 20.17
+    bbWidthPct: 0.79
+    reason: "ADX (20.17) in dead zone [20, 25]"
+[2026-10-17 23:36:08.257] [32mINFO[39m: [36mClosed position completely[39m
+    tradeId: "53239696-9874-44d5-98b1-f6c208fc7896"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    side: "SHORT"
+    exitReason: "STOP_LOSS"
+    entryPrice: 2393
+    exitPrice: 2402.45
+    totalRealizedPnl: -23.3
+[2026-10-17 23:36:08.258] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2393
+    regime: "TRENDING"
+    adx: 27.81
+    bbWidthPct: 1.25
+    reason: "ADX (27.81) > 25 -> Strong directional trend"
+[2026-10-17 23:36:08.954] [32mINFO[39m: [36mOpened new position[39m
+    tradeId: "9f2efe04-eb26-4bcc-8531-a4fcf843f848"
+    mode: "TESTNET_LIVE"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    regime: "TRENDING"
+    side: "SHORT"
+    entryPrice: 2393
+    size: 1.966
+    initialSl: 2402.45
+    riskUsd: 18.57
+[2026-10-17 23:36:09.287] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 102.46
+    regime: "NO_TRADE"
+    adx: 21.98
+    bbWidthPct: 1.74
+    reason: "ADX (21.98) in dead zone [20, 25]"
+[2026-10-17 23:36:09.612] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 27.56
+    bbWidthPct: 2.22
+    reason: "ADX (27.56) > 25 -> Strong directional trend"
+[2026-10-17 23:36:10.303] [31mERROR[39m: [36mFatal error starting QuantDaemon[39m
+    err: {
+      "type": "InsufficientFunds",
+      "message": "binanceusdm {\"code\":-2019,\"msg\":\"Margin is insufficient.\"}",
+      "stack":
+          InsufficientFunds: binanceusdm {"code":-2019,"msg":"Margin is insufficient."}
+              at binanceusdm.throwExactlyMatchedException (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:6337:19)
+              at binanceusdm.handleErrors (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13775:18)
+              at /home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1210:51
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async binanceusdm.fetch (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1102:16)
+              at async binanceusdm.fetch2 (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:5817:34)
+              at async binanceusdm.request (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13820:26)
+              at async binanceusdm.createOrder (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:7152:32)
+              at TestnetBroker.executeMarketOrder (/home/alexgmatosc/Dev/crypto-trading-app/src/exchange/TestnetBroker.ts:123:19)
+              at Engine.openPositionFromSignal (/home/alexgmatosc/Dev/crypto-trading-app/src/core/Engine.ts:281:18)
+      "name": "InsufficientFunds"
+    }
+ ELIFECYCLE  Command failed with exit code 1.
+
+> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
+[2026-10-17 23:36:11.344] [32mINFO[39m: [36mWeb Dashboard running[39m
+    port: 3000
+    url: "http://localhost:3000"
+[2026-10-17 23:36:11.344] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
+    mode: "TESTNET_LIVE"
+    exchange: "binanceusdm"
+    symbols: [
+      "BTC/USDT",
+      "ETH/USDT",
+      "SOL/USDT",
+      "DOGE/USDT"
+    ]
+    timeframe: "15m"
+[2026-10-17 23:36:11.344] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
+    exchange: "binanceusdm"
+[2026-10-17 23:36:15.147] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
+    exchange: "binanceusdm"
+    balanceUsdt: 4946.27315305
+[2026-10-17 23:36:15.754] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81084.7
+    regime: "NO_TRADE"
+    adx: 20.17
+    bbWidthPct: 0.79
+    reason: "ADX (20.17) in dead zone [20, 25]"
+[2026-10-17 23:36:16.687] [32mINFO[39m: [36mClosed position completely[39m
+    tradeId: "9f2efe04-eb26-4bcc-8531-a4fcf843f848"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    side: "SHORT"
+    exitReason: "STOP_LOSS"
+    entryPrice: 2393
+    exitPrice: 2402.45
+    totalRealizedPnl: -23.28
+[2026-10-17 23:36:16.687] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2393
+    regime: "TRENDING"
+    adx: 27.81
+    bbWidthPct: 1.25
+    reason: "ADX (27.81) > 25 -> Strong directional trend"
+[2026-10-17 23:36:17.783] [32mINFO[39m: [36mOpened new position[39m
+    tradeId: "a3d6712b-b4ae-4880-93ed-b315222c60d5"
+    mode: "TESTNET_LIVE"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    regime: "TRENDING"
+    side: "SHORT"
+    entryPrice: 2393
+    size: 1.964
+    initialSl: 2402.45
+    riskUsd: 18.55
+[2026-10-17 23:36:18.105] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 102.46
+    regime: "NO_TRADE"
+    adx: 21.98
+    bbWidthPct: 1.74
+    reason: "ADX (21.98) in dead zone [20, 25]"
+[2026-10-17 23:36:18.433] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 27.56
+    bbWidthPct: 2.22
+    reason: "ADX (27.56) > 25 -> Strong directional trend"
+[2026-10-17 23:36:19.123] [31mERROR[39m: [36mFatal error starting QuantDaemon[39m
+    err: {
+      "type": "InsufficientFunds",
+      "message": "binanceusdm {\"code\":-2019,\"msg\":\"Margin is insufficient.\"}",
+      "stack":
+          InsufficientFunds: binanceusdm {"code":-2019,"msg":"Margin is insufficient."}
+              at binanceusdm.throwExactlyMatchedException (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:6337:19)
+              at binanceusdm.handleErrors (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13775:18)
+              at /home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1210:51
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async binanceusdm.fetch (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:1102:16)
+              at async binanceusdm.fetch2 (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/base/Exchange.js:5817:34)
+              at async binanceusdm.request (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:13820:26)
+              at async binanceusdm.createOrder (/home/alexgmatosc/Dev/crypto-trading-app/node_modules/.pnpm/ccxt@4.5.88/node_modules/ccxt/dist/cjs/src/binance.js:7152:32)
+              at TestnetBroker.executeMarketOrder (/home/alexgmatosc/Dev/crypto-trading-app/src/exchange/TestnetBroker.ts:123:19)
+              at Engine.openPositionFromSignal (/home/alexgmatosc/Dev/crypto-trading-app/src/core/Engine.ts:281:18)
+      "name": "InsufficientFunds"
+    }
+ ELIFECYCLE  Command failed with exit code 1.
+
+> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
+[2026-10-17 23:36:20.518] [32mINFO[39m: [36mWeb Dashboard running[39m
+    port: 3000
+    url: "http://localhost:3000"
+[2026-10-17 23:36:20.519] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
+    mode: "TESTNET_LIVE"
+    exchange: "binanceusdm"
+    symbols: [
+      "BTC/USDT",
+      "ETH/USDT",
+      "SOL/USDT",
+      "DOGE/USDT"
+    ]
+    timeframe: "15m"
+[2026-10-17 23:36:20.519] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
+    exchange: "binanceusdm"
+[2026-10-17 23:36:22.288] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
+    exchange: "binanceusdm"
+    balanceUsdt: 4942.21277696
+[2026-10-17 23:36:22.413] [32mINFO[39m: [36mReceived shutdown signal, stopping daemon...[39m
+    signal: "SIGINT"
+[2026-10-17 23:36:22.413] [32mINFO[39m: [36mQuantDaemon stopped cleanly[39m
+
+> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
+[2026-10-17 23:39:24.385] [32mINFO[39m: [36mWeb Dashboard running[39m
+    port: 3000
+    url: "http://localhost:3000"
+[2026-10-17 23:39:24.385] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
+    mode: "TESTNET_LIVE"
+    exchange: "binanceusdm"
+    symbols: [
+      "BTC/USDT",
+      "ETH/USDT",
+      "SOL/USDT",
+      "DOGE/USDT"
+    ]
+    timeframe: "15m"
+[2026-10-17 23:39:24.385] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
+    exchange: "binanceusdm"
+[2026-10-17 23:39:26.268] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
+    exchange: "binanceusdm"
+    balanceUsdt: 4946.74228094
+[2026-10-17 23:39:27.832] [32mINFO[39m: [36mDaemon active: synchronized with 15m candle closes and 10s SL monitoring[39m
+    balanceUsdt: 4946.74228094
+    openPositions: 0
+[2026-10-17 23:45:27.405] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81089.8
+    regime: "NO_TRADE"
+    adx: 22.84
+    bbWidthPct: 0.85
+    reason: "ADX (22.84) in dead zone [20, 25]"
+[2026-10-17 23:45:27.731] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2380
+    regime: "TRENDING"
+    adx: 31.03
+    bbWidthPct: 1.72
+    reason: "ADX (31.03) > 25 -> Strong directional trend"
+[2026-10-17 23:45:28.269] [32mINFO[39m: [36mOpened new position[39m
+    tradeId: "41eaf154-ce2b-4620-9c87-bc1f4b5edf05"
+    mode: "TESTNET_LIVE"
+    symbol: "ETH/USDT"
+    strategy: "TREND_BREAKOUT"
+    regime: "TRENDING"
+    side: "SHORT"
+    entryPrice: 2380
+    size: 1.974
+    initialSl: 2393.79
+    riskUsd: 27.24
+[2026-10-17 23:45:28.627] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 102.14
+    regime: "TRENDING"
+    adx: 25.28
+    bbWidthPct: 2.16
+    reason: "ADX (25.28) > 25 -> Strong directional trend"
+[2026-10-17 23:45:29.483] [33mWARN[39m: [36mBroker order execution failed (e.g. margin or exchange restriction) — trade skipped safely[39m
+    symbol: "SOL/USDT"
+    side: "SHORT"
+    error: "binanceusdm {\"code\":-2019,\"msg\":\"Margin is insufficient.\"}"
+[2026-10-17 23:45:29.802] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "TRENDING"
+    adx: 30.21
+    bbWidthPct: 2.59
+    reason: "ADX (30.21) > 25 -> Strong directional trend"
+[2026-10-17 23:45:30.890] [33mWARN[39m: [36mBroker order execution failed (e.g. margin or exchange restriction) — trade skipped safely[39m
+    symbol: "DOGE/USDT"
+    side: "SHORT"
+    error: "binanceusdm {\"code\":-2019,\"msg\":\"Margin is insufficient.\"}"
