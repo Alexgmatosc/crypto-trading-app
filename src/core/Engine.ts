@@ -117,6 +117,17 @@ export class Engine {
 
     // 3. Detect Market Regime
     const regimeState = this.regimeDetector.detect(candles);
+    logger.info(
+      {
+        symbol,
+        close: Number(latestCandle.close.toFixed(2)),
+        regime: regimeState.regime,
+        adx: Number(regimeState.adx.toFixed(2)),
+        bbWidthPct: Number((regimeState.bbWidth * 100).toFixed(2)),
+        reason: regimeState.reason,
+      },
+      '15m candle close evaluated'
+    );
     if (regimeState.regime === 'NO_TRADE') {
       return;
     }
