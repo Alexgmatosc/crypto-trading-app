@@ -9,6 +9,7 @@ import type {
   EquitySnapshotRecord,
   ExecutionMode,
   ExitReason,
+  OrderExecutionResult,
   Signal,
   TradeRecord,
 } from '../types/index.js';
@@ -93,15 +94,19 @@ export class Engine {
     );
 
     // 1. Manage existing open positions for this symbol
+    // Guard: Only apply intra-candle high/low extremes if the candle opened AT or AFTER the trade was opened.
+    // In TESTNET_LIVE/PAPER_LOCAL, a candle's open timestamp is 15m before its close; if a trade was opened
+    // near the end of that window, earlier intra-candle highs/lows happened before the position existed.
     const openSymbolTrades = this.repo.getOpenTrades(this.mode, symbol);
     for (const openTrade of openSymbolTrades) {
+      const isFullCandleAfterEntry = latestCandle.timestamp >= openTrade.opened_at;
       await this.evaluateAndExecuteTradeManagement({
         trade: openTrade,
         currentPrice: latestCandle.close,
         currentAtr: latestAtr,
         timestamp: latestCandle.timestamp,
-        candleHigh: latestCandle.high,
-        candleLow: latestCandle.low,
+        candleHigh: isFullCandleAfterEntry ? latestCandle.high : undefined,
+        candleLow: isFullCandleAfterEntry ? latestCandle.low : undefined,
         bbMiddle: latestBb?.middle,
       });
     }
@@ -305,11 +310,17 @@ export class Engine {
       this.broker.adjustBalance(-exec.feeUsd);
     }
 
-    // Anchor initial SL to actual filled entry price preserving exact SL_Distance
+    // Anchor initial SL to filled entry price, UNLESS Testnet's synthetic orderbook diverges > 0.25%
+    // from Mainnet's signal reference price (which would cause premature tick Stop-Loss triggers on Mainnet feed).
+    const priceDivergencePct =
+      signal.entryPrice > 0
+        ? Math.abs(exec.filledPrice - signal.entryPrice) / signal.entryPrice
+        : 0;
+    const slAnchorPrice = priceDivergencePct > 0.0025 ? signal.entryPrice : exec.filledPrice;
     const actualInitialSl =
       signal.side === 'LONG'
-        ? exec.filledPrice - sizing.slDistance
-        : exec.filledPrice + sizing.slDistance;
+        ? slAnchorPrice - sizing.slDistance
+        : slAnchorPrice + sizing.slDistance;
 
     const tradeRecord: TradeRecord = {
       id: crypto.randomUUID(),

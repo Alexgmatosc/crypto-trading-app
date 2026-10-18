@@ -18,8 +18,8 @@
   },
   "trendStrategy": {
     "emaBaseline": 200,
-    "donchianLookback": 20,
-    "volumeMultiplier": 1.2,
+    "donchianLookback": 30,
+    "volumeMultiplier": 1.3,
     "atrPeriod": 14,
     "slAtrMultiplier": 1.5
   },

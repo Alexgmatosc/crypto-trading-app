@@ -298,5 +298,30 @@ describe('RiskManager', () => {
     expect(mrSignal).not.toBeNull();
     expect(mrSignal!.side).toBe('LONG');
     expect(mrSignal!.strategy).toBe('MEAN_REVERSION');
+
+    // 3. TrendBreakout rejects false breakout with upper rejection wick (weak close position / body ratio)
+    const wickRejectionCandles = uptrendCandles.map((c, idx) =>
+      idx === 209
+        ? {
+            ...c,
+            open: c.open,
+            high: c.open + 1000,
+            low: c.open - 50,
+            close: c.open + 120, // huge upper wick, closes near bottom of bar (bodyRatio = 120/1050 < 0.4)
+          }
+        : c
+    );
+
+    const rejectedSignal = trendStrategy.evaluate('BTC/USDT', wickRejectionCandles, {
+      regime: 'TRENDING',
+      adx: 32,
+      bbWidth: 0.03,
+      bbUpper: 51000,
+      bbMiddle: 50000,
+      bbLower: 49000,
+      reason: 'Trending',
+    });
+
+    expect(rejectedSignal).toBeNull();
   });
 });

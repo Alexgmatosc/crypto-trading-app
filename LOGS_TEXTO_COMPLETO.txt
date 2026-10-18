@@ -1,7 +1,7 @@
 ================================================================================
 REGISTRO COMPLETO EN TEXTO PLANO — CRYPTO QUANT ENGINE (BINANCE TESTNET)
 Pensado para análisis con Gemini / Modelos LLM
-Generado: 2026-10-18T08:18:08.573Z
+Generado: 2026-10-18T08:33:03.906Z
 ================================================================================
 
 --- 1. RESUMEN DE SALDO Y CAPITAL ---
@@ -14,7 +14,7 @@ Posiciones Abiertas Actualmente: 0
 
 ================================================================================
   HISTORIAL DETALLADO DE OPERACIONES (AUDIT TRAIL EN TEXTO PLANO)
-  Modo: TESTNET_LIVE | Generado: 2026-10-18T08:18:08.563Z
+  Modo: TESTNET_LIVE | Generado: 2026-10-18T08:33:03.895Z
 ================================================================================
 
 ID         | Par        | Lado  | Estrategia      | Entrada  | Salida   | PnL (USDT) | Comision | Motivo Salida | Apertura | Cierre
@@ -48,38 +48,6 @@ f9f081c7 | ETH/USDT   | LONG  | TREND_BREAKOUT  | $2423.05 | $2411.59 | -26.75  
 
 --- 3. ÚLTIMOS LOGS CRUDOS DEL SERVIDOR (CONSOLE OUTPUT) ---
 
-    close: 81767.9
-    regime: "TRENDING"
-    adx: 28.1
-    bbWidthPct: 0.81
-    reason: "ADX (28.10) > 25 -> Strong directional trend"
-[2026-10-18 07:01:30.510] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "ETH/USDT"
-    close: 2415.63
-    regime: "TRENDING"
-    adx: 27.6
-    bbWidthPct: 1.3
-    reason: "ADX (27.60) > 25 -> Strong directional trend"
-[2026-10-18 07:01:30.854] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "SOL/USDT"
-    close: 103.79
-    regime: "NO_TRADE"
-    adx: 19.74
-    bbWidthPct: 1.35
-    reason: "BB_Width (1.35%) <= 1.50% (channel too narrow to cover fees)"
-[2026-10-18 07:01:31.171] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "DOGE/USDT"
-    close: 0.08
-    regime: "NO_TRADE"
-    adx: 18.99
-    bbWidthPct: 0.94
-    reason: "BB_Width (0.94%) <= 1.50% (channel too narrow to cover fees)"
-[2026-10-18 07:16:29.179] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "BTC/USDT"
-    close: 81797
-    regime: "TRENDING"
-    adx: 27.6
-    bbWidthPct: 0.76
     reason: "ADX (27.60) > 25 -> Strong directional trend"
 [2026-10-18 07:16:29.491] [32mINFO[39m: [36m15m candle close evaluated[39m
     symbol: "ETH/USDT"
@@ -447,5 +415,37 @@ f9f081c7 | ETH/USDT   | LONG  | TREND_BREAKOUT  | $2423.05 | $2411.59 | -26.75  
     adx: 17.93
     bbWidthPct: 1.38
     reason: "BB_Width (1.38%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-18 10:31:32.186] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81665.8
+    regime: "NO_TRADE"
+    adx: 14.52
+    bbWidthPct: 0.44
+    reason: "BB_Width (0.44%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-18 10:31:32.536] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2408.49
+    regime: "NO_TRADE"
+    adx: 14.35
+    bbWidthPct: 0.91
+    reason: "BB_Width (0.91%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-18 10:31:32.849] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 103.12
+    regime: "NO_TRADE"
+    adx: 12.73
+    bbWidthPct: 1.45
+    reason: "BB_Width (1.45%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-18 10:31:33.185] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "NO_TRADE"
+    adx: 18.03
+    bbWidthPct: 1.37
+    reason: "BB_Width (1.37%) <= 1.50% (channel too narrow to cover fees)"
+
+> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
 
 

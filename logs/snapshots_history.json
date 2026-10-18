@@ -798,5 +798,13 @@
     "balance_usdt": 4892.62728557,
     "equity_usdt": 4892.62728557,
     "drawdown_pct": 1.1818111712123986
+  },
+  {
+    "id": 1371,
+    "timestamp": 1792312293185,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4892.62728557,
+    "equity_usdt": 4892.62728557,
+    "drawdown_pct": 1.1818111712123986
   }
 ]

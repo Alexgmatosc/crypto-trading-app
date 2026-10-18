@@ -4449,3 +4449,35 @@
     adx: 17.93
     bbWidthPct: 1.38
     reason: "BB_Width (1.38%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-18 10:31:32.186] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81665.8
+    regime: "NO_TRADE"
+    adx: 14.52
+    bbWidthPct: 0.44
+    reason: "BB_Width (0.44%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-18 10:31:32.536] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2408.49
+    regime: "NO_TRADE"
+    adx: 14.35
+    bbWidthPct: 0.91
+    reason: "BB_Width (0.91%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-18 10:31:32.849] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 103.12
+    regime: "NO_TRADE"
+    adx: 12.73
+    bbWidthPct: 1.45
+    reason: "BB_Width (1.45%) <= 1.50% (channel too narrow to cover fees)"
+[2026-10-18 10:31:33.185] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08
+    regime: "NO_TRADE"
+    adx: 18.03
+    bbWidthPct: 1.37
+    reason: "BB_Width (1.37%) <= 1.50% (channel too narrow to cover fees)"
+
+> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
