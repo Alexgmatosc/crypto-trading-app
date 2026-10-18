@@ -2,10 +2,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { repository } from './db/repository.js';
 import type { ExecutionMode } from './types/index.js';
+import { formatPrice } from './utils/formatPrice.js';
 
-export function formatPrice(price: number): number {
-  return price < 1 ? Number(price.toFixed(5)) : Number(price.toFixed(2));
-}
+export { formatPrice };
 
 export function exportHistoricalLogs(mode: ExecutionMode = 'TESTNET_LIVE'): void {
   const rootDir = process.cwd();

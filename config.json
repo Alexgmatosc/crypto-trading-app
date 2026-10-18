@@ -1,7 +1,7 @@
 {
   "symbols": ["BTC/USDT", "ETH/USDT", "SOL/USDT", "DOGE/USDT"],
   "timeframe": "15m",
-  "initialBalance": 10000,
+  "initialBalance": 5000,
   "leverage": 2,
   "riskPerTrade": 0.01,
   "maxConcurrentPositions": 3,
@@ -20,7 +20,7 @@
   "trendStrategy": {
     "emaBaseline": 200,
     "donchianLookback": 30,
-    "volumeMultiplier": 1.3,
+    "volumeMultiplier": 1.4,
     "atrPeriod": 14,
     "slAtrMultiplier": 2.2
   },

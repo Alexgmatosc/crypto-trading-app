@@ -13,7 +13,8 @@ import type {
   Signal,
   TradeRecord,
 } from '../types/index.js';
-import { formatPrice, logger } from '../utils/logger.js';
+import { formatPrice } from '../utils/formatPrice.js';
+import { logger } from '../utils/logger.js';
 import { RegimeDetector } from './RegimeDetector.js';
 import { RiskManager } from './RiskManager.js';
 import { MeanReversionStrategy } from './strategies/MeanReversion.js';
@@ -47,7 +48,7 @@ export class Engine {
   // Tracks partial realized PnL by UTC day timestamp for accurate Daily Kill Switch accounting
   private readonly dailyRealizedPnlByDayUtc = new Map<number, number>();
   // Prevents opening a new trade on the exact same 15m candle where a trade was just opened or closed
-  private readonly lastTradedCandleBySymbol = new Map<string, number>();
+  private readonly lastCandleTsBySymbol = new Map<string, number>();
   // Enforces a 2-candle (30m) cooldown per symbol after a Stop Loss exit to prevent whipsaw chaining
   private readonly slCooldownUntilBySymbol = new Map<string, number>();
 
@@ -62,6 +63,18 @@ export class Engine {
     this.meanReversionStrategy =
       deps.meanReversionStrategy ?? new MeanReversionStrategy(undefined, this.config);
     this.peakEquityUsdt = 0;
+
+    this.hydrateDailyRealizedPnlFromDb();
+  }
+
+  private hydrateDailyRealizedPnlFromDb(): void {
+    const allTrades = this.repo.getAllTrades(this.mode);
+    for (const t of allTrades) {
+      const refTs = t.closed_at ?? t.opened_at;
+      const dayStartUtcMs = Math.floor(refTs / 86_400_000) * 86_400_000;
+      const prev = this.dailyRealizedPnlByDayUtc.get(dayStartUtcMs) ?? 0;
+      this.dailyRealizedPnlByDayUtc.set(dayStartUtcMs, prev + t.realized_pnl);
+    }
   }
 
   public getRiskManager(): RiskManager {
@@ -144,7 +157,7 @@ export class Engine {
     }
 
     // 4. Verify same-candle re-entry guard, Stop-Loss cooldown, and RiskManager position limits
-    if (this.lastTradedCandleBySymbol.get(symbol) === latestCandle.timestamp) {
+    if (this.lastCandleTsBySymbol.get(symbol) === latestCandle.timestamp) {
       return;
     }
     const slCooldownUntil = this.slCooldownUntilBySymbol.get(symbol) ?? 0;
@@ -181,7 +194,7 @@ export class Engine {
     if (signal) {
       const opened = await this.openPositionFromSignal(signal);
       if (opened) {
-        this.lastTradedCandleBySymbol.set(symbol, latestCandle.timestamp);
+        this.lastCandleTsBySymbol.set(symbol, latestCandle.timestamp);
       }
     }
   }
@@ -335,33 +348,12 @@ export class Engine {
       this.broker.adjustBalance(-exec.feeUsd);
     }
 
-    // Use a homogeneous reference entry price for both entry_price and actualInitialSl so that
-    // RiskManager.getOneR(trade) = |entry_price - initial_sl| is NEVER distorted when Testnet's
-    // synthetic orderbook diverges from Mainnet's price feed (> 0.25% / > 0.50%).
-    const priceDivergencePct =
-      signal.entryPrice > 0
-        ? Math.abs(exec.filledPrice - signal.entryPrice) / signal.entryPrice
-        : 0;
-
-    if (priceDivergencePct > 0.005) {
-      logger.warn(
-        {
-          symbol: signal.symbol,
-          side: signal.side,
-          signalEntryPrice: formatPrice(signal.entryPrice),
-          testnetFilledPrice: formatPrice(exec.filledPrice),
-          divergencePct: Number((priceDivergencePct * 100).toFixed(2)),
-        },
-        'Testnet orderbook diverged > 0.5% from Mainnet feed — anchoring entry_price and initial_sl homogeneously to Mainnet reference price'
-      );
-    }
-
-    const effectiveEntryPrice =
-      priceDivergencePct > 0.0025 ? signal.entryPrice : exec.filledPrice;
+    // Anchor initial SL directly to exec.filledPrice by exact sizing.slDistance so that
+    // getOneR(trade) = |entry_price - initial_sl| is never distorted.
     const actualInitialSl =
       signal.side === 'LONG'
-        ? effectiveEntryPrice - sizing.slDistance
-        : effectiveEntryPrice + sizing.slDistance;
+        ? exec.filledPrice - sizing.slDistance
+        : exec.filledPrice + sizing.slDistance;
 
     const tradeRecord: TradeRecord = {
       id: crypto.randomUUID(),
@@ -370,7 +362,7 @@ export class Engine {
       strategy: signal.strategy,
       regime_at_entry: signal.regime,
       side: signal.side,
-      entry_price: effectiveEntryPrice,
+      entry_price: exec.filledPrice,
       exit_price: null,
       initial_size: exec.filledSize,
       remaining_size: exec.filledSize,
@@ -387,7 +379,7 @@ export class Engine {
 
     this.repo.insertTrade(tradeRecord);
     this.addDailyRealizedPnl(exec.timestamp, -exec.feeUsd);
-    this.lastTradedCandleBySymbol.set(signal.symbol, signal.timestamp);
+    this.lastCandleTsBySymbol.set(signal.symbol, signal.timestamp);
 
     logger.info(
       {
@@ -542,7 +534,7 @@ export class Engine {
     });
 
     this.addDailyRealizedPnl(timestamp, netPnlDelta);
-    this.lastTradedCandleBySymbol.set(trade.symbol, timestamp);
+    this.lastCandleTsBySymbol.set(trade.symbol, timestamp);
 
     if (exitReason === 'STOP_LOSS') {
       // Block new entries in this symbol for 2 candles of 15m (30 minutes)
@@ -566,6 +558,7 @@ export class Engine {
 
   /**
    * Evaluates the Daily Kill Switch (-4.0% daily loss limit) and liquidates all open positions if breached.
+   * Queries SQLite trades closed today as a persistent floor so process restarts never reset daily losses.
    */
   private async checkAndEnforceKillSwitch(
     timestamp: number,
@@ -581,7 +574,26 @@ export class Engine {
     }
 
     const dayStartUtcMs = Math.floor(timestamp / 86_400_000) * 86_400_000;
-    const dailyRealizedPnl = this.dailyRealizedPnlByDayUtc.get(dayStartUtcMs) ?? 0;
+    const dayEndUtcMs = dayStartUtcMs + 86_400_000;
+
+    let dbDailyRealizedPnl = 0;
+    const closedTrades = this.repo.getClosedTrades(this.mode);
+    for (const t of closedTrades) {
+      const closedTs = t.closed_at ?? t.opened_at;
+      if (closedTs >= dayStartUtcMs && closedTs < dayEndUtcMs) {
+        dbDailyRealizedPnl += t.realized_pnl;
+      }
+    }
+    for (const t of openTrades) {
+      if (t.opened_at >= dayStartUtcMs && t.opened_at < dayEndUtcMs) {
+        dbDailyRealizedPnl += t.realized_pnl;
+      }
+    }
+
+    const memDailyRealizedPnl = this.dailyRealizedPnlByDayUtc.get(dayStartUtcMs);
+    const dailyRealizedPnl = memDailyRealizedPnl !== undefined
+      ? Math.min(memDailyRealizedPnl, dbDailyRealizedPnl)
+      : dbDailyRealizedPnl;
 
     const ksState = this.riskManager.evaluateDailyKillSwitch({
       currentTimestamp: timestamp,

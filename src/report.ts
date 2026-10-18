@@ -9,6 +9,7 @@ import type {
   StrategyPerformanceBreakdown,
   TradeRecord,
 } from './types/index.js';
+import { formatPrice } from './utils/formatPrice.js';
 
 function computeStrategyBreakdown(
   strategy: StrategyName,
@@ -150,9 +151,7 @@ export function generateModeReport(
   };
 }
 
-export function formatPrice(price: number): number {
-  return Math.abs(price) < 1 ? Number(price.toFixed(5)) : Number(price.toFixed(2));
-}
+export { formatPrice };
 
 export function printReportToConsole(
   report: BacktestReport,
