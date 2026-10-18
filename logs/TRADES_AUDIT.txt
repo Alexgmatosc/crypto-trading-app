@@ -1,6 +1,6 @@
 ================================================================================
   HISTORIAL DETALLADO DE OPERACIONES (AUDIT TRAIL EN TEXTO PLANO)
-  Modo: TESTNET_LIVE | Generado: 2026-10-17T21:57:58.126Z
+  Modo: TESTNET_LIVE | Generado: 2026-10-18T08:18:08.563Z
 ================================================================================
 
 ID         | Par        | Lado  | Estrategia      | Entrada  | Salida   | PnL (USDT) | Comision | Motivo Salida | Apertura | Cierre
@@ -28,4 +28,5 @@ f6c76e11 | ETH/USDT   | SHORT | TREND_BREAKOUT  | $2393.00 | $2402.45 | -23.37  
 53239696 | ETH/USDT   | SHORT | TREND_BREAKOUT  | $2393.00 | $2402.45 | -23.30     | $4.72    | STOP_LOSS     | 23:36:02 | 23:15:00
 9f2efe04 | ETH/USDT   | SHORT | TREND_BREAKOUT  | $2393.00 | $2402.45 | -23.28     | $4.71    | STOP_LOSS     | 23:36:10 | 23:15:00
 a3d6712b | ETH/USDT   | SHORT | TREND_BREAKOUT  | $2393.00 | $2393.00 | -2.35      | $2.35    | KILL_SWITCH   | 23:36:17 | 23:39:07
-41eaf154 | ETH/USDT   | SHORT | TREND_BREAKOUT  | $2380.00 | —        | -2.35      | $2.35    | OPEN          | 23:45:28 | —
+41eaf154 | ETH/USDT   | SHORT | TREND_BREAKOUT  | $2380.00 | $2393.79 | -31.94     | $4.71    | STOP_LOSS     | 23:45:28 | 0:41:52
+f9f081c7 | ETH/USDT   | LONG  | TREND_BREAKOUT  | $2423.05 | $2411.59 | -26.75     | $4.66    | STOP_LOSS     | 5:16:22 | 7:24:46
