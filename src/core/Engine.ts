@@ -13,11 +13,13 @@ import type {
   Signal,
   TradeRecord,
 } from '../types/index.js';
-import { logger } from '../utils/logger.js';
+import { formatPrice, logger } from '../utils/logger.js';
 import { RegimeDetector } from './RegimeDetector.js';
 import { RiskManager } from './RiskManager.js';
 import { MeanReversionStrategy } from './strategies/MeanReversion.js';
 import { TrendBreakoutStrategy } from './strategies/TrendBreakout.js';
+
+export { formatPrice };
 
 export interface EngineDependencies {
   mode: ExecutionMode;
@@ -44,6 +46,10 @@ export class Engine {
 
   // Tracks partial realized PnL by UTC day timestamp for accurate Daily Kill Switch accounting
   private readonly dailyRealizedPnlByDayUtc = new Map<number, number>();
+  // Prevents opening a new trade on the exact same 15m candle where a trade was just opened or closed
+  private readonly lastTradedCandleBySymbol = new Map<string, number>();
+  // Enforces a 2-candle (30m) cooldown per symbol after a Stop Loss exit to prevent whipsaw chaining
+  private readonly slCooldownUntilBySymbol = new Map<string, number>();
 
   constructor(deps: EngineDependencies) {
     this.mode = deps.mode;
@@ -125,7 +131,7 @@ export class Engine {
     logger.info(
       {
         symbol,
-        close: Number(latestCandle.close.toFixed(2)),
+        close: formatPrice(latestCandle.close),
         regime: regimeState.regime,
         adx: Number(regimeState.adx.toFixed(2)),
         bbWidthPct: Number((regimeState.bbWidth * 100).toFixed(2)),
@@ -137,7 +143,23 @@ export class Engine {
       return;
     }
 
-    // 4. Verify RiskManager position limits and Kill Switch lock before evaluating entry signals
+    // 4. Verify same-candle re-entry guard, Stop-Loss cooldown, and RiskManager position limits
+    if (this.lastTradedCandleBySymbol.get(symbol) === latestCandle.timestamp) {
+      return;
+    }
+    const slCooldownUntil = this.slCooldownUntilBySymbol.get(symbol) ?? 0;
+    if (latestCandle.timestamp < slCooldownUntil) {
+      logger.debug(
+        {
+          symbol,
+          candleTimestamp: latestCandle.timestamp,
+          cooldownUntil: slCooldownUntil,
+        },
+        'Skipping entry evaluation — symbol in post-StopLoss cooldown'
+      );
+      return;
+    }
+
     const allOpenTrades = this.repo.getOpenTrades(this.mode);
     const hasOpenInSymbol = allOpenTrades.some((t) => t.symbol === symbol);
     const entryPermission = this.riskManager.canOpenNewPosition({
@@ -157,7 +179,10 @@ export class Engine {
         : this.meanReversionStrategy.evaluate(symbol, candles, regimeState);
 
     if (signal) {
-      await this.openPositionFromSignal(signal);
+      const opened = await this.openPositionFromSignal(signal);
+      if (opened) {
+        this.lastTradedCandleBySymbol.set(symbol, latestCandle.timestamp);
+      }
     }
   }
 
@@ -181,7 +206,7 @@ export class Engine {
       const symbolCandles = candlesBySymbol[trade.symbol] ?? [];
       const currentAtr =
         MathEngine.getLatestATR(symbolCandles, this.config.trendStrategy.atrPeriod) ??
-        this.riskManager.getOneR(trade) / 1.5;
+        this.riskManager.getOneR(trade) / this.config.trendStrategy.slAtrMultiplier;
       const latestBb = MathEngine.getLatestBollingerBands(
         symbolCandles,
         this.config.meanReversionStrategy.bbPeriod,
@@ -252,8 +277,8 @@ export class Engine {
           tradeId: trade.id,
           symbol: trade.symbol,
           side: trade.side,
-          oldSl: trade.current_sl,
-          newSl: decision.newSl,
+          oldSl: formatPrice(trade.current_sl),
+          newSl: formatPrice(decision.newSl),
         },
         'Updated dynamic Trailing Stop Loss'
       );
@@ -310,17 +335,33 @@ export class Engine {
       this.broker.adjustBalance(-exec.feeUsd);
     }
 
-    // Anchor initial SL to filled entry price, UNLESS Testnet's synthetic orderbook diverges > 0.25%
-    // from Mainnet's signal reference price (which would cause premature tick Stop-Loss triggers on Mainnet feed).
+    // Use a homogeneous reference entry price for both entry_price and actualInitialSl so that
+    // RiskManager.getOneR(trade) = |entry_price - initial_sl| is NEVER distorted when Testnet's
+    // synthetic orderbook diverges from Mainnet's price feed (> 0.25% / > 0.50%).
     const priceDivergencePct =
       signal.entryPrice > 0
         ? Math.abs(exec.filledPrice - signal.entryPrice) / signal.entryPrice
         : 0;
-    const slAnchorPrice = priceDivergencePct > 0.0025 ? signal.entryPrice : exec.filledPrice;
+
+    if (priceDivergencePct > 0.005) {
+      logger.warn(
+        {
+          symbol: signal.symbol,
+          side: signal.side,
+          signalEntryPrice: formatPrice(signal.entryPrice),
+          testnetFilledPrice: formatPrice(exec.filledPrice),
+          divergencePct: Number((priceDivergencePct * 100).toFixed(2)),
+        },
+        'Testnet orderbook diverged > 0.5% from Mainnet feed — anchoring entry_price and initial_sl homogeneously to Mainnet reference price'
+      );
+    }
+
+    const effectiveEntryPrice =
+      priceDivergencePct > 0.0025 ? signal.entryPrice : exec.filledPrice;
     const actualInitialSl =
       signal.side === 'LONG'
-        ? slAnchorPrice - sizing.slDistance
-        : slAnchorPrice + sizing.slDistance;
+        ? effectiveEntryPrice - sizing.slDistance
+        : effectiveEntryPrice + sizing.slDistance;
 
     const tradeRecord: TradeRecord = {
       id: crypto.randomUUID(),
@@ -329,7 +370,7 @@ export class Engine {
       strategy: signal.strategy,
       regime_at_entry: signal.regime,
       side: signal.side,
-      entry_price: exec.filledPrice,
+      entry_price: effectiveEntryPrice,
       exit_price: null,
       initial_size: exec.filledSize,
       remaining_size: exec.filledSize,
@@ -346,6 +387,7 @@ export class Engine {
 
     this.repo.insertTrade(tradeRecord);
     this.addDailyRealizedPnl(exec.timestamp, -exec.feeUsd);
+    this.lastTradedCandleBySymbol.set(signal.symbol, signal.timestamp);
 
     logger.info(
       {
@@ -355,9 +397,9 @@ export class Engine {
         strategy: tradeRecord.strategy,
         regime: tradeRecord.regime_at_entry,
         side: tradeRecord.side,
-        entryPrice: Number(tradeRecord.entry_price.toFixed(2)),
+        entryPrice: formatPrice(tradeRecord.entry_price),
         size: Number(tradeRecord.initial_size.toFixed(6)),
-        initialSl: Number(tradeRecord.initial_sl.toFixed(2)),
+        initialSl: formatPrice(tradeRecord.initial_sl),
         riskUsd: Number(sizing.riskUsd.toFixed(2)),
       },
       'Opened new position'
@@ -377,15 +419,30 @@ export class Engine {
     timestamp: number
   ): Promise<void> {
     const closeOrderSide = trade.side === 'LONG' ? 'SELL' : 'BUY';
-    const exec = await this.broker.executeMarketOrder({
-      symbol: trade.symbol,
-      orderSide: closeOrderSide,
-      positionSide: trade.side,
-      sizeCoins: closeSize,
-      referencePrice,
-      timestamp,
-      reduceOnly: true,
-    });
+    let exec: OrderExecutionResult;
+    try {
+      exec = await this.broker.executeMarketOrder({
+        symbol: trade.symbol,
+        orderSide: closeOrderSide,
+        positionSide: trade.side,
+        sizeCoins: closeSize,
+        referencePrice,
+        timestamp,
+        reduceOnly: true,
+      });
+    } catch (err) {
+      logger.error(
+        {
+          tradeId: trade.id,
+          symbol: trade.symbol,
+          side: trade.side,
+          closeSize,
+          error: (err as Error).message,
+        },
+        'Failed to execute partial scale-out order on broker — will retry on next evaluation'
+      );
+      return;
+    }
 
     const grossPnl =
       (trade.side === 'LONG'
@@ -416,9 +473,9 @@ export class Engine {
         side: trade.side,
         closedSize: Number(exec.filledSize.toFixed(6)),
         remainingSize: Number(remainingSize.toFixed(6)),
-        fillPrice: Number(exec.filledPrice.toFixed(2)),
+        fillPrice: formatPrice(exec.filledPrice),
         netPnlDelta: Number(netPnlDelta.toFixed(2)),
-        newBreakEvenSl: Number(newBreakEvenSl.toFixed(2)),
+        newBreakEvenSl: formatPrice(newBreakEvenSl),
       },
       'Executed 1.5R 50% Scale-Out and moved SL to Break-Even + Costs'
     );
@@ -438,15 +495,31 @@ export class Engine {
     }
 
     const closeOrderSide = trade.side === 'LONG' ? 'SELL' : 'BUY';
-    const exec = await this.broker.executeMarketOrder({
-      symbol: trade.symbol,
-      orderSide: closeOrderSide,
-      positionSide: trade.side,
-      sizeCoins: trade.remaining_size,
-      referencePrice,
-      timestamp,
-      reduceOnly: true,
-    });
+    let exec: OrderExecutionResult;
+    try {
+      exec = await this.broker.executeMarketOrder({
+        symbol: trade.symbol,
+        orderSide: closeOrderSide,
+        positionSide: trade.side,
+        sizeCoins: trade.remaining_size,
+        referencePrice,
+        timestamp,
+        reduceOnly: true,
+      });
+    } catch (err) {
+      logger.error(
+        {
+          tradeId: trade.id,
+          symbol: trade.symbol,
+          side: trade.side,
+          exitReason,
+          remainingSize: trade.remaining_size,
+          error: (err as Error).message,
+        },
+        'Failed to execute full position close order on broker — keeping trade OPEN for safe retry'
+      );
+      return;
+    }
 
     const grossPnl =
       (trade.side === 'LONG'
@@ -469,6 +542,12 @@ export class Engine {
     });
 
     this.addDailyRealizedPnl(timestamp, netPnlDelta);
+    this.lastTradedCandleBySymbol.set(trade.symbol, timestamp);
+
+    if (exitReason === 'STOP_LOSS') {
+      // Block new entries in this symbol for 2 candles of 15m (30 minutes)
+      this.slCooldownUntilBySymbol.set(trade.symbol, timestamp + 30 * 60 * 1000);
+    }
 
     logger.info(
       {
@@ -477,8 +556,8 @@ export class Engine {
         strategy: trade.strategy,
         side: trade.side,
         exitReason,
-        entryPrice: Number(trade.entry_price.toFixed(2)),
-        exitPrice: Number(exec.filledPrice.toFixed(2)),
+        entryPrice: formatPrice(trade.entry_price),
+        exitPrice: formatPrice(exec.filledPrice),
         totalRealizedPnl: Number((updated?.realized_pnl ?? netPnlDelta).toFixed(2)),
       },
       'Closed position completely'

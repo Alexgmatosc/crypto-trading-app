@@ -19,7 +19,7 @@ export const StrategyConfigSchema = z.object({
     adxPeriod: z.number().int().positive(),
     trendingThreshold: z.number().positive(),
     rangingThreshold: z.number().positive(),
-    minBbWidth: z.number().positive().default(0.015),
+    minBbWidth: z.number().positive().default(0.0065),
   }),
   trendStrategy: z.object({
     emaBaseline: z.number().int().positive(),

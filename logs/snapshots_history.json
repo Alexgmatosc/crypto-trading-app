@@ -806,5 +806,29 @@
     "balance_usdt": 4892.62728557,
     "equity_usdt": 4892.62728557,
     "drawdown_pct": 1.1818111712123986
+  },
+  {
+    "id": 1372,
+    "timestamp": 1792312391791,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4892.62728557,
+    "equity_usdt": 4892.62728557,
+    "drawdown_pct": 0
+  },
+  {
+    "id": 1373,
+    "timestamp": 1792313182630,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4892.62728557,
+    "equity_usdt": 4892.62728557,
+    "drawdown_pct": 0
+  },
+  {
+    "id": 1374,
+    "timestamp": 1792314093761,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4892.62728557,
+    "equity_usdt": 4892.62728557,
+    "drawdown_pct": 0
   }
 ]

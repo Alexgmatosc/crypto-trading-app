@@ -31,13 +31,13 @@ function createBaseTrade(overrides?: Partial<TradeRecord>): TradeRecord {
 }
 
 describe('RiskManager', () => {
-  it('sizes LONG and SHORT positions so a Stop Loss never drains more than 1.5% (+ fees) of balance', () => {
+  it('sizes LONG and SHORT positions so a Stop Loss never drains more than 1.0% (+ fees) of balance', () => {
     const rm = new RiskManager();
     const balance = 10000;
     const entryPrice = 60000;
-    const atr = 800; // 1.5 * 800 = 1200 SL distance (2% price move -> not margin capped)
+    const atr = 800; // 2.2 * 800 = 1760 SL distance (2.93% price move -> not margin capped)
 
-    // LONG Trend Breakout
+    // LONG Trend Breakout (2.2 * ATR)
     const longSizing = rm.calculatePositionSize({
       availableBalance: balance,
       entryPrice,
@@ -46,16 +46,16 @@ describe('RiskManager', () => {
       strategy: 'TREND_BREAKOUT',
     });
 
-    expect(longSizing.slDistance).toBeCloseTo(1200, 6);
-    expect(longSizing.initialSl).toBeCloseTo(58800, 6);
-    expect(longSizing.riskUsd).toBeCloseTo(150, 6); // 1.5% of 10,000 = $150
-    expect(longSizing.sizeCoins).toBeCloseTo(150 / 1200, 6);
+    expect(longSizing.slDistance).toBeCloseTo(1760, 6);
+    expect(longSizing.initialSl).toBeCloseTo(58240, 6);
+    expect(longSizing.riskUsd).toBeCloseTo(100, 6); // 1.0% of 10,000 = $100
+    expect(longSizing.sizeCoins).toBeCloseTo(100 / 1760, 6);
 
-    // Verify gross loss at SL is <= 1.5% of balance
+    // Verify gross loss at SL is <= 1.0% of balance
     const grossLossLong = (entryPrice - longSizing.initialSl) * longSizing.sizeCoins;
-    expect(grossLossLong).toBeLessThanOrEqual(balance * 0.015 + 1e-6);
+    expect(grossLossLong).toBeLessThanOrEqual(balance * strategyConfig.riskPerTrade + 1e-6);
 
-    // SHORT Mean Reversion (1.2 * ATR)
+    // SHORT Mean Reversion (1.8 * ATR)
     const shortSizing = rm.calculatePositionSize({
       availableBalance: balance,
       entryPrice,
@@ -64,19 +64,19 @@ describe('RiskManager', () => {
       strategy: 'MEAN_REVERSION',
     });
 
-    expect(shortSizing.slDistance).toBeCloseTo(960, 6);
-    expect(shortSizing.initialSl).toBeCloseTo(60960, 6);
-    expect(shortSizing.riskUsd).toBeCloseTo(150, 6);
+    expect(shortSizing.slDistance).toBeCloseTo(1440, 6);
+    expect(shortSizing.initialSl).toBeCloseTo(61440, 6);
+    expect(shortSizing.riskUsd).toBeCloseTo(100, 6);
 
     const grossLossShort = (shortSizing.initialSl - entryPrice) * shortSizing.sizeCoins;
-    expect(grossLossShort).toBeLessThanOrEqual(balance * 0.015 + 1e-6);
+    expect(grossLossShort).toBeLessThanOrEqual(balance * strategyConfig.riskPerTrade + 1e-6);
   });
 
-  it('enforces the 95% leverage margin cap when ATR is very tight', () => {
+  it('enforces the per-slot multi-asset leverage margin cap when ATR is very tight', () => {
     const rm = new RiskManager();
     const balance = 10000;
     const entryPrice = 50000;
-    const tinyAtr = 100; // SL distance = 150 (0.3% move), uncapped notional would be $50,000 > $9,500
+    const tinyAtr = 100; // SL distance = 220 (0.44% move), uncapped notional would be $22,727 > $6,000 per-slot cap
 
     const sizing = rm.calculatePositionSize({
       availableBalance: balance,
@@ -86,10 +86,11 @@ describe('RiskManager', () => {
       strategy: 'TREND_BREAKOUT',
     });
 
-    const maxAllowedNotional = balance * strategyConfig.leverage * 0.95;
+    const maxSlotMarginUsd = balance / Math.max(1, strategyConfig.maxConcurrentPositions);
+    const maxAllowedNotional = maxSlotMarginUsd * strategyConfig.leverage * 0.9;
     expect(sizing.notionalUsd).toBeCloseTo(maxAllowedNotional, 6);
     expect(sizing.sizeCoins).toBeCloseTo(maxAllowedNotional / entryPrice, 6);
-    expect(sizing.riskUsd).toBeLessThan(balance * 0.015);
+    expect(sizing.riskUsd).toBeLessThan(balance * strategyConfig.riskPerTrade);
   });
 
   it('triggers 50% Scale-Out at 1.5R and moves SL to Break-Even + Costs making the trade risk-free (LONG & SHORT)', () => {
@@ -168,11 +169,11 @@ describe('RiskManager', () => {
     const evalTrailLong = rm.evaluatePosition({
       trade: longAfterTp1,
       currentPrice: 52500, // 2.5R
-      currentAtr: 500, // 1.5 * 500 = 750 -> New SL = 52,500 - 750 = 51,750
+      currentAtr: 500, // 2.0 * 500 = 1000 -> New SL = 52,500 - 1000 = 51,500
     });
 
     expect(evalTrailLong.shouldUpdateSl).toBe(true);
-    expect(evalTrailLong.newSl).toBeCloseTo(51750, 6);
+    expect(evalTrailLong.newSl).toBeCloseTo(51500, 6);
 
     // SHORT after TP1 hit: Entry = 50,000, One_R = 1,000 -> 2.0R = 48,000
     const shortAfterTp1 = createBaseTrade({
@@ -188,11 +189,11 @@ describe('RiskManager', () => {
     const evalTrailShort = rm.evaluatePosition({
       trade: shortAfterTp1,
       currentPrice: 47500, // 2.5R
-      currentAtr: 500, // 1.5 * 500 = 750 -> New SL = 47,500 + 750 = 48,250
+      currentAtr: 500, // 2.0 * 500 = 1000 -> New SL = 47,500 + 1000 = 48,500
     });
 
     expect(evalTrailShort.shouldUpdateSl).toBe(true);
-    expect(evalTrailShort.newSl).toBeCloseTo(48250, 6);
+    expect(evalTrailShort.newSl).toBeCloseTo(48500, 6);
   });
 
   it('triggers Daily Kill Switch at -4.0% daily drawdown and locks new entries for 24 hours', () => {
@@ -323,5 +324,13 @@ describe('RiskManager', () => {
     });
 
     expect(rejectedSignal).toBeNull();
+  });
+
+  it('formats altcoin prices (< $1) with 5 decimals and major assets (>= $1) with 2 decimals', async () => {
+    const { formatPrice } = await import('../src/core/Engine.js');
+    expect(formatPrice(0.084256)).toBe(0.08426);
+    expect(formatPrice(0.12345)).toBe(0.12345);
+    expect(formatPrice(2415.6789)).toBe(2415.68);
+    expect(formatPrice(65432.1)).toBe(65432.1);
   });
 });

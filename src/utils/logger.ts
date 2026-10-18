@@ -16,3 +16,11 @@ export const logger = pino({
         },
       },
 });
+
+export function formatPrice(price: number): number {
+  return Math.abs(price) < 1 ? Number(price.toFixed(5)) : Number(price.toFixed(2));
+}
+
+export function formatPriceStr(price: number): string {
+  return Math.abs(price) < 1 ? price.toFixed(5) : price.toFixed(2);
+}

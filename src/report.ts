@@ -150,6 +150,10 @@ export function generateModeReport(
   };
 }
 
+export function formatPrice(price: number): number {
+  return Math.abs(price) < 1 ? Number(price.toFixed(5)) : Number(price.toFixed(2));
+}
+
 export function printReportToConsole(
   report: BacktestReport,
   openTrades: TradeRecord[],
@@ -158,6 +162,7 @@ export function printReportToConsole(
   const formatUsd = (val: number) => `${val >= 0 ? '+' : ''}$${val.toFixed(2)}`;
   const formatPct = (val: number) => `${val >= 0 ? '+' : ''}${val.toFixed(2)}%`;
   const formatPf = (pf: number) => (Number.isFinite(pf) ? pf.toFixed(2) : 'INF');
+  const formatAssetPrice = (price: number) => `$${formatPrice(price)}`;
 
   console.log('\n================================================================================');
   console.log(`  ADAPTIVE MULTI-REGIME CRYPTO QUANT ENGINE - PERFORMANCE REPORT [${report.mode}]`);
@@ -254,9 +259,9 @@ export function printReportToConsole(
         Strategy: t.strategy,
         Regime: t.regime_at_entry,
         Side: t.side,
-        Entry: `$${t.entry_price.toFixed(2)}`,
+        Entry: formatAssetPrice(t.entry_price),
         'Rem. Size': Number(t.remaining_size.toFixed(5)),
-        'Current SL': `$${t.current_sl.toFixed(2)}`,
+        'Current SL': formatAssetPrice(t.current_sl),
         'TP1 (1.5R)': t.tp1_hit === 1 ? 'HIT (BE Active)' : 'PENDING',
         'Realized PnL': formatUsd(t.realized_pnl),
         'Opened At': new Date(t.opened_at).toISOString(),
@@ -273,8 +278,8 @@ export function printReportToConsole(
         Symbol: t.symbol,
         Strategy: t.strategy,
         Side: t.side,
-        Entry: `$${t.entry_price.toFixed(2)}`,
-        Exit: t.exit_price ? `$${t.exit_price.toFixed(2)}` : 'N/A',
+        Entry: formatAssetPrice(t.entry_price),
+        Exit: t.exit_price ? formatAssetPrice(t.exit_price) : 'N/A',
         'TP1 Hit': t.tp1_hit === 1 ? 'YES' : 'NO',
         'Exit Reason': t.exit_reason ?? 'N/A',
         'Net PnL ($)': formatUsd(t.realized_pnl),

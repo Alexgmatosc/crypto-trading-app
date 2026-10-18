@@ -3,6 +3,10 @@ import path from 'node:path';
 import { repository } from './db/repository.js';
 import type { ExecutionMode } from './types/index.js';
 
+export function formatPrice(price: number): number {
+  return price < 1 ? Number(price.toFixed(5)) : Number(price.toFixed(2));
+}
+
 export function exportHistoricalLogs(mode: ExecutionMode = 'TESTNET_LIVE'): void {
   const rootDir = process.cwd();
   const logsDir = path.resolve(rootDir, 'logs');
@@ -55,8 +59,8 @@ Generado: ${new Date().toISOString()}
     const sym = t.symbol.padEnd(10);
     const side = t.side.padEnd(5);
     const strat = t.strategy.slice(0, 15).padEnd(15);
-    const entry = ('$' + Number(t.entry_price).toFixed(2)).padEnd(8);
-    const exit = (t.exit_price ? '$' + Number(t.exit_price).toFixed(2) : '—').padEnd(8);
+    const entry = ('$' + formatPrice(Number(t.entry_price))).padEnd(8);
+    const exit = (t.exit_price ? '$' + formatPrice(Number(t.exit_price)) : '—').padEnd(8);
     const pnl = ((t.realized_pnl >= 0 ? '+' : '') + Number(t.realized_pnl || 0).toFixed(2)).padEnd(10);
     const fee = ('$' + Number(t.fees_paid || 0).toFixed(2)).padEnd(8);
     const reason = (t.exit_reason || t.status).padEnd(13);

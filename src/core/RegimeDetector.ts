@@ -21,15 +21,15 @@ export class RegimeDetector {
       rangingThreshold: customConfig?.rangingThreshold ?? fullConfig.regime.rangingThreshold,
       bbPeriod: customConfig?.bbPeriod ?? fullConfig.meanReversionStrategy.bbPeriod,
       bbStdDev: customConfig?.bbStdDev ?? fullConfig.meanReversionStrategy.bbStdDev,
-      minBbWidth: customConfig?.minBbWidth ?? fullConfig.regime.minBbWidth ?? 0.015,
+      minBbWidth: customConfig?.minBbWidth ?? fullConfig.regime.minBbWidth ?? 0.0065,
     };
   }
 
   /**
    * Classifies the market regime at the close of a 15m candle:
-   * - TRENDING: ADX(14) > 25
-   * - RANGING: ADX(14) < 20 AND BB_Width > 0.015
-   * - NO_TRADE: 20 <= ADX(14) <= 25 OR BB_Width <= 0.015 (or insufficient data)
+   * - TRENDING: ADX(14) > trendingThreshold (23)
+   * - RANGING: ADX(14) < rangingThreshold (20) AND BB_Width > minBbWidth (0.0065)
+   * - NO_TRADE: rangingThreshold <= ADX(14) <= trendingThreshold OR BB_Width <= minBbWidth (or insufficient data)
    */
   public detect(candles: Candle[]): RegimeState {
     const minRequiredCandles = Math.max(this.config.adxPeriod * 2, this.config.bbPeriod);

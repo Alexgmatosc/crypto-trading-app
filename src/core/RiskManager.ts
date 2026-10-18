@@ -79,7 +79,8 @@ export class RiskManager {
     let sizeCoins = targetRiskUsd / slDistance;
     let notionalUsd = sizeCoins * entryPrice;
 
-    const maxNotionalUsd = availableBalance * this.config.leverage * 0.95;
+    const maxSlotMarginUsd = availableBalance / Math.max(1, this.config.maxConcurrentPositions);
+    const maxNotionalUsd = maxSlotMarginUsd * this.config.leverage * 0.90;
     if (notionalUsd > maxNotionalUsd) {
       notionalUsd = maxNotionalUsd;
       sizeCoins = notionalUsd / entryPrice;
