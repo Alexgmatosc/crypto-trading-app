@@ -1,6 +1,6 @@
 ================================================================================
   HISTORIAL DETALLADO DE OPERACIONES (AUDIT TRAIL EN TEXTO PLANO)
-  Modo: TESTNET_LIVE | Generado: 2026-10-18T10:53:42.392Z
+  Modo: TESTNET_LIVE | Generado: 2026-10-20T14:45:31.224Z
 ================================================================================
 
 ID         | Par        | Lado  | Estrategia      | Entrada  | Salida   | PnL (USDT) | Comision | Motivo Salida | Apertura | Cierre
@@ -30,3 +30,9 @@ f6c76e11 | ETH/USDT   | SHORT | TREND_BREAKOUT  | $2393    | $2402.45 | -23.37  
 a3d6712b | ETH/USDT   | SHORT | TREND_BREAKOUT  | $2393    | $2393    | -2.35      | $2.35    | KILL_SWITCH   | 23:36:17 | 23:39:07
 41eaf154 | ETH/USDT   | SHORT | TREND_BREAKOUT  | $2380    | $2393.79 | -31.94     | $4.71    | STOP_LOSS     | 23:45:28 | 0:41:52
 f9f081c7 | ETH/USDT   | LONG  | TREND_BREAKOUT  | $2423.05 | $2411.59 | -26.75     | $4.66    | STOP_LOSS     | 5:16:22 | 7:24:46
+91823683 | BTC/USDT   | SHORT | TREND_BREAKOUT  | $81529.8 | $80960.53 | +15.37     | $2.93    | TRAILING_STOP | 15:31:36 | 22:30:00
+882e8c76 | ETH/USDT   | LONG  | TREND_BREAKOUT  | $2408.6  | $2383.61 | -33.47     | $2.93    | STOP_LOSS     | 1:30:56 | 16:00:00
+d3f0067f | BTC/USDT   | LONG  | TREND_BREAKOUT  | $82682.5 | $82239.07 | -18.77     | $2.94    | STOP_LOSS     | 5:01:24 | 12:30:46
+f3f71121 | SOL/USDT   | SHORT | TREND_BREAKOUT  | $104.24  | $105.19  | -29.54     | $2.94    | STOP_LOSS     | 16:00:04 | 17:25:02
+0241e937 | DOGE/USDT  | LONG  | MEAN_REVERSION  | $0.07897 | $0.07947 | +15.48     | $2.91    | MEAN_TARGET   | 3:31:04 | 4:18:13
+ba44a619 | DOGE/USDT  | LONG  | TREND_BREAKOUT  | $0.0801  | —        | +17.87     | $2.20    | OPEN          | 16:00:05 | —

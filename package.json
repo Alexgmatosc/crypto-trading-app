@@ -1,6 +1,6 @@
 {
   "name": "crypto-quant-engine",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Adaptive Multi-Regime Crypto Quant Engine for BTC/USDT & ETH/USDT Perpetual Futures (15m)",
   "main": "src/index.ts",
   "scripts": {

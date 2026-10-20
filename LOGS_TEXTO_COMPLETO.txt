@@ -1,20 +1,20 @@
 ================================================================================
 REGISTRO COMPLETO EN TEXTO PLANO — CRYPTO QUANT ENGINE (BINANCE TESTNET)
 Pensado para análisis con Gemini / Modelos LLM
-Generado: 2026-10-18T10:53:42.409Z
+Generado: 2026-10-20T14:45:31.247Z
 ================================================================================
 
 --- 1. RESUMEN DE SALDO Y CAPITAL ---
 Saldo Inicial de Prueba: $5,000.00 USDT
-Saldo Actual en Binance Testnet: $4892.63 USDT (Efectivo libre)
-Diferencia Neta Total: $-486.11 USDT (-9.72%)
-Posiciones Abiertas Actualmente: 0
+Saldo Actual en Binance Testnet: $4922.34 USDT (Efectivo libre)
+Diferencia Neta Total: $-537.04 USDT (-10.74%)
+Posiciones Abiertas Actualmente: 1
 
 --- 2. TABLA DE TODAS LAS OPERACIONES EJECUTADAS ---
 
 ================================================================================
   HISTORIAL DETALLADO DE OPERACIONES (AUDIT TRAIL EN TEXTO PLANO)
-  Modo: TESTNET_LIVE | Generado: 2026-10-18T10:53:42.392Z
+  Modo: TESTNET_LIVE | Generado: 2026-10-20T14:45:31.224Z
 ================================================================================
 
 ID         | Par        | Lado  | Estrategia      | Entrada  | Salida   | PnL (USDT) | Comision | Motivo Salida | Apertura | Cierre
@@ -44,189 +44,398 @@ f6c76e11 | ETH/USDT   | SHORT | TREND_BREAKOUT  | $2393    | $2402.45 | -23.37  
 a3d6712b | ETH/USDT   | SHORT | TREND_BREAKOUT  | $2393    | $2393    | -2.35      | $2.35    | KILL_SWITCH   | 23:36:17 | 23:39:07
 41eaf154 | ETH/USDT   | SHORT | TREND_BREAKOUT  | $2380    | $2393.79 | -31.94     | $4.71    | STOP_LOSS     | 23:45:28 | 0:41:52
 f9f081c7 | ETH/USDT   | LONG  | TREND_BREAKOUT  | $2423.05 | $2411.59 | -26.75     | $4.66    | STOP_LOSS     | 5:16:22 | 7:24:46
+91823683 | BTC/USDT   | SHORT | TREND_BREAKOUT  | $81529.8 | $80960.53 | +15.37     | $2.93    | TRAILING_STOP | 15:31:36 | 22:30:00
+882e8c76 | ETH/USDT   | LONG  | TREND_BREAKOUT  | $2408.6  | $2383.61 | -33.47     | $2.93    | STOP_LOSS     | 1:30:56 | 16:00:00
+d3f0067f | BTC/USDT   | LONG  | TREND_BREAKOUT  | $82682.5 | $82239.07 | -18.77     | $2.94    | STOP_LOSS     | 5:01:24 | 12:30:46
+f3f71121 | SOL/USDT   | SHORT | TREND_BREAKOUT  | $104.24  | $105.19  | -29.54     | $2.94    | STOP_LOSS     | 16:00:04 | 17:25:02
+0241e937 | DOGE/USDT  | LONG  | MEAN_REVERSION  | $0.07897 | $0.07947 | +15.48     | $2.91    | MEAN_TARGET   | 3:31:04 | 4:18:13
+ba44a619 | DOGE/USDT  | LONG  | TREND_BREAKOUT  | $0.0801  | —        | +17.87     | $2.20    | OPEN          | 16:00:05 | —
 
 
 --- 3. ÚLTIMOS LOGS CRUDOS DEL SERVIDOR (CONSOLE OUTPUT) ---
 
-    adx: 17.91
-    bbWidthPct: 1.39
-    reason: "BB_Width (1.39%) <= 1.50% (channel too narrow to cover fees)"
-[2026-10-18 10:01:32.155] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "BTC/USDT"
-    close: 81645.1
-    regime: "NO_TRADE"
-    adx: 16.28
-    bbWidthPct: 0.45
-    reason: "BB_Width (0.45%) <= 1.50% (channel too narrow to cover fees)"
-[2026-10-18 10:01:32.469] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "ETH/USDT"
-    close: 2407.41
-    regime: "NO_TRADE"
-    adx: 15.15
-    bbWidthPct: 0.95
-    reason: "BB_Width (0.95%) <= 1.50% (channel too narrow to cover fees)"
-[2026-10-18 10:01:32.784] [32mINFO[39m: [36m15m candle close evaluated[39m
+    regime: "TRENDING"
+    adx: 29.97
+    bbWidthPct: 0.76
+    reason: "ADX (29.97) > 23 -> Strong directional trend"
+[2026-10-20 13:46:37.057] [32mINFO[39m: [36m15m candle close evaluated[39m
     symbol: "SOL/USDT"
-    close: 103.26
+    close: 104.16
     regime: "NO_TRADE"
-    adx: 12.81
-    bbWidthPct: 1.38
-    reason: "BB_Width (1.38%) <= 1.50% (channel too narrow to cover fees)"
-[2026-10-18 10:01:33.098] [32mINFO[39m: [36m15m candle close evaluated[39m
+    adx: 21.81
+    bbWidthPct: 0.77
+    reason: "ADX (21.81) in dead zone [20, 23]"
+[2026-10-20 13:46:37.374] [32mINFO[39m: [36m15m candle close evaluated[39m
     symbol: "DOGE/USDT"
-    close: 0.08
+    close: 0.07917
     regime: "NO_TRADE"
-    adx: 17.82
-    bbWidthPct: 1.43
-    reason: "BB_Width (1.43%) <= 1.50% (channel too narrow to cover fees)"
-[2026-10-18 10:16:32.795] [32mINFO[39m: [36m15m candle close evaluated[39m
+    adx: 21.17
+    bbWidthPct: 0.74
+    reason: "ADX (21.17) in dead zone [20, 23]"
+[2026-10-20 14:01:30.920] [32mINFO[39m: [36m15m candle close evaluated[39m
     symbol: "BTC/USDT"
-    close: 81658.3
+    close: 81467.4
     regime: "NO_TRADE"
-    adx: 15.36
-    bbWidthPct: 0.44
-    reason: "BB_Width (0.44%) <= 1.50% (channel too narrow to cover fees)"
-[2026-10-18 10:16:33.107] [32mINFO[39m: [36m15m candle close evaluated[39m
+    adx: 15.53
+    bbWidthPct: 0.4
+    reason: "BB_Width (0.40%) <= 0.65% (channel too narrow to cover fees)"
+[2026-10-20 14:01:31.236] [32mINFO[39m: [36m15m candle close evaluated[39m
     symbol: "ETH/USDT"
-    close: 2407.85
-    regime: "NO_TRADE"
-    adx: 15.07
-    bbWidthPct: 0.92
-    reason: "BB_Width (0.92%) <= 1.50% (channel too narrow to cover fees)"
-[2026-10-18 10:16:33.417] [32mINFO[39m: [36m15m candle close evaluated[39m
+    close: 2383.43
+    regime: "TRENDING"
+    adx: 29.15
+    bbWidthPct: 0.65
+    reason: "ADX (29.15) > 23 -> Strong directional trend"
+[2026-10-20 14:01:31.558] [32mINFO[39m: [36m15m candle close evaluated[39m
     symbol: "SOL/USDT"
-    close: 103.23
+    close: 104.05
     regime: "NO_TRADE"
-    adx: 12.81
-    bbWidthPct: 1.39
-    reason: "BB_Width (1.39%) <= 1.50% (channel too narrow to cover fees)"
-[2026-10-18 10:16:33.734] [32mINFO[39m: [36m15m candle close evaluated[39m
+    adx: 20.75
+    bbWidthPct: 0.68
+    reason: "ADX (20.75) in dead zone [20, 23]"
+[2026-10-20 14:01:31.875] [32mINFO[39m: [36m15m candle close evaluated[39m
     symbol: "DOGE/USDT"
-    close: 0.08
+    close: 0.07904
     regime: "NO_TRADE"
-    adx: 17.93
-    bbWidthPct: 1.38
-    reason: "BB_Width (1.38%) <= 1.50% (channel too narrow to cover fees)"
-[2026-10-18 10:31:32.186] [32mINFO[39m: [36m15m candle close evaluated[39m
+    adx: 20.15
+    bbWidthPct: 0.68
+    reason: "ADX (20.15) in dead zone [20, 23]"
+[2026-10-20 14:16:32.790] [32mINFO[39m: [36m15m candle close evaluated[39m
     symbol: "BTC/USDT"
-    close: 81665.8
+    close: 81346.3
     regime: "NO_TRADE"
-    adx: 14.52
-    bbWidthPct: 0.44
-    reason: "BB_Width (0.44%) <= 1.50% (channel too narrow to cover fees)"
-[2026-10-18 10:31:32.536] [32mINFO[39m: [36m15m candle close evaluated[39m
+    adx: 15.48
+    bbWidthPct: 0.36
+    reason: "BB_Width (0.36%) <= 0.65% (channel too narrow to cover fees)"
+[2026-10-20 14:16:33.110] [32mINFO[39m: [36m15m candle close evaluated[39m
     symbol: "ETH/USDT"
-    close: 2408.49
-    regime: "NO_TRADE"
-    adx: 14.35
-    bbWidthPct: 0.91
-    reason: "BB_Width (0.91%) <= 1.50% (channel too narrow to cover fees)"
-[2026-10-18 10:31:32.849] [32mINFO[39m: [36m15m candle close evaluated[39m
+    close: 2382.94
+    regime: "TRENDING"
+    adx: 28.63
+    bbWidthPct: 0.55
+    reason: "ADX (28.63) > 23 -> Strong directional trend"
+[2026-10-20 14:16:33.432] [32mINFO[39m: [36m15m candle close evaluated[39m
     symbol: "SOL/USDT"
-    close: 103.12
+    close: 104.03
     regime: "NO_TRADE"
-    adx: 12.73
-    bbWidthPct: 1.45
-    reason: "BB_Width (1.45%) <= 1.50% (channel too narrow to cover fees)"
-[2026-10-18 10:31:33.185] [32mINFO[39m: [36m15m candle close evaluated[39m
+    adx: 19.62
+    bbWidthPct: 0.6
+    reason: "BB_Width (0.60%) <= 0.65% (channel too narrow to cover fees)"
+[2026-10-20 14:16:33.751] [32mINFO[39m: [36m15m candle close evaluated[39m
     symbol: "DOGE/USDT"
-    close: 0.08
+    close: 0.07899
     regime: "NO_TRADE"
-    adx: 18.03
-    bbWidthPct: 1.37
-    reason: "BB_Width (1.37%) <= 1.50% (channel too narrow to cover fees)"
-
-> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
-> tsx src/index.ts
-
-[2026-10-18 10:33:08.086] [32mINFO[39m: [36mWeb Dashboard running[39m
-    port: 3000
-    url: "http://localhost:3000"
-[2026-10-18 10:33:08.086] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
-    mode: "TESTNET_LIVE"
-    exchange: "binanceusdm"
-    symbols: [
-      "BTC/USDT",
-      "ETH/USDT",
-      "SOL/USDT",
-      "DOGE/USDT"
-    ]
-    timeframe: "15m"
-[2026-10-18 10:33:08.086] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
-    exchange: "binanceusdm"
-[2026-10-18 10:33:10.311] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
-    exchange: "binanceusdm"
-    balanceUsdt: 4892.62728557
-[2026-10-18 10:33:11.793] [32mINFO[39m: [36mDaemon active: synchronized with 15m candle closes and 10s SL monitoring[39m
-    balanceUsdt: 4892.62728557
-    openPositions: 0
-[2026-10-18 10:46:21.655] [32mINFO[39m: [36m15m candle close evaluated[39m
+    adx: 19.01
+    bbWidthPct: 0.6
+    reason: "BB_Width (0.60%) <= 0.65% (channel too narrow to cover fees)"
+[2026-10-20 14:31:32.762] [32mINFO[39m: [36m15m candle close evaluated[39m
     symbol: "BTC/USDT"
-    close: 81691.8
+    close: 81527.5
+    regime: "NO_TRADE"
+    adx: 14.75
+    bbWidthPct: 0.34
+    reason: "BB_Width (0.34%) <= 0.65% (channel too narrow to cover fees)"
+[2026-10-20 14:31:33.094] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2390.23
+    regime: "TRENDING"
+    adx: 27.62
+    bbWidthPct: 0.53
+    reason: "ADX (27.62) > 23 -> Strong directional trend"
+[2026-10-20 14:31:33.416] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 104.37
+    regime: "NO_TRADE"
+    adx: 19.64
+    bbWidthPct: 0.56
+    reason: "BB_Width (0.56%) <= 0.65% (channel too narrow to cover fees)"
+[2026-10-20 14:31:33.734] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.07932
+    regime: "NO_TRADE"
+    adx: 19.92
+    bbWidthPct: 0.62
+    reason: "BB_Width (0.62%) <= 0.65% (channel too narrow to cover fees)"
+[2026-10-20 14:45:30.771] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81662.6
     regime: "NO_TRADE"
     adx: 14.08
-    bbWidthPct: 0.38
-    reason: "BB_Width (0.38%) <= 1.50% (channel too narrow to cover fees)"
-[2026-10-18 10:46:21.968] [32mINFO[39m: [36m15m candle close evaluated[39m
+    bbWidthPct: 0.39
+    reason: "BB_Width (0.39%) <= 0.65% (channel too narrow to cover fees)"
+[2026-10-20 14:45:31.129] [32mINFO[39m: [36m15m candle close evaluated[39m
     symbol: "ETH/USDT"
-    close: 2409.84
-    regime: "NO_TRADE"
-    adx: 13.36
-    bbWidthPct: 0.81
-    reason: "BB_Width (0.81%) <= 1.50% (channel too narrow to cover fees)"
-[2026-10-18 10:46:22.282] [32mINFO[39m: [36m15m candle close evaluated[39m
+    close: 2399.3
+    regime: "TRENDING"
+    adx: 26.98
+    bbWidthPct: 0.71
+    reason: "ADX (26.98) > 23 -> Strong directional trend"
+[2026-10-20 14:45:31.487] [32mINFO[39m: [36m15m candle close evaluated[39m
     symbol: "SOL/USDT"
-    close: 103.05
-    regime: "NO_TRADE"
-    adx: 13
-    bbWidthPct: 1.41
-    reason: "BB_Width (1.41%) <= 1.50% (channel too narrow to cover fees)"
-[2026-10-18 10:46:22.630] [32mINFO[39m: [36m15m candle close evaluated[39m
+    close: 104.63
+    regime: "RANGING"
+    adx: 19.66
+    bbWidthPct: 0.67
+    reason: "ADX (19.66) < 20 and BB_Width (0.67%) > 0.65% -> Tradeable range"
+[2026-10-20 14:45:31.832] [32mINFO[39m: [36m15m candle close evaluated[39m
     symbol: "DOGE/USDT"
-    close: 0.08
+    close: 0.07952
     regime: "NO_TRADE"
-    adx: 18.71
-    bbWidthPct: 1.28
-    reason: "BB_Width (1.28%) <= 1.50% (channel too narrow to cover fees)"
-[2026-10-18 11:01:32.791] [32mINFO[39m: [36m15m candle close evaluated[39m
+    adx: 20.78
+    bbWidthPct: 0.81
+    reason: "ADX (20.78) in dead zone [20, 23]"
+[2026-10-20 15:00:03.605] [32mINFO[39m: [36m15m candle close evaluated[39m
     symbol: "BTC/USDT"
-    close: 81705.8
+    close: 81577.1
     regime: "NO_TRADE"
-    adx: 13.48
-    bbWidthPct: 0.32
-    reason: "BB_Width (0.32%) <= 1.50% (channel too narrow to cover fees)"
-[2026-10-18 11:01:33.103] [32mINFO[39m: [36m15m candle close evaluated[39m
+    adx: 14.17
+    bbWidthPct: 0.4
+    reason: "BB_Width (0.40%) <= 0.65% (channel too narrow to cover fees)"
+[2026-10-20 15:00:03.960] [32mINFO[39m: [36m15m candle close evaluated[39m
     symbol: "ETH/USDT"
-    close: 2409.37
+    close: 2395.3
+    regime: "TRENDING"
+    adx: 26.92
+    bbWidthPct: 0.78
+    reason: "ADX (26.92) > 23 -> Strong directional trend"
+[2026-10-20 15:00:04.306] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 104.44
+    regime: "NO_TRADE"
+    adx: 20.27
+    bbWidthPct: 0.69
+    reason: "ADX (20.27) in dead zone [20, 23]"
+[2026-10-20 15:00:04.643] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.07927
+    regime: "NO_TRADE"
+    adx: 21.79
+    bbWidthPct: 0.81
+    reason: "ADX (21.79) in dead zone [20, 23]"
+[2026-10-20 15:15:03.235] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81369.9
+    regime: "NO_TRADE"
+    adx: 13.32
+    bbWidthPct: 0.4
+    reason: "BB_Width (0.40%) <= 0.65% (channel too narrow to cover fees)"
+[2026-10-20 15:15:03.575] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2391.76
+    regime: "TRENDING"
+    adx: 25.6
+    bbWidthPct: 0.8
+    reason: "ADX (25.60) > 23 -> Strong directional trend"
+[2026-10-20 15:15:03.922] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 104.3
+    regime: "RANGING"
+    adx: 19.83
+    bbWidthPct: 0.7
+    reason: "ADX (19.83) < 20 and BB_Width (0.70%) > 0.65% -> Tradeable range"
+[2026-10-20 15:15:04.264] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.07917
+    regime: "NO_TRADE"
+    adx: 21.11
+    bbWidthPct: 0.82
+    reason: "ADX (21.11) in dead zone [20, 23]"
+[2026-10-20 15:30:03.231] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81383
     regime: "NO_TRADE"
     adx: 12.61
-    bbWidthPct: 0.69
-    reason: "BB_Width (0.69%) <= 1.50% (channel too narrow to cover fees)"
-[2026-10-18 11:01:33.445] [32mINFO[39m: [36m15m candle close evaluated[39m
+    bbWidthPct: 0.42
+    reason: "BB_Width (0.42%) <= 0.65% (channel too narrow to cover fees)"
+[2026-10-20 15:30:03.581] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2390.58
+    regime: "TRENDING"
+    adx: 24.56
+    bbWidthPct: 0.81
+    reason: "ADX (24.56) > 23 -> Strong directional trend"
+[2026-10-20 15:30:03.948] [32mINFO[39m: [36m15m candle close evaluated[39m
     symbol: "SOL/USDT"
-    close: 103.14
-    regime: "NO_TRADE"
-    adx: 13.58
-    bbWidthPct: 1.22
-    reason: "BB_Width (1.22%) <= 1.50% (channel too narrow to cover fees)"
-[2026-10-18 11:01:33.761] [32mINFO[39m: [36m15m candle close evaluated[39m
+    close: 104.31
+    regime: "RANGING"
+    adx: 19.58
+    bbWidthPct: 0.7
+    reason: "ADX (19.58) < 20 and BB_Width (0.70%) > 0.65% -> Tradeable range"
+[2026-10-20 15:30:04.292] [32mINFO[39m: [36m15m candle close evaluated[39m
     symbol: "DOGE/USDT"
-    close: 0.08
+    close: 0.07928
     regime: "NO_TRADE"
-    adx: 18.96
-    bbWidthPct: 1.1
-    reason: "BB_Width (1.10%) <= 1.50% (channel too narrow to cover fees)"
-[2026-10-18 11:04:58.972] [32mINFO[39m: [36mReceived shutdown signal, stopping daemon...[39m
-    signal: "SIGINT"
-[2026-10-18 11:04:58.972] [32mINFO[39m: [36mQuantDaemon stopped cleanly[39m
+    adx: 20.91
+    bbWidthPct: 0.86
+    reason: "ADX (20.91) in dead zone [20, 23]"
+[2026-10-20 15:45:03.225] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 81614.9
+    regime: "NO_TRADE"
+    adx: 13.16
+    bbWidthPct: 0.44
+    reason: "BB_Width (0.44%) <= 0.65% (channel too narrow to cover fees)"
+[2026-10-20 15:45:03.581] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2393.97
+    regime: "TRENDING"
+    adx: 23.39
+    bbWidthPct: 0.85
+    reason: "ADX (23.39) > 23 -> Strong directional trend"
+[2026-10-20 15:45:03.917] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 104.25
+    regime: "RANGING"
+    adx: 18.73
+    bbWidthPct: 0.69
+    reason: "ADX (18.73) < 20 and BB_Width (0.69%) > 0.65% -> Tradeable range"
+[2026-10-20 15:45:04.251] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.07938
+    regime: "NO_TRADE"
+    adx: 21.64
+    bbWidthPct: 0.92
+    reason: "ADX (21.64) in dead zone [20, 23]"
+[2026-10-20 16:00:03.480] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 82115.5
+    regime: "RANGING"
+    adx: 15.33
+    bbWidthPct: 0.8
+    reason: "ADX (15.33) < 20 and BB_Width (0.80%) > 0.65% -> Tradeable range"
+[2026-10-20 16:00:04.043] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2410.51
+    regime: "NO_TRADE"
+    adx: 22.7
+    bbWidthPct: 1.2
+    reason: "ADX (22.70) in dead zone [20, 23]"
+[2026-10-20 16:00:04.379] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 105.22
+    regime: "RANGING"
+    adx: 18.6
+    bbWidthPct: 1.12
+    reason: "ADX (18.60) < 20 and BB_Width (1.12%) > 0.65% -> Tradeable range"
+[2026-10-20 16:00:04.746] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.0801
+    regime: "TRENDING"
+    adx: 23.54
+    bbWidthPct: 1.43
+    reason: "ADX (23.54) > 23 -> Strong directional trend"
+[2026-10-20 16:00:05.321] [32mINFO[39m: [36mOpened new position[39m
+    tradeId: "ba44a619-e63a-4363-a071-c22af65a54b0"
+    mode: "TESTNET_LIVE"
+    symbol: "DOGE/USDT"
+    strategy: "TREND_BREAKOUT"
+    regime: "TRENDING"
+    side: "LONG"
+    entryPrice: 0.0801
+    size: 36499
+    initialSl: 0.07937
+    riskUsd: 26.58
+[2026-10-20 16:07:57.512] [32mINFO[39m: [36mExecuted 1.5R 50% Scale-Out and moved SL to Break-Even + Costs[39m
+    tradeId: "ba44a619-e63a-4363-a071-c22af65a54b0"
+    symbol: "DOGE/USDT"
+    side: "LONG"
+    closedSize: 18249
+    remainingSize: 18250
+    fillPrice: 0.0812
+    netPnlDelta: 19.33
+    newBreakEvenSl: 0.08022
+[2026-10-20 16:15:03.354] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 83202.5
+    regime: "RANGING"
+    adx: 19.21
+    bbWidthPct: 1.95
+    reason: "ADX (19.21) < 20 and BB_Width (1.95%) > 0.65% -> Tradeable range"
+[2026-10-20 16:15:03.695] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2467.21
+    regime: "TRENDING"
+    adx: 25.4
+    bbWidthPct: 3.07
+    reason: "ADX (25.40) > 23 -> Strong directional trend"
+[2026-10-20 16:15:04.039] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 107.76
+    regime: "NO_TRADE"
+    adx: 21.49
+    bbWidthPct: 3.14
+    reason: "ADX (21.49) in dead zone [20, 23]"
+[2026-10-20 16:15:04.373] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08156
+    regime: "TRENDING"
+    adx: 26.94
+    bbWidthPct: 2.96
+    reason: "ADX (26.94) > 23 -> Strong directional trend"
+[2026-10-20 16:30:10.336] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 82946.2
+    regime: "NO_TRADE"
+    adx: 22.9
+    bbWidthPct: 2.4
+    reason: "ADX (22.90) in dead zone [20, 23]"
+[2026-10-20 16:30:10.667] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2457.28
+    regime: "TRENDING"
+    adx: 28.02
+    bbWidthPct: 3.84
+    reason: "ADX (28.02) > 23 -> Strong directional trend"
+[2026-10-20 16:30:11.000] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 107.54
+    regime: "TRENDING"
+    adx: 24.4
+    bbWidthPct: 4.06
+    reason: "ADX (24.40) > 23 -> Strong directional trend"
+[2026-10-20 16:30:11.339] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08145
+    regime: "TRENDING"
+    adx: 30.18
+    bbWidthPct: 3.77
+    reason: "ADX (30.18) > 23 -> Strong directional trend"
+[2026-10-20 16:45:16.106] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "BTC/USDT"
+    close: 83091.8
+    regime: "TRENDING"
+    adx: 26.33
+    bbWidthPct: 2.8
+    reason: "ADX (26.33) > 23 -> Strong directional trend"
+[2026-10-20 16:45:16.442] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "ETH/USDT"
+    close: 2460.73
+    regime: "TRENDING"
+    adx: 30.45
+    bbWidthPct: 4.43
+    reason: "ADX (30.45) > 23 -> Strong directional trend"
+[2026-10-20 16:45:16.776] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "SOL/USDT"
+    close: 107.18
+    regime: "TRENDING"
+    adx: 27.11
+    bbWidthPct: 4.54
+    reason: "ADX (27.11) > 23 -> Strong directional trend"
+[2026-10-20 16:45:17.109] [32mINFO[39m: [36m15m candle close evaluated[39m
+    symbol: "DOGE/USDT"
+    close: 0.08169
+    regime: "TRENDING"
+    adx: 33.33
+    bbWidthPct: 4.45
+    reason: "ADX (33.33) > 23 -> Strong directional trend"
 
-> crypto-quant-engine@2.0.0 start /home/alexgmatosc/Dev/crypto-trading-app
+> crypto-quant-engine@2.1.1 start /home/alexgmatosc/Dev/crypto-trading-app
 > tsx src/index.ts
 
-[2026-10-18 11:05:01.713] [32mINFO[39m: [36mWeb Dashboard running[39m
+[2026-10-20 16:45:22.795] [32mINFO[39m: [36mWeb Dashboard running[39m
     port: 3000
     url: "http://localhost:3000"
-[2026-10-18 11:05:01.713] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
+[2026-10-20 16:45:22.795] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
     mode: "TESTNET_LIVE"
     exchange: "binanceusdm"
     symbols: [
@@ -236,216 +445,13 @@ f9f081c7 | ETH/USDT   | LONG  | TREND_BREAKOUT  | $2423.05 | $2411.59 | -26.75  
       "DOGE/USDT"
     ]
     timeframe: "15m"
-[2026-10-18 11:05:01.713] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
+[2026-10-20 16:45:22.795] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
     exchange: "binanceusdm"
-[2026-10-18 11:05:03.610] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
+[2026-10-20 16:45:24.797] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
     exchange: "binanceusdm"
-    balanceUsdt: 4892.62728557
-[2026-10-18 11:05:05.134] [32mINFO[39m: [36mDaemon active: synchronized with 15m candle closes and 10s SL monitoring[39m
-    balanceUsdt: 4892.62728557
-    openPositions: 0
-[2026-10-18 11:16:11.271] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "BTC/USDT"
-    close: 81943.2
-    regime: "NO_TRADE"
-    adx: 15.42
-    bbWidthPct: 0.37
-    reason: "BB_Width (0.37%) <= 0.65% (channel too narrow to cover fees)"
-[2026-10-18 11:16:11.581] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "ETH/USDT"
-    close: 2419.01
-    regime: "NO_TRADE"
-    adx: 13.93
-    bbWidthPct: 0.65
-    reason: "BB_Width (0.65%) <= 0.65% (channel too narrow to cover fees)"
-[2026-10-18 11:16:11.891] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "SOL/USDT"
-    close: 103.8
-    regime: "RANGING"
-    adx: 13.71
-    bbWidthPct: 1.1
-    reason: "ADX (13.71) < 20 and BB_Width (1.10%) > 0.65% -> Tradeable range"
-[2026-10-18 11:16:12.205] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "DOGE/USDT"
-    close: 0.07932
-    regime: "RANGING"
-    adx: 18.05
-    bbWidthPct: 1.01
-    reason: "ADX (18.05) < 20 and BB_Width (1.01%) > 0.65% -> Tradeable range"
-[2026-10-18 11:31:32.365] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "BTC/USDT"
-    close: 81993.1
-    regime: "NO_TRADE"
-    adx: 17.22
-    bbWidthPct: 0.44
-    reason: "BB_Width (0.44%) <= 0.65% (channel too narrow to cover fees)"
-[2026-10-18 11:31:32.676] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "ETH/USDT"
-    close: 2419.03
-    regime: "NO_TRADE"
-    adx: 15.17
-    bbWidthPct: 0.61
-    reason: "BB_Width (0.61%) <= 0.65% (channel too narrow to cover fees)"
-[2026-10-18 11:31:32.987] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "SOL/USDT"
-    close: 103.86
-    regime: "RANGING"
-    adx: 13.84
-    bbWidthPct: 0.99
-    reason: "ADX (13.84) < 20 and BB_Width (0.99%) > 0.65% -> Tradeable range"
-[2026-10-18 11:31:33.297] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "DOGE/USDT"
-    close: 0.07932
-    regime: "RANGING"
-    adx: 17.24
-    bbWidthPct: 0.91
-    reason: "ADX (17.24) < 20 and BB_Width (0.91%) > 0.65% -> Tradeable range"
-[2026-10-18 11:46:36.165] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "BTC/USDT"
-    close: 82164.4
-    regime: "NO_TRADE"
-    adx: 20.13
-    bbWidthPct: 0.64
-    reason: "ADX (20.13) in dead zone [20, 23]"
-[2026-10-18 11:46:36.478] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "ETH/USDT"
-    close: 2423.68
-    regime: "RANGING"
-    adx: 17.13
-    bbWidthPct: 0.73
-    reason: "ADX (17.13) < 20 and BB_Width (0.73%) > 0.65% -> Tradeable range"
-[2026-10-18 11:46:36.794] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "SOL/USDT"
-    close: 104.01
-    regime: "RANGING"
-    adx: 14.91
-    bbWidthPct: 1.03
-    reason: "ADX (14.91) < 20 and BB_Width (1.03%) > 0.65% -> Tradeable range"
-[2026-10-18 11:46:37.111] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "DOGE/USDT"
-    close: 0.07951
-    regime: "RANGING"
-    adx: 17.51
-    bbWidthPct: 0.97
-    reason: "ADX (17.51) < 20 and BB_Width (0.97%) > 0.65% -> Tradeable range"
-[2026-10-18 12:01:32.754] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "BTC/USDT"
-    close: 82122.6
-    regime: "NO_TRADE"
-    adx: 22.83
-    bbWidthPct: 0.76
-    reason: "ADX (22.83) in dead zone [20, 23]"
-[2026-10-18 12:01:33.064] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "ETH/USDT"
-    close: 2423.65
-    regime: "RANGING"
-    adx: 18.96
-    bbWidthPct: 0.83
-    reason: "ADX (18.96) < 20 and BB_Width (0.83%) > 0.65% -> Tradeable range"
-[2026-10-18 12:01:33.378] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "SOL/USDT"
-    close: 103.95
-    regime: "RANGING"
-    adx: 15.9
-    bbWidthPct: 1.07
-    reason: "ADX (15.90) < 20 and BB_Width (1.07%) > 0.65% -> Tradeable range"
-[2026-10-18 12:01:33.692] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "DOGE/USDT"
-    close: 0.07946
-    regime: "RANGING"
-    adx: 17.76
-    bbWidthPct: 0.99
-    reason: "ADX (17.76) < 20 and BB_Width (0.99%) > 0.65% -> Tradeable range"
-[2026-10-18 12:16:32.611] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "BTC/USDT"
-    close: 82179.3
-    regime: "TRENDING"
-    adx: 25.16
-    bbWidthPct: 0.88
-    reason: "ADX (25.16) > 23 -> Strong directional trend"
-[2026-10-18 12:16:32.924] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "ETH/USDT"
-    close: 2423.45
-    regime: "NO_TRADE"
-    adx: 20.66
-    bbWidthPct: 0.92
-    reason: "ADX (20.66) in dead zone [20, 23]"
-[2026-10-18 12:16:33.234] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "SOL/USDT"
-    close: 104.06
-    regime: "RANGING"
-    adx: 16.37
-    bbWidthPct: 1.15
-    reason: "ADX (16.37) < 20 and BB_Width (1.15%) > 0.65% -> Tradeable range"
-[2026-10-18 12:16:33.548] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "DOGE/USDT"
-    close: 0.0795
-    regime: "RANGING"
-    adx: 17.62
-    bbWidthPct: 1.04
-    reason: "ADX (17.62) < 20 and BB_Width (1.04%) > 0.65% -> Tradeable range"
-[2026-10-18 12:31:32.638] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "BTC/USDT"
-    close: 82221.8
-    regime: "TRENDING"
-    adx: 27.45
-    bbWidthPct: 0.99
-    reason: "ADX (27.45) > 23 -> Strong directional trend"
-[2026-10-18 12:31:32.952] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "ETH/USDT"
-    close: 2424.21
-    regime: "NO_TRADE"
-    adx: 21.63
-    bbWidthPct: 1.01
-    reason: "ADX (21.63) in dead zone [20, 23]"
-[2026-10-18 12:31:33.277] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "SOL/USDT"
-    close: 104.2
-    regime: "RANGING"
-    adx: 17.13
-    bbWidthPct: 1.28
-    reason: "ADX (17.13) < 20 and BB_Width (1.28%) > 0.65% -> Tradeable range"
-[2026-10-18 12:31:33.597] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "DOGE/USDT"
-    close: 0.07947
-    regime: "RANGING"
-    adx: 17.01
-    bbWidthPct: 1.1
-    reason: "ADX (17.01) < 20 and BB_Width (1.10%) > 0.65% -> Tradeable range"
-[2026-10-18 12:46:32.799] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "BTC/USDT"
-    close: 82152.4
-    regime: "TRENDING"
-    adx: 29.62
-    bbWidthPct: 1.03
-    reason: "ADX (29.62) > 23 -> Strong directional trend"
-[2026-10-18 12:46:33.115] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "ETH/USDT"
-    close: 2421.57
-    regime: "NO_TRADE"
-    adx: 22.74
-    bbWidthPct: 1.02
-    reason: "ADX (22.74) in dead zone [20, 23]"
-[2026-10-18 12:46:33.428] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "SOL/USDT"
-    close: 104.14
-    regime: "RANGING"
-    adx: 17.96
-    bbWidthPct: 1.35
-    reason: "ADX (17.96) < 20 and BB_Width (1.35%) > 0.65% -> Tradeable range"
-[2026-10-18 12:46:33.743] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "DOGE/USDT"
-    close: 0.07942
-    regime: "RANGING"
-    adx: 16.61
-    bbWidthPct: 1.1
-    reason: "ADX (16.61) < 20 and BB_Width (1.10%) > 0.65% -> Tradeable range"
-[2026-10-18 12:53:40.010] [32mINFO[39m: [36mReceived shutdown signal, stopping daemon...[39m
-    signal: "SIGINT"
-[2026-10-18 12:53:40.010] [32mINFO[39m: [36mQuantDaemon stopped cleanly[39m
-
-> crypto-quant-engine@2.1.0 start /home/alexgmatosc/Dev/crypto-trading-app
-> tsx src/index.ts
-
+    balanceUsdt: 4922.34088932
+[2026-10-20 16:45:26.838] [32mINFO[39m: [36mDaemon active: synchronized with 15m candle closes and 10s SL monitoring[39m
+    balanceUsdt: 4922.34088932
+    openPositions: 1
 
 

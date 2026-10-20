@@ -3,6 +3,13 @@
 Todos los cambios notables de **Adaptive Multi-Regime Crypto Quant Engine** se documentan en este archivo.
 El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y este proyecto se adhiere a [Semantic Versioning](https://semver.org/lang/es/).
 
+## [2.1.1] - 2026-10-20
+
+### Fixed
+- **Lectura Precisa de Dinero Real (`totalWalletBalance` en `TestnetBroker.ts`)**: Corregida la lectura del saldo de la cuenta priorizando `totalWalletBalance` en lugar de `balance.USDT.total` (que en CCXT Binance Futures devolvía el `marginBalance`). Esto elimina por completo la duplicación artificial del beneficio flotante (*floating PnL double-counting*) al registrar los snapshots de patrimonio.
+- **Validación Estricta de Ejecución en Exchange (`TestnetBroker.ts`)**: Validación explícita de `executedQty > 0` y estado de la orden (`!EXPIRED`, `!CANCELED`). Si el exchange no ejecuta la orden en el mercado, se lanza un error controlado para que `Engine.ts` mantenga la posición abierta en SQLite para reintentar en el siguiente ciclo, evitando la creación de posiciones huérfanas en Binance.
+- **Reconciliación y Cierre de Posición Huérfana**: Ejecutado el cierre a mercado en Binance Testnet de la posición huérfana de `0.0357 BTC` (asegurando `+$15.59 USDT` de ganancia neta en la billetera real).
+
 ## [2.1.0] - 2026-10-18
 
 ### Added

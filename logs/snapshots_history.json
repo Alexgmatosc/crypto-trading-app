@@ -894,5 +894,1685 @@
     "balance_usdt": 4892.62728557,
     "equity_usdt": 4892.62728557,
     "drawdown_pct": 0
+  },
+  {
+    "id": 1745,
+    "timestamp": 1792320826673,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4892.62728557,
+    "equity_usdt": 4892.62728557,
+    "drawdown_pct": 0
+  },
+  {
+    "id": 1746,
+    "timestamp": 1792321247090,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4892.62728557,
+    "equity_usdt": 4892.62728557,
+    "drawdown_pct": 0
+  },
+  {
+    "id": 2108,
+    "timestamp": 1792322197260,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4892.62728557,
+    "equity_usdt": 4892.62728557,
+    "drawdown_pct": 0
+  },
+  {
+    "id": 2109,
+    "timestamp": 1792323093520,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4892.62728557,
+    "equity_usdt": 4892.62728557,
+    "drawdown_pct": 0
+  },
+  {
+    "id": 2110,
+    "timestamp": 1792323997298,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4892.62728557,
+    "equity_usdt": 4892.62728557,
+    "drawdown_pct": 0
+  },
+  {
+    "id": 2111,
+    "timestamp": 1792324893561,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4892.62728557,
+    "equity_usdt": 4892.62728557,
+    "drawdown_pct": 0
+  },
+  {
+    "id": 2112,
+    "timestamp": 1792325793710,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4892.62728557,
+    "equity_usdt": 4892.62728557,
+    "drawdown_pct": 0
+  },
+  {
+    "id": 2113,
+    "timestamp": 1792326693690,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4892.62728557,
+    "equity_usdt": 4892.62728557,
+    "drawdown_pct": 0
+  },
+  {
+    "id": 2114,
+    "timestamp": 1792327593730,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4892.62728557,
+    "equity_usdt": 4892.62728557,
+    "drawdown_pct": 0
+  },
+  {
+    "id": 2115,
+    "timestamp": 1792328493707,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4892.62728557,
+    "equity_usdt": 4892.62728557,
+    "drawdown_pct": 0
+  },
+  {
+    "id": 2116,
+    "timestamp": 1792329393893,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4892.62728557,
+    "equity_usdt": 4892.62728557,
+    "drawdown_pct": 0
+  },
+  {
+    "id": 2117,
+    "timestamp": 1792330294226,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4892.62728557,
+    "equity_usdt": 4892.62728557,
+    "drawdown_pct": 0
+  },
+  {
+    "id": 2118,
+    "timestamp": 1792331174542,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4894.85547432,
+    "equity_usdt": 4899.197074320001,
+    "drawdown_pct": 0
+  },
+  {
+    "id": 2119,
+    "timestamp": 1792332018625,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4892.22723497,
+    "equity_usdt": 4893.26403497,
+    "drawdown_pct": 0.12110227982255242
+  },
+  {
+    "id": 2120,
+    "timestamp": 1792332904185,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4902.37608367,
+    "equity_usdt": 4912.6360836700005,
+    "drawdown_pct": 0
+  },
+  {
+    "id": 2121,
+    "timestamp": 1792333804398,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4900.80348619,
+    "equity_usdt": 4911.07068619,
+    "drawdown_pct": 0.03186471485653479
+  },
+  {
+    "id": 2122,
+    "timestamp": 1792334704464,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4904.79558957,
+    "equity_usdt": 4912.56798957,
+    "drawdown_pct": 0.0013861010431306482
+  },
+  {
+    "id": 2123,
+    "timestamp": 1792335604133,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4905.32185936,
+    "equity_usdt": 4913.63065936,
+    "drawdown_pct": 0
+  },
+  {
+    "id": 2124,
+    "timestamp": 1792336504133,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4904.08097914,
+    "equity_usdt": 4911.43037914,
+    "drawdown_pct": 0.044779112890976
+  },
+  {
+    "id": 2125,
+    "timestamp": 1792337404107,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4903.38250121,
+    "equity_usdt": 4910.65450121,
+    "drawdown_pct": 0.060569431370087405
+  },
+  {
+    "id": 2126,
+    "timestamp": 1792338314038,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4906.05190121,
+    "equity_usdt": 4915.39930121,
+    "drawdown_pct": 0
+  },
+  {
+    "id": 2127,
+    "timestamp": 1792339219947,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4903.91196041,
+    "equity_usdt": 4910.97516041,
+    "drawdown_pct": 0.09000572545369276
+  },
+  {
+    "id": 2128,
+    "timestamp": 1792340121944,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4904.35656041,
+    "equity_usdt": 4911.49356041,
+    "drawdown_pct": 0.07945927809035613
+  },
+  {
+    "id": 2129,
+    "timestamp": 1792341023655,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4903.90296041,
+    "equity_usdt": 4911.75096041,
+    "drawdown_pct": 0.0742226740175976
+  },
+  {
+    "id": 2130,
+    "timestamp": 1792341926269,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4904.99105943,
+    "equity_usdt": 4913.29445943,
+    "drawdown_pct": 0.04282137932277656
+  },
+  {
+    "id": 2131,
+    "timestamp": 1792342826834,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4905.20800899,
+    "equity_usdt": 4914.02440899,
+    "drawdown_pct": 0.027971119653733306
+  },
+  {
+    "id": 2132,
+    "timestamp": 1792343729886,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4903.83683486,
+    "equity_usdt": 4910.61023486,
+    "drawdown_pct": 0.09742985374191901
+  },
+  {
+    "id": 2133,
+    "timestamp": 1792344631391,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4904.19096041,
+    "equity_usdt": 4911.41436041,
+    "drawdown_pct": 0.08107054088197983
+  },
+  {
+    "id": 2134,
+    "timestamp": 1792345533395,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4903.99620138,
+    "equity_usdt": 4911.48600138,
+    "drawdown_pct": 0.0796130607138432
+  },
+  {
+    "id": 2135,
+    "timestamp": 1792346435905,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4903.65068193,
+    "equity_usdt": 4910.49068193,
+    "drawdown_pct": 0.09986206570829867
+  },
+  {
+    "id": 2136,
+    "timestamp": 1792347338688,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4904.04516041,
+    "equity_usdt": 4911.00576041,
+    "drawdown_pct": 0.0893831921023836
+  },
+  {
+    "id": 2137,
+    "timestamp": 1792348240283,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4904.69418236,
+    "equity_usdt": 4911.91938236,
+    "drawdown_pct": 0.07079625960689438
+  },
+  {
+    "id": 2138,
+    "timestamp": 1792349141952,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4904.71537475,
+    "equity_usdt": 4912.59937475,
+    "drawdown_pct": 0.05696233995295223
+  },
+  {
+    "id": 2139,
+    "timestamp": 1792350043507,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4903.71036464,
+    "equity_usdt": 4910.59716464,
+    "drawdown_pct": 0.09769575726670987
+  },
+  {
+    "id": 2140,
+    "timestamp": 1792350944729,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4904.27016041,
+    "equity_usdt": 4911.65736041,
+    "drawdown_pct": 0.0761268936804071
+  },
+  {
+    "id": 2141,
+    "timestamp": 1792351848035,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4906.32295443,
+    "equity_usdt": 4915.31935443,
+    "drawdown_pct": 0.001626455453580195
+  },
+  {
+    "id": 2142,
+    "timestamp": 1792352749219,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4909.96883272,
+    "equity_usdt": 4922.94323272,
+    "drawdown_pct": 0
+  },
+  {
+    "id": 2143,
+    "timestamp": 1792353649096,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4908.06171464,
+    "equity_usdt": 4920.46191464,
+    "drawdown_pct": 0.05040314224036256
+  },
+  {
+    "id": 2144,
+    "timestamp": 1792354553227,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4909.16606356,
+    "equity_usdt": 4921.7696635600005,
+    "drawdown_pct": 0.02383877092467103
+  },
+  {
+    "id": 2145,
+    "timestamp": 1792355452486,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4907.65951475,
+    "equity_usdt": 4918.72951475,
+    "drawdown_pct": 0.08559347062940123
+  },
+  {
+    "id": 2146,
+    "timestamp": 1792356354097,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4909.17353258,
+    "equity_usdt": 4909.17353258,
+    "drawdown_pct": 0.27970462971177107
+  },
+  {
+    "id": 2147,
+    "timestamp": 1792357257754,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4908.65425337,
+    "equity_usdt": 4908.65425337,
+    "drawdown_pct": 0.29025277510878356
+  },
+  {
+    "id": 2148,
+    "timestamp": 1792358157548,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4908.65425337,
+    "equity_usdt": 4908.65425337,
+    "drawdown_pct": 0.29025277510878356
+  },
+  {
+    "id": 2149,
+    "timestamp": 1792359055085,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4908.65425337,
+    "equity_usdt": 4908.65425337,
+    "drawdown_pct": 0.29025277510878356
+  },
+  {
+    "id": 2150,
+    "timestamp": 1792359961752,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4908.65425337,
+    "equity_usdt": 4908.65425337,
+    "drawdown_pct": 0.29025277510878356
+  },
+  {
+    "id": 2151,
+    "timestamp": 1792360861464,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4908.65425337,
+    "equity_usdt": 4908.65425337,
+    "drawdown_pct": 0.29025277510878356
+  },
+  {
+    "id": 2152,
+    "timestamp": 1792361762729,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4908.65425337,
+    "equity_usdt": 4908.65425337,
+    "drawdown_pct": 0.29025277510878356
+  },
+  {
+    "id": 2153,
+    "timestamp": 1792362662740,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4908.65425337,
+    "equity_usdt": 4908.65425337,
+    "drawdown_pct": 0.29025277510878356
+  },
+  {
+    "id": 2154,
+    "timestamp": 1792363566445,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4908.65425337,
+    "equity_usdt": 4908.65425337,
+    "drawdown_pct": 0.29025277510878356
+  },
+  {
+    "id": 2155,
+    "timestamp": 1792364466358,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4908.65425337,
+    "equity_usdt": 4908.65425337,
+    "drawdown_pct": 0.29025277510878356
+  },
+  {
+    "id": 2156,
+    "timestamp": 1792365367048,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4908.65425337,
+    "equity_usdt": 4908.65425337,
+    "drawdown_pct": 0.29025277510878356
+  },
+  {
+    "id": 2157,
+    "timestamp": 1792366256999,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4908.65425337,
+    "equity_usdt": 4908.65425337,
+    "drawdown_pct": 0.29025277510878356
+  },
+  {
+    "id": 2158,
+    "timestamp": 1792367158337,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4909.05174093,
+    "equity_usdt": 4908.11080093,
+    "drawdown_pct": 0.30129195257458646
+  },
+  {
+    "id": 2159,
+    "timestamp": 1792368066412,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4911.38931,
+    "equity_usdt": 4912.02475,
+    "drawdown_pct": 0.2217877030844409
+  },
+  {
+    "id": 2160,
+    "timestamp": 1792368907343,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4910.55890652,
+    "equity_usdt": 4911.13324652,
+    "drawdown_pct": 0.2398968592915242
+  },
+  {
+    "id": 2161,
+    "timestamp": 1792369837522,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4909.4396161,
+    "equity_usdt": 4909.574036100001,
+    "drawdown_pct": 0.2715691810367022
+  },
+  {
+    "id": 2162,
+    "timestamp": 1792370757599,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4918.90976716,
+    "equity_usdt": 4927.98922716,
+    "drawdown_pct": 0
+  },
+  {
+    "id": 2163,
+    "timestamp": 1792371675836,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4915.12378699,
+    "equity_usdt": 4920.28062699,
+    "drawdown_pct": 0.15642485838879197
+  },
+  {
+    "id": 2164,
+    "timestamp": 1792372577039,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4923.12384919,
+    "equity_usdt": 4937.49456919,
+    "drawdown_pct": 0
+  },
+  {
+    "id": 2165,
+    "timestamp": 1792373479263,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4926.25202709,
+    "equity_usdt": 4941.233747090001,
+    "drawdown_pct": 0
+  },
+  {
+    "id": 2166,
+    "timestamp": 1792374379908,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4933.12041308,
+    "equity_usdt": 4954.84757308,
+    "drawdown_pct": 0
+  },
+  {
+    "id": 2167,
+    "timestamp": 1792375277811,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4928.66354699,
+    "equity_usdt": 4946.81024699,
+    "drawdown_pct": 0.16221136919865958
+  },
+  {
+    "id": 2168,
+    "timestamp": 1792376181102,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4932.55982554,
+    "equity_usdt": 4955.15460554,
+    "drawdown_pct": 0
+  },
+  {
+    "id": 2169,
+    "timestamp": 1792377077117,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4920.07288699,
+    "equity_usdt": 4929.909986990001,
+    "drawdown_pct": 0.5094617738420346
+  },
+  {
+    "id": 2170,
+    "timestamp": 1792377981674,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4930.7801765,
+    "equity_usdt": 4951.212016500001,
+    "drawdown_pct": 0.07956540923247639
+  },
+  {
+    "id": 2171,
+    "timestamp": 1792378885516,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4930.85368596,
+    "equity_usdt": 4951.95762596,
+    "drawdown_pct": 0.06451826097264864
+  },
+  {
+    "id": 2172,
+    "timestamp": 1792379780632,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4926.53226939,
+    "equity_usdt": 4943.19722939,
+    "drawdown_pct": 0.24131186818332268
+  },
+  {
+    "id": 2173,
+    "timestamp": 1792380687566,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4926.628326,
+    "equity_usdt": 4940.362616,
+    "drawdown_pct": 0.29851721525423597
+  },
+  {
+    "id": 2174,
+    "timestamp": 1792381586539,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4919.24896013,
+    "equity_usdt": 4930.4317001300005,
+    "drawdown_pct": 0.49893307834146977
+  },
+  {
+    "id": 2175,
+    "timestamp": 1792382477119,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4919.34037833,
+    "equity_usdt": 4931.136728330001,
+    "drawdown_pct": 0.48470490069365685
+  },
+  {
+    "id": 2176,
+    "timestamp": 1792383369041,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4915.80830633,
+    "equity_usdt": 4922.63066633,
+    "drawdown_pct": 0.656365780668832
+  },
+  {
+    "id": 2177,
+    "timestamp": 1792384275018,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4917.34970939,
+    "equity_usdt": 4923.762089389999,
+    "drawdown_pct": 0.6335325262082302
+  },
+  {
+    "id": 2178,
+    "timestamp": 1792385182923,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4935.18894441,
+    "equity_usdt": 4961.07015441,
+    "drawdown_pct": 0
+  },
+  {
+    "id": 2179,
+    "timestamp": 1792386083516,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4930.06773442,
+    "equity_usdt": 4956.12922442,
+    "drawdown_pct": 0.09959403588775623
+  },
+  {
+    "id": 2180,
+    "timestamp": 1792386988082,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4926.49066939,
+    "equity_usdt": 4943.209869390001,
+    "drawdown_pct": 0.36000871715396227
+  },
+  {
+    "id": 2181,
+    "timestamp": 1792387892755,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4934.96229559,
+    "equity_usdt": 4955.785825590001,
+    "drawdown_pct": 0.10651590595432105
+  },
+  {
+    "id": 2182,
+    "timestamp": 1792388792794,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4933.35124783,
+    "equity_usdt": 4954.92265783,
+    "drawdown_pct": 0.12391472784425725
+  },
+  {
+    "id": 2183,
+    "timestamp": 1792389693076,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4938.13484793,
+    "equity_usdt": 4966.37847793,
+    "drawdown_pct": 0
+  },
+  {
+    "id": 2184,
+    "timestamp": 1792390593546,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4940.04107754,
+    "equity_usdt": 4969.57083754,
+    "drawdown_pct": 0
+  },
+  {
+    "id": 2185,
+    "timestamp": 1792391497021,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4935.97570939,
+    "equity_usdt": 4961.8457493900005,
+    "drawdown_pct": 0.15544779222472016
+  },
+  {
+    "id": 2186,
+    "timestamp": 1792392393708,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4941.52562091,
+    "equity_usdt": 4971.79673091,
+    "drawdown_pct": 0
+  },
+  {
+    "id": 2187,
+    "timestamp": 1792393293631,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4941.7339886,
+    "equity_usdt": 4971.7148686,
+    "drawdown_pct": 0.0016465337267595236
+  },
+  {
+    "id": 2188,
+    "timestamp": 1792394193399,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4945.17696707,
+    "equity_usdt": 4978.667987069999,
+    "drawdown_pct": 0
+  },
+  {
+    "id": 2189,
+    "timestamp": 1792395093543,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4945.46554939,
+    "equity_usdt": 4981.71711939,
+    "drawdown_pct": 0
+  },
+  {
+    "id": 2190,
+    "timestamp": 1792395993408,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4942.91162583,
+    "equity_usdt": 4980.460995830001,
+    "drawdown_pct": 0.025214670562295198
+  },
+  {
+    "id": 2191,
+    "timestamp": 1792396893665,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4935.00218133,
+    "equity_usdt": 4960.92356133,
+    "drawdown_pct": 0.4173974065903345
+  },
+  {
+    "id": 2192,
+    "timestamp": 1792397793328,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4933.41745412,
+    "equity_usdt": 4957.6481741200005,
+    "drawdown_pct": 0.483145563932523
+  },
+  {
+    "id": 2193,
+    "timestamp": 1792398696953,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4941.95569663,
+    "equity_usdt": 4974.39369663,
+    "drawdown_pct": 0.14700599380675544
+  },
+  {
+    "id": 2194,
+    "timestamp": 1792399591728,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4950.74652711,
+    "equity_usdt": 4992.01063711,
+    "drawdown_pct": 0
+  },
+  {
+    "id": 2195,
+    "timestamp": 1792400493536,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4944.39444075,
+    "equity_usdt": 4979.35680075,
+    "drawdown_pct": 0.25348175875133677
+  },
+  {
+    "id": 2196,
+    "timestamp": 1792401393554,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4947.15340632,
+    "equity_usdt": 4983.36907632,
+    "drawdown_pct": 0.1731078200386743
+  },
+  {
+    "id": 2197,
+    "timestamp": 1792402297151,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4953.60200803,
+    "equity_usdt": 5000.785788030001,
+    "drawdown_pct": 0
+  },
+  {
+    "id": 2198,
+    "timestamp": 1792403193636,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4962.23958634,
+    "equity_usdt": 5015.463366339999,
+    "drawdown_pct": 0
+  },
+  {
+    "id": 2199,
+    "timestamp": 1792404093578,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4947.78076858,
+    "equity_usdt": 4983.20316858,
+    "drawdown_pct": 0.6432147022846367
+  },
+  {
+    "id": 2200,
+    "timestamp": 1792404993514,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4942.72027755,
+    "equity_usdt": 4970.7648675499995,
+    "drawdown_pct": 0.8912137428813085
+  },
+  {
+    "id": 2201,
+    "timestamp": 1792405893943,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4906.56039449,
+    "equity_usdt": 4923.76615449,
+    "drawdown_pct": 1.8282899335961917
+  },
+  {
+    "id": 2202,
+    "timestamp": 1792406793617,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4917.74397181,
+    "equity_usdt": 4938.481311810001,
+    "drawdown_pct": 1.5348941644483634
+  },
+  {
+    "id": 2203,
+    "timestamp": 1792407693733,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4916.05145703,
+    "equity_usdt": 4936.11669703,
+    "drawdown_pct": 1.5820406513686036
+  },
+  {
+    "id": 2204,
+    "timestamp": 1792408593641,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4898.63347428,
+    "equity_usdt": 4907.688494280001,
+    "drawdown_pct": 2.1488517448517706
+  },
+  {
+    "id": 2205,
+    "timestamp": 1792409493645,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4899.49405651,
+    "equity_usdt": 4909.77107651,
+    "drawdown_pct": 2.1073285180253896
+  },
+  {
+    "id": 2206,
+    "timestamp": 1792410397158,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4900.0955238,
+    "equity_usdt": 4913.403103799999,
+    "drawdown_pct": 2.03491193306188
+  },
+  {
+    "id": 2207,
+    "timestamp": 1792411294646,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4907.07349569,
+    "equity_usdt": 4919.452355689999,
+    "drawdown_pct": 1.9142999088449737
+  },
+  {
+    "id": 2208,
+    "timestamp": 1792412193854,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4924.77819412,
+    "equity_usdt": 4943.16929412,
+    "drawdown_pct": 1.4414235921885576
+  },
+  {
+    "id": 2209,
+    "timestamp": 1792413093599,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4924.82334412,
+    "equity_usdt": 4943.70324412,
+    "drawdown_pct": 1.4307775170206385
+  },
+  {
+    "id": 2210,
+    "timestamp": 1792413992923,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4919.73453425,
+    "equity_usdt": 4939.05435425,
+    "drawdown_pct": 1.5234686510283115
+  },
+  {
+    "id": 2211,
+    "timestamp": 1792414893659,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4921.19915106,
+    "equity_usdt": 4938.698191060001,
+    "drawdown_pct": 1.5305699528220715
+  },
+  {
+    "id": 2212,
+    "timestamp": 1792415793636,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4917.23890412,
+    "equity_usdt": 4930.04546412,
+    "drawdown_pct": 1.7030909405750854
+  },
+  {
+    "id": 2213,
+    "timestamp": 1792416649346,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4906.60231223,
+    "equity_usdt": 4921.16855223,
+    "drawdown_pct": 1.8800818034647455
+  },
+  {
+    "id": 2214,
+    "timestamp": 1792417525200,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4898.3379926,
+    "equity_usdt": 4900.8308726,
+    "drawdown_pct": 2.2855813185542577
+  },
+  {
+    "id": 2215,
+    "timestamp": 1792418404803,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4883.35783805,
+    "equity_usdt": 4872.43315805,
+    "drawdown_pct": 2.851784528024062
+  },
+  {
+    "id": 2216,
+    "timestamp": 1792419304556,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4883.7414543,
+    "equity_usdt": 4886.5514543,
+    "drawdown_pct": 2.570289176173801
+  },
+  {
+    "id": 2217,
+    "timestamp": 1792420204644,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4879.03010799,
+    "equity_usdt": 4884.08810799,
+    "drawdown_pct": 2.619404205635127
+  },
+  {
+    "id": 2218,
+    "timestamp": 1792421104136,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4885.61843404,
+    "equity_usdt": 4892.643434039999,
+    "drawdown_pct": 2.448825229674181
+  },
+  {
+    "id": 2219,
+    "timestamp": 1792422004285,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4870.28830965,
+    "equity_usdt": 4858.48630965,
+    "drawdown_pct": 3.129861494822397
+  },
+  {
+    "id": 2220,
+    "timestamp": 1792422907592,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4866.38653215,
+    "equity_usdt": 4855.42753215,
+    "drawdown_pct": 3.1908484321516286
+  },
+  {
+    "id": 2221,
+    "timestamp": 1792423817205,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4864.96451663,
+    "equity_usdt": 4864.96451663,
+    "drawdown_pct": 3.0006968193613766
+  },
+  {
+    "id": 2222,
+    "timestamp": 1792424720944,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4864.60305543,
+    "equity_usdt": 4864.60305543,
+    "drawdown_pct": 3.0079037546652208
+  },
+  {
+    "id": 2223,
+    "timestamp": 1792425621947,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4858.16301042,
+    "equity_usdt": 4858.16301042,
+    "drawdown_pct": 3.1363075438987336
+  },
+  {
+    "id": 2224,
+    "timestamp": 1792426524256,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4865.79300651,
+    "equity_usdt": 4865.79300651,
+    "drawdown_pct": 2.984178108736144
+  },
+  {
+    "id": 2225,
+    "timestamp": 1792427426041,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4861.62491004,
+    "equity_usdt": 4861.62491004,
+    "drawdown_pct": 3.067283021793092
+  },
+  {
+    "id": 2226,
+    "timestamp": 1792428328311,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4863.07920763,
+    "equity_usdt": 4863.07920763,
+    "drawdown_pct": 3.0382867460001015
+  },
+  {
+    "id": 2227,
+    "timestamp": 1792429229937,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4862.11038206,
+    "equity_usdt": 4862.11038206,
+    "drawdown_pct": 3.0576035169389995
+  },
+  {
+    "id": 2228,
+    "timestamp": 1792430133556,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4859.38725655,
+    "equity_usdt": 4859.38725655,
+    "drawdown_pct": 3.1118981116972044
+  },
+  {
+    "id": 2229,
+    "timestamp": 1792431026855,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4859.96933471,
+    "equity_usdt": 4859.96933471,
+    "drawdown_pct": 3.100292441044579
+  },
+  {
+    "id": 2230,
+    "timestamp": 1792431930606,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4859.11529659,
+    "equity_usdt": 4859.11529659,
+    "drawdown_pct": 3.1173205410947498
+  },
+  {
+    "id": 2231,
+    "timestamp": 1792432834276,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4861.18094226,
+    "equity_usdt": 4861.18094226,
+    "drawdown_pct": 3.0761350011132813
+  },
+  {
+    "id": 2232,
+    "timestamp": 1792433738127,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4862.8226973,
+    "equity_usdt": 4862.8226973,
+    "drawdown_pct": 3.0434011354645287
+  },
+  {
+    "id": 2233,
+    "timestamp": 1792434640771,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4856.56074592,
+    "equity_usdt": 4856.56074592,
+    "drawdown_pct": 3.168254033843281
+  },
+  {
+    "id": 2234,
+    "timestamp": 1792435538605,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4861.48734204,
+    "equity_usdt": 4861.48734204,
+    "drawdown_pct": 3.070025898970171
+  },
+  {
+    "id": 2235,
+    "timestamp": 1792436445516,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4858.78480353,
+    "equity_usdt": 4858.78480353,
+    "drawdown_pct": 3.1239100231796506
+  },
+  {
+    "id": 2236,
+    "timestamp": 1792437348629,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4859.11950655,
+    "equity_usdt": 4859.11950655,
+    "drawdown_pct": 3.1172366014925226
+  },
+  {
+    "id": 2237,
+    "timestamp": 1792438247882,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4861.64706655,
+    "equity_usdt": 4861.64706655,
+    "drawdown_pct": 3.066841257824706
+  },
+  {
+    "id": 2238,
+    "timestamp": 1792439152526,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4862.28633456,
+    "equity_usdt": 4862.28633456,
+    "drawdown_pct": 3.054095316656238
+  },
+  {
+    "id": 2239,
+    "timestamp": 1792440052838,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4857.06378673,
+    "equity_usdt": 4857.06378673,
+    "drawdown_pct": 3.1582242365293145
+  },
+  {
+    "id": 2240,
+    "timestamp": 1792440955677,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4862.20211627,
+    "equity_usdt": 4862.20211627,
+    "drawdown_pct": 3.055774489323809
+  },
+  {
+    "id": 2241,
+    "timestamp": 1792441854292,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4860.05279575,
+    "equity_usdt": 4860.05279575,
+    "drawdown_pct": 3.0986283666828784
+  },
+  {
+    "id": 2242,
+    "timestamp": 1792442757676,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4864.22610595,
+    "equity_usdt": 4864.22610595,
+    "drawdown_pct": 3.0154195005189273
+  },
+  {
+    "id": 2243,
+    "timestamp": 1792443655133,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4864.01889813,
+    "equity_usdt": 4864.01889813,
+    "drawdown_pct": 3.0195508799123156
+  },
+  {
+    "id": 2244,
+    "timestamp": 1792444561646,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4865.77991651,
+    "equity_usdt": 4865.77991651,
+    "drawdown_pct": 2.98443910157059
+  },
+  {
+    "id": 2245,
+    "timestamp": 1792445461452,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4865.09571825,
+    "equity_usdt": 4865.09571825,
+    "drawdown_pct": 2.9980808772157217
+  },
+  {
+    "id": 2246,
+    "timestamp": 1792446363193,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4863.9190359,
+    "equity_usdt": 4863.9190359,
+    "drawdown_pct": 3.021541966731325
+  },
+  {
+    "id": 2247,
+    "timestamp": 1792447263963,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4862.46583765,
+    "equity_usdt": 4862.46583765,
+    "drawdown_pct": 3.050516323512654
+  },
+  {
+    "id": 2248,
+    "timestamp": 1792448164278,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4867.96953655,
+    "equity_usdt": 4867.96953655,
+    "drawdown_pct": 2.9407817187912504
+  },
+  {
+    "id": 2249,
+    "timestamp": 1792449062002,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4864.09894255,
+    "equity_usdt": 4864.09894255,
+    "drawdown_pct": 3.0179549272723745
+  },
+  {
+    "id": 2250,
+    "timestamp": 1792449961358,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4864.75769358,
+    "equity_usdt": 4864.75769358,
+    "drawdown_pct": 3.004820527080746
+  },
+  {
+    "id": 2251,
+    "timestamp": 1792450851757,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4865.25990655,
+    "equity_usdt": 4865.25990655,
+    "drawdown_pct": 2.99480723551988
+  },
+  {
+    "id": 2252,
+    "timestamp": 1792451757910,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4862.11626677,
+    "equity_usdt": 4862.11626677,
+    "drawdown_pct": 3.057486185606477
+  },
+  {
+    "id": 2253,
+    "timestamp": 1792452665860,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4863.34312599,
+    "equity_usdt": 4863.34312599,
+    "drawdown_pct": 3.0330246527352855
+  },
+  {
+    "id": 2254,
+    "timestamp": 1792453567598,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4859.48364655,
+    "equity_usdt": 4859.48364655,
+    "drawdown_pct": 3.1099762553708774
+  },
+  {
+    "id": 2255,
+    "timestamp": 1792454471485,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4858.50568753,
+    "equity_usdt": 4858.50568753,
+    "drawdown_pct": 3.129475132116022
+  },
+  {
+    "id": 2256,
+    "timestamp": 1792455376568,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4854.193372,
+    "equity_usdt": 4854.193372,
+    "drawdown_pct": 3.2154555334273147
+  },
+  {
+    "id": 2257,
+    "timestamp": 1792456281965,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4851.43485111,
+    "equity_usdt": 4851.43485111,
+    "drawdown_pct": 3.2704558532085954
+  },
+  {
+    "id": 2258,
+    "timestamp": 1792457167578,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4849.60716833,
+    "equity_usdt": 4849.60716833,
+    "drawdown_pct": 3.306896808839257
+  },
+  {
+    "id": 2259,
+    "timestamp": 1792458060107,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4850.67667753,
+    "equity_usdt": 4850.67667753,
+    "drawdown_pct": 3.2855725737311254
+  },
+  {
+    "id": 2260,
+    "timestamp": 1792458967878,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4835.92032571,
+    "equity_usdt": 4835.92032571,
+    "drawdown_pct": 3.5797896927122728
+  },
+  {
+    "id": 2261,
+    "timestamp": 1792459864704,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4842.87783921,
+    "equity_usdt": 4842.87783921,
+    "drawdown_pct": 3.441068442215379
+  },
+  {
+    "id": 2262,
+    "timestamp": 1792460772662,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4861.64386167,
+    "equity_usdt": 4874.890061669999,
+    "drawdown_pct": 2.8027979550886877
+  },
+  {
+    "id": 2263,
+    "timestamp": 1792461681312,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4859.60860912,
+    "equity_usdt": 4872.11890912,
+    "drawdown_pct": 2.8580501291668967
+  },
+  {
+    "id": 2264,
+    "timestamp": 1792462582659,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4858.77799407,
+    "equity_usdt": 4869.08059407,
+    "drawdown_pct": 2.918629079267321
+  },
+  {
+    "id": 2265,
+    "timestamp": 1792463482054,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4860.87590856,
+    "equity_usdt": 4860.87590856,
+    "drawdown_pct": 3.0822168658926485
+  },
+  {
+    "id": 2266,
+    "timestamp": 1792464388376,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4860.65725124,
+    "equity_usdt": 4860.65725124,
+    "drawdown_pct": 3.0865765292782505
+  },
+  {
+    "id": 2267,
+    "timestamp": 1792465285251,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4865.57778918,
+    "equity_usdt": 4865.57778918,
+    "drawdown_pct": 2.9884691844410227
+  },
+  {
+    "id": 2268,
+    "timestamp": 1792466188787,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4868.72457626,
+    "equity_usdt": 4868.72457626,
+    "drawdown_pct": 2.9257274824256396
+  },
+  {
+    "id": 2269,
+    "timestamp": 1792467087920,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4867.50931716,
+    "equity_usdt": 4867.50931716,
+    "drawdown_pct": 2.949957728192269
+  },
+  {
+    "id": 2270,
+    "timestamp": 1792467987419,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4872.30040396,
+    "equity_usdt": 4872.30040396,
+    "drawdown_pct": 2.854431423840132
+  },
+  {
+    "id": 2271,
+    "timestamp": 1792468887540,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4875.13498396,
+    "equity_usdt": 4875.13498396,
+    "drawdown_pct": 2.7979146118736984
+  },
+  {
+    "id": 2272,
+    "timestamp": 1792469790128,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4876.76761029,
+    "equity_usdt": 4876.76761029,
+    "drawdown_pct": 2.7653627575234574
+  },
+  {
+    "id": 2273,
+    "timestamp": 1792470673113,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4874.66017396,
+    "equity_usdt": 4874.66017396,
+    "drawdown_pct": 2.8073815337773906
+  },
+  {
+    "id": 2274,
+    "timestamp": 1792471565074,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4875.61331675,
+    "equity_usdt": 4875.61331675,
+    "drawdown_pct": 2.7883774513949553
+  },
+  {
+    "id": 2275,
+    "timestamp": 1792472465187,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4874.57449396,
+    "equity_usdt": 4874.57449396,
+    "drawdown_pct": 2.8090898505118953
+  },
+  {
+    "id": 2276,
+    "timestamp": 1792473368849,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4872.13477149,
+    "equity_usdt": 4872.13477149,
+    "drawdown_pct": 2.857733859884454
+  },
+  {
+    "id": 2277,
+    "timestamp": 1792474274120,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4871.657393,
+    "equity_usdt": 4871.657393,
+    "drawdown_pct": 2.8672519932079603
+  },
+  {
+    "id": 2278,
+    "timestamp": 1792475188038,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4869.99775396,
+    "equity_usdt": 4869.99775396,
+    "drawdown_pct": 2.9003424360798635
+  },
+  {
+    "id": 2279,
+    "timestamp": 1792476087085,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4865.81913752,
+    "equity_usdt": 4865.81913752,
+    "drawdown_pct": 2.983657099846402
+  },
+  {
+    "id": 2280,
+    "timestamp": 1792476994190,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4860.4720458,
+    "equity_usdt": 4860.4720458,
+    "drawdown_pct": 3.090269217799168
+  },
+  {
+    "id": 2281,
+    "timestamp": 1792477888289,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4866.16000396,
+    "equity_usdt": 4866.16000396,
+    "drawdown_pct": 2.9768607898127746
+  },
+  {
+    "id": 2282,
+    "timestamp": 1792478791911,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4866.31708396,
+    "equity_usdt": 4866.31708396,
+    "drawdown_pct": 2.9737288757995217
+  },
+  {
+    "id": 2283,
+    "timestamp": 1792479693395,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4864.82545195,
+    "equity_usdt": 4864.82545195,
+    "drawdown_pct": 3.003469537849031
+  },
+  {
+    "id": 2284,
+    "timestamp": 1792480593429,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4862.67815123,
+    "equity_usdt": 4862.67815123,
+    "drawdown_pct": 3.0462831437545264
+  },
+  {
+    "id": 2285,
+    "timestamp": 1792481497041,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4858.81651396,
+    "equity_usdt": 4858.81651396,
+    "drawdown_pct": 3.1232777699323813
+  },
+  {
+    "id": 2286,
+    "timestamp": 1792482393832,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4856.99938396,
+    "equity_usdt": 4856.99938396,
+    "drawdown_pct": 3.159508320676599
+  },
+  {
+    "id": 2287,
+    "timestamp": 1792483293663,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4854.69841585,
+    "equity_usdt": 4854.69841585,
+    "drawdown_pct": 3.205385798826326
+  },
+  {
+    "id": 2288,
+    "timestamp": 1792484193627,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4852.05345589,
+    "equity_usdt": 4852.05345589,
+    "drawdown_pct": 3.2581219024882735
+  },
+  {
+    "id": 2289,
+    "timestamp": 1792485093877,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4853.56371852,
+    "equity_usdt": 4853.56371852,
+    "drawdown_pct": 3.228009776854256
+  },
+  {
+    "id": 2290,
+    "timestamp": 1792485993568,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4855.31253023,
+    "equity_usdt": 4855.31253023,
+    "drawdown_pct": 3.1931413792155285
+  },
+  {
+    "id": 2291,
+    "timestamp": 1792486893597,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4856.30015391,
+    "equity_usdt": 4856.30015391,
+    "drawdown_pct": 3.173449805220046
+  },
+  {
+    "id": 2292,
+    "timestamp": 1792487793570,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4851.83979656,
+    "equity_usdt": 4851.83979656,
+    "drawdown_pct": 3.262381914263737
+  },
+  {
+    "id": 2293,
+    "timestamp": 1792488697192,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4853.37101289,
+    "equity_usdt": 4853.37101289,
+    "drawdown_pct": 3.231852006692747
+  },
+  {
+    "id": 2294,
+    "timestamp": 1792489593730,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4850.61076585,
+    "equity_usdt": 4850.61076585,
+    "drawdown_pct": 3.2868867430348634
+  },
+  {
+    "id": 2295,
+    "timestamp": 1792490493571,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4851.49212642,
+    "equity_usdt": 4851.49212642,
+    "drawdown_pct": 3.269313878762428
+  },
+  {
+    "id": 2296,
+    "timestamp": 1792491394050,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4857.32216795,
+    "equity_usdt": 4857.32216795,
+    "drawdown_pct": 3.153072544629139
+  },
+  {
+    "id": 2297,
+    "timestamp": 1792492293621,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4856.54410585,
+    "equity_usdt": 4856.54410585,
+    "drawdown_pct": 3.168585809170595
+  },
+  {
+    "id": 2298,
+    "timestamp": 1792493193613,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4854.91618585,
+    "equity_usdt": 4854.91618585,
+    "drawdown_pct": 3.20104382712613
+  },
+  {
+    "id": 2299,
+    "timestamp": 1792494093640,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4855.48855128,
+    "equity_usdt": 4855.48855128,
+    "drawdown_pct": 3.189631812159751
+  },
+  {
+    "id": 2300,
+    "timestamp": 1792494993706,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4856.90439,
+    "equity_usdt": 4856.90439,
+    "drawdown_pct": 3.161402342286606
+  },
+  {
+    "id": 2301,
+    "timestamp": 1792495893702,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4854.11560947,
+    "equity_usdt": 4854.11560947,
+    "drawdown_pct": 3.2170059889748837
+  },
+  {
+    "id": 2302,
+    "timestamp": 1792496797374,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4855.31905065,
+    "equity_usdt": 4855.31905065,
+    "drawdown_pct": 3.193011372882657
+  },
+  {
+    "id": 2303,
+    "timestamp": 1792497691875,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4854.66132731,
+    "equity_usdt": 4854.66132731,
+    "drawdown_pct": 3.2061252826444857
+  },
+  {
+    "id": 2304,
+    "timestamp": 1792498593751,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4852.44699725,
+    "equity_usdt": 4852.44699725,
+    "drawdown_pct": 3.2502753421357173
+  },
+  {
+    "id": 2305,
+    "timestamp": 1792499493734,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4855.95596582,
+    "equity_usdt": 4855.95596582,
+    "drawdown_pct": 3.1803123434315683
+  },
+  {
+    "id": 2306,
+    "timestamp": 1792500331832,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4861.1167507,
+    "equity_usdt": 4861.1167507,
+    "drawdown_pct": 3.0774148740843557
+  },
+  {
+    "id": 2307,
+    "timestamp": 1792501204643,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4859.41950221,
+    "equity_usdt": 4859.41950221,
+    "drawdown_pct": 3.1112551868536684
+  },
+  {
+    "id": 2308,
+    "timestamp": 1792502104264,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4851.50683585,
+    "equity_usdt": 4851.50683585,
+    "drawdown_pct": 3.2690205971865174
+  },
+  {
+    "id": 2309,
+    "timestamp": 1792503004292,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4851.01417585,
+    "equity_usdt": 4851.01417585,
+    "drawdown_pct": 3.278843418409901
+  },
+  {
+    "id": 2310,
+    "timestamp": 1792503904251,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4859.21446585,
+    "equity_usdt": 4859.21446585,
+    "drawdown_pct": 3.1153432709452833
+  },
+  {
+    "id": 2311,
+    "timestamp": 1792504805321,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4872.74119585,
+    "equity_usdt": 4872.74119585,
+    "drawdown_pct": 2.8456427664858
+  },
+  {
+    "id": 2312,
+    "timestamp": 1792505704373,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4950.49242745,
+    "equity_usdt": 4977.137427449999,
+    "drawdown_pct": 0.7641554945294662
+  },
+  {
+    "id": 2313,
+    "timestamp": 1792506611339,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4947.45527245,
+    "equity_usdt": 4972.09277245,
+    "drawdown_pct": 0.8647375271658844
+  },
+  {
+    "id": 2314,
+    "timestamp": 1792507517110,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4957.94189432,
+    "equity_usdt": 4986.95939432,
+    "drawdown_pct": 0.568321806740658
+  },
+  {
+    "id": 2315,
+    "timestamp": 1792507526837,
+    "mode": "TESTNET_LIVE",
+    "balance_usdt": 4922.34088932,
+    "equity_usdt": 4951.35838932,
+    "drawdown_pct": 0
   }
 ]

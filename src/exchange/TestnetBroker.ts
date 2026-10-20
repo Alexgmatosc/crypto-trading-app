@@ -82,10 +82,13 @@ export class TestnetBroker implements IExecutionBroker {
 
   public async getBalance(): Promise<number> {
     const balance = await this.exchange.fetchBalance();
+    const rawWallet = balance.info?.totalWalletBalance
+      ? Number(balance.info.totalWalletBalance)
+      : undefined;
     const usdtTotal =
-      balance.USDT?.total ??
-      (balance.info?.totalWalletBalance ? Number(balance.info.totalWalletBalance) : undefined) ??
+      (rawWallet && !Number.isNaN(rawWallet) ? rawWallet : undefined) ??
       balance.USDT?.free ??
+      balance.USDT?.total ??
       this.cachedBalanceUsdt;
     if (typeof usdtTotal === 'number' && !Number.isNaN(usdtTotal)) {
       this.cachedBalanceUsdt = usdtTotal;
@@ -129,15 +132,28 @@ export class TestnetBroker implements IExecutionBroker {
       orderParams
     );
 
+    const rawFilled =
+      typeof order.filled === 'number' && order.filled > 0
+        ? order.filled
+        : Number((order.info as Record<string, unknown> | undefined)?.executedQty || 0);
+
+    if (rawFilled <= 0 || order.status === 'EXPIRED' || order.status === 'CANCELED') {
+      throw new Error(
+        `Order ${order.id} not filled on exchange (status: ${order.status}, filled: ${rawFilled})`
+      );
+    }
+
+    const rawAvgPrice = Number(
+      order.average ?? (order.info as Record<string, unknown> | undefined)?.avgPrice ?? 0
+    );
     const filledPrice =
-      typeof order.average === 'number' && order.average > 0
-        ? order.average
+      rawAvgPrice > 0
+        ? rawAvgPrice
         : typeof order.price === 'number' && order.price > 0
           ? order.price
           : referencePrice;
 
-    const filledSize =
-      typeof order.filled === 'number' && order.filled > 0 ? order.filled : formattedAmount;
+    const filledSize = rawFilled;
 
     const notionalUsd = filledPrice * filledSize;
     const feeUsd =
