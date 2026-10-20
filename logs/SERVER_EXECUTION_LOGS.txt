@@ -11574,3 +11574,31 @@
 [2026-10-20 16:45:26.838] [32mINFO[39m: [36mDaemon active: synchronized with 15m candle closes and 10s SL monitoring[39m
     balanceUsdt: 4922.34088932
     openPositions: 1
+[2026-10-20 16:51:19.440] [32mINFO[39m: [36mReceived shutdown signal, stopping daemon...[39m
+    signal: "SIGINT"
+[2026-10-20 16:51:19.441] [32mINFO[39m: [36mQuantDaemon stopped cleanly[39m
+
+> crypto-quant-engine@2.1.1 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
+[2026-10-20 16:51:22.218] [32mINFO[39m: [36mWeb Dashboard running[39m
+    port: 3000
+    url: "http://localhost:3000"
+[2026-10-20 16:51:22.218] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
+    mode: "TESTNET_LIVE"
+    exchange: "binanceusdm"
+    symbols: [
+      "BTC/USDT",
+      "ETH/USDT",
+      "SOL/USDT",
+      "DOGE/USDT"
+    ]
+    timeframe: "15m"
+[2026-10-20 16:51:22.218] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
+    exchange: "binanceusdm"
+[2026-10-20 16:51:24.044] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
+    exchange: "binanceusdm"
+    balanceUsdt: 4922.34088932
+[2026-10-20 16:51:25.700] [32mINFO[39m: [36mDaemon active: synchronized with 15m candle closes and 10s SL monitoring[39m
+    balanceUsdt: 4922.34088932
+    openPositions: 1

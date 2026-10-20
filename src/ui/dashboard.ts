@@ -213,7 +213,7 @@ export class DashboardServer {
       closedTrades: closedTrades.slice(-30).reverse(),
       strategyBreakdown: report.strategyBreakdown,
       symbolBreakdown,
-      snapshots: snapshots.slice(-80).map((s) => ({
+      snapshots: snapshots.map((s) => ({
         timestamp: s.timestamp,
         equity: s.equity_usdt,
         balance: s.balance_usdt,
@@ -545,12 +545,83 @@ export class DashboardServer {
       <section id="section-chart-strategies" class="grid grid-cols-1 gap-6 lg:grid-cols-12">
         <!-- Equity Curve Card (7 cols) -->
         <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm lg:col-span-7 flex flex-col">
-          <div class="flex flex-col gap-1 p-6 pb-4 border-b border-border">
-            <div class="flex items-center justify-between">
-              <h2 class="text-base font-semibold tracking-tight">Curva de Patrimonio (Equity Curve)</h2>
-              <span class="text-xs font-mono text-muted-foreground">USDT</span>
+          <div class="flex flex-col gap-3 p-6 pb-4 border-b border-border">
+            <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+              <div class="flex flex-col gap-0.5">
+                <div class="flex items-center gap-2">
+                  <h2 class="text-base font-semibold tracking-tight">Curva de Patrimonio Real</h2>
+                  <span class="inline-flex items-center rounded-md border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-[11px] font-mono font-medium text-emerald-400">
+                    <span class="size-1.5 rounded-full bg-emerald-400 mr-1.5"></span>
+                    MARK-TO-MARKET
+                  </span>
+                </div>
+                <p class="text-xs text-muted-foreground">
+                  Evolución real del capital neto (Equity) y balance en billetera registrado en tiempo real desde Binance.
+                </p>
+              </div>
+
+              <!-- Timeframe Selector (24H, 3D, 1 Sem, 1 Mes, Total) -->
+              <div class="inline-flex h-8 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground self-start sm:self-auto" role="group">
+                <button
+                  id="tf-btn-24h"
+                  onclick="setTimeframeFilter('24h')"
+                  class="tf-btn inline-flex items-center justify-center whitespace-nowrap rounded-md px-2.5 py-0.5 text-xs font-medium ring-offset-background transition-all hover:text-foreground text-muted-foreground"
+                >
+                  24H
+                </button>
+                <button
+                  id="tf-btn-3d"
+                  onclick="setTimeframeFilter('3d')"
+                  class="tf-btn inline-flex items-center justify-center whitespace-nowrap rounded-md px-2.5 py-0.5 text-xs font-medium ring-offset-background transition-all hover:text-foreground text-muted-foreground"
+                >
+                  3D
+                </button>
+                <button
+                  id="tf-btn-7d"
+                  onclick="setTimeframeFilter('7d')"
+                  class="tf-btn inline-flex items-center justify-center whitespace-nowrap rounded-md px-2.5 py-0.5 text-xs font-medium ring-offset-background transition-all hover:text-foreground text-muted-foreground"
+                >
+                  1 Sem
+                </button>
+                <button
+                  id="tf-btn-30d"
+                  onclick="setTimeframeFilter('30d')"
+                  class="tf-btn inline-flex items-center justify-center whitespace-nowrap rounded-md px-2.5 py-0.5 text-xs font-medium ring-offset-background transition-all hover:text-foreground text-muted-foreground"
+                >
+                  1 Mes
+                </button>
+                <button
+                  id="tf-btn-all"
+                  onclick="setTimeframeFilter('all')"
+                  class="tf-btn inline-flex items-center justify-center whitespace-nowrap rounded-md px-2.5 py-0.5 text-xs font-medium ring-offset-background transition-all bg-background text-foreground shadow-sm"
+                >
+                  Total
+                </button>
+              </div>
             </div>
-            <p class="text-xs text-muted-foreground">Evolución histórica del capital neto incluyendo posiciones cerradas y valoración mark-to-market.</p>
+
+            <!-- Chart Period Telemetry / Metrics Banner -->
+            <div class="flex flex-wrap items-center justify-between gap-2 rounded-md border border-border bg-background/50 px-3 py-1.5 text-xs font-mono">
+              <div class="flex items-center gap-2 text-muted-foreground">
+                <span id="chart-period-range">Calculando periodo...</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="flex items-center gap-1.5">
+                  <span class="inline-block size-2 rounded-full bg-emerald-400"></span>
+                  <span class="text-muted-foreground">Equity:</span>
+                  <strong id="chart-latest-equity" class="text-foreground">$0.00</strong>
+                </div>
+                <div class="flex items-center gap-1.5">
+                  <span class="inline-block size-2 rounded-full border border-zinc-400"></span>
+                  <span class="text-muted-foreground">Balance:</span>
+                  <strong id="chart-latest-balance" class="text-zinc-400">$0.00</strong>
+                </div>
+                <div class="flex items-center gap-1">
+                  <span class="text-muted-foreground">Periodo:</span>
+                  <strong id="chart-period-pnl" class="text-foreground">+0.00%</strong>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="p-6 flex-1 flex items-center justify-center">
             <div class="h-64 w-full">
@@ -660,7 +731,26 @@ export class DashboardServer {
     let chartInstance = null;
     let currentTab = 'overview';
     let selectedSymbolFilter = 'ALL';
+    let selectedTimeframe = 'all'; // '24h', '3d', '7d', '30d', 'all'
+    let currentFilteredSnaps = [];
     let latestData = null;
+
+    function setTimeframeFilter(tf) {
+      selectedTimeframe = tf;
+      const tfs = ['24h', '3d', '7d', '30d', 'all'];
+      tfs.forEach((t) => {
+        const btn = document.getElementById('tf-btn-' + t);
+        if (!btn) return;
+        if (t === tf) {
+          btn.className = 'tf-btn inline-flex items-center justify-center whitespace-nowrap rounded-md px-2.5 py-0.5 text-xs font-medium ring-offset-background transition-all bg-background text-foreground shadow-sm';
+        } else {
+          btn.className = 'tf-btn inline-flex items-center justify-center whitespace-nowrap rounded-md px-2.5 py-0.5 text-xs font-medium ring-offset-background transition-all hover:text-foreground text-muted-foreground';
+        }
+      });
+      if (latestData) {
+        renderChart(latestData);
+      }
+    }
 
     function switchTab(tab) {
       currentTab = tab;
@@ -998,72 +1088,211 @@ export class DashboardServer {
         // Closed Trades
         renderClosedTrades(data);
 
-        // Equity Curve Chart (shadcn monochrome aesthetic)
-        const snaps = data.snapshots && data.snapshots.length > 0
-          ? data.snapshots
-          : [{ timestamp: data.timestamp, equity: data.equity }];
-        const labels = snaps.map((s) => new Date(s.timestamp).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' }));
-        const values = snaps.map((s) => s.equity);
+        // Render Real Equity Curve Chart
+        renderChart(data);
+      } catch (err) {
+        console.error('Error sincronizando estado:', err);
+      }
+    }
 
-        if (!chartInstance) {
-          const ctx = document.getElementById('equityChart').getContext('2d');
-          chartInstance = new Chart(ctx, {
-            type: 'line',
-            data: {
-              labels,
-              datasets: [{
-                label: 'Equity (USDT)',
-                data: values,
-                borderColor: '#fafafa',
-                backgroundColor: 'rgba(250, 250, 250, 0.04)',
-                borderWidth: 1.75,
+    function renderChart(data) {
+      if (!data) return;
+
+      const rawSnaps = Array.isArray(data.snapshots) && data.snapshots.length > 0
+        ? [...data.snapshots]
+        : [];
+
+      // Append live real-time point if available
+      if (data.timestamp && typeof data.equity === 'number') {
+        const lastSnap = rawSnaps[rawSnaps.length - 1];
+        if (!lastSnap || Math.abs(data.timestamp - lastSnap.timestamp) > 30000) {
+          rawSnaps.push({
+            timestamp: data.timestamp,
+            equity: data.equity,
+            balance: data.balance,
+            drawdown: data.maxDrawdownPct || 0,
+          });
+        }
+      }
+
+      if (rawSnaps.length === 0) {
+        rawSnaps.push({
+          timestamp: Date.now(),
+          equity: data.equity || 5000,
+          balance: data.balance || 5000,
+          drawdown: 0,
+        });
+      }
+
+      const now = data.timestamp || Date.now();
+      let cutoff = 0;
+      if (selectedTimeframe === '24h') cutoff = now - 24 * 60 * 60 * 1000;
+      else if (selectedTimeframe === '3d') cutoff = now - 3 * 24 * 60 * 60 * 1000;
+      else if (selectedTimeframe === '7d') cutoff = now - 7 * 24 * 60 * 60 * 1000;
+      else if (selectedTimeframe === '30d') cutoff = now - 30 * 24 * 60 * 60 * 1000;
+
+      let filtered = cutoff > 0 ? rawSnaps.filter((s) => s.timestamp >= cutoff) : rawSnaps;
+      if (filtered.length === 0) {
+        filtered = [rawSnaps[rawSnaps.length - 1]];
+      }
+
+      currentFilteredSnaps = filtered;
+
+      // Calculate period return
+      const firstPoint = filtered[0];
+      const lastPoint = filtered[filtered.length - 1];
+      const periodDiffUsd = lastPoint.equity - firstPoint.equity;
+      const periodReturnPct = firstPoint.equity > 0 ? (periodDiffUsd / firstPoint.equity) * 100 : 0;
+
+      // Update period banner
+      const rangeEl = document.getElementById('chart-period-range');
+      if (rangeEl) {
+        const startStr = new Date(firstPoint.timestamp).toLocaleString('es-ES', {
+          day: '2-digit',
+          month: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit',
+        });
+        const endStr = new Date(lastPoint.timestamp).toLocaleString('es-ES', {
+          day: '2-digit',
+          month: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit',
+        });
+        rangeEl.textContent = startStr + ' → ' + endStr + ' (' + filtered.length + ' snapshots)';
+      }
+
+      const eqEl = document.getElementById('chart-latest-equity');
+      if (eqEl) eqEl.textContent = fmtUsd(lastPoint.equity);
+
+      const balEl = document.getElementById('chart-latest-balance');
+      if (balEl) balEl.textContent = fmtUsd(lastPoint.balance);
+
+      const pnlEl = document.getElementById('chart-period-pnl');
+      if (pnlEl) {
+        const sign = periodDiffUsd > 0 ? '+' : '';
+        pnlEl.textContent = sign + '$' + periodDiffUsd.toFixed(2) + ' (' + sign + periodReturnPct.toFixed(2) + '%)';
+        pnlEl.className = 'font-mono-num font-medium ' + pnlTextClass(periodDiffUsd);
+      }
+
+      // X-axis label formatting based on selected timeframe
+      const labels = filtered.map((s) => {
+        const d = new Date(s.timestamp);
+        if (selectedTimeframe === '24h') {
+          return d.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+        }
+        return d.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit' }) + ' ' +
+               d.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+      });
+
+      const equityValues = filtered.map((s) => Number(s.equity.toFixed(2)));
+      const balanceValues = filtered.map((s) => Number(s.balance.toFixed(2)));
+
+      if (!chartInstance) {
+        const canvas = document.getElementById('equityChart');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        chartInstance = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels,
+            datasets: [
+              {
+                label: 'Patrimonio (Equity)',
+                data: equityValues,
+                borderColor: '#10b981',
+                backgroundColor: 'rgba(16, 185, 129, 0.08)',
+                borderWidth: 2,
                 fill: true,
-                tension: 0.2,
+                tension: 0.15,
+                pointRadius: filtered.length > 80 ? 0 : 2,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: '#10b981',
+              },
+              {
+                label: 'Balance Billetera',
+                data: balanceValues,
+                borderColor: '#71717a',
+                borderDash: [4, 4],
+                borderWidth: 1.5,
+                fill: false,
+                tension: 0.1,
                 pointRadius: 0,
                 pointHoverRadius: 4,
-                pointHoverBackgroundColor: '#fafafa',
-              }],
+                pointHoverBackgroundColor: '#71717a',
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: {
+              mode: 'index',
+              intersect: false,
             },
-            options: {
-              responsive: true,
-              maintainAspectRatio: false,
-              plugins: {
-                legend: { display: false },
-                tooltip: {
-                  backgroundColor: '#09090b',
-                  borderColor: '#27272a',
-                  borderWidth: 1,
-                  titleColor: '#a1a1aa',
-                  bodyColor: '#fafafa',
-                  titleFont: { family: 'Inter', size: 11 },
-                  bodyFont: { family: 'JetBrains Mono', size: 12 },
-                  padding: 10,
-                  displayColors: false,
+            plugins: {
+              legend: {
+                display: true,
+                position: 'top',
+                align: 'end',
+                labels: {
+                  boxWidth: 12,
+                  boxHeight: 2,
+                  color: '#a1a1aa',
+                  font: { family: 'Inter', size: 11 },
                 },
               },
-              scales: {
-                x: {
-                  grid: { color: 'rgba(39, 39, 42, 0.4)', drawBorder: false },
-                  ticks: { color: '#71717a', maxTicksLimit: 7, font: { family: 'JetBrains Mono', size: 10 } },
-                },
-                y: {
-                  grid: { color: 'rgba(39, 39, 42, 0.4)', drawBorder: false },
-                  ticks: {
-                    color: '#71717a',
-                    font: { family: 'JetBrains Mono', size: 10 },
-                    callback: (v) => '$' + Number(v).toLocaleString('en-US'),
+              tooltip: {
+                backgroundColor: '#09090b',
+                borderColor: '#27272a',
+                borderWidth: 1,
+                titleColor: '#a1a1aa',
+                bodyColor: '#fafafa',
+                titleFont: { family: 'Inter', size: 11 },
+                bodyFont: { family: 'JetBrains Mono', size: 12 },
+                padding: 10,
+                callbacks: {
+                  title: function(items) {
+                    const idx = items[0].dataIndex;
+                    const item = currentFilteredSnaps[idx];
+                    if (!item) return items[0].label;
+                    const d = new Date(item.timestamp);
+                    return d.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' }) +
+                           ' ' + d.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+                  },
+                  label: function(ctx) {
+                    const val = Number(ctx.raw || 0);
+                    return ' ' + ctx.dataset.label + ': $' + val.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
                   },
                 },
               },
             },
-          });
-        } else {
-          chartInstance.data.labels = labels;
-          chartInstance.data.datasets[0].data = values;
-          chartInstance.update('none');
-        }
-      } catch (err) {
-        console.error('Error sincronizando estado:', err);
+            scales: {
+              x: {
+                grid: { color: 'rgba(39, 39, 42, 0.4)', drawBorder: false },
+                ticks: {
+                  color: '#71717a',
+                  maxTicksLimit: 7,
+                  font: { family: 'JetBrains Mono', size: 10 },
+                },
+              },
+              y: {
+                grid: { color: 'rgba(39, 39, 42, 0.4)', drawBorder: false },
+                ticks: {
+                  color: '#71717a',
+                  font: { family: 'JetBrains Mono', size: 10 },
+                  callback: (v) => '$' + Number(v).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }),
+                },
+              },
+            },
+          },
+        });
+      } else {
+        chartInstance.data.labels = labels;
+        chartInstance.data.datasets[0].data = equityValues;
+        chartInstance.data.datasets[0].pointRadius = filtered.length > 80 ? 0 : 2;
+        chartInstance.data.datasets[1].data = balanceValues;
+        chartInstance.update('none');
       }
     }
 

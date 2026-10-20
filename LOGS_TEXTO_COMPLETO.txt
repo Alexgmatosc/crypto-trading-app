@@ -1,7 +1,7 @@
 ================================================================================
 REGISTRO COMPLETO EN TEXTO PLANO — CRYPTO QUANT ENGINE (BINANCE TESTNET)
 Pensado para análisis con Gemini / Modelos LLM
-Generado: 2026-10-20T14:45:31.247Z
+Generado: 2026-10-20T14:51:36.349Z
 ================================================================================
 
 --- 1. RESUMEN DE SALDO Y CAPITAL ---
@@ -14,7 +14,7 @@ Posiciones Abiertas Actualmente: 1
 
 ================================================================================
   HISTORIAL DETALLADO DE OPERACIONES (AUDIT TRAIL EN TEXTO PLANO)
-  Modo: TESTNET_LIVE | Generado: 2026-10-20T14:45:31.224Z
+  Modo: TESTNET_LIVE | Generado: 2026-10-20T14:51:36.337Z
 ================================================================================
 
 ID         | Par        | Lado  | Estrategia      | Entrada  | Salida   | PnL (USDT) | Comision | Motivo Salida | Apertura | Cierre
@@ -54,34 +54,6 @@ ba44a619 | DOGE/USDT  | LONG  | TREND_BREAKOUT  | $0.0801  | —        | +17.87
 
 --- 3. ÚLTIMOS LOGS CRUDOS DEL SERVIDOR (CONSOLE OUTPUT) ---
 
-    regime: "TRENDING"
-    adx: 29.97
-    bbWidthPct: 0.76
-    reason: "ADX (29.97) > 23 -> Strong directional trend"
-[2026-10-20 13:46:37.057] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "SOL/USDT"
-    close: 104.16
-    regime: "NO_TRADE"
-    adx: 21.81
-    bbWidthPct: 0.77
-    reason: "ADX (21.81) in dead zone [20, 23]"
-[2026-10-20 13:46:37.374] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "DOGE/USDT"
-    close: 0.07917
-    regime: "NO_TRADE"
-    adx: 21.17
-    bbWidthPct: 0.74
-    reason: "ADX (21.17) in dead zone [20, 23]"
-[2026-10-20 14:01:30.920] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "BTC/USDT"
-    close: 81467.4
-    regime: "NO_TRADE"
-    adx: 15.53
-    bbWidthPct: 0.4
-    reason: "BB_Width (0.40%) <= 0.65% (channel too narrow to cover fees)"
-[2026-10-20 14:01:31.236] [32mINFO[39m: [36m15m candle close evaluated[39m
-    symbol: "ETH/USDT"
-    close: 2383.43
     regime: "TRENDING"
     adx: 29.15
     bbWidthPct: 0.65
@@ -451,6 +423,34 @@ ba44a619 | DOGE/USDT  | LONG  | TREND_BREAKOUT  | $0.0801  | —        | +17.87
     exchange: "binanceusdm"
     balanceUsdt: 4922.34088932
 [2026-10-20 16:45:26.838] [32mINFO[39m: [36mDaemon active: synchronized with 15m candle closes and 10s SL monitoring[39m
+    balanceUsdt: 4922.34088932
+    openPositions: 1
+[2026-10-20 16:51:19.440] [32mINFO[39m: [36mReceived shutdown signal, stopping daemon...[39m
+    signal: "SIGINT"
+[2026-10-20 16:51:19.441] [32mINFO[39m: [36mQuantDaemon stopped cleanly[39m
+
+> crypto-quant-engine@2.1.1 start /home/alexgmatosc/Dev/crypto-trading-app
+> tsx src/index.ts
+
+[2026-10-20 16:51:22.218] [32mINFO[39m: [36mWeb Dashboard running[39m
+    port: 3000
+    url: "http://localhost:3000"
+[2026-10-20 16:51:22.218] [32mINFO[39m: [36mStarting Adaptive Multi-Regime Crypto Quant Engine Daemon...[39m
+    mode: "TESTNET_LIVE"
+    exchange: "binanceusdm"
+    symbols: [
+      "BTC/USDT",
+      "ETH/USDT",
+      "SOL/USDT",
+      "DOGE/USDT"
+    ]
+    timeframe: "15m"
+[2026-10-20 16:51:22.218] [32mINFO[39m: [36mInitializing TestnetBroker (Sandbox Mode = true)...[39m
+    exchange: "binanceusdm"
+[2026-10-20 16:51:24.044] [32mINFO[39m: [36mTestnetBroker initialized successfully[39m
+    exchange: "binanceusdm"
+    balanceUsdt: 4922.34088932
+[2026-10-20 16:51:25.700] [32mINFO[39m: [36mDaemon active: synchronized with 15m candle closes and 10s SL monitoring[39m
     balanceUsdt: 4922.34088932
     openPositions: 1
 
