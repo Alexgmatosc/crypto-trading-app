@@ -360,104 +360,99 @@ export class DashboardServer {
 </head>
 <body class="min-h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
   <div class="flex min-h-screen flex-col">
-    <!-- Top Institutional Bar (shadcn Header + Separator) -->
-    <header class="sticky top-0 z-30 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <!-- Top Bar -->
+    <header class="sticky top-0 z-30 border-b border-border bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div class="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center gap-3">
-          <div class="flex size-7 items-center justify-center rounded-md border border-border bg-secondary text-xs font-semibold tracking-tight text-foreground font-mono">
+        <div class="flex items-center gap-2.5">
+          <div class="flex size-7 items-center justify-center rounded-md border border-border bg-secondary text-xs font-semibold font-mono text-foreground">
             QE
           </div>
-          <div class="flex items-center gap-2 text-sm">
-            <span class="font-semibold tracking-tight text-foreground">QuantEngine</span>
-            <span class="text-muted-foreground">/</span>
-            <span class="text-muted-foreground font-medium">Multi-Regime Futures Desk</span>
-          </div>
-          <span id="mode-badge" class="inline-flex items-center rounded-md border border-border bg-secondary px-2 py-0.5 text-xs font-mono font-medium text-secondary-foreground">
-            CARGANDO
+          <span class="font-semibold text-sm tracking-tight text-foreground">QuantEngine</span>
+          <span class="text-xs text-muted-foreground font-mono">v2.1.1</span>
+          <span id="mode-badge" class="ml-1 inline-flex items-center rounded border border-border bg-secondary/80 px-1.5 py-0.5 text-[11px] font-mono text-secondary-foreground">
+            TESTNET
           </span>
         </div>
 
         <div class="flex items-center gap-3">
-          <div class="hidden sm:flex items-center gap-2 rounded-md border border-border bg-card px-2.5 py-1 text-xs text-muted-foreground">
-            <span id="live-dot" class="size-2 rounded-full bg-emerald-500"></span>
-            <span>Timeframe <strong id="tf-label" class="font-mono text-foreground">15m</strong></span>
+          <div class="flex items-center gap-2 rounded-md border border-border bg-card/60 px-2.5 py-1 text-xs text-muted-foreground">
+            <span id="live-dot" class="size-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Velas <strong id="tf-label" class="font-mono text-foreground">15m</strong></span>
             <span class="text-border">|</span>
             <span id="last-update" class="font-mono">--:--:--</span>
           </div>
           <button
             onclick="fetchStatus()"
-            class="inline-flex h-8 items-center justify-center gap-1.5 rounded-md border border-input bg-background px-3 text-xs font-medium text-foreground shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+            class="inline-flex h-8 items-center justify-center gap-1.5 rounded-md border border-input bg-background px-3 text-xs font-medium text-foreground shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground"
           >
             <svg class="size-3.5 text-muted-foreground" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg>
-            Sincronizar
+            Actualizar
           </button>
         </div>
       </div>
     </header>
 
     <!-- Main Container -->
-    <main class="mx-auto flex w-full max-w-7xl flex-1 flex-col gap-6 px-4 py-6 sm:px-6 lg:px-8">
-      <!-- Page Heading & Tabs Control -->
-      <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div class="flex flex-col gap-1">
-          <h1 class="text-2xl font-semibold tracking-tight text-foreground">Resumen de Cartera y Ejecución</h1>
-          <p class="text-sm text-muted-foreground">
-            Monitoreo algorítmico en tiempo real sobre contratos perpetuos USD-M (BTC, ETH, SOL, DOGE).
-          </p>
+    <main class="mx-auto flex w-full max-w-7xl flex-1 flex-col gap-5 px-4 py-5 sm:px-6 lg:px-8">
+      <!-- Heading & Tabs -->
+      <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h1 class="text-xl font-semibold tracking-tight text-foreground">Panel de Control</h1>
+          <p class="text-xs text-muted-foreground">Operaciones automáticas en futuros • BTC, ETH, SOL, DOGE</p>
         </div>
 
-        <!-- shadcn TabsList -->
-        <div class="inline-flex h-9 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground self-start sm:self-auto" role="tablist">
+        <!-- Tabs -->
+        <div class="inline-flex h-8 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground self-start sm:self-auto" role="tablist">
           <button
             id="tab-btn-overview"
             onclick="switchTab('overview')"
-            class="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-xs font-medium ring-offset-background transition-all bg-background text-foreground shadow-sm"
+            class="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-0.5 text-xs font-medium ring-offset-background transition-all bg-background text-foreground shadow-sm"
           >
-            Vista General
+            General
           </button>
           <button
             id="tab-btn-assets"
             onclick="switchTab('assets')"
-            class="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-xs font-medium ring-offset-background transition-all hover:text-foreground"
+            class="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-0.5 text-xs font-medium ring-offset-background transition-all hover:text-foreground text-muted-foreground"
           >
-            Activos y Telemetría
+            Activos
           </button>
           <button
             id="tab-btn-ledger"
             onclick="switchTab('ledger')"
-            class="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-xs font-medium ring-offset-background transition-all hover:text-foreground"
+            class="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-0.5 text-xs font-medium ring-offset-background transition-all hover:text-foreground text-muted-foreground"
           >
-            Libro de Órdenes
+            Operaciones
           </button>
         </div>
       </div>
 
-      <!-- KPI Grid (shadcn Card anatomy: Card > CardHeader + CardContent) -->
-      <section class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <!-- KPI Grid -->
+      <section class="grid grid-cols-1 gap-3.5 sm:grid-cols-2 lg:grid-cols-4">
         <!-- Card 1: Equity -->
-        <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm">
-          <div class="flex flex-row items-center justify-between p-5 pb-2">
-            <h3 class="text-xs font-medium text-muted-foreground">Patrimonio Neto (Equity)</h3>
+        <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm p-4 sm:p-5 flex flex-col justify-between gap-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-medium text-muted-foreground">Patrimonio Total</span>
             <svg class="size-4 text-muted-foreground" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
           </div>
-          <div class="p-5 pt-0 flex flex-col gap-1">
+          <div class="flex flex-col gap-1">
             <div id="equity-val" class="text-2xl font-semibold tracking-tight font-mono-num">$0.00</div>
-            <div class="flex items-center justify-between text-xs text-muted-foreground pt-1">
-              <span>Balance: <strong id="balance-val" class="font-mono-num text-foreground font-medium">$0.00</strong></span>
+            <div class="flex items-center justify-between text-xs text-muted-foreground pt-0.5 border-t border-border/40">
+              <span>Billetera: <strong id="balance-val" class="font-mono-num text-foreground font-medium">$0.00</strong></span>
               <span>Flotante: <strong id="unrealized-val" class="font-mono-num font-medium">$0.00</strong></span>
             </div>
           </div>
         </div>
 
         <!-- Card 2: Realized PnL -->
-        <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm">
-          <div class="flex flex-row items-center justify-between p-5 pb-2">
-            <h3 class="text-xs font-medium text-muted-foreground">Beneficio Neto Realizado</h3>
+        <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm p-4 sm:p-5 flex flex-col justify-between gap-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-medium text-muted-foreground">Beneficio Cerrado</span>
             <svg class="size-4 text-muted-foreground" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
           </div>
-          <div class="p-5 pt-0 flex flex-col gap-1">
+          <div class="flex flex-col gap-1">
             <div id="net-profit-val" class="text-2xl font-semibold tracking-tight font-mono-num">$0.00</div>
-            <div class="flex items-center justify-between text-xs text-muted-foreground pt-1">
+            <div class="flex items-center justify-between text-xs text-muted-foreground pt-0.5 border-t border-border/40">
               <span>Retorno: <strong id="return-pct-val" class="font-mono-num font-medium">0.00%</strong></span>
               <span>Profit Factor: <strong id="pf-val" class="font-mono-num text-foreground font-medium">0.00</strong></span>
             </div>
@@ -465,15 +460,15 @@ export class DashboardServer {
         </div>
 
         <!-- Card 3: Win Rate -->
-        <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm">
-          <div class="flex flex-row items-center justify-between p-5 pb-2">
-            <h3 class="text-xs font-medium text-muted-foreground">Tasa de Acierto (Win Rate)</h3>
+        <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm p-4 sm:p-5 flex flex-col justify-between gap-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-medium text-muted-foreground">Tasa de Acierto</span>
             <svg class="size-4 text-muted-foreground" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v-6M6 20V10M18 20V4"/></svg>
           </div>
-          <div class="p-5 pt-0 flex flex-col gap-2">
+          <div class="flex flex-col gap-1.5">
             <div class="flex items-baseline justify-between">
               <div id="winrate-val" class="text-2xl font-semibold tracking-tight font-mono-num">0.0%</div>
-              <span id="trades-count-val" class="text-xs font-mono-num text-muted-foreground">0 cerradas (0W / 0L)</span>
+              <span id="trades-count-val" class="text-xs font-mono-num text-muted-foreground">0 cerradas</span>
             </div>
             <div class="h-1.5 w-full overflow-hidden rounded-full bg-secondary">
               <div id="winrate-bar" class="h-full bg-primary transition-all duration-300" style="width: 0%"></div>
@@ -482,59 +477,52 @@ export class DashboardServer {
         </div>
 
         <!-- Card 4: Drawdown & Risk -->
-        <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm">
-          <div class="flex flex-row items-center justify-between p-5 pb-2">
-            <h3 class="text-xs font-medium text-muted-foreground">Riesgo y Exposición</h3>
+        <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm p-4 sm:p-5 flex flex-col justify-between gap-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-medium text-muted-foreground">Riesgo</span>
             <svg class="size-4 text-muted-foreground" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
-          <div class="p-5 pt-0 flex flex-col gap-1">
+          <div class="flex flex-col gap-1">
             <div class="flex items-baseline justify-between">
               <div id="dd-val" class="text-2xl font-semibold tracking-tight font-mono-num">0.00%</div>
-              <span class="text-xs text-muted-foreground">Max Drawdown</span>
+              <span class="text-xs text-muted-foreground">Drawdown</span>
             </div>
-            <div class="flex items-center justify-between text-xs text-muted-foreground pt-1">
-              <span>Slots activos: <strong id="slots-val" class="font-mono-num text-foreground font-medium">0 / 3</strong></span>
-              <span>Riesgo/Trade: <strong id="risk-pct-val" class="font-mono-num text-foreground font-medium">1.5%</strong></span>
+            <div class="flex items-center justify-between text-xs text-muted-foreground pt-0.5 border-t border-border/40">
+              <span>Posiciones: <strong id="slots-val" class="font-mono-num text-foreground font-medium">0 / 3</strong></span>
+              <span>Riesgo/Op: <strong id="risk-pct-val" class="font-mono-num text-foreground font-medium">1.0%</strong></span>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- SECTION: Per-Asset Breakdown & Live Quantitative Telemetry -->
+      <!-- SECTION: Per-Asset Breakdown -->
       <section id="section-assets" class="rounded-lg border border-border bg-card text-card-foreground shadow-sm">
-        <div class="flex flex-col gap-1.5 p-6 pb-4 sm:flex-row sm:items-center sm:justify-between border-b border-border">
-          <div class="flex flex-col gap-0.5">
-            <div class="flex items-center gap-2">
-              <h2 class="text-base font-semibold tracking-tight">Desglose por Moneda y Telemetría de Régimen</h2>
-              <span class="inline-flex items-center rounded-md border border-border bg-secondary px-2 py-0.5 text-xs font-mono text-muted-foreground">4 pares activos</span>
-            </div>
-            <p class="text-xs text-muted-foreground">
-              Estado cuantitativo en vivo (ADX, RSI, anchura Bollinger, EMA 200) y rendimiento individual acumulado por par.
-            </p>
+        <div class="flex flex-col gap-1 p-4 sm:p-5 border-b border-border sm:flex-row sm:items-center sm:justify-between">
+          <div class="flex items-center gap-2">
+            <h2 class="text-sm font-semibold tracking-tight">Estado de Activos</h2>
+            <span class="inline-flex items-center rounded border border-border bg-secondary px-1.5 py-0.5 text-[11px] font-mono text-muted-foreground">4 pares</span>
           </div>
-          <div class="flex items-center gap-2 text-xs text-muted-foreground">
-            <span>Haz clic en una moneda para filtrar el libro de órdenes</span>
-          </div>
+          <span class="text-xs text-muted-foreground">Haz clic en un activo para filtrar operaciones</span>
         </div>
 
         <div class="relative w-full overflow-x-auto">
           <table class="w-full caption-bottom text-sm">
             <thead class="border-b border-border bg-muted/30">
               <tr class="text-left text-xs font-medium text-muted-foreground">
-                <th class="h-10 px-4 align-middle font-medium">Activo</th>
-                <th class="h-10 px-4 align-middle font-medium">Precio Mark</th>
-                <th class="h-10 px-4 align-middle font-medium">Régimen Detectado</th>
-                <th class="h-10 px-4 align-middle font-medium">Telemetría (ADX / RSI / BBW)</th>
-                <th class="h-10 px-4 align-middle font-medium">Posición</th>
-                <th class="h-10 px-4 align-middle font-medium">Trades (W/L)</th>
-                <th class="h-10 px-4 align-middle font-medium">Win Rate</th>
-                <th class="h-10 px-4 align-middle font-medium">Profit Factor</th>
-                <th class="h-10 px-4 align-middle font-medium text-right">PnL Realizado</th>
+                <th class="h-9 px-4 align-middle font-medium">Activo</th>
+                <th class="h-9 px-4 align-middle font-medium">Precio Mark</th>
+                <th class="h-9 px-4 align-middle font-medium">Régimen</th>
+                <th class="h-9 px-4 align-middle font-medium">Indicadores</th>
+                <th class="h-9 px-4 align-middle font-medium">Posición</th>
+                <th class="h-9 px-4 align-middle font-medium">Operaciones</th>
+                <th class="h-9 px-4 align-middle font-medium">Acierto</th>
+                <th class="h-9 px-4 align-middle font-medium">PF</th>
+                <th class="h-9 px-4 align-middle font-medium text-right">PnL Neto</th>
               </tr>
             </thead>
             <tbody id="symbol-breakdown-tbody" class="divide-y divide-border text-sm">
               <tr>
-                <td colspan="9" class="p-6 text-center text-xs text-muted-foreground">Cargando telemetría por activo...</td>
+                <td colspan="9" class="p-6 text-center text-xs text-muted-foreground">Cargando estado de activos...</td>
               </tr>
             </tbody>
           </table>
@@ -542,88 +530,69 @@ export class DashboardServer {
       </section>
 
       <!-- SECTION: Chart & Strategy Breakdown Grid -->
-      <section id="section-chart-strategies" class="grid grid-cols-1 gap-6 lg:grid-cols-12">
+      <section id="section-chart-strategies" class="grid grid-cols-1 gap-5 lg:grid-cols-12">
         <!-- Equity Curve Card (7 cols) -->
         <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm lg:col-span-7 flex flex-col">
-          <div class="flex flex-col gap-3 p-6 pb-4 border-b border-border">
+          <div class="flex flex-col gap-2.5 p-4 sm:p-5 border-b border-border">
             <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-              <div class="flex flex-col gap-0.5">
-                <div class="flex items-center gap-2">
-                  <h2 class="text-base font-semibold tracking-tight">Curva de Patrimonio Real</h2>
-                  <span class="inline-flex items-center rounded-md border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-[11px] font-mono font-medium text-emerald-400">
-                    <span class="size-1.5 rounded-full bg-emerald-400 mr-1.5"></span>
-                    MARK-TO-MARKET
-                  </span>
-                </div>
-                <p class="text-xs text-muted-foreground">
-                  Evolución real del capital neto (Equity) y balance en billetera registrado en tiempo real desde Binance.
-                </p>
+              <div class="flex items-center gap-2">
+                <h2 class="text-sm font-semibold tracking-tight">Evolución de Capital</h2>
+                <span class="inline-flex items-center rounded border border-emerald-500/30 bg-emerald-500/10 px-1.5 py-0.5 text-[10px] font-mono font-medium text-emerald-400">
+                  REAL
+                </span>
               </div>
 
-              <!-- Timeframe Selector (24H, 3D, 1 Sem, 1 Mes, Total) -->
-              <div class="inline-flex h-8 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground self-start sm:self-auto" role="group">
+              <!-- Timeframe Selector -->
+              <div class="inline-flex h-7 items-center justify-center rounded-md bg-muted p-0.5 text-muted-foreground self-start sm:self-auto" role="group">
                 <button
                   id="tf-btn-24h"
                   onclick="setTimeframeFilter('24h')"
-                  class="tf-btn inline-flex items-center justify-center whitespace-nowrap rounded-md px-2.5 py-0.5 text-xs font-medium ring-offset-background transition-all hover:text-foreground text-muted-foreground"
+                  class="tf-btn inline-flex items-center justify-center px-2 py-0.5 text-xs font-medium rounded transition-all hover:text-foreground text-muted-foreground"
                 >
                   24H
                 </button>
                 <button
                   id="tf-btn-3d"
                   onclick="setTimeframeFilter('3d')"
-                  class="tf-btn inline-flex items-center justify-center whitespace-nowrap rounded-md px-2.5 py-0.5 text-xs font-medium ring-offset-background transition-all hover:text-foreground text-muted-foreground"
+                  class="tf-btn inline-flex items-center justify-center px-2 py-0.5 text-xs font-medium rounded transition-all hover:text-foreground text-muted-foreground"
                 >
                   3D
                 </button>
                 <button
                   id="tf-btn-7d"
                   onclick="setTimeframeFilter('7d')"
-                  class="tf-btn inline-flex items-center justify-center whitespace-nowrap rounded-md px-2.5 py-0.5 text-xs font-medium ring-offset-background transition-all hover:text-foreground text-muted-foreground"
+                  class="tf-btn inline-flex items-center justify-center px-2 py-0.5 text-xs font-medium rounded transition-all hover:text-foreground text-muted-foreground"
                 >
-                  1 Sem
+                  1S
                 </button>
                 <button
                   id="tf-btn-30d"
                   onclick="setTimeframeFilter('30d')"
-                  class="tf-btn inline-flex items-center justify-center whitespace-nowrap rounded-md px-2.5 py-0.5 text-xs font-medium ring-offset-background transition-all hover:text-foreground text-muted-foreground"
+                  class="tf-btn inline-flex items-center justify-center px-2 py-0.5 text-xs font-medium rounded transition-all hover:text-foreground text-muted-foreground"
                 >
-                  1 Mes
+                  1M
                 </button>
                 <button
                   id="tf-btn-all"
                   onclick="setTimeframeFilter('all')"
-                  class="tf-btn inline-flex items-center justify-center whitespace-nowrap rounded-md px-2.5 py-0.5 text-xs font-medium ring-offset-background transition-all bg-background text-foreground shadow-sm"
+                  class="tf-btn inline-flex items-center justify-center px-2 py-0.5 text-xs font-medium rounded transition-all bg-background text-foreground shadow-sm"
                 >
                   Total
                 </button>
               </div>
             </div>
 
-            <!-- Chart Period Telemetry / Metrics Banner -->
-            <div class="flex flex-wrap items-center justify-between gap-2 rounded-md border border-border bg-background/50 px-3 py-1.5 text-xs font-mono">
-              <div class="flex items-center gap-2 text-muted-foreground">
-                <span id="chart-period-range">Calculando periodo...</span>
-              </div>
+            <!-- Compact Telemetry Banner -->
+            <div class="flex flex-wrap items-center justify-between gap-2 rounded-md border border-border/60 bg-background/50 px-3 py-1 text-xs font-mono">
+              <span id="chart-period-range" class="text-muted-foreground">Calculando...</span>
               <div class="flex items-center gap-3">
-                <div class="flex items-center gap-1.5">
-                  <span class="inline-block size-2 rounded-full bg-emerald-400"></span>
-                  <span class="text-muted-foreground">Equity:</span>
-                  <strong id="chart-latest-equity" class="text-foreground">$0.00</strong>
-                </div>
-                <div class="flex items-center gap-1.5">
-                  <span class="inline-block size-2 rounded-full border border-zinc-400"></span>
-                  <span class="text-muted-foreground">Balance:</span>
-                  <strong id="chart-latest-balance" class="text-zinc-400">$0.00</strong>
-                </div>
-                <div class="flex items-center gap-1">
-                  <span class="text-muted-foreground">Periodo:</span>
-                  <strong id="chart-period-pnl" class="text-foreground">+0.00%</strong>
-                </div>
+                <span class="text-muted-foreground">Patrimonio: <strong id="chart-latest-equity" class="text-foreground">$0.00</strong></span>
+                <span class="text-muted-foreground">Billetera: <strong id="chart-latest-balance" class="text-zinc-400">$0.00</strong></span>
+                <span class="text-muted-foreground">Periodo: <strong id="chart-period-pnl" class="text-foreground">+0.00%</strong></span>
               </div>
             </div>
           </div>
-          <div class="p-6 flex-1 flex items-center justify-center">
+          <div class="p-4 sm:p-5 flex-1 flex items-center justify-center">
             <div class="h-64 w-full">
               <canvas id="equityChart"></canvas>
             </div>
@@ -632,27 +601,23 @@ export class DashboardServer {
 
         <!-- Strategy Attribution Card (5 cols) -->
         <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm lg:col-span-5 flex flex-col">
-          <div class="flex flex-col gap-1 p-6 pb-4 border-b border-border">
-            <h2 class="text-base font-semibold tracking-tight">Atribución por Motor de Estrategia</h2>
-            <p class="text-xs text-muted-foreground">Comparativa entre el motor tendencial Donchian y el motor de reversión a la media.</p>
+          <div class="p-4 sm:p-5 border-b border-border">
+            <h2 class="text-sm font-semibold tracking-tight">Rendimiento por Estrategia</h2>
           </div>
-          <div id="strategy-breakdown" class="flex flex-1 flex-col gap-3 p-6">
-            <div class="text-xs text-muted-foreground">Sin datos de estrategias aún.</div>
+          <div id="strategy-breakdown" class="flex flex-1 flex-col gap-2.5 p-4 sm:p-5">
+            <div class="text-xs text-muted-foreground">Cargando estrategias...</div>
           </div>
         </div>
       </section>
 
       <!-- SECTION: Open Positions & Trade History Ledger -->
-      <section id="section-ledger" class="flex flex-col gap-6">
+      <section id="section-ledger" class="flex flex-col gap-5">
         <!-- Open Positions Card -->
         <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm">
-          <div class="flex flex-col gap-1.5 p-6 pb-4 sm:flex-row sm:items-center sm:justify-between border-b border-border">
-            <div class="flex flex-col gap-0.5">
-              <div class="flex items-center gap-2">
-                <h2 class="text-base font-semibold tracking-tight">Posiciones Abiertas en Mercado</h2>
-                <span id="open-count-badge" class="inline-flex items-center rounded-md border border-border bg-secondary px-2 py-0.5 text-xs font-mono font-medium text-foreground">0</span>
-              </div>
-              <p class="text-xs text-muted-foreground">Contratos perpetuos activos con gestión dinámica de Stop-Loss, Take-Profit parcial (TP1) y Chandelier Exit.</p>
+          <div class="flex items-center justify-between p-4 sm:p-5 border-b border-border">
+            <div class="flex items-center gap-2">
+              <h2 class="text-sm font-semibold tracking-tight">Posiciones Abiertas</h2>
+              <span id="open-count-badge" class="inline-flex items-center rounded border border-border bg-secondary px-1.5 py-0.5 text-xs font-mono font-medium text-foreground">0</span>
             </div>
           </div>
 
@@ -660,20 +625,20 @@ export class DashboardServer {
             <table class="w-full caption-bottom text-sm">
               <thead class="border-b border-border bg-muted/30">
                 <tr class="text-left text-xs font-medium text-muted-foreground">
-                  <th class="h-10 px-4 align-middle font-medium">Par</th>
-                  <th class="h-10 px-4 align-middle font-medium">Dirección</th>
-                  <th class="h-10 px-4 align-middle font-medium">Estrategia / Régimen</th>
-                  <th class="h-10 px-4 align-middle font-medium">Entrada</th>
-                  <th class="h-10 px-4 align-middle font-medium">Precio Mark</th>
-                  <th class="h-10 px-4 align-middle font-medium">Tamaño</th>
-                  <th class="h-10 px-4 align-middle font-medium">Stop Loss</th>
-                  <th class="h-10 px-4 align-middle font-medium">Take Profit 1</th>
-                  <th class="h-10 px-4 align-middle font-medium text-right">PnL Flotante</th>
+                  <th class="h-9 px-4 align-middle font-medium">Par</th>
+                  <th class="h-9 px-4 align-middle font-medium">Lado</th>
+                  <th class="h-9 px-4 align-middle font-medium">Estrategia</th>
+                  <th class="h-9 px-4 align-middle font-medium">Entrada</th>
+                  <th class="h-9 px-4 align-middle font-medium">Precio Mark</th>
+                  <th class="h-9 px-4 align-middle font-medium">Tamaño</th>
+                  <th class="h-9 px-4 align-middle font-medium">Stop Loss</th>
+                  <th class="h-9 px-4 align-middle font-medium">Take Profit</th>
+                  <th class="h-9 px-4 align-middle font-medium text-right">PnL Flotante</th>
                 </tr>
               </thead>
               <tbody id="open-trades-tbody" class="divide-y divide-border text-sm">
                 <tr>
-                  <td colspan="9" class="p-8 text-center text-xs text-muted-foreground">No hay posiciones abiertas en este momento.</td>
+                  <td colspan="9" class="p-6 text-center text-xs text-muted-foreground">Sin posiciones abiertas en este momento.</td>
                 </tr>
               </tbody>
             </table>
@@ -682,14 +647,11 @@ export class DashboardServer {
 
         <!-- Closed Trades History Card -->
         <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm">
-          <div class="flex flex-col gap-3 p-6 pb-4 sm:flex-row sm:items-center sm:justify-between border-b border-border">
-            <div class="flex flex-col gap-0.5">
-              <h2 class="text-base font-semibold tracking-tight">Libro de Operaciones Cerradas</h2>
-              <p class="text-xs text-muted-foreground">Registro auditable de ejecuciones completadas (neto de comisiones y slippage).</p>
-            </div>
+          <div class="flex flex-col gap-2 p-4 sm:p-5 sm:flex-row sm:items-center sm:justify-between border-b border-border">
+            <h2 class="text-sm font-semibold tracking-tight">Historial de Operaciones</h2>
             <!-- Symbol Filter Pills -->
             <div id="symbol-filter-bar" class="flex flex-wrap items-center gap-1.5">
-              <button onclick="setSymbolFilter('ALL')" class="inline-flex h-7 items-center rounded-md border border-border bg-primary px-2.5 text-xs font-medium text-primary-foreground">Todas</button>
+              <button onclick="setSymbolFilter('ALL')" class="inline-flex h-6 items-center rounded border border-border bg-primary px-2 text-xs font-medium text-primary-foreground">Todas</button>
             </div>
           </div>
 
@@ -697,19 +659,19 @@ export class DashboardServer {
             <table class="w-full caption-bottom text-sm">
               <thead class="border-b border-border bg-muted/30">
                 <tr class="text-left text-xs font-medium text-muted-foreground">
-                  <th class="h-10 px-4 align-middle font-medium">Fecha Cierre</th>
-                  <th class="h-10 px-4 align-middle font-medium">Par</th>
-                  <th class="h-10 px-4 align-middle font-medium">Lado</th>
-                  <th class="h-10 px-4 align-middle font-medium">Estrategia</th>
-                  <th class="h-10 px-4 align-middle font-medium">Entrada</th>
-                  <th class="h-10 px-4 align-middle font-medium">Salida</th>
-                  <th class="h-10 px-4 align-middle font-medium">Comisiones</th>
-                  <th class="h-10 px-4 align-middle font-medium text-right">PnL Realizado</th>
+                  <th class="h-9 px-4 align-middle font-medium">Fecha</th>
+                  <th class="h-9 px-4 align-middle font-medium">Par</th>
+                  <th class="h-9 px-4 align-middle font-medium">Lado</th>
+                  <th class="h-9 px-4 align-middle font-medium">Estrategia</th>
+                  <th class="h-9 px-4 align-middle font-medium">Entrada</th>
+                  <th class="h-9 px-4 align-middle font-medium">Salida</th>
+                  <th class="h-9 px-4 align-middle font-medium">Comisión</th>
+                  <th class="h-9 px-4 align-middle font-medium text-right">PnL Neto</th>
                 </tr>
               </thead>
               <tbody id="closed-trades-tbody" class="divide-y divide-border text-sm">
                 <tr>
-                  <td colspan="8" class="p-8 text-center text-xs text-muted-foreground">Aún no se han cerrado operaciones.</td>
+                  <td colspan="8" class="p-6 text-center text-xs text-muted-foreground">Sin operaciones registradas.</td>
                 </tr>
               </tbody>
             </table>
@@ -719,10 +681,10 @@ export class DashboardServer {
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-border py-4">
-      <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 text-xs text-muted-foreground sm:flex-row sm:px-6 lg:px-8">
-        <span>Adaptive Multi-Regime Crypto Quant Engine — Arquitectura Determinista en TypeScript</span>
-        <span class="font-mono">SQLite WAL • CCXT Binance USD-M Futures</span>
+    <footer class="border-t border-border py-3">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-4 text-xs text-muted-foreground sm:px-6 lg:px-8">
+        <span>QuantEngine • Trading Algorítmico</span>
+        <span class="font-mono">Binance USD-M Futures</span>
       </div>
     </footer>
   </div>
@@ -822,32 +784,32 @@ export class DashboardServer {
     function renderRegimeBadge(regime) {
       const map = {
         TRENDING_BULL: {
-          label: 'TREND BULL',
+          label: 'Alcista',
           cls: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400',
           dot: 'bg-emerald-400',
         },
         TRENDING_BEAR: {
-          label: 'TREND BEAR',
+          label: 'Bajista',
           cls: 'border-rose-500/30 bg-rose-500/10 text-rose-400',
           dot: 'bg-rose-400',
         },
         RANGING: {
-          label: 'RANGING (MEAN REV)',
+          label: 'Rango Lateral',
           cls: 'border-border bg-secondary text-secondary-foreground',
           dot: 'bg-zinc-400',
         },
         VOLATILE_CHOP: {
-          label: 'VOLATILE CHOP (NO-TRADE)',
+          label: 'Sin Operar',
           cls: 'border-amber-500/30 bg-amber-500/10 text-amber-400',
           dot: 'bg-amber-400',
         },
       };
       const item = map[regime] || {
-        label: regime || 'SINCRONIZANDO',
+        label: regime || 'Sincronizando',
         cls: 'border-border bg-muted text-muted-foreground',
         dot: 'bg-zinc-500',
       };
-      return \`<span class="inline-flex items-center gap-1.5 rounded-md border px-2 py-0.5 text-[11px] font-mono font-medium \${item.cls}">
+      return \`<span class="inline-flex items-center gap-1.5 rounded border px-1.5 py-0.5 text-[11px] font-mono font-medium \${item.cls}">
         <span class="size-1.5 rounded-full \${item.dot}"></span>
         \${item.label}
       </span>\`;
@@ -869,53 +831,45 @@ export class DashboardServer {
         const bbwStr = s.bbWidthPct !== null && s.bbWidthPct !== undefined ? s.bbWidthPct.toFixed(2) + '%' : '—';
 
         const posBadge = s.openCount > 0
-          ? \`<span class="inline-flex items-center gap-1 rounded-md border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-xs font-mono text-emerald-400">\${s.openCount} activa (\${fmtSignedUsd(s.openUnrealizedPnl)})</span>\`
-          : \`<span class="inline-flex items-center rounded-md border border-border bg-transparent px-2 py-0.5 text-xs font-mono text-muted-foreground">En espera</span>\`;
+          ? \`<span class="inline-flex items-center gap-1 rounded border border-emerald-500/30 bg-emerald-500/10 px-1.5 py-0.5 text-xs font-mono text-emerald-400">\${s.openCount} Activa (\${fmtSignedUsd(s.openUnrealizedPnl)})</span>\`
+          : \`<span class="text-xs font-mono text-muted-foreground">—</span>\`;
 
         return \`
           <tr onclick="setSymbolFilter('\${isSelected ? 'ALL' : s.symbol}')" class="cursor-pointer transition-colors \${rowBg}">
-            <td class="p-4 align-middle">
-              <div class="flex items-center gap-2.5">
-                <div class="flex size-7 items-center justify-center rounded-md border border-border bg-secondary text-[11px] font-mono font-semibold text-foreground">
+            <td class="p-3.5 align-middle">
+              <div class="flex items-center gap-2">
+                <div class="flex size-6 items-center justify-center rounded border border-border bg-secondary text-[10px] font-mono font-semibold text-foreground">
                   \${baseCoin.slice(0, 4)}
                 </div>
-                <div class="flex flex-col">
-                  <span class="font-medium text-foreground">\${s.symbol}</span>
-                  <span class="text-[11px] text-muted-foreground">Perpetuo USD-M</span>
-                </div>
+                <span class="font-medium text-foreground text-xs">\${s.symbol}</span>
               </div>
             </td>
-            <td class="p-4 align-middle font-mono-num text-sm font-medium text-foreground">
+            <td class="p-3.5 align-middle font-mono-num text-xs font-medium text-foreground">
               \${fmtPrice(s.currentPrice)}
             </td>
-            <td class="p-4 align-middle">
+            <td class="p-3.5 align-middle">
               \${renderRegimeBadge(s.regime)}
             </td>
-            <td class="p-4 align-middle">
-              <div class="flex items-center gap-2 font-mono-num text-xs">
-                <span class="rounded border border-border bg-background px-1.5 py-0.5 text-muted-foreground">ADX <strong class="text-foreground">\${adxStr}</strong></span>
-                <span class="rounded border border-border bg-background px-1.5 py-0.5 text-muted-foreground">RSI <strong class="text-foreground">\${rsiStr}</strong></span>
-                <span class="rounded border border-border bg-background px-1.5 py-0.5 text-muted-foreground">BBW <strong class="text-foreground">\${bbwStr}</strong></span>
+            <td class="p-3.5 align-middle">
+              <div class="flex items-center gap-1.5 font-mono-num text-[11px]">
+                <span class="rounded border border-border/80 bg-background px-1 py-0.5 text-muted-foreground">ADX <strong class="text-foreground">\${adxStr}</strong></span>
+                <span class="rounded border border-border/80 bg-background px-1 py-0.5 text-muted-foreground">RSI <strong class="text-foreground">\${rsiStr}</strong></span>
+                <span class="rounded border border-border/80 bg-background px-1 py-0.5 text-muted-foreground">BBW <strong class="text-foreground">\${bbwStr}</strong></span>
               </div>
             </td>
-            <td class="p-4 align-middle">
+            <td class="p-3.5 align-middle">
               \${posBadge}
             </td>
-            <td class="p-4 align-middle font-mono-num text-xs text-muted-foreground">
-              <span class="text-foreground font-medium">\${s.totalTrades}</span> (\${s.winningTrades}W / \${s.losingTrades}L)
+            <td class="p-3.5 align-middle font-mono-num text-xs text-muted-foreground">
+              <span class="text-foreground font-medium">\${s.totalTrades}</span> (\${s.winningTrades}G/\${s.losingTrades}P)
             </td>
-            <td class="p-4 align-middle">
-              <div class="flex items-center gap-2">
-                <div class="h-1.5 w-14 overflow-hidden rounded-full bg-secondary">
-                  <div class="h-full bg-primary" style="width: \${Math.min(100, Math.max(0, s.winRatePct))}%"></div>
-                </div>
-                <span class="font-mono-num text-xs text-foreground">\${s.winRatePct.toFixed(1)}%</span>
-              </div>
+            <td class="p-3.5 align-middle font-mono-num text-xs text-foreground">
+              \${s.winRatePct.toFixed(0)}%
             </td>
-            <td class="p-4 align-middle font-mono-num text-xs text-foreground">
+            <td class="p-3.5 align-middle font-mono-num text-xs text-foreground">
               \${Number(s.profitFactor || 0).toFixed(2)}
             </td>
-            <td class="p-4 align-middle text-right font-mono-num text-sm font-semibold \${pnlTextClass(s.netRealizedPnl)}">
+            <td class="p-3.5 align-middle text-right font-mono-num text-xs font-semibold \${pnlTextClass(s.netRealizedPnl)}">
               \${fmtSignedUsd(s.netRealizedPnl)}
             </td>
           </tr>
@@ -930,9 +884,9 @@ export class DashboardServer {
       bar.innerHTML = symbols.map((sym) => {
         const active = selectedSymbolFilter === sym;
         const cls = active
-          ? 'inline-flex h-7 items-center rounded-md border border-transparent bg-primary px-2.5 text-xs font-medium text-primary-foreground shadow-sm'
-          : 'inline-flex h-7 items-center rounded-md border border-border bg-background px-2.5 text-xs font-medium text-muted-foreground hover:bg-accent hover:text-accent-foreground';
-        const label = sym === 'ALL' ? 'Todas las monedas' : sym;
+          ? 'inline-flex h-6 items-center rounded border border-transparent bg-primary px-2 text-xs font-medium text-primary-foreground shadow-sm'
+          : 'inline-flex h-6 items-center rounded border border-border bg-background px-2 text-xs font-medium text-muted-foreground hover:bg-accent hover:text-accent-foreground';
+        const label = sym === 'ALL' ? 'Todas' : sym;
         return \`<button onclick="setSymbolFilter('\${sym}')" class="\${cls}">\${label}</button>\`;
       }).join('');
     }
@@ -944,34 +898,39 @@ export class DashboardServer {
       );
 
       if (list.length === 0) {
-        closedTbody.innerHTML = \`<tr><td colspan="8" class="p-8 text-center text-xs text-muted-foreground">No hay operaciones cerradas para el filtro seleccionado (\${selectedSymbolFilter === 'ALL' ? 'Todas' : selectedSymbolFilter}).</td></tr>\`;
+        closedTbody.innerHTML = \`<tr><td colspan="8" class="p-6 text-center text-xs text-muted-foreground">Sin operaciones registradas para \${selectedSymbolFilter === 'ALL' ? 'todas las monedas' : selectedSymbolFilter}.</td></tr>\`;
         return;
       }
 
       closedTbody.innerHTML = list.map((t) => {
         const closeTs = t.closed_at || t.opened_at;
-        const closeDate = closeTs ? new Date(closeTs).toLocaleString('es-ES', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }) : '—';
+        const closeDate = closeTs ? new Date(closeTs).toLocaleString('es-ES', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) : '—';
         const sideBadge = t.side === 'LONG'
           ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400'
           : 'border-rose-500/30 bg-rose-500/10 text-rose-400';
+        const stratName = t.strategy === 'TREND_BREAKOUT' ? 'Tendencia' : 'Reversión';
+        const exitLabel = t.exit_reason === 'STOP_LOSS' ? 'SL'
+          : t.exit_reason === 'TAKE_PROFIT' || t.exit_reason === 'TRAILING_STOP' ? 'Trailing'
+          : t.exit_reason === 'MEAN_TARGET' ? 'Target'
+          : t.exit_reason || '';
 
         return \`
-          <tr class="hover:bg-muted/40 transition-colors">
-            <td class="p-4 align-middle font-mono-num text-xs text-muted-foreground">\${closeDate}</td>
-            <td class="p-4 align-middle font-medium text-foreground">\${t.symbol}</td>
-            <td class="p-4 align-middle">
-              <span class="inline-flex items-center rounded-md border px-2 py-0.5 text-[11px] font-mono font-medium \${sideBadge}">\${t.side}</span>
+          <tr class="hover:bg-muted/30 transition-colors">
+            <td class="p-3.5 align-middle font-mono-num text-xs text-muted-foreground">\${closeDate}</td>
+            <td class="p-3.5 align-middle font-medium text-xs text-foreground">\${t.symbol}</td>
+            <td class="p-3.5 align-middle">
+              <span class="inline-flex items-center rounded border px-1.5 py-0.5 text-[10px] font-mono font-medium \${sideBadge}">\${t.side}</span>
             </td>
-            <td class="p-4 align-middle">
-              <div class="flex items-center gap-1.5">
-                <span class="inline-flex items-center rounded-md border border-border bg-secondary px-2 py-0.5 text-[11px] font-mono text-secondary-foreground">\${t.strategy}</span>
-                \${t.exit_reason ? \`<span class="text-[11px] font-mono text-muted-foreground">(\${t.exit_reason})</span>\` : ''}
+            <td class="p-3.5 align-middle">
+              <div class="flex items-center gap-1 text-xs">
+                <span class="font-mono text-muted-foreground text-[11px]">\${stratName}</span>
+                \${exitLabel ? \`<span class="text-[10px] font-mono text-muted-foreground/80">(\${exitLabel})</span>\` : ''}
               </div>
             </td>
-            <td class="p-4 align-middle font-mono-num text-xs text-foreground">\${fmtPrice(t.entry_price)}</td>
-            <td class="p-4 align-middle font-mono-num text-xs text-foreground">\${t.exit_price ? fmtPrice(t.exit_price) : '—'}</td>
-            <td class="p-4 align-middle font-mono-num text-xs text-muted-foreground">-\$\${Number(t.fees_paid || 0).toFixed(2)}</td>
-            <td class="p-4 align-middle text-right font-mono-num text-sm font-semibold \${pnlTextClass(t.realized_pnl)}">
+            <td class="p-3.5 align-middle font-mono-num text-xs text-foreground">\${fmtPrice(t.entry_price)}</td>
+            <td class="p-3.5 align-middle font-mono-num text-xs text-foreground">\${t.exit_price ? fmtPrice(t.exit_price) : '—'}</td>
+            <td class="p-3.5 align-middle font-mono-num text-xs text-muted-foreground">-\$\${Number(t.fees_paid || 0).toFixed(2)}</td>
+            <td class="p-3.5 align-middle text-right font-mono-num text-xs font-semibold \${pnlTextClass(t.realized_pnl)}">
               \${fmtSignedUsd(t.realized_pnl)}
             </td>
           </tr>
@@ -1010,11 +969,11 @@ export class DashboardServer {
         document.getElementById('pf-val').textContent = Number(data.profitFactor || 0).toFixed(2);
         document.getElementById('winrate-val').textContent = data.winRatePct.toFixed(1) + '%';
         document.getElementById('winrate-bar').style.width = Math.min(100, Math.max(0, data.winRatePct)) + '%';
-        document.getElementById('trades-count-val').textContent = \`\${data.totalTrades} cerradas (\${data.winningTrades}W / \${data.losingTrades}L)\`;
+        document.getElementById('trades-count-val').textContent = \`\${data.winningTrades}G / \${data.losingTrades}P (\${data.totalTrades})\`;
 
         document.getElementById('dd-val').textContent = data.maxDrawdownPct.toFixed(2) + '%';
         document.getElementById('slots-val').textContent = \`\${(data.openTrades || []).length} / \${data.maxConcurrentPositions || 3}\`;
-        document.getElementById('risk-pct-val').textContent = \`\${(data.riskPerTradePct || 1.5).toFixed(1)}%\`;
+        document.getElementById('risk-pct-val').textContent = \`\${(data.riskPerTradePct || 1.0).toFixed(1)}%\`;
 
         // Symbol Breakdown & Telemetry
         renderSymbolBreakdown(data);
@@ -1024,24 +983,23 @@ export class DashboardServer {
         const stratContainer = document.getElementById('strategy-breakdown');
         const stratEntries = Object.entries(data.strategyBreakdown || {});
         if (stratEntries.length === 0) {
-          stratContainer.innerHTML = '<div class="flex flex-1 items-center justify-center rounded-md border border-dashed border-border p-6 text-xs text-muted-foreground">Esperando primeras operaciones cerradas para atribución de estrategia.</div>';
+          stratContainer.innerHTML = '<div class="flex flex-1 items-center justify-center rounded border border-dashed border-border p-5 text-xs text-muted-foreground">Sin operaciones cerradas aún.</div>';
         } else {
           stratContainer.innerHTML = stratEntries.map(([name, stats]) => {
-            const desc = name === 'TREND_BREAKOUT'
-              ? 'Ruptura Donchian 20 periodos + Chandelier Exit ATR'
-              : 'Reversión Bollinger 2.0σ + RSI(14) Extremos';
+            const cleanName = name === 'TREND_BREAKOUT' ? 'Ruptura Tendencial' : 'Reversión a la Media';
+            const techDesc = name === 'TREND_BREAKOUT' ? 'Donchian + ATR Chandelier' : 'Bandas Bollinger + RSI';
             return \`
-              <div class="flex flex-col justify-between gap-3 rounded-md border border-border bg-background p-4">
+              <div class="flex flex-col justify-between gap-2.5 rounded border border-border bg-background/50 p-3.5">
                 <div class="flex items-start justify-between">
-                  <div class="flex flex-col gap-0.5">
-                    <span class="font-mono text-xs font-semibold text-foreground">\${name}</span>
-                    <span class="text-xs text-muted-foreground">\${desc}</span>
+                  <div class="flex flex-col">
+                    <span class="font-semibold text-xs text-foreground">\${cleanName}</span>
+                    <span class="text-[11px] text-muted-foreground">\${techDesc}</span>
                   </div>
                   <span class="font-mono-num text-sm font-semibold \${pnlTextClass(stats.netPnl)}">\${fmtSignedUsd(stats.netPnl)}</span>
                 </div>
-                <div class="flex items-center justify-between border-t border-border pt-2.5 text-xs text-muted-foreground">
+                <div class="flex items-center justify-between border-t border-border/60 pt-2 text-xs text-muted-foreground">
                   <span>Operaciones: <strong class="font-mono-num text-foreground">\${stats.trades}</strong></span>
-                  <span>Win Rate: <strong class="font-mono-num text-foreground">\${stats.winRatePct.toFixed(1)}%</strong></span>
+                  <span>Acierto: <strong class="font-mono-num text-foreground">\${stats.winRatePct.toFixed(1)}%</strong></span>
                 </div>
               </div>
             \`;
@@ -1052,32 +1010,30 @@ export class DashboardServer {
         const openTbody = document.getElementById('open-trades-tbody');
         document.getElementById('open-count-badge').textContent = (data.openTrades || []).length;
         if (!data.openTrades || data.openTrades.length === 0) {
-          openTbody.innerHTML = '<tr><td colspan="9" class="p-8 text-center text-xs text-muted-foreground">No hay posiciones abiertas en este momento. El motor está escaneando velas de 15m.</td></tr>';
+          openTbody.innerHTML = '<tr><td colspan="9" class="p-6 text-center text-xs text-muted-foreground">Sin posiciones abiertas en este momento.</td></tr>';
         } else {
           openTbody.innerHTML = data.openTrades.map((t) => {
             const sideBadge = t.side === 'LONG'
               ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400'
               : 'border-rose-500/30 bg-rose-500/10 text-rose-400';
+            const stratName = t.strategy === 'TREND_BREAKOUT' ? 'Tendencia' : 'Reversión';
             const slDist = Math.abs(t.entry_price - t.initial_sl);
             const tp1Price = t.side === 'LONG' ? t.entry_price + slDist * 1.5 : t.entry_price - slDist * 1.5;
             return \`
-              <tr class="hover:bg-muted/40 transition-colors">
-                <td class="p-4 align-middle font-medium text-foreground">\${t.symbol}</td>
-                <td class="p-4 align-middle">
-                  <span class="inline-flex items-center rounded-md border px-2 py-0.5 text-[11px] font-mono font-medium \${sideBadge}">\${t.side}</span>
+              <tr class="hover:bg-muted/30 transition-colors">
+                <td class="p-3.5 align-middle font-medium text-xs text-foreground">\${t.symbol}</td>
+                <td class="p-3.5 align-middle">
+                  <span class="inline-flex items-center rounded border px-1.5 py-0.5 text-[10px] font-mono font-medium \${sideBadge}">\${t.side}</span>
                 </td>
-                <td class="p-4 align-middle">
-                  <div class="flex flex-col gap-0.5">
-                    <span class="font-mono text-xs text-foreground">\${t.strategy}</span>
-                    <span class="text-[11px] text-muted-foreground">\${t.regime_at_entry}</span>
-                  </div>
+                <td class="p-3.5 align-middle">
+                  <span class="font-mono text-xs text-muted-foreground">\${stratName}</span>
                 </td>
-                <td class="p-4 align-middle font-mono-num text-xs text-foreground">\${fmtPrice(t.entry_price)}</td>
-                <td class="p-4 align-middle font-mono-num text-xs font-medium text-foreground">\${fmtPrice(t.currentPrice)}</td>
-                <td class="p-4 align-middle font-mono-num text-xs text-muted-foreground">\${Number(t.remaining_size).toFixed(4)}</td>
-                <td class="p-4 align-middle font-mono-num text-xs text-rose-400">\${fmtPrice(t.current_sl)}</td>
-                <td class="p-4 align-middle font-mono-num text-xs text-emerald-400">\${fmtPrice(tp1Price)} \${t.tp1_hit ? '✓' : ''}</td>
-                <td class="p-4 align-middle text-right font-mono-num text-sm font-semibold \${pnlTextClass(t.unrealizedPnl)}">
+                <td class="p-3.5 align-middle font-mono-num text-xs text-foreground">\${fmtPrice(t.entry_price)}</td>
+                <td class="p-3.5 align-middle font-mono-num text-xs font-medium text-foreground">\${fmtPrice(t.currentPrice)}</td>
+                <td class="p-3.5 align-middle font-mono-num text-xs text-muted-foreground">\${Number(t.remaining_size).toFixed(2)}</td>
+                <td class="p-3.5 align-middle font-mono-num text-xs text-rose-400">\${fmtPrice(t.current_sl)}</td>
+                <td class="p-3.5 align-middle font-mono-num text-xs text-emerald-400">\${fmtPrice(tp1Price)} \${t.tp1_hit ? '✓' : ''}</td>
+                <td class="p-3.5 align-middle text-right font-mono-num text-xs font-semibold \${pnlTextClass(t.unrealizedPnl)}">
                   \${fmtSignedUsd(t.unrealizedPnl)}
                 </td>
               </tr>
