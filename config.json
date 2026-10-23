@@ -22,7 +22,11 @@
     "donchianLookback": 30,
     "volumeMultiplier": 1.4,
     "atrPeriod": 14,
-    "slAtrMultiplier": 2.2
+    "slAtrMultiplier": 2.2,
+    "breakoutBufferAtr": 0.1,
+    "requireAtrExpansion": false,
+    "atrExpansionPeriod": 20,
+    "minBodyRatio": 0
   },
   "meanReversionStrategy": {
     "bbPeriod": 20,
@@ -37,5 +41,48 @@
     "partialClosePct": 0.5,
     "trailingActivationR": 2.0,
     "trailingAtrMultiplier": 2.0
+  },
+  "symbolOverrides": {
+    "BTC/USDT": {
+      "donchianLookback": 96,
+      "volumeMultiplier": 2.2,
+      "slAtrMultiplier": 3.4,
+      "trendingThreshold": 28,
+      "rangingThreshold": 17,
+      "minBbWidth": 0.014,
+      "breakoutBufferAtr": 0.2,
+      "requireAtrExpansion": true,
+      "minBodyRatio": 0.4
+    },
+    "ETH/USDT": {
+      "donchianLookback": 60,
+      "volumeMultiplier": 1.8,
+      "slAtrMultiplier": 2.8,
+      "trendingThreshold": 22,
+      "rangingThreshold": 18,
+      "minBbWidth": 0.012,
+      "breakoutBufferAtr": 0.22,
+      "requireAtrExpansion": false
+    },
+    "SOL/USDT": {
+      "donchianLookback": 25,
+      "volumeMultiplier": 1.2,
+      "slAtrMultiplier": 2.2,
+      "trendingThreshold": 22,
+      "rangingThreshold": 18,
+      "minBbWidth": 0.012,
+      "breakoutBufferAtr": 0.08,
+      "requireAtrExpansion": true
+    },
+    "DOGE/USDT": {
+      "donchianLookback": 48,
+      "volumeMultiplier": 2.0,
+      "slAtrMultiplier": 2.8,
+      "trendingThreshold": 22,
+      "rangingThreshold": 18,
+      "minBbWidth": 0.012,
+      "breakoutBufferAtr": 0.15,
+      "requireAtrExpansion": true
+    }
   }
 }
