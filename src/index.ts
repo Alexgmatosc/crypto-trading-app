@@ -72,6 +72,7 @@ export class QuantDaemon {
     );
 
     await this.broker.initialize();
+    await this.engine.ensureOpenTradesProtected();
 
     // Warm-up historical candles from Mainnet and evaluate latest closed candle state
     for (const symbol of strategyConfig.symbols) {

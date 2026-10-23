@@ -1,4 +1,8 @@
-import { strategyConfig, type StrategyConfig } from '../config/strategyConfig.js';
+import {
+  resolveSymbolStrategyConfig,
+  strategyConfig,
+  type StrategyConfig,
+} from '../config/strategyConfig.js';
 import { MathEngine } from '../indicators/MathEngine.js';
 import type { Candle, RegimeState } from '../types/index.js';
 
@@ -13,16 +17,37 @@ export interface RegimeDetectorConfig {
 
 export class RegimeDetector {
   private readonly config: RegimeDetectorConfig;
+  private readonly fullConfig: StrategyConfig;
+  private readonly customConfig?: Partial<RegimeDetectorConfig>;
 
   constructor(customConfig?: Partial<RegimeDetectorConfig>, fullConfig: StrategyConfig = strategyConfig) {
-    this.config = {
-      adxPeriod: customConfig?.adxPeriod ?? fullConfig.regime.adxPeriod,
-      trendingThreshold: customConfig?.trendingThreshold ?? fullConfig.regime.trendingThreshold,
-      rangingThreshold: customConfig?.rangingThreshold ?? fullConfig.regime.rangingThreshold,
-      bbPeriod: customConfig?.bbPeriod ?? fullConfig.meanReversionStrategy.bbPeriod,
-      bbStdDev: customConfig?.bbStdDev ?? fullConfig.meanReversionStrategy.bbStdDev,
-      minBbWidth: customConfig?.minBbWidth ?? fullConfig.regime.minBbWidth ?? 0.0065,
+    this.fullConfig = fullConfig;
+    this.customConfig = customConfig;
+    this.config = this.buildConfig(fullConfig, customConfig);
+  }
+
+  private buildConfig(
+    resolvedFullConfig: StrategyConfig,
+    customConfig?: Partial<RegimeDetectorConfig>
+  ): RegimeDetectorConfig {
+    return {
+      adxPeriod: customConfig?.adxPeriod ?? resolvedFullConfig.regime.adxPeriod,
+      trendingThreshold:
+        customConfig?.trendingThreshold ?? resolvedFullConfig.regime.trendingThreshold,
+      rangingThreshold:
+        customConfig?.rangingThreshold ?? resolvedFullConfig.regime.rangingThreshold,
+      bbPeriod: customConfig?.bbPeriod ?? resolvedFullConfig.meanReversionStrategy.bbPeriod,
+      bbStdDev: customConfig?.bbStdDev ?? resolvedFullConfig.meanReversionStrategy.bbStdDev,
+      minBbWidth: customConfig?.minBbWidth ?? resolvedFullConfig.regime.minBbWidth ?? 0.0065,
     };
+  }
+
+  private getConfigForSymbol(symbol?: string): RegimeDetectorConfig {
+    if (!symbol || !this.fullConfig.symbolOverrides?.[symbol]) {
+      return this.config;
+    }
+    const symFull = resolveSymbolStrategyConfig(this.fullConfig, symbol);
+    return this.buildConfig(symFull, this.customConfig);
   }
 
   /**
@@ -31,8 +56,9 @@ export class RegimeDetector {
    * - RANGING: ADX(14) < rangingThreshold (20) AND BB_Width > minBbWidth (0.0065)
    * - NO_TRADE: rangingThreshold <= ADX(14) <= trendingThreshold OR BB_Width <= minBbWidth (or insufficient data)
    */
-  public detect(candles: Candle[]): RegimeState {
-    const minRequiredCandles = Math.max(this.config.adxPeriod * 2, this.config.bbPeriod);
+  public detect(candles: Candle[], symbol?: string): RegimeState {
+    const cfg = this.getConfigForSymbol(symbol);
+    const minRequiredCandles = Math.max(cfg.adxPeriod * 2, cfg.bbPeriod);
     if (candles.length < minRequiredCandles) {
       return {
         regime: 'NO_TRADE',
@@ -45,11 +71,11 @@ export class RegimeDetector {
       };
     }
 
-    const latestAdx = MathEngine.getLatestADX(candles, this.config.adxPeriod);
+    const latestAdx = MathEngine.getLatestADX(candles, cfg.adxPeriod);
     const latestBb = MathEngine.getLatestBollingerBands(
       candles,
-      this.config.bbPeriod,
-      this.config.bbStdDev
+      cfg.bbPeriod,
+      cfg.bbStdDev
     );
 
     if (!latestAdx || !latestBb) {
@@ -67,8 +93,8 @@ export class RegimeDetector {
     const adx = latestAdx.adx;
     const bbWidth = latestBb.width;
 
-    // 1. TRENDING: ADX > 25
-    if (adx > this.config.trendingThreshold) {
+    // 1. TRENDING: ADX > trendingThreshold
+    if (adx > cfg.trendingThreshold) {
       return {
         regime: 'TRENDING',
         adx,
@@ -76,12 +102,12 @@ export class RegimeDetector {
         bbUpper: latestBb.upper,
         bbMiddle: latestBb.middle,
         bbLower: latestBb.lower,
-        reason: `ADX (${adx.toFixed(2)}) > ${this.config.trendingThreshold} -> Strong directional trend`,
+        reason: `ADX (${adx.toFixed(2)}) > ${cfg.trendingThreshold} -> Strong directional trend`,
       };
     }
 
-    // 2. RANGING: ADX < 20 and BB_Width > 0.015
-    if (adx < this.config.rangingThreshold && bbWidth > this.config.minBbWidth) {
+    // 2. RANGING: ADX < rangingThreshold and BB_Width > minBbWidth
+    if (adx < cfg.rangingThreshold && bbWidth > cfg.minBbWidth) {
       return {
         regime: 'RANGING',
         adx,
@@ -89,15 +115,15 @@ export class RegimeDetector {
         bbUpper: latestBb.upper,
         bbMiddle: latestBb.middle,
         bbLower: latestBb.lower,
-        reason: `ADX (${adx.toFixed(2)}) < ${this.config.rangingThreshold} and BB_Width (${(bbWidth * 100).toFixed(2)}%) > ${(this.config.minBbWidth * 100).toFixed(2)}% -> Tradeable range`,
+        reason: `ADX (${adx.toFixed(2)}) < ${cfg.rangingThreshold} and BB_Width (${(bbWidth * 100).toFixed(2)}%) > ${(cfg.minBbWidth * 100).toFixed(2)}% -> Tradeable range`,
       };
     }
 
-    // 3. NO_TRADE (Dead zone / Chop): 20 <= ADX <= 25 or ultra-narrow BB channel (BB_Width <= 0.015)
+    // 3. NO_TRADE (Dead zone / Chop): rangingThreshold <= ADX <= trendingThreshold or ultra-narrow BB channel
     const deadZoneReason =
-      adx >= this.config.rangingThreshold && adx <= this.config.trendingThreshold
-        ? `ADX (${adx.toFixed(2)}) in dead zone [${this.config.rangingThreshold}, ${this.config.trendingThreshold}]`
-        : `BB_Width (${(bbWidth * 100).toFixed(2)}%) <= ${(this.config.minBbWidth * 100).toFixed(2)}% (channel too narrow to cover fees)`;
+      adx >= cfg.rangingThreshold && adx <= cfg.trendingThreshold
+        ? `ADX (${adx.toFixed(2)}) in dead zone [${cfg.rangingThreshold}, ${cfg.trendingThreshold}]`
+        : `BB_Width (${(bbWidth * 100).toFixed(2)}%) <= ${(cfg.minBbWidth * 100).toFixed(2)}% (channel too narrow to cover fees)`;
 
     return {
       regime: 'NO_TRADE',

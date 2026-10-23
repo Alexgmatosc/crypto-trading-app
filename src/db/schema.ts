@@ -13,6 +13,7 @@ export const trades = sqliteTable('trades', {
   remaining_size: real('remaining_size').notNull(),
   initial_sl: real('initial_sl').notNull(),
   current_sl: real('current_sl').notNull(),
+  stop_order_id: text('stop_order_id'),
   tp1_hit: integer('tp1_hit').notNull().default(0),
   realized_pnl: real('realized_pnl').notNull().default(0),
   fees_paid: real('fees_paid').notNull().default(0),

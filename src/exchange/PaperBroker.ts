@@ -1,7 +1,13 @@
 import crypto from 'node:crypto';
 import { strategyConfig, type StrategyConfig } from '../config/strategyConfig.js';
 import type { OrderExecutionResult } from '../types/index.js';
-import type { ExecuteMarketOrderParams, IExecutionBroker } from './IExecutionBroker.js';
+import type {
+  ExecuteMarketOrderParams,
+  IExecutionBroker,
+  PlaceStopLossOrderParams,
+  ReplaceStopLossOrderParams,
+  StopLossOrderResult,
+} from './IExecutionBroker.js';
 
 export class PaperBroker implements IExecutionBroker {
   private balanceUsdt: number;
@@ -61,5 +67,24 @@ export class PaperBroker implements IExecutionBroker {
       timestamp,
       orderId: `paper-${crypto.randomUUID()}`,
     };
+  }
+
+  public async placeStopLossOrder(params: PlaceStopLossOrderParams): Promise<StopLossOrderResult> {
+    return {
+      stopOrderId: `paper-sl-${crypto.randomUUID()}`,
+      stopPrice: params.stopPrice,
+      sizeCoins: params.sizeCoins,
+    };
+  }
+
+  public async cancelStopLossOrder(_symbol: string, _stopOrderId?: string | null): Promise<void> {
+    // Local paper simulator requires no remote order cancellation
+  }
+
+  public async replaceStopLossOrder(
+    params: ReplaceStopLossOrderParams
+  ): Promise<StopLossOrderResult> {
+    await this.cancelStopLossOrder(params.symbol, params.previousStopOrderId);
+    return this.placeStopLossOrder(params);
   }
 }

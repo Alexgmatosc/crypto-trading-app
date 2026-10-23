@@ -1,4 +1,8 @@
-import { strategyConfig, type StrategyConfig } from '../config/strategyConfig.js';
+import {
+  resolveSymbolStrategyConfig,
+  strategyConfig,
+  type StrategyConfig,
+} from '../config/strategyConfig.js';
 import type {
   ExitReason,
   OrderSide,
@@ -53,8 +57,9 @@ export class RiskManager {
     atr: number;
     side: OrderSide;
     strategy: StrategyName;
+    symbol?: string;
   }): PositionSizingResult {
-    const { availableBalance, entryPrice, atr, side, strategy } = params;
+    const { availableBalance, entryPrice, atr, side, strategy, symbol } = params;
 
     if (availableBalance <= 0 || entryPrice <= 0 || atr <= 0) {
       throw new Error(
@@ -62,10 +67,11 @@ export class RiskManager {
       );
     }
 
+    const symConfig = resolveSymbolStrategyConfig(this.config, symbol);
     const slAtrMultiplier =
       strategy === 'TREND_BREAKOUT'
-        ? this.config.trendStrategy.slAtrMultiplier
-        : this.config.meanReversionStrategy.slAtrMultiplier;
+        ? symConfig.trendStrategy.slAtrMultiplier
+        : symConfig.meanReversionStrategy.slAtrMultiplier;
 
     const slDistance = slAtrMultiplier * atr;
     const initialSl =
@@ -193,12 +199,13 @@ export class RiskManager {
       };
     }
 
+    const symConfig = resolveSymbolStrategyConfig(this.config, trade.symbol);
     const {
       partialTakeProfitR,
       partialClosePct,
       trailingActivationR,
       trailingAtrMultiplier,
-    } = this.config.tradeManagement;
+    } = symConfig.tradeManagement;
 
     let shouldPartialClose = false;
     let partialCloseSize: number | undefined;

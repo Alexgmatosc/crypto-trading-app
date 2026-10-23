@@ -1,4 +1,8 @@
-import { strategyConfig, type StrategyConfig } from '../../config/strategyConfig.js';
+import {
+  resolveSymbolStrategyConfig,
+  strategyConfig,
+  type StrategyConfig,
+} from '../../config/strategyConfig.js';
 import { MathEngine } from '../../indicators/MathEngine.js';
 import type {
   Candle,
@@ -23,26 +27,44 @@ export interface MeanReversionConfig {
 export class MeanReversionStrategy implements IStrategy {
   public readonly name: StrategyName = 'MEAN_REVERSION';
   private readonly config: MeanReversionConfig;
+  private readonly fullConfig: StrategyConfig;
+  private readonly customConfig?: Partial<MeanReversionConfig>;
 
   constructor(
     customConfig?: Partial<MeanReversionConfig>,
     fullConfig: StrategyConfig = strategyConfig
   ) {
-    // SPEC Section 5.B.2 specifies RSI(14) < 32 for oversold bounce and RSI(14) > 68 for overbought rejection
-    this.config = {
-      bbPeriod: customConfig?.bbPeriod ?? fullConfig.meanReversionStrategy.bbPeriod,
-      bbStdDev: customConfig?.bbStdDev ?? fullConfig.meanReversionStrategy.bbStdDev,
-      rsiPeriod: customConfig?.rsiPeriod ?? fullConfig.meanReversionStrategy.rsiPeriod,
+    this.fullConfig = fullConfig;
+    this.customConfig = customConfig;
+    this.config = this.buildConfig(fullConfig, customConfig);
+  }
+
+  private buildConfig(
+    resolvedFull: StrategyConfig,
+    customConfig?: Partial<MeanReversionConfig>
+  ): MeanReversionConfig {
+    return {
+      bbPeriod: customConfig?.bbPeriod ?? resolvedFull.meanReversionStrategy.bbPeriod,
+      bbStdDev: customConfig?.bbStdDev ?? resolvedFull.meanReversionStrategy.bbStdDev,
+      rsiPeriod: customConfig?.rsiPeriod ?? resolvedFull.meanReversionStrategy.rsiPeriod,
       rsiOversold:
         customConfig?.rsiOversold ??
-        Math.max(fullConfig.meanReversionStrategy.rsiOversold, 32),
+        Math.max(resolvedFull.meanReversionStrategy.rsiOversold, 32),
       rsiOverbought:
         customConfig?.rsiOverbought ??
-        Math.min(fullConfig.meanReversionStrategy.rsiOverbought, 68),
-      atrPeriod: customConfig?.atrPeriod ?? fullConfig.trendStrategy.atrPeriod,
+        Math.min(resolvedFull.meanReversionStrategy.rsiOverbought, 68),
+      atrPeriod: customConfig?.atrPeriod ?? resolvedFull.trendStrategy.atrPeriod,
       slAtrMultiplier:
-        customConfig?.slAtrMultiplier ?? fullConfig.meanReversionStrategy.slAtrMultiplier,
+        customConfig?.slAtrMultiplier ?? resolvedFull.meanReversionStrategy.slAtrMultiplier,
     };
+  }
+
+  private getConfigForSymbol(symbol?: string): MeanReversionConfig {
+    if (!symbol || !this.fullConfig.symbolOverrides?.[symbol]) {
+      return this.config;
+    }
+    const symFull = resolveSymbolStrategyConfig(this.fullConfig, symbol);
+    return this.buildConfig(symFull, this.customConfig);
   }
 
   /**
@@ -59,10 +81,11 @@ export class MeanReversionStrategy implements IStrategy {
       return null;
     }
 
+    const cfg = this.getConfigForSymbol(symbol);
     const minRequired = Math.max(
-      this.config.bbPeriod + 2,
-      this.config.rsiPeriod + 2,
-      this.config.atrPeriod + 1
+      cfg.bbPeriod + 2,
+      cfg.rsiPeriod + 2,
+      cfg.atrPeriod + 1
     );
 
     if (candles.length < minRequired) {
@@ -72,11 +95,11 @@ export class MeanReversionStrategy implements IStrategy {
     const closes = candles.map((c) => c.close);
     const bbSeries = MathEngine.calculateBollingerBands(
       closes,
-      this.config.bbPeriod,
-      this.config.bbStdDev
+      cfg.bbPeriod,
+      cfg.bbStdDev
     );
-    const rsiSeries = MathEngine.calculateRSI(closes, this.config.rsiPeriod);
-    const atr = MathEngine.getLatestATR(candles, this.config.atrPeriod);
+    const rsiSeries = MathEngine.calculateRSI(closes, cfg.rsiPeriod);
+    const atr = MathEngine.getLatestATR(candles, cfg.atrPeriod);
 
     if (bbSeries.length < 2 || rsiSeries.length < 2 || atr === null || atr <= 0) {
       return null;
@@ -97,7 +120,7 @@ export class MeanReversionStrategy implements IStrategy {
     const prevTouchedOrClosedBelowLower =
       prevCandle.close <= prevBb.lower || prevCandle.low <= prevBb.lower;
     const currClosedInsideLower = currCandle.close > currBb.lower;
-    const isOversold = currRsi < this.config.rsiOversold || prevRsi < this.config.rsiOversold;
+    const isOversold = currRsi < cfg.rsiOversold || prevRsi < cfg.rsiOversold;
 
     if (prevTouchedOrClosedBelowLower && currClosedInsideLower && isOversold && currRsi < 50) {
       return {
@@ -109,7 +132,7 @@ export class MeanReversionStrategy implements IStrategy {
         atr,
         timestamp: currCandle.timestamp,
         bbMiddle: currBb.middle,
-        reason: `Mean Reversion LONG: Prev touched/below BB_Lower (${prevBb.lower.toFixed(2)}), Curr closed inside (${currCandle.close.toFixed(2)} > ${currBb.lower.toFixed(2)}), RSI (${Math.min(currRsi, prevRsi).toFixed(2)}) < ${this.config.rsiOversold}`,
+        reason: `Mean Reversion LONG: Prev touched/below BB_Lower (${prevBb.lower.toFixed(2)}), Curr closed inside (${currCandle.close.toFixed(2)} > ${currBb.lower.toFixed(2)}), RSI (${Math.min(currRsi, prevRsi).toFixed(2)}) < ${cfg.rsiOversold}`,
       };
     }
 
@@ -120,7 +143,7 @@ export class MeanReversionStrategy implements IStrategy {
       prevCandle.close >= prevBb.upper || prevCandle.high >= prevBb.upper;
     const currClosedInsideUpper = currCandle.close < currBb.upper;
     const isOverbought =
-      currRsi > this.config.rsiOverbought || prevRsi > this.config.rsiOverbought;
+      currRsi > cfg.rsiOverbought || prevRsi > cfg.rsiOverbought;
 
     if (prevTouchedOrExceededUpper && currClosedInsideUpper && isOverbought && currRsi > 50) {
       return {
@@ -132,7 +155,7 @@ export class MeanReversionStrategy implements IStrategy {
         atr,
         timestamp: currCandle.timestamp,
         bbMiddle: currBb.middle,
-        reason: `Mean Reversion SHORT: Prev touched/above BB_Upper (${prevBb.upper.toFixed(2)}), Curr closed inside (${currCandle.close.toFixed(2)} < ${currBb.upper.toFixed(2)}), RSI (${Math.max(currRsi, prevRsi).toFixed(2)}) > ${this.config.rsiOverbought}`,
+        reason: `Mean Reversion SHORT: Prev touched/above BB_Upper (${prevBb.upper.toFixed(2)}), Curr closed inside (${currCandle.close.toFixed(2)} < ${currBb.upper.toFixed(2)}), RSI (${Math.max(currRsi, prevRsi).toFixed(2)}) > ${cfg.rsiOverbought}`,
       };
     }
 
@@ -152,10 +175,11 @@ export class MeanReversionStrategy implements IStrategy {
       return null;
     }
 
+    const cfg = this.getConfigForSymbol(trade.symbol);
     const latestBb = MathEngine.getLatestBollingerBands(
       candles,
-      this.config.bbPeriod,
-      this.config.bbStdDev
+      cfg.bbPeriod,
+      cfg.bbStdDev
     );
 
     if (!latestBb) {

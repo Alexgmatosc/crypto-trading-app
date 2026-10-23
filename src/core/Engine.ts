@@ -1,7 +1,15 @@
 import crypto from 'node:crypto';
-import { strategyConfig, type StrategyConfig } from '../config/strategyConfig.js';
+import {
+  resolveSymbolStrategyConfig,
+  strategyConfig,
+  type StrategyConfig,
+} from '../config/strategyConfig.js';
 import { QuantRepository, repository as defaultRepo } from '../db/repository.js';
-import type { IExecutionBroker } from '../exchange/IExecutionBroker.js';
+import {
+  isReduceOnlyRejectedError,
+  isStopOrderImmediateTriggerError,
+  type IExecutionBroker,
+} from '../exchange/IExecutionBroker.js';
 import { PaperBroker } from '../exchange/PaperBroker.js';
 import { MathEngine } from '../indicators/MathEngine.js';
 import type {
@@ -86,6 +94,54 @@ export class Engine {
   }
 
   /**
+   * Ensures all currently open trades in SQLite have an active exchange-side STOP_MARKET order.
+   * Called on daemon startup to protect any legacy or restarted positions.
+   */
+  public async ensureOpenTradesProtected(): Promise<void> {
+    const openTrades = this.repo.getOpenTrades(this.mode);
+    for (const trade of openTrades) {
+      if (trade.stop_order_id || trade.remaining_size <= 0) {
+        continue;
+      }
+      try {
+        const slRes = await this.broker.placeStopLossOrder({
+          symbol: trade.symbol,
+          positionSide: trade.side,
+          sizeCoins: trade.remaining_size,
+          stopPrice: trade.current_sl,
+        });
+        this.repo.updateTradeStopOrderId(trade.id, slRes.stopOrderId);
+      } catch (err) {
+        if (isStopOrderImmediateTriggerError(err)) {
+          logger.warn(
+            {
+              tradeId: trade.id,
+              symbol: trade.symbol,
+              currentSl: formatPrice(trade.current_sl),
+            },
+            'Startup protection: Stop-Loss already crossed (-2021) — forcing immediate market close'
+          );
+          await this.closeFullPosition(
+            trade,
+            trade.current_sl,
+            trade.tp1_hit === 1 ? 'TRAILING_STOP' : 'STOP_LOSS',
+            Date.now()
+          );
+        } else {
+          logger.error(
+            {
+              tradeId: trade.id,
+              symbol: trade.symbol,
+              error: (err as Error).message,
+            },
+            'Failed to place startup STOP_MARKET order for existing open trade'
+          );
+        }
+      }
+    }
+  }
+
+  /**
    * Processes the close of a 15m candle for a specific symbol:
    * 1. Evaluates open positions for SL, TP1 (1.5R), Trailing Stop (2.0R), or Mean Target (BB_Middle).
    * 2. Evaluates Daily Kill Switch (-4.0% daily drawdown circuit breaker).
@@ -103,13 +159,14 @@ export class Engine {
     const latestCandle = candles[candles.length - 1];
     markPrices[symbol] = latestCandle.close;
 
+    const symConfig = resolveSymbolStrategyConfig(this.config, symbol);
     const latestAtr =
-      MathEngine.getLatestATR(candles, this.config.trendStrategy.atrPeriod) ??
+      MathEngine.getLatestATR(candles, symConfig.trendStrategy.atrPeriod) ??
       Math.abs(latestCandle.high - latestCandle.low);
     const latestBb = MathEngine.getLatestBollingerBands(
       candles,
-      this.config.meanReversionStrategy.bbPeriod,
-      this.config.meanReversionStrategy.bbStdDev
+      symConfig.meanReversionStrategy.bbPeriod,
+      symConfig.meanReversionStrategy.bbStdDev
     );
 
     // 1. Manage existing open positions for this symbol
@@ -140,7 +197,7 @@ export class Engine {
     }
 
     // 3. Detect Market Regime
-    const regimeState = this.regimeDetector.detect(candles);
+    const regimeState = this.regimeDetector.detect(candles, symbol);
     logger.info(
       {
         symbol,
@@ -217,13 +274,14 @@ export class Engine {
       if (!currentPrice || currentPrice <= 0) continue;
 
       const symbolCandles = candlesBySymbol[trade.symbol] ?? [];
+      const symConfig = resolveSymbolStrategyConfig(this.config, trade.symbol);
       const currentAtr =
-        MathEngine.getLatestATR(symbolCandles, this.config.trendStrategy.atrPeriod) ??
-        this.riskManager.getOneR(trade) / this.config.trendStrategy.slAtrMultiplier;
+        MathEngine.getLatestATR(symbolCandles, symConfig.trendStrategy.atrPeriod) ??
+        this.riskManager.getOneR(trade) / symConfig.trendStrategy.slAtrMultiplier;
       const latestBb = MathEngine.getLatestBollingerBands(
         symbolCandles,
-        this.config.meanReversionStrategy.bbPeriod,
-        this.config.meanReversionStrategy.bbStdDev
+        symConfig.meanReversionStrategy.bbPeriod,
+        symConfig.meanReversionStrategy.bbStdDev
       );
 
       await this.evaluateAndExecuteTradeManagement({
@@ -284,7 +342,44 @@ export class Engine {
     }
 
     if (decision.shouldUpdateSl && decision.newSl !== undefined) {
-      this.repo.updateTradeStopLoss(trade.id, decision.newSl);
+      let updatedStopOrderId: string | null | undefined;
+      try {
+        const slRes = await this.broker.replaceStopLossOrder({
+          symbol: trade.symbol,
+          positionSide: trade.side,
+          sizeCoins: trade.remaining_size,
+          stopPrice: decision.newSl,
+          previousStopOrderId: trade.stop_order_id,
+        });
+        updatedStopOrderId = slRes.stopOrderId;
+      } catch (err) {
+        if (isStopOrderImmediateTriggerError(err)) {
+          logger.warn(
+            {
+              tradeId: trade.id,
+              symbol: trade.symbol,
+              side: trade.side,
+              newSl: formatPrice(decision.newSl),
+              error: (err as Error).message,
+            },
+            'Trailing Stop price already crossed (-2021) — forcing immediate market close'
+          );
+          await this.closeFullPosition(trade, decision.newSl, 'TRAILING_STOP', timestamp);
+          return;
+        }
+        logger.error(
+          {
+            tradeId: trade.id,
+            symbol: trade.symbol,
+            side: trade.side,
+            newSl: formatPrice(decision.newSl),
+            error: (err as Error).message,
+          },
+          'Failed to replace native STOP_MARKET order on trailing stop update'
+        );
+      }
+
+      this.repo.updateTradeStopLoss(trade.id, decision.newSl, updatedStopOrderId);
       logger.debug(
         {
           tradeId: trade.id,
@@ -292,6 +387,7 @@ export class Engine {
           side: trade.side,
           oldSl: formatPrice(trade.current_sl),
           newSl: formatPrice(decision.newSl),
+          stopOrderId: updatedStopOrderId ?? trade.stop_order_id,
         },
         'Updated dynamic Trailing Stop Loss'
       );
@@ -314,6 +410,7 @@ export class Engine {
       atr: signal.atr,
       side: signal.side,
       strategy: signal.strategy,
+      symbol: signal.symbol,
     });
 
     if (sizing.sizeCoins <= 0) {
@@ -355,6 +452,41 @@ export class Engine {
         ? exec.filledPrice - sizing.slDistance
         : exec.filledPrice + sizing.slDistance;
 
+    let stopOrderId: string | null = null;
+    let immediateSlTriggered = false;
+    try {
+      const slRes = await this.broker.placeStopLossOrder({
+        symbol: signal.symbol,
+        positionSide: signal.side,
+        sizeCoins: exec.filledSize,
+        stopPrice: actualInitialSl,
+      });
+      stopOrderId = slRes.stopOrderId;
+    } catch (err) {
+      if (isStopOrderImmediateTriggerError(err)) {
+        logger.warn(
+          {
+            symbol: signal.symbol,
+            side: signal.side,
+            initialSl: formatPrice(actualInitialSl),
+            error: (err as Error).message,
+          },
+          'Stop-Loss trigger price already crossed on entry (-2021) — forcing immediate market close'
+        );
+        immediateSlTriggered = true;
+      } else {
+        logger.error(
+          {
+            symbol: signal.symbol,
+            side: signal.side,
+            initialSl: formatPrice(actualInitialSl),
+            error: (err as Error).message,
+          },
+          'Failed to place native STOP_MARKET order on exchange — local 10s SL monitor remains active'
+        );
+      }
+    }
+
     const tradeRecord: TradeRecord = {
       id: crypto.randomUUID(),
       mode: this.mode,
@@ -368,6 +500,7 @@ export class Engine {
       remaining_size: exec.filledSize,
       initial_sl: actualInitialSl,
       current_sl: actualInitialSl,
+      stop_order_id: stopOrderId,
       tp1_hit: 0,
       realized_pnl: -exec.feeUsd,
       fees_paid: exec.feeUsd,
@@ -392,10 +525,16 @@ export class Engine {
         entryPrice: formatPrice(tradeRecord.entry_price),
         size: Number(tradeRecord.initial_size.toFixed(6)),
         initialSl: formatPrice(tradeRecord.initial_sl),
+        stopOrderId: tradeRecord.stop_order_id,
         riskUsd: Number(sizing.riskUsd.toFixed(2)),
       },
       'Opened new position'
     );
+
+    if (immediateSlTriggered) {
+      await this.closeFullPosition(tradeRecord, actualInitialSl, 'STOP_LOSS', Date.now());
+      return this.repo.getTradeById(tradeRecord.id) ?? tradeRecord;
+    }
 
     return tradeRecord;
   }
@@ -448,10 +587,51 @@ export class Engine {
       this.broker.adjustBalance(netPnlDelta);
     }
 
-    this.repo.updateTradePartialClose({
+    let updatedStopOrderId: string | null = trade.stop_order_id ?? null;
+    let immediateSlTriggered = false;
+    if (remainingSize > 0) {
+      try {
+        const slRes = await this.broker.replaceStopLossOrder({
+          symbol: trade.symbol,
+          positionSide: trade.side,
+          sizeCoins: remainingSize,
+          stopPrice: newBreakEvenSl,
+          previousStopOrderId: trade.stop_order_id,
+        });
+        updatedStopOrderId = slRes.stopOrderId;
+      } catch (err) {
+        if (isStopOrderImmediateTriggerError(err)) {
+          logger.warn(
+            {
+              tradeId: trade.id,
+              symbol: trade.symbol,
+              side: trade.side,
+              newBreakEvenSl: formatPrice(newBreakEvenSl),
+              error: (err as Error).message,
+            },
+            'Break-Even SL already crossed during scale-out (-2021) — forcing immediate market close of remaining size'
+          );
+          immediateSlTriggered = true;
+        } else {
+          logger.error(
+            {
+              tradeId: trade.id,
+              symbol: trade.symbol,
+              side: trade.side,
+              newBreakEvenSl: formatPrice(newBreakEvenSl),
+              error: (err as Error).message,
+            },
+            'Failed to replace native STOP_MARKET order after scale-out'
+          );
+        }
+      }
+    }
+
+    const updatedTrade = this.repo.updateTradePartialClose({
       id: trade.id,
       remainingSize,
       currentSl: newBreakEvenSl,
+      stopOrderId: updatedStopOrderId,
       realizedPnlDelta: netPnlDelta,
       feesPaidDelta: exec.feeUsd,
     });
@@ -468,9 +648,14 @@ export class Engine {
         fillPrice: formatPrice(exec.filledPrice),
         netPnlDelta: Number(netPnlDelta.toFixed(2)),
         newBreakEvenSl: formatPrice(newBreakEvenSl),
+        stopOrderId: updatedStopOrderId,
       },
       'Executed 1.5R 50% Scale-Out and moved SL to Break-Even + Costs'
     );
+
+    if (immediateSlTriggered && updatedTrade) {
+      await this.closeFullPosition(updatedTrade, newBreakEvenSl, 'TRAILING_STOP', timestamp);
+    }
   }
 
   /**
@@ -486,6 +671,11 @@ export class Engine {
       return;
     }
 
+    // Cancel any active native STOP_MARKET order on the exchange so it never remains orphaned
+    if (trade.stop_order_id) {
+      await this.broker.cancelStopLossOrder(trade.symbol, trade.stop_order_id);
+    }
+
     const closeOrderSide = trade.side === 'LONG' ? 'SELL' : 'BUY';
     let exec: OrderExecutionResult;
     try {
@@ -499,18 +689,44 @@ export class Engine {
         reduceOnly: true,
       });
     } catch (err) {
-      logger.error(
-        {
-          tradeId: trade.id,
-          symbol: trade.symbol,
-          side: trade.side,
-          exitReason,
-          remainingSize: trade.remaining_size,
-          error: (err as Error).message,
-        },
-        'Failed to execute full position close order on broker — keeping trade OPEN for safe retry'
-      );
-      return;
+      if (isReduceOnlyRejectedError(err)) {
+        // The native STOP_MARKET order on Binance already executed and closed the position on the exchange
+        const filledPrice = referencePrice;
+        const filledSize = trade.remaining_size;
+        const notionalUsd = filledPrice * filledSize;
+        const feeUsd = notionalUsd * this.config.fees.taker;
+        exec = {
+          filledPrice,
+          filledSize,
+          notionalUsd,
+          feeUsd,
+          timestamp,
+          orderId: trade.stop_order_id ?? `reconciled-sl-${trade.id}`,
+        };
+        logger.info(
+          {
+            tradeId: trade.id,
+            symbol: trade.symbol,
+            side: trade.side,
+            exitReason,
+            reconciledExitPrice: formatPrice(filledPrice),
+          },
+          'Position already closed on exchange by native STOP_MARKET (-2022) — reconciling trade as CLOSED'
+        );
+      } else {
+        logger.error(
+          {
+            tradeId: trade.id,
+            symbol: trade.symbol,
+            side: trade.side,
+            exitReason,
+            remainingSize: trade.remaining_size,
+            error: (err as Error).message,
+          },
+          'Failed to execute full position close order on broker — keeping trade OPEN for safe retry'
+        );
+        return;
+      }
     }
 
     const grossPnl =

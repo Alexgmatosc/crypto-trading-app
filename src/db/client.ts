@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS trades (
   remaining_size REAL NOT NULL,
   initial_sl REAL NOT NULL,
   current_sl REAL NOT NULL,
+  stop_order_id TEXT,
   tp1_hit INTEGER NOT NULL DEFAULT 0,
   realized_pnl REAL NOT NULL DEFAULT 0,
   fees_paid REAL NOT NULL DEFAULT 0,
@@ -77,6 +78,11 @@ export function createDatabaseConnection(customDbPath?: string): DatabaseConnect
   sqlite.pragma('synchronous = NORMAL');
   sqlite.pragma('foreign_keys = ON');
   sqlite.exec(INIT_SQL);
+
+  const columns = sqlite.pragma('table_info(trades)') as Array<{ name: string }>;
+  if (!columns.some((col) => col.name === 'stop_order_id')) {
+    sqlite.exec('ALTER TABLE trades ADD COLUMN stop_order_id TEXT;');
+  }
 
   const db = drizzle(sqlite, { schema });
   return { sqlite, db };

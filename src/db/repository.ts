@@ -38,6 +38,7 @@ export class QuantRepository {
         remaining_size: trade.remaining_size,
         initial_sl: trade.initial_sl,
         current_sl: trade.current_sl,
+        stop_order_id: trade.stop_order_id ?? null,
         tp1_hit: trade.tp1_hit,
         realized_pnl: trade.realized_pnl,
         fees_paid: trade.fees_paid,
@@ -53,6 +54,7 @@ export class QuantRepository {
     id: string;
     remainingSize: number;
     currentSl: number;
+    stopOrderId?: string | null;
     realizedPnlDelta: number;
     feesPaidDelta: number;
   }): TradeRecord | undefined {
@@ -70,6 +72,7 @@ export class QuantRepository {
         .set({
           remaining_size: params.remainingSize,
           current_sl: params.currentSl,
+          stop_order_id: params.stopOrderId !== undefined ? params.stopOrderId : existing.stop_order_id ?? null,
           tp1_hit: 1,
           realized_pnl: updatedRealizedPnl,
           fees_paid: updatedFeesPaid,
@@ -83,10 +86,22 @@ export class QuantRepository {
     return tx();
   }
 
-  public updateTradeStopLoss(id: string, newSl: number): void {
+  public updateTradeStopLoss(id: string, newSl: number, stopOrderId?: string | null): void {
+    const updatePayload: Partial<typeof trades.$inferInsert> = { current_sl: newSl };
+    if (stopOrderId !== undefined) {
+      updatePayload.stop_order_id = stopOrderId;
+    }
     this.conn.db
       .update(trades)
-      .set({ current_sl: newSl })
+      .set(updatePayload)
+      .where(eq(trades.id, id))
+      .run();
+  }
+
+  public updateTradeStopOrderId(id: string, stopOrderId: string | null): void {
+    this.conn.db
+      .update(trades)
+      .set({ stop_order_id: stopOrderId })
       .where(eq(trades.id, id))
       .run();
   }
@@ -113,6 +128,7 @@ export class QuantRepository {
         .set({
           exit_price: params.exitPrice,
           remaining_size: 0,
+          stop_order_id: null,
           realized_pnl: finalRealizedPnl,
           fees_paid: finalFeesPaid,
           status: 'CLOSED',
@@ -334,6 +350,7 @@ export class QuantRepository {
       remaining_size: row.remaining_size,
       initial_sl: row.initial_sl,
       current_sl: row.current_sl,
+      stop_order_id: row.stop_order_id ?? null,
       tp1_hit: row.tp1_hit,
       realized_pnl: row.realized_pnl,
       fees_paid: row.fees_paid,

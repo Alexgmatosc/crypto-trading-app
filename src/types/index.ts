@@ -83,6 +83,7 @@ export interface TradeRecord {
   remaining_size: number;
   initial_sl: number;
   current_sl: number;
+  stop_order_id?: string | null;
   tp1_hit: number; // 0 or 1 in SQLite
   realized_pnl: number;
   fees_paid: number;

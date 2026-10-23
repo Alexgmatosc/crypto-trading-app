@@ -156,7 +156,7 @@ export class DashboardServer {
 
       if (candles && candles.length >= 210) {
         try {
-          const state = this.regimeDetector.detect(candles);
+          const state = this.regimeDetector.detect(candles, symbol);
           adx = state.adx;
           bbWidthPct = state.bbWidth * 100;
           rsi = MathEngine.getLatestRSI(candles, strategyConfig.meanReversionStrategy.rsiPeriod);
