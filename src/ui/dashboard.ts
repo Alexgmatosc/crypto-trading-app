@@ -182,8 +182,8 @@ export class DashboardServer {
       const slAtr = symConfig.trendStrategy.slAtrMultiplier;
       const bufferAtr = symConfig.trendStrategy.breakoutBufferAtr ?? 0;
 
-      const profileLabel = `Análisis ${lookbackHours}h • Vol ${volMult}x • SL ${slAtr}x`;
-      const profileTooltip = `Perfil calibrado para ${symbol}: busca operaciones analizando las últimas ${lookbackHours} horas (${lookback} velas), pide ${volMult}x de volumen normal, colchón anti-trampas de ${bufferAtr} ATR y Stop Loss del ${slAtr}x ATR.`;
+      const profileLabel = `${lookbackHours}h · ${volMult}x`;
+      const profileTooltip = `Perfil calibrado para ${symbol}: analiza las últimas ${lookbackHours}h (${lookback} velas de 15m), exige ${volMult}x de volumen normal, colchón de ${bufferAtr} ATR y Stop Loss de ${slAtr}x ATR.`;
 
       return {
         symbol,
@@ -522,16 +522,16 @@ export class DashboardServer {
         <div class="relative w-full overflow-x-auto">
           <table class="w-full caption-bottom text-sm">
             <thead class="border-b border-border bg-muted/30">
-              <tr class="text-left text-xs font-medium text-muted-foreground">
-                <th class="h-9 px-4 align-middle font-medium" title="Par de criptomonedas y su perfil técnico calibrado de 90 días">Activo y Perfil</th>
-                <th class="h-9 px-4 align-middle font-medium" title="Precio oficial de referencia de la moneda en Binance en este momento">Precio Actual</th>
+              <tr class="text-left text-xs font-medium text-muted-foreground whitespace-nowrap">
+                <th class="h-9 px-4 align-middle font-medium" title="Par de criptomonedas y su perfil técnico calibrado">Activo</th>
+                <th class="h-9 px-4 align-middle font-medium" title="Precio oficial de referencia de la moneda en Binance Futures">Precio Mark</th>
                 <th class="h-9 px-4 align-middle font-medium" title="Estado de la moneda: Alcista, Bajista, Rango Lateral o Sin Operar">Régimen</th>
-                <th class="h-9 px-4 align-middle font-medium" title="Indicadores matemáticos en tiempo real (Fuerza de tendencia ADX, RSI y Volatilidad)">Indicadores Clave</th>
-                <th class="h-9 px-4 align-middle font-medium" title="Si tenemos alguna posición abierta en este par">Posición</th>
+                <th class="h-9 px-4 align-middle font-medium" title="Indicadores en vivo: Fuerza de tendencia (ADX), Termómetro (RSI) y Volatilidad (BBW)">Indicadores</th>
+                <th class="h-9 px-4 align-middle font-medium" title="Posición abierta actualmente en este activo">Posición</th>
                 <th class="h-9 px-4 align-middle font-medium" title="Historial de operaciones cerradas en esta moneda">Operaciones</th>
-                <th class="h-9 px-4 align-middle font-medium" title="Porcentaje de operaciones ganadoras">% Acierto</th>
-                <th class="h-9 px-4 align-middle font-medium" title="Ratio Ganancia/Pérdida (Profit Factor): mayor a 1.0 es rentable">Ratio (PF)</th>
-                <th class="h-9 px-4 align-middle font-medium text-right" title="Beneficio o pérdida limpia ya conseguida en este activo tras comisiones">PnL Limpio</th>
+                <th class="h-9 px-4 align-middle font-medium" title="Porcentaje de operaciones ganadoras">Acierto</th>
+                <th class="h-9 px-4 align-middle font-medium" title="Profit Factor: Ganancia total dividida entre pérdida total. Superior a 1.0 es rentable">PF</th>
+                <th class="h-9 px-4 align-middle font-medium text-right" title="Beneficio limpio ya conseguido en este activo tras comisiones">PnL Neto</th>
               </tr>
             </thead>
             <tbody id="symbol-breakdown-tbody" class="divide-y divide-border text-sm">
@@ -638,15 +638,15 @@ export class DashboardServer {
           <div class="relative w-full overflow-x-auto">
             <table class="w-full caption-bottom text-sm">
               <thead class="border-b border-border bg-muted/30">
-                <tr class="text-left text-xs font-medium text-muted-foreground">
-                  <th class="h-9 px-4 align-middle font-medium" title="Par de criptomonedas operado">Par</th>
-                  <th class="h-9 px-4 align-middle font-medium" title="Dirección: LONG (compra alcista) o SHORT (venta bajista)">Dirección</th>
-                  <th class="h-9 px-4 align-middle font-medium" title="Estrategia cuantitativa que abrió la posición">Estrategia</th>
-                  <th class="h-9 px-4 align-middle font-medium" title="Precio oficial al que se abrió la posición">Precio Entrada</th>
-                  <th class="h-9 px-4 align-middle font-medium" title="Precio actual de la moneda en Binance Futures">Precio Actual</th>
+                <tr class="text-left text-xs font-medium text-muted-foreground whitespace-nowrap">
+                  <th class="h-9 px-4 align-middle font-medium" title="Par de criptomonedas operado en Binance Futures">Par</th>
+                  <th class="h-9 px-4 align-middle font-medium" title="Dirección de la posición: LONG (compra alcista) o SHORT (venta bajista)">Lado</th>
+                  <th class="h-9 px-4 align-middle font-medium" title="Estrategia cuantitativa: Ruptura tendencial o Reversión en rango">Estrategia</th>
+                  <th class="h-9 px-4 align-middle font-medium" title="Precio oficial de apertura de la posición">Entrada</th>
+                  <th class="h-9 px-4 align-middle font-medium" title="Precio de referencia en vivo de la moneda en Binance">Precio Mark</th>
                   <th class="h-9 px-4 align-middle font-medium" title="Cantidad de contratos o monedas de la posición">Tamaño</th>
-                  <th class="h-9 px-4 align-middle font-medium" title="Límite de pérdida y estado de la orden de protección en los servidores de Binance">Límite Pérdida (Stop Loss)</th>
-                  <th class="h-9 px-4 align-middle font-medium" title="Objetivo de ganancia 1.5R: Al tocarlo se cobra el 50% y el Stop Loss pasa a precio de entrada para asegurar que la operación no pueda perder">Cobro Parcial (1.5R)</th>
+                  <th class="h-9 px-4 align-middle font-medium" title="Límite máximo de pérdida y orden condicional activa en servidores de Binance">Stop Loss</th>
+                  <th class="h-9 px-4 align-middle font-medium" title="Objetivo a 1.5R: Venta del 50% y movimiento del SL a Break-Even (sin riesgo)">Take Profit</th>
                   <th class="h-9 px-4 align-middle font-medium text-right" title="Ganancia o pérdida provisional acumulada si la posición se cerrara ahora">PnL Flotante</th>
                 </tr>
               </thead>
@@ -672,15 +672,15 @@ export class DashboardServer {
           <div class="relative w-full overflow-x-auto">
             <table class="w-full caption-bottom text-sm">
               <thead class="border-b border-border bg-muted/30">
-                <tr class="text-left text-xs font-medium text-muted-foreground">
-                  <th class="h-9 px-4 align-middle font-medium" title="Fecha y hora de cierre">Fecha</th>
-                  <th class="h-9 px-4 align-middle font-medium" title="Criptomoneda operada">Par</th>
-                  <th class="h-9 px-4 align-middle font-medium" title="LONG (compra) o SHORT (venta)">Dirección</th>
-                  <th class="h-9 px-4 align-middle font-medium" title="Estrategia cuantitativa ejecutada">Estrategia</th>
-                  <th class="h-9 px-4 align-middle font-medium" title="Precio al que se abrió la posición">Entrada</th>
-                  <th class="h-9 px-4 align-middle font-medium" title="Precio al que se cerró y motivo (Stop Loss, Trailing Stop, etc.)">Salida</th>
+                <tr class="text-left text-xs font-medium text-muted-foreground whitespace-nowrap">
+                  <th class="h-9 px-4 align-middle font-medium" title="Fecha y hora de cierre de la posición">Fecha</th>
+                  <th class="h-9 px-4 align-middle font-medium" title="Par de criptomonedas">Par</th>
+                  <th class="h-9 px-4 align-middle font-medium" title="Dirección: LONG (compra) o SHORT (venta)">Lado</th>
+                  <th class="h-9 px-4 align-middle font-medium" title="Estrategia cuantitativa y motivo de cierre">Estrategia</th>
+                  <th class="h-9 px-4 align-middle font-medium" title="Precio oficial al que se abrió la posición">Entrada</th>
+                  <th class="h-9 px-4 align-middle font-medium" title="Precio oficial al que se cerró y motivo">Salida</th>
                   <th class="h-9 px-4 align-middle font-medium" title="Comisión total pagada a Binance">Comisión</th>
-                  <th class="h-9 px-4 align-middle font-medium text-right" title="Beneficio limpio final tras comisiones">PnL Limpio</th>
+                  <th class="h-9 px-4 align-middle font-medium text-right" title="Beneficio limpio ya consolidado en tu cuenta tras comisiones">PnL Neto</th>
                 </tr>
               </thead>
               <tbody id="closed-trades-tbody" class="divide-y divide-border text-sm">
@@ -855,51 +855,49 @@ export class DashboardServer {
 
         return \`
           <tr onclick="setSymbolFilter('\${isSelected ? 'ALL' : s.symbol}')" class="cursor-pointer transition-colors \${rowBg}">
-            <td class="p-3.5 align-middle">
-              <div class="flex items-center gap-2.5">
-                <div class="flex size-7 items-center justify-center rounded border border-border bg-secondary text-[10px] font-mono font-semibold text-foreground">
+            <td class="p-3.5 align-middle whitespace-nowrap">
+              <div class="flex items-center gap-2">
+                <div class="flex size-6 items-center justify-center rounded border border-border bg-secondary text-[10px] font-mono font-semibold text-foreground">
                   \${baseCoin.slice(0, 4)}
                 </div>
-                <div class="flex flex-col">
-                  <span class="font-semibold text-foreground text-xs">\${s.symbol}</span>
-                  <span class="text-[10px] font-mono text-muted-foreground hover:text-foreground cursor-help" title="\${s.profileTooltip || 'Perfil cuantitativo'}">
-                    ⚙️ \${s.profileLabel || 'Perfil estándar'}
-                  </span>
-                </div>
+                <span class="font-medium text-foreground text-xs">\${s.symbol}</span>
+                <span class="inline-flex items-center rounded border border-border/80 bg-background px-1.5 py-0.5 text-[10px] font-mono text-muted-foreground hover:text-foreground cursor-help" title="\${s.profileTooltip || 'Perfil calibrado por moneda'}">
+                  \${s.profileLabel || 'Estándar'}
+                </span>
               </div>
             </td>
-            <td class="p-3.5 align-middle font-mono-num text-xs font-medium text-foreground">
+            <td class="p-3.5 align-middle font-mono-num text-xs font-medium text-foreground whitespace-nowrap">
               \${fmtPrice(s.currentPrice)}
             </td>
-            <td class="p-3.5 align-middle">
+            <td class="p-3.5 align-middle whitespace-nowrap">
               \${renderRegimeBadge(s.regime)}
             </td>
-            <td class="p-3.5 align-middle">
+            <td class="p-3.5 align-middle whitespace-nowrap">
               <div class="flex items-center gap-1.5 font-mono-num text-[11px]">
-                <span class="rounded border border-border/80 bg-background px-1.5 py-0.5 text-muted-foreground cursor-help" title="Fuerza del movimiento (ADX: \${adxStr}). Mayor a 22 significa que el precio se mueve con impulso real.">
-                  Fuerza <strong class="text-foreground">\${adxStr}</strong>
+                <span class="rounded border border-border/80 bg-background px-1 py-0.5 text-muted-foreground cursor-help" title="Fuerza del movimiento (ADX: \${adxStr}). Mayor a 22 significa que el precio se mueve con impulso real.">
+                  ADX <strong class="text-foreground">\${adxStr}</strong>
                 </span>
-                <span class="rounded border border-border/80 bg-background px-1.5 py-0.5 text-muted-foreground cursor-help" title="Termómetro del precio (RSI: \${rsiStr}). >70 significa muy caro/sobrecomprado; <30 muy barato/sobrevendido.">
+                <span class="rounded border border-border/80 bg-background px-1 py-0.5 text-muted-foreground cursor-help" title="Termómetro del precio (RSI: \${rsiStr}). >70 significa muy caro/sobrecomprado; <30 muy barato/sobrevendido.">
                   RSI <strong class="text-foreground">\${rsiStr}</strong>
                 </span>
-                <span class="rounded border border-border/80 bg-background px-1.5 py-0.5 text-muted-foreground cursor-help" title="Volatilidad del mercado (Ancho de Bandas Bollinger: \${bbwStr}). Indica si el canal de precios se estrecha o expande.">
-                  Volatilidad <strong class="text-foreground">\${bbwStr}</strong>
+                <span class="rounded border border-border/80 bg-background px-1 py-0.5 text-muted-foreground cursor-help" title="Volatilidad del mercado (Ancho de Bandas BBW: \${bbwStr}). Indica si el canal de precios se estrecha o expande.">
+                  BBW <strong class="text-foreground">\${bbwStr}</strong>
                 </span>
               </div>
             </td>
-            <td class="p-3.5 align-middle">
+            <td class="p-3.5 align-middle whitespace-nowrap">
               \${posBadge}
             </td>
-            <td class="p-3.5 align-middle font-mono-num text-xs text-muted-foreground">
+            <td class="p-3.5 align-middle font-mono-num text-xs text-muted-foreground whitespace-nowrap">
               <span class="text-foreground font-medium">\${s.totalTrades}</span> (\${s.winningTrades}G/\${s.losingTrades}P)
             </td>
-            <td class="p-3.5 align-middle font-mono-num text-xs text-foreground">
+            <td class="p-3.5 align-middle font-mono-num text-xs text-foreground whitespace-nowrap">
               \${s.winRatePct.toFixed(0)}%
             </td>
-            <td class="p-3.5 align-middle font-mono-num text-xs text-foreground">
+            <td class="p-3.5 align-middle font-mono-num text-xs text-foreground whitespace-nowrap">
               \${Number(s.profitFactor || 0).toFixed(2)}
             </td>
-            <td class="p-3.5 align-middle text-right font-mono-num text-xs font-semibold \${pnlTextClass(s.netRealizedPnl)}">
+            <td class="p-3.5 align-middle text-right font-mono-num text-xs font-semibold whitespace-nowrap \${pnlTextClass(s.netRealizedPnl)}">
               \${fmtSignedUsd(s.netRealizedPnl)}
             </td>
           </tr>
@@ -955,21 +953,21 @@ export class DashboardServer {
 
         return \`
           <tr class="hover:bg-muted/30 transition-colors">
-            <td class="p-3.5 align-middle font-mono-num text-xs text-muted-foreground">\${closeDate}</td>
-            <td class="p-3.5 align-middle font-medium text-xs text-foreground">\${t.symbol}</td>
-            <td class="p-3.5 align-middle">
+            <td class="p-3.5 align-middle font-mono-num text-xs text-muted-foreground whitespace-nowrap">\${closeDate}</td>
+            <td class="p-3.5 align-middle font-medium text-xs text-foreground whitespace-nowrap">\${t.symbol}</td>
+            <td class="p-3.5 align-middle whitespace-nowrap">
               <span class="inline-flex items-center rounded border px-1.5 py-0.5 text-[10px] font-mono font-medium \${sideBadge}">\${t.side}</span>
             </td>
-            <td class="p-3.5 align-middle">
+            <td class="p-3.5 align-middle whitespace-nowrap">
               <div class="flex items-center gap-1 text-xs">
                 <span class="font-mono text-muted-foreground text-[11px]">\${stratName}</span>
                 \${exitLabel ? \`<span class="text-[10px] font-mono text-muted-foreground/80 cursor-help" title="\${exitTitle}">(\${exitLabel})</span>\` : ''}
               </div>
             </td>
-            <td class="p-3.5 align-middle font-mono-num text-xs text-foreground">\${fmtPrice(t.entry_price)}</td>
-            <td class="p-3.5 align-middle font-mono-num text-xs text-foreground">\${t.exit_price ? fmtPrice(t.exit_price) : '—'}</td>
-            <td class="p-3.5 align-middle font-mono-num text-xs text-muted-foreground">-\$\${Number(t.fees_paid || 0).toFixed(2)}</td>
-            <td class="p-3.5 align-middle text-right font-mono-num text-xs font-semibold \${pnlTextClass(t.realized_pnl)}">
+            <td class="p-3.5 align-middle font-mono-num text-xs text-foreground whitespace-nowrap">\${fmtPrice(t.entry_price)}</td>
+            <td class="p-3.5 align-middle font-mono-num text-xs text-foreground whitespace-nowrap">\${t.exit_price ? fmtPrice(t.exit_price) : '—'}</td>
+            <td class="p-3.5 align-middle font-mono-num text-xs text-muted-foreground whitespace-nowrap">-\$\${Number(t.fees_paid || 0).toFixed(2)}</td>
+            <td class="p-3.5 align-middle text-right font-mono-num text-xs font-semibold whitespace-nowrap \${pnlTextClass(t.realized_pnl)}">
               \${fmtSignedUsd(t.realized_pnl)}
             </td>
           </tr>
@@ -1063,52 +1061,52 @@ export class DashboardServer {
             const tp1Price = t.side === 'LONG' ? t.entry_price + slDist * 1.5 : t.entry_price - slDist * 1.5;
 
             const slCell = t.stop_order_id
-              ? \`<div class="flex flex-col gap-0.5">
+              ? \`<div class="flex items-center gap-1.5 whitespace-nowrap">
                    <span class="font-mono-num text-xs text-rose-400 font-medium">\${fmtPrice(t.current_sl)}</span>
-                   <span class="inline-flex items-center gap-1 text-[10px] font-mono text-emerald-400 cursor-help" title="ORDEN STOP_MARKET ACTIVA EN BINANCE (ID: \${t.stop_order_id}). Binance cortará la pérdida automáticamente en el exchange aunque tu bot o tu ordenador estén apagados.">
-                     🛡️ Binance Activo
+                   <span class="inline-flex items-center gap-0.5 rounded border border-emerald-500/30 bg-emerald-500/10 px-1 py-0.2 text-[10px] font-mono text-emerald-400 cursor-help" title="ORDEN STOP_MARKET ACTIVA EN BINANCE (ID: \${t.stop_order_id}). Binance cortará la pérdida automáticamente en el exchange aunque el bot esté apagado.">
+                     🛡️ Binance
                    </span>
                  </div>\`
-              : \`<div class="flex flex-col gap-0.5">
+              : \`<div class="flex items-center gap-1.5 whitespace-nowrap">
                    <span class="font-mono-num text-xs text-rose-400 font-medium">\${fmtPrice(t.current_sl)}</span>
-                   <span class="inline-flex items-center gap-1 text-[10px] font-mono text-amber-400 cursor-help" title="Protección local temporal. El bot monitoriza el precio en cada vela y lo sincronizará con Binance.">
-                     ⚠️ Local
+                   <span class="inline-flex items-center rounded border border-amber-500/30 bg-amber-500/10 px-1 py-0.2 text-[10px] font-mono text-amber-400 cursor-help" title="Protección local temporal. El bot monitoriza el precio en cada vela y lo sincronizará con Binance.">
+                     Local
                    </span>
                  </div>\`;
 
             const tpCell = t.tp1_hit
-              ? \`<div class="flex flex-col gap-0.5">
+              ? \`<div class="flex items-center gap-1.5 whitespace-nowrap">
                    <span class="font-mono-num text-xs text-emerald-400 font-medium">\${fmtPrice(tp1Price)}</span>
-                   <span class="inline-flex items-center gap-0.5 text-[10px] font-mono text-emerald-400 cursor-help" title="El bot ya cobró la mitad de las ganancias y movió el Stop Loss al precio de entrada (Break-Even) para dejar la posición sin riesgo.">
-                     ✓ 50% Cobrado (Sin riesgo)
+                   <span class="inline-flex items-center gap-0.5 rounded border border-emerald-500/30 bg-emerald-500/10 px-1 py-0.2 text-[10px] font-mono text-emerald-400 cursor-help" title="El bot ya cobró la mitad de las ganancias y movió el Stop Loss a Break-Even (sin riesgo).">
+                     ✓ 1.5R
                    </span>
                  </div>\`
-              : \`<div class="flex flex-col gap-0.5">
+              : \`<div class="flex items-center gap-1.5 whitespace-nowrap">
                    <span class="font-mono-num text-xs text-muted-foreground font-medium">\${fmtPrice(tp1Price)}</span>
-                   <span class="text-[10px] text-muted-foreground cursor-help" title="Al alcanzar este precio (+1.5R de beneficio), el bot venderá la mitad y moverá el Stop Loss a precio de entrada.">
-                     Objetivo 1.5R
+                   <span class="text-[10px] font-mono text-muted-foreground cursor-help" title="Al alcanzar 1.5R de beneficio, el bot venderá la mitad y moverá el Stop Loss a precio de entrada.">
+                     1.5R
                    </span>
                  </div>\`;
 
             return \`
               <tr class="hover:bg-muted/30 transition-colors">
-                <td class="p-3.5 align-middle font-medium text-xs text-foreground">\${t.symbol}</td>
-                <td class="p-3.5 align-middle">
+                <td class="p-3.5 align-middle font-medium text-xs text-foreground whitespace-nowrap">\${t.symbol}</td>
+                <td class="p-3.5 align-middle whitespace-nowrap">
                   <span class="inline-flex items-center rounded border px-1.5 py-0.5 text-[10px] font-mono font-medium cursor-help \${sideBadge}" title="\${sideLabel}">\${t.side}</span>
                 </td>
-                <td class="p-3.5 align-middle">
+                <td class="p-3.5 align-middle whitespace-nowrap">
                   <span class="font-mono text-xs text-muted-foreground">\${stratName}</span>
                 </td>
-                <td class="p-3.5 align-middle font-mono-num text-xs text-foreground" title="Precio al que se abrió la posición">\${fmtPrice(t.entry_price)}</td>
-                <td class="p-3.5 align-middle font-mono-num text-xs font-medium text-foreground" title="Precio oficial actual de la moneda en Binance Futures">\${fmtPrice(t.currentPrice)}</td>
-                <td class="p-3.5 align-middle font-mono-num text-xs text-muted-foreground" title="Cantidad de contratos o monedas de la posición">\${Number(t.remaining_size).toFixed(2)}</td>
-                <td class="p-3.5 align-middle">
+                <td class="p-3.5 align-middle font-mono-num text-xs text-foreground whitespace-nowrap" title="Precio al que se abrió la posición">\${fmtPrice(t.entry_price)}</td>
+                <td class="p-3.5 align-middle font-mono-num text-xs font-medium text-foreground whitespace-nowrap" title="Precio oficial actual de la moneda en Binance Futures">\${fmtPrice(t.currentPrice)}</td>
+                <td class="p-3.5 align-middle font-mono-num text-xs text-muted-foreground whitespace-nowrap" title="Cantidad de contratos o monedas de la posición">\${Number(t.remaining_size).toFixed(2)}</td>
+                <td class="p-3.5 align-middle whitespace-nowrap">
                   \${slCell}
                 </td>
-                <td class="p-3.5 align-middle">
+                <td class="p-3.5 align-middle whitespace-nowrap">
                   \${tpCell}
                 </td>
-                <td class="p-3.5 align-middle text-right font-mono-num text-xs font-semibold \${pnlTextClass(t.unrealizedPnl)}" title="Ganancia o pérdida provisional acumulada">
+                <td class="p-3.5 align-middle text-right font-mono-num text-xs font-semibold whitespace-nowrap \${pnlTextClass(t.unrealizedPnl)}" title="Ganancia o pérdida provisional acumulada">
                   \${fmtSignedUsd(t.unrealizedPnl)}
                 </td>
               </tr>
