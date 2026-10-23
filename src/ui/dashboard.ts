@@ -1,5 +1,6 @@
 import http from 'node:http';
-import { strategyConfig } from '../config/strategyConfig.js';
+import { APP_VERSION } from '../config/constants.js';
+import { resolveSymbolStrategyConfig, strategyConfig } from '../config/strategyConfig.js';
 import { RegimeDetector } from '../core/RegimeDetector.js';
 import type { QuantRepository } from '../db/repository.js';
 import type { IExecutionBroker } from '../exchange/IExecutionBroker.js';
@@ -174,6 +175,16 @@ export class DashboardServer {
         }
       }
 
+      const symConfig = resolveSymbolStrategyConfig(strategyConfig, symbol);
+      const lookback = symConfig.trendStrategy.donchianLookback;
+      const lookbackHours = Number(((lookback * 15) / 60).toFixed(1));
+      const volMult = symConfig.trendStrategy.volumeMultiplier;
+      const slAtr = symConfig.trendStrategy.slAtrMultiplier;
+      const bufferAtr = symConfig.trendStrategy.breakoutBufferAtr ?? 0;
+
+      const profileLabel = `Análisis ${lookbackHours}h • Vol ${volMult}x • SL ${slAtr}x`;
+      const profileTooltip = `Perfil calibrado para ${symbol}: busca operaciones analizando las últimas ${lookbackHours} horas (${lookback} velas), pide ${volMult}x de volumen normal, colchón anti-trampas de ${bufferAtr} ATR y Stop Loss del ${slAtr}x ATR.`;
+
       return {
         symbol,
         currentPrice,
@@ -182,6 +193,8 @@ export class DashboardServer {
         rsi,
         bbWidthPct,
         ema200,
+        profileLabel,
+        profileTooltip,
         totalTrades,
         winningTrades,
         losingTrades,
@@ -368,8 +381,8 @@ export class DashboardServer {
             QE
           </div>
           <span class="font-semibold text-sm tracking-tight text-foreground">QuantEngine</span>
-          <span class="text-xs text-muted-foreground font-mono">v2.1.1</span>
-          <span id="mode-badge" class="ml-1 inline-flex items-center rounded border border-border bg-secondary/80 px-1.5 py-0.5 text-[11px] font-mono text-secondary-foreground">
+          <span class="text-xs text-muted-foreground font-mono">v\${APP_VERSION}</span>
+          <span id="mode-badge" class="ml-1 inline-flex items-center rounded border border-border bg-secondary/80 px-1.5 py-0.5 text-[11px] font-mono text-secondary-foreground" title="Modo de ejecución del motor (TESTNET = Dinero de prueba en Binance, LIVE = Dinero real)">
             TESTNET
           </span>
         </div>
@@ -377,13 +390,14 @@ export class DashboardServer {
         <div class="flex items-center gap-3">
           <div class="flex items-center gap-2 rounded-md border border-border bg-card/60 px-2.5 py-1 text-xs text-muted-foreground">
             <span id="live-dot" class="size-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span>Velas <strong id="tf-label" class="font-mono text-foreground">15m</strong></span>
+            <span>Velas <strong id="tf-label" class="font-mono text-foreground" title="Temporalidad del gráfico analizado (15 minutos por vela)">15m</strong></span>
             <span class="text-border">|</span>
-            <span id="last-update" class="font-mono">--:--:--</span>
+            <span id="last-update" class="font-mono" title="Hora de la última actualización de datos">--:--:--</span>
           </div>
           <button
             onclick="fetchStatus()"
             class="inline-flex h-8 items-center justify-center gap-1.5 rounded-md border border-input bg-background px-3 text-xs font-medium text-foreground shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground"
+            title="Refrescar datos y balance ahora"
           >
             <svg class="size-3.5 text-muted-foreground" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg>
             Actualizar
@@ -398,7 +412,7 @@ export class DashboardServer {
       <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 class="text-xl font-semibold tracking-tight text-foreground">Panel de Control</h1>
-          <p class="text-xs text-muted-foreground">Operaciones automáticas en futuros • BTC, ETH, SOL, DOGE</p>
+          <p class="text-xs text-muted-foreground">Trading algorítmico automatizado • Perfiles adaptados para BTC, ETH, SOL y DOGE</p>
         </div>
 
         <!-- Tabs -->
@@ -430,7 +444,7 @@ export class DashboardServer {
       <!-- KPI Grid -->
       <section class="grid grid-cols-1 gap-3.5 sm:grid-cols-2 lg:grid-cols-4">
         <!-- Card 1: Equity -->
-        <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm p-4 sm:p-5 flex flex-col justify-between gap-3">
+        <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm p-4 sm:p-5 flex flex-col justify-between gap-3" title="Patrimonio total: dinero en tu billetera más las ganancias o pérdidas de las operaciones que están abiertas ahora mismo.">
           <div class="flex items-center justify-between">
             <span class="text-xs font-medium text-muted-foreground">Patrimonio Total</span>
             <svg class="size-4 text-muted-foreground" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
@@ -438,29 +452,29 @@ export class DashboardServer {
           <div class="flex flex-col gap-1">
             <div id="equity-val" class="text-2xl font-semibold tracking-tight font-mono-num">$0.00</div>
             <div class="flex items-center justify-between text-xs text-muted-foreground pt-0.5 border-t border-border/40">
-              <span>Billetera: <strong id="balance-val" class="font-mono-num text-foreground font-medium">$0.00</strong></span>
-              <span>Flotante: <strong id="unrealized-val" class="font-mono-num font-medium">$0.00</strong></span>
+              <span title="Saldo líquido consolidado en tu cuenta de Binance Futures">Billetera: <strong id="balance-val" class="font-mono-num text-foreground font-medium">$0.00</strong></span>
+              <span title="Beneficio o pérdida temporal de las posiciones que siguen abiertas">Flotante: <strong id="unrealized-val" class="font-mono-num font-medium">$0.00</strong></span>
             </div>
           </div>
         </div>
 
         <!-- Card 2: Realized PnL -->
-        <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm p-4 sm:p-5 flex flex-col justify-between gap-3">
+        <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm p-4 sm:p-5 flex flex-col justify-between gap-3" title="Beneficio limpio ya cerrado en tu cuenta de Binance tras descontar todas las comisiones.">
           <div class="flex items-center justify-between">
-            <span class="text-xs font-medium text-muted-foreground">Beneficio Cerrado</span>
+            <span class="text-xs font-medium text-muted-foreground">Beneficio Cerrado (Limpio)</span>
             <svg class="size-4 text-muted-foreground" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
           </div>
           <div class="flex flex-col gap-1">
             <div id="net-profit-val" class="text-2xl font-semibold tracking-tight font-mono-num">$0.00</div>
             <div class="flex items-center justify-between text-xs text-muted-foreground pt-0.5 border-t border-border/40">
-              <span>Retorno: <strong id="return-pct-val" class="font-mono-num font-medium">0.00%</strong></span>
-              <span>Profit Factor: <strong id="pf-val" class="font-mono-num text-foreground font-medium">0.00</strong></span>
+              <span title="Rendimiento porcentual acumulado sobre el capital inicial">Retorno: <strong id="return-pct-val" class="font-mono-num font-medium">0.00%</strong></span>
+              <span title="Ratio de Ganancia: dólares ganados por cada dólar perdido. Mayor a 1.0 es rentable">Ratio (PF): <strong id="pf-val" class="font-mono-num text-foreground font-medium">0.00</strong></span>
             </div>
           </div>
         </div>
 
         <!-- Card 3: Win Rate -->
-        <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm p-4 sm:p-5 flex flex-col justify-between gap-3">
+        <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm p-4 sm:p-5 flex flex-col justify-between gap-3" title="Porcentaje de operaciones que han cerrado con ganancias frente al total.">
           <div class="flex items-center justify-between">
             <span class="text-xs font-medium text-muted-foreground">Tasa de Acierto</span>
             <svg class="size-4 text-muted-foreground" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v-6M6 20V10M18 20V4"/></svg>
@@ -477,19 +491,19 @@ export class DashboardServer {
         </div>
 
         <!-- Card 4: Drawdown & Risk -->
-        <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm p-4 sm:p-5 flex flex-col justify-between gap-3">
+        <div class="rounded-lg border border-border bg-card text-card-foreground shadow-sm p-4 sm:p-5 flex flex-col justify-between gap-3" title="Control estricto del capital: límite de 3 posiciones a la vez y riesgo máximo del 1% por operación.">
           <div class="flex items-center justify-between">
-            <span class="text-xs font-medium text-muted-foreground">Riesgo</span>
+            <span class="text-xs font-medium text-muted-foreground">Control de Riesgo</span>
             <svg class="size-4 text-muted-foreground" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
           <div class="flex flex-col gap-1">
             <div class="flex items-baseline justify-between">
               <div id="dd-val" class="text-2xl font-semibold tracking-tight font-mono-num">0.00%</div>
-              <span class="text-xs text-muted-foreground">Drawdown</span>
+              <span class="text-xs text-muted-foreground" title="Caída máxima temporal sufrida desde el pico más alto de la cuenta">Caída Máx (DD)</span>
             </div>
             <div class="flex items-center justify-between text-xs text-muted-foreground pt-0.5 border-t border-border/40">
-              <span>Posiciones: <strong id="slots-val" class="font-mono-num text-foreground font-medium">0 / 3</strong></span>
-              <span>Riesgo/Op: <strong id="risk-pct-val" class="font-mono-num text-foreground font-medium">1.0%</strong></span>
+              <span title="Posiciones abiertas ahora mismo del límite de 3 permitidas">Posiciones: <strong id="slots-val" class="font-mono-num text-foreground font-medium">0 / 3</strong></span>
+              <span title="Pérdida máxima si salta el Stop Loss en una operación">Riesgo/Op: <strong id="risk-pct-val" class="font-mono-num text-foreground font-medium">1.0%</strong></span>
             </div>
           </div>
         </div>
@@ -499,25 +513,25 @@ export class DashboardServer {
       <section id="section-assets" class="rounded-lg border border-border bg-card text-card-foreground shadow-sm">
         <div class="flex flex-col gap-1 p-4 sm:p-5 border-b border-border sm:flex-row sm:items-center sm:justify-between">
           <div class="flex items-center gap-2">
-            <h2 class="text-sm font-semibold tracking-tight">Estado de Activos</h2>
-            <span class="inline-flex items-center rounded border border-border bg-secondary px-1.5 py-0.5 text-[11px] font-mono text-muted-foreground">4 pares</span>
+            <h2 class="text-sm font-semibold tracking-tight">Estado de Activos y Perfiles</h2>
+            <span class="inline-flex items-center rounded border border-border bg-secondary px-1.5 py-0.5 text-[11px] font-mono text-muted-foreground">4 pares calibrados</span>
           </div>
-          <span class="text-xs text-muted-foreground">Haz clic en un activo para filtrar operaciones</span>
+          <span class="text-xs text-muted-foreground">Pasa el cursor sobre la configuración de cada moneda para ver sus reglas</span>
         </div>
 
         <div class="relative w-full overflow-x-auto">
           <table class="w-full caption-bottom text-sm">
             <thead class="border-b border-border bg-muted/30">
               <tr class="text-left text-xs font-medium text-muted-foreground">
-                <th class="h-9 px-4 align-middle font-medium">Activo</th>
-                <th class="h-9 px-4 align-middle font-medium">Precio Mark</th>
-                <th class="h-9 px-4 align-middle font-medium">Régimen</th>
-                <th class="h-9 px-4 align-middle font-medium">Indicadores</th>
-                <th class="h-9 px-4 align-middle font-medium">Posición</th>
-                <th class="h-9 px-4 align-middle font-medium">Operaciones</th>
-                <th class="h-9 px-4 align-middle font-medium">Acierto</th>
-                <th class="h-9 px-4 align-middle font-medium">PF</th>
-                <th class="h-9 px-4 align-middle font-medium text-right">PnL Neto</th>
+                <th class="h-9 px-4 align-middle font-medium" title="Par de criptomonedas y su perfil técnico calibrado de 90 días">Activo y Perfil</th>
+                <th class="h-9 px-4 align-middle font-medium" title="Precio oficial de referencia de la moneda en Binance en este momento">Precio Actual</th>
+                <th class="h-9 px-4 align-middle font-medium" title="Estado de la moneda: Alcista, Bajista, Rango Lateral o Sin Operar">Régimen</th>
+                <th class="h-9 px-4 align-middle font-medium" title="Indicadores matemáticos en tiempo real (Fuerza de tendencia ADX, RSI y Volatilidad)">Indicadores Clave</th>
+                <th class="h-9 px-4 align-middle font-medium" title="Si tenemos alguna posición abierta en este par">Posición</th>
+                <th class="h-9 px-4 align-middle font-medium" title="Historial de operaciones cerradas en esta moneda">Operaciones</th>
+                <th class="h-9 px-4 align-middle font-medium" title="Porcentaje de operaciones ganadoras">% Acierto</th>
+                <th class="h-9 px-4 align-middle font-medium" title="Ratio Ganancia/Pérdida (Profit Factor): mayor a 1.0 es rentable">Ratio (PF)</th>
+                <th class="h-9 px-4 align-middle font-medium text-right" title="Beneficio o pérdida limpia ya conseguida en este activo tras comisiones">PnL Limpio</th>
               </tr>
             </thead>
             <tbody id="symbol-breakdown-tbody" class="divide-y divide-border text-sm">
@@ -625,15 +639,15 @@ export class DashboardServer {
             <table class="w-full caption-bottom text-sm">
               <thead class="border-b border-border bg-muted/30">
                 <tr class="text-left text-xs font-medium text-muted-foreground">
-                  <th class="h-9 px-4 align-middle font-medium">Par</th>
-                  <th class="h-9 px-4 align-middle font-medium">Lado</th>
-                  <th class="h-9 px-4 align-middle font-medium">Estrategia</th>
-                  <th class="h-9 px-4 align-middle font-medium">Entrada</th>
-                  <th class="h-9 px-4 align-middle font-medium">Precio Mark</th>
-                  <th class="h-9 px-4 align-middle font-medium">Tamaño</th>
-                  <th class="h-9 px-4 align-middle font-medium">Stop Loss</th>
-                  <th class="h-9 px-4 align-middle font-medium">Take Profit</th>
-                  <th class="h-9 px-4 align-middle font-medium text-right">PnL Flotante</th>
+                  <th class="h-9 px-4 align-middle font-medium" title="Par de criptomonedas operado">Par</th>
+                  <th class="h-9 px-4 align-middle font-medium" title="Dirección: LONG (compra alcista) o SHORT (venta bajista)">Dirección</th>
+                  <th class="h-9 px-4 align-middle font-medium" title="Estrategia cuantitativa que abrió la posición">Estrategia</th>
+                  <th class="h-9 px-4 align-middle font-medium" title="Precio oficial al que se abrió la posición">Precio Entrada</th>
+                  <th class="h-9 px-4 align-middle font-medium" title="Precio actual de la moneda en Binance Futures">Precio Actual</th>
+                  <th class="h-9 px-4 align-middle font-medium" title="Cantidad de contratos o monedas de la posición">Tamaño</th>
+                  <th class="h-9 px-4 align-middle font-medium" title="Límite de pérdida y estado de la orden de protección en los servidores de Binance">Límite Pérdida (Stop Loss)</th>
+                  <th class="h-9 px-4 align-middle font-medium" title="Objetivo de ganancia 1.5R: Al tocarlo se cobra el 50% y el Stop Loss pasa a precio de entrada para asegurar que la operación no pueda perder">Cobro Parcial (1.5R)</th>
+                  <th class="h-9 px-4 align-middle font-medium text-right" title="Ganancia o pérdida provisional acumulada si la posición se cerrara ahora">PnL Flotante</th>
                 </tr>
               </thead>
               <tbody id="open-trades-tbody" class="divide-y divide-border text-sm">
@@ -659,14 +673,14 @@ export class DashboardServer {
             <table class="w-full caption-bottom text-sm">
               <thead class="border-b border-border bg-muted/30">
                 <tr class="text-left text-xs font-medium text-muted-foreground">
-                  <th class="h-9 px-4 align-middle font-medium">Fecha</th>
-                  <th class="h-9 px-4 align-middle font-medium">Par</th>
-                  <th class="h-9 px-4 align-middle font-medium">Lado</th>
-                  <th class="h-9 px-4 align-middle font-medium">Estrategia</th>
-                  <th class="h-9 px-4 align-middle font-medium">Entrada</th>
-                  <th class="h-9 px-4 align-middle font-medium">Salida</th>
-                  <th class="h-9 px-4 align-middle font-medium">Comisión</th>
-                  <th class="h-9 px-4 align-middle font-medium text-right">PnL Neto</th>
+                  <th class="h-9 px-4 align-middle font-medium" title="Fecha y hora de cierre">Fecha</th>
+                  <th class="h-9 px-4 align-middle font-medium" title="Criptomoneda operada">Par</th>
+                  <th class="h-9 px-4 align-middle font-medium" title="LONG (compra) o SHORT (venta)">Dirección</th>
+                  <th class="h-9 px-4 align-middle font-medium" title="Estrategia cuantitativa ejecutada">Estrategia</th>
+                  <th class="h-9 px-4 align-middle font-medium" title="Precio al que se abrió la posición">Entrada</th>
+                  <th class="h-9 px-4 align-middle font-medium" title="Precio al que se cerró y motivo (Stop Loss, Trailing Stop, etc.)">Salida</th>
+                  <th class="h-9 px-4 align-middle font-medium" title="Comisión total pagada a Binance">Comisión</th>
+                  <th class="h-9 px-4 align-middle font-medium text-right" title="Beneficio limpio final tras comisiones">PnL Limpio</th>
                 </tr>
               </thead>
               <tbody id="closed-trades-tbody" class="divide-y divide-border text-sm">
@@ -785,31 +799,36 @@ export class DashboardServer {
       const map = {
         TRENDING_BULL: {
           label: 'Alcista',
+          title: 'Mercado subiendo con fuerza clara por encima de la EMA 200. El bot busca operaciones de compra (LONG).',
           cls: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400',
           dot: 'bg-emerald-400',
         },
         TRENDING_BEAR: {
           label: 'Bajista',
+          title: 'Mercado cayendo con fuerza clara por debajo de la EMA 200. El bot busca operaciones de venta corta (SHORT).',
           cls: 'border-rose-500/30 bg-rose-500/10 text-rose-400',
           dot: 'bg-rose-400',
         },
         RANGING: {
           label: 'Rango Lateral',
+          title: 'El precio oscila en un canal sin rumbo fijo. El bot busca compras en suelo y ventas en techo (Reversión).',
           cls: 'border-border bg-secondary text-secondary-foreground',
           dot: 'bg-zinc-400',
         },
         VOLATILE_CHOP: {
           label: 'Sin Operar',
+          title: 'Mercado errático, sin volumen o con riesgo de falsas rupturas. El bot se queda quieto para no arriesgar saldo.',
           cls: 'border-amber-500/30 bg-amber-500/10 text-amber-400',
           dot: 'bg-amber-400',
         },
       };
       const item = map[regime] || {
         label: regime || 'Sincronizando',
+        title: 'Calculando indicadores técnicos con las últimas velas...',
         cls: 'border-border bg-muted text-muted-foreground',
         dot: 'bg-zinc-500',
       };
-      return \`<span class="inline-flex items-center gap-1.5 rounded border px-1.5 py-0.5 text-[11px] font-mono font-medium \${item.cls}">
+      return \`<span class="inline-flex items-center gap-1.5 rounded border px-1.5 py-0.5 text-[11px] font-mono font-medium cursor-help \${item.cls}" title="\${item.title}">
         <span class="size-1.5 rounded-full \${item.dot}"></span>
         \${item.label}
       </span>\`;
@@ -831,17 +850,22 @@ export class DashboardServer {
         const bbwStr = s.bbWidthPct !== null && s.bbWidthPct !== undefined ? s.bbWidthPct.toFixed(2) + '%' : '—';
 
         const posBadge = s.openCount > 0
-          ? \`<span class="inline-flex items-center gap-1 rounded border border-emerald-500/30 bg-emerald-500/10 px-1.5 py-0.5 text-xs font-mono text-emerald-400">\${s.openCount} Activa (\${fmtSignedUsd(s.openUnrealizedPnl)})</span>\`
-          : \`<span class="text-xs font-mono text-muted-foreground">—</span>\`;
+          ? \`<span class="inline-flex items-center gap-1 rounded border border-emerald-500/30 bg-emerald-500/10 px-1.5 py-0.5 text-xs font-mono text-emerald-400" title="Posición abierta activa en este activo">\${s.openCount} Activa (\${fmtSignedUsd(s.openUnrealizedPnl)})</span>\`
+          : \`<span class="text-xs font-mono text-muted-foreground" title="Sin operaciones abiertas en esta moneda">—</span>\`;
 
         return \`
           <tr onclick="setSymbolFilter('\${isSelected ? 'ALL' : s.symbol}')" class="cursor-pointer transition-colors \${rowBg}">
             <td class="p-3.5 align-middle">
-              <div class="flex items-center gap-2">
-                <div class="flex size-6 items-center justify-center rounded border border-border bg-secondary text-[10px] font-mono font-semibold text-foreground">
+              <div class="flex items-center gap-2.5">
+                <div class="flex size-7 items-center justify-center rounded border border-border bg-secondary text-[10px] font-mono font-semibold text-foreground">
                   \${baseCoin.slice(0, 4)}
                 </div>
-                <span class="font-medium text-foreground text-xs">\${s.symbol}</span>
+                <div class="flex flex-col">
+                  <span class="font-semibold text-foreground text-xs">\${s.symbol}</span>
+                  <span class="text-[10px] font-mono text-muted-foreground hover:text-foreground cursor-help" title="\${s.profileTooltip || 'Perfil cuantitativo'}">
+                    ⚙️ \${s.profileLabel || 'Perfil estándar'}
+                  </span>
+                </div>
               </div>
             </td>
             <td class="p-3.5 align-middle font-mono-num text-xs font-medium text-foreground">
@@ -852,9 +876,15 @@ export class DashboardServer {
             </td>
             <td class="p-3.5 align-middle">
               <div class="flex items-center gap-1.5 font-mono-num text-[11px]">
-                <span class="rounded border border-border/80 bg-background px-1 py-0.5 text-muted-foreground">ADX <strong class="text-foreground">\${adxStr}</strong></span>
-                <span class="rounded border border-border/80 bg-background px-1 py-0.5 text-muted-foreground">RSI <strong class="text-foreground">\${rsiStr}</strong></span>
-                <span class="rounded border border-border/80 bg-background px-1 py-0.5 text-muted-foreground">BBW <strong class="text-foreground">\${bbwStr}</strong></span>
+                <span class="rounded border border-border/80 bg-background px-1.5 py-0.5 text-muted-foreground cursor-help" title="Fuerza del movimiento (ADX: \${adxStr}). Mayor a 22 significa que el precio se mueve con impulso real.">
+                  Fuerza <strong class="text-foreground">\${adxStr}</strong>
+                </span>
+                <span class="rounded border border-border/80 bg-background px-1.5 py-0.5 text-muted-foreground cursor-help" title="Termómetro del precio (RSI: \${rsiStr}). >70 significa muy caro/sobrecomprado; <30 muy barato/sobrevendido.">
+                  RSI <strong class="text-foreground">\${rsiStr}</strong>
+                </span>
+                <span class="rounded border border-border/80 bg-background px-1.5 py-0.5 text-muted-foreground cursor-help" title="Volatilidad del mercado (Ancho de Bandas Bollinger: \${bbwStr}). Indica si el canal de precios se estrecha o expande.">
+                  Volatilidad <strong class="text-foreground">\${bbwStr}</strong>
+                </span>
               </div>
             </td>
             <td class="p-3.5 align-middle">
@@ -909,6 +939,15 @@ export class DashboardServer {
           ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400'
           : 'border-rose-500/30 bg-rose-500/10 text-rose-400';
         const stratName = t.strategy === 'TREND_BREAKOUT' ? 'Tendencia' : 'Reversión';
+        const exitMap = {
+          STOP_LOSS: 'Corte de Pérdida (Stop Loss alcanzado)',
+          TRAILING_STOP: 'Trailing Stop (Protección dinámica de ganancia)',
+          TAKE_PROFIT: 'Cobro de Beneficio (Take Profit)',
+          MEAN_TARGET: 'Objetivo de Reversión (Centro de Bollinger)',
+          MANUAL_CLOSE: 'Cierre Manual ordenado por el operador',
+          KILL_SWITCH: 'Freno de Emergencia Diario',
+        };
+        const exitTitle = exitMap[t.exit_reason] || t.exit_reason || 'Cierre de posición';
         const exitLabel = t.exit_reason === 'STOP_LOSS' ? 'SL'
           : t.exit_reason === 'TAKE_PROFIT' || t.exit_reason === 'TRAILING_STOP' ? 'Trailing'
           : t.exit_reason === 'MEAN_TARGET' ? 'Target'
@@ -924,7 +963,7 @@ export class DashboardServer {
             <td class="p-3.5 align-middle">
               <div class="flex items-center gap-1 text-xs">
                 <span class="font-mono text-muted-foreground text-[11px]">\${stratName}</span>
-                \${exitLabel ? \`<span class="text-[10px] font-mono text-muted-foreground/80">(\${exitLabel})</span>\` : ''}
+                \${exitLabel ? \`<span class="text-[10px] font-mono text-muted-foreground/80 cursor-help" title="\${exitTitle}">(\${exitLabel})</span>\` : ''}
               </div>
             </td>
             <td class="p-3.5 align-middle font-mono-num text-xs text-foreground">\${fmtPrice(t.entry_price)}</td>
@@ -986,8 +1025,10 @@ export class DashboardServer {
           stratContainer.innerHTML = '<div class="flex flex-1 items-center justify-center rounded border border-dashed border-border p-5 text-xs text-muted-foreground">Sin operaciones cerradas aún.</div>';
         } else {
           stratContainer.innerHTML = stratEntries.map(([name, stats]) => {
-            const cleanName = name === 'TREND_BREAKOUT' ? 'Ruptura Tendencial' : 'Reversión a la Media';
-            const techDesc = name === 'TREND_BREAKOUT' ? 'Donchian + ATR Chandelier' : 'Bandas Bollinger + RSI';
+            const cleanName = name === 'TREND_BREAKOUT' ? 'Ruptura de Tendencia' : 'Rebote en Rango';
+            const techDesc = name === 'TREND_BREAKOUT'
+              ? 'Busca impulsos que rompen el canal de varias horas con volumen'
+              : 'Compra en suelo y vende en techo en mercados laterales';
             return \`
               <div class="flex flex-col justify-between gap-2.5 rounded border border-border bg-background/50 p-3.5">
                 <div class="flex items-start justify-between">
@@ -998,8 +1039,8 @@ export class DashboardServer {
                   <span class="font-mono-num text-sm font-semibold \${pnlTextClass(stats.netPnl)}">\${fmtSignedUsd(stats.netPnl)}</span>
                 </div>
                 <div class="flex items-center justify-between border-t border-border/60 pt-2 text-xs text-muted-foreground">
-                  <span>Operaciones: <strong class="font-mono-num text-foreground">\${stats.trades}</strong></span>
-                  <span>Acierto: <strong class="font-mono-num text-foreground">\${stats.winRatePct.toFixed(1)}%</strong></span>
+                  <span title="Total de operaciones cerradas con esta estrategia">Operaciones: <strong class="font-mono-num text-foreground">\${stats.trades}</strong></span>
+                  <span title="Porcentaje de operaciones que salieron ganadoras">Acierto: <strong class="font-mono-num text-foreground">\${stats.winRatePct.toFixed(1)}%</strong></span>
                 </div>
               </div>
             \`;
@@ -1016,24 +1057,58 @@ export class DashboardServer {
             const sideBadge = t.side === 'LONG'
               ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400'
               : 'border-rose-500/30 bg-rose-500/10 text-rose-400';
+            const sideLabel = t.side === 'LONG' ? 'LONG (Compra alcista)' : 'SHORT (Venta bajista)';
             const stratName = t.strategy === 'TREND_BREAKOUT' ? 'Tendencia' : 'Reversión';
             const slDist = Math.abs(t.entry_price - t.initial_sl);
             const tp1Price = t.side === 'LONG' ? t.entry_price + slDist * 1.5 : t.entry_price - slDist * 1.5;
+
+            const slCell = t.stop_order_id
+              ? \`<div class="flex flex-col gap-0.5">
+                   <span class="font-mono-num text-xs text-rose-400 font-medium">\${fmtPrice(t.current_sl)}</span>
+                   <span class="inline-flex items-center gap-1 text-[10px] font-mono text-emerald-400 cursor-help" title="ORDEN STOP_MARKET ACTIVA EN BINANCE (ID: \${t.stop_order_id}). Binance cortará la pérdida automáticamente en el exchange aunque tu bot o tu ordenador estén apagados.">
+                     🛡️ Binance Activo
+                   </span>
+                 </div>\`
+              : \`<div class="flex flex-col gap-0.5">
+                   <span class="font-mono-num text-xs text-rose-400 font-medium">\${fmtPrice(t.current_sl)}</span>
+                   <span class="inline-flex items-center gap-1 text-[10px] font-mono text-amber-400 cursor-help" title="Protección local temporal. El bot monitoriza el precio en cada vela y lo sincronizará con Binance.">
+                     ⚠️ Local
+                   </span>
+                 </div>\`;
+
+            const tpCell = t.tp1_hit
+              ? \`<div class="flex flex-col gap-0.5">
+                   <span class="font-mono-num text-xs text-emerald-400 font-medium">\${fmtPrice(tp1Price)}</span>
+                   <span class="inline-flex items-center gap-0.5 text-[10px] font-mono text-emerald-400 cursor-help" title="El bot ya cobró la mitad de las ganancias y movió el Stop Loss al precio de entrada (Break-Even) para dejar la posición sin riesgo.">
+                     ✓ 50% Cobrado (Sin riesgo)
+                   </span>
+                 </div>\`
+              : \`<div class="flex flex-col gap-0.5">
+                   <span class="font-mono-num text-xs text-muted-foreground font-medium">\${fmtPrice(tp1Price)}</span>
+                   <span class="text-[10px] text-muted-foreground cursor-help" title="Al alcanzar este precio (+1.5R de beneficio), el bot venderá la mitad y moverá el Stop Loss a precio de entrada.">
+                     Objetivo 1.5R
+                   </span>
+                 </div>\`;
+
             return \`
               <tr class="hover:bg-muted/30 transition-colors">
                 <td class="p-3.5 align-middle font-medium text-xs text-foreground">\${t.symbol}</td>
                 <td class="p-3.5 align-middle">
-                  <span class="inline-flex items-center rounded border px-1.5 py-0.5 text-[10px] font-mono font-medium \${sideBadge}">\${t.side}</span>
+                  <span class="inline-flex items-center rounded border px-1.5 py-0.5 text-[10px] font-mono font-medium cursor-help \${sideBadge}" title="\${sideLabel}">\${t.side}</span>
                 </td>
                 <td class="p-3.5 align-middle">
                   <span class="font-mono text-xs text-muted-foreground">\${stratName}</span>
                 </td>
-                <td class="p-3.5 align-middle font-mono-num text-xs text-foreground">\${fmtPrice(t.entry_price)}</td>
-                <td class="p-3.5 align-middle font-mono-num text-xs font-medium text-foreground">\${fmtPrice(t.currentPrice)}</td>
-                <td class="p-3.5 align-middle font-mono-num text-xs text-muted-foreground">\${Number(t.remaining_size).toFixed(2)}</td>
-                <td class="p-3.5 align-middle font-mono-num text-xs text-rose-400">\${fmtPrice(t.current_sl)}</td>
-                <td class="p-3.5 align-middle font-mono-num text-xs text-emerald-400">\${fmtPrice(tp1Price)} \${t.tp1_hit ? '✓' : ''}</td>
-                <td class="p-3.5 align-middle text-right font-mono-num text-xs font-semibold \${pnlTextClass(t.unrealizedPnl)}">
+                <td class="p-3.5 align-middle font-mono-num text-xs text-foreground" title="Precio al que se abrió la posición">\${fmtPrice(t.entry_price)}</td>
+                <td class="p-3.5 align-middle font-mono-num text-xs font-medium text-foreground" title="Precio oficial actual de la moneda en Binance Futures">\${fmtPrice(t.currentPrice)}</td>
+                <td class="p-3.5 align-middle font-mono-num text-xs text-muted-foreground" title="Cantidad de contratos o monedas de la posición">\${Number(t.remaining_size).toFixed(2)}</td>
+                <td class="p-3.5 align-middle">
+                  \${slCell}
+                </td>
+                <td class="p-3.5 align-middle">
+                  \${tpCell}
+                </td>
+                <td class="p-3.5 align-middle text-right font-mono-num text-xs font-semibold \${pnlTextClass(t.unrealizedPnl)}" title="Ganancia o pérdida provisional acumulada">
                   \${fmtSignedUsd(t.unrealizedPnl)}
                 </td>
               </tr>
